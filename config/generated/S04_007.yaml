@@ -1,0 +1,17 @@
+id: S04
+seed: 7
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: lidar
+  kind: range_limit
+  start_s: 61.1
+  end_s: 101.1
+  params:
+    max_m: 4.0
+variant:
+  lidar: range_limit
+scene: open_field

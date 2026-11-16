@@ -1,0 +1,6 @@
+@prefix : <https://incsl.sejong.ac.kr/ijcas/nav#> .
+# C2: a new candidate -- raw GNSS fixes as a position/velocity source (no attitude).
+:GnssOnly a :Baseline ; :candidateId "gnss_only" ; :requiresEssential :GnssPosition .
+:gnss_global a :Provision ; :ofEstimator :GnssOnly ; :ofCapability :GlobalPosition ; :validUnder :GnssPosition .
+:gnss_vel a :Provision ; :ofEstimator :GnssOnly ; :ofCapability :Velocity ; :validUnder :GnssVelocity .
+:gnss_hgt a :Provision ; :ofEstimator :GnssOnly ; :ofCapability :Height ; :validUnder :GnssPosition .

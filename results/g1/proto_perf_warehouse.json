@@ -1,0 +1,36 @@
+{
+  "env": "Full Warehouse",
+  "load_s": 0.0,
+  "sim_s": 20.0,
+  "wall_s": 13.47,
+  "rtf": 1.484,
+  "camera_frames": 800,
+  "lidar_scans_seen": 200,
+  "points_per_scan_median": 31074,
+  "lidar_buffer": {
+    "keys": [
+      "azimuth",
+      "beamId",
+      "data",
+      "distance",
+      "elevation",
+      "emitterId",
+      "index",
+      "info",
+      "intensity",
+      "materialId",
+      "normal",
+      "objectId",
+      "timestamp",
+      "velocity"
+    ],
+    "ts_min": 883334887.0,
+    "ts_max": 933411163.0,
+    "ts_dtype": "uint64"
+  },
+  "final_position": [
+    5.39,
+    3.24,
+    1.74
+  ]
+}

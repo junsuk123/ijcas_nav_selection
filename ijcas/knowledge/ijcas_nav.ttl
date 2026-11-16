@@ -1,0 +1,168 @@
+@prefix : <https://incsl.sejong.ac.kr/ijcas/nav#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =====================================================================================
+# IJCAS navigation-selection ontology (TBox + domain knowledge).  Notion 03 concepts:
+# EnvironmentContext, Sensor, MeasurementCapability, Estimator, StateQuality,
+# TaskRequirement, SwitchDecision.  Thresholds are *data* (QualityIndicator individuals)
+# fixed on the validation set; the selector is generic over this graph.
+# =====================================================================================
+<https://incsl.sejong.ac.kr/ijcas/nav> a owl:Ontology ;
+    rdfs:label "IJCAS navigation algorithm selection ontology" ;
+    owl:versionInfo "1.0" .
+
+# ---- classes -------------------------------------------------------------------------
+:Sensor a owl:Class .
+:MeasurementCapability a owl:Class .
+:Estimator a owl:Class .
+:StateCapability a owl:Class .
+:EnvironmentContext a owl:Class .
+:TaskRequirement a owl:Class .
+:QualityIndicator a owl:Class .
+:StateQuality a owl:Class .
+:SwitchDecision a owl:Class .
+:Rule a owl:Class .
+:AidedEstimator a owl:Class ; rdfs:subClassOf :Estimator .
+:LocalEstimator a owl:Class ; rdfs:subClassOf :AidedEstimator ;
+    rdfs:comment "metric local frame (VIO / LIO): global use requires a causal alignment" .
+:GlobalEstimator a owl:Class ; rdfs:subClassOf :AidedEstimator .
+:Baseline a owl:Class ; rdfs:subClassOf :Estimator .
+
+# ---- properties ----------------------------------------------------------------------
+:providesMeasurement a owl:ObjectProperty ; rdfs:domain :Sensor ; rdfs:range :MeasurementCapability .
+:measuredBy a owl:ObjectProperty ; owl:inverseOf :providesMeasurement .
+:requiresEssential a owl:ObjectProperty ; rdfs:domain :Estimator ; rdfs:range :MeasurementCapability ;
+    rdfs:comment "without it the estimator output is not valid (R01)" .
+:usesAiding a owl:ObjectProperty ; rdfs:domain :Estimator ; rdfs:range :MeasurementCapability ;
+    rdfs:comment "improves / bounds the estimate; loss degrades the capabilities it supports" .
+:dependsOnSensor a owl:ObjectProperty ; rdfs:domain :Estimator ; rdfs:range :Sensor ;
+    owl:propertyChainAxiom ( :requiresEssential :measuredBy ) .
+:provides a owl:ObjectProperty ; rdfs:domain :Estimator ; rdfs:range :StateCapability .
+:Provision a owl:Class ; rdfs:comment "reified (estimator, capability, condition)" .
+:ofEstimator a owl:ObjectProperty ; rdfs:domain :Provision ; rdfs:range :Estimator .
+:ofCapability a owl:ObjectProperty ; rdfs:domain :Provision ; rdfs:range :StateCapability .
+:validUnder a owl:ObjectProperty ; rdfs:domain :Provision ; rdfs:range :MeasurementCapability ;
+    rdfs:comment "all listed measurements must be usable for the provision (AND)" .
+:alternativelyUnder a owl:ObjectProperty ; rdfs:domain :Provision ; rdfs:range :MeasurementCapability ;
+    rdfs:comment "any one listed measurement suffices (OR)" .
+:limitedWithout a owl:ObjectProperty ; rdfs:domain :Provision ; rdfs:range :MeasurementCapability ;
+    rdfs:comment "provision degrades to limited when this aiding is not usable" .
+:requiresAlignment a owl:DatatypeProperty ; rdfs:domain :Provision ; rdfs:range xsd:boolean .
+:deadReckonLimitS a owl:DatatypeProperty ; rdfs:domain :Provision ; rdfs:range xsd:double .
+:degrades a owl:ObjectProperty ; rdfs:domain :EnvironmentContext ; rdfs:range :MeasurementCapability .
+:requiresCapability a owl:ObjectProperty ; rdfs:domain :TaskRequirement ; rdfs:range :StateCapability .
+:maxOutputAgeS a owl:DatatypeProperty ; rdfs:domain :TaskRequirement ; rdfs:range xsd:double .
+:alarmLimitM a owl:DatatypeProperty ; rdfs:domain :TaskRequirement ; rdfs:range xsd:double .
+:assesses a owl:ObjectProperty ; rdfs:domain :QualityIndicator ; rdfs:range :MeasurementCapability .
+:signal a owl:DatatypeProperty ; rdfs:range xsd:string .
+:invalidBelow a owl:DatatypeProperty ; rdfs:range xsd:double .
+:degradedBelow a owl:DatatypeProperty ; rdfs:range xsd:double .
+:invalidAbove a owl:DatatypeProperty ; rdfs:range xsd:double .
+:degradedAbove a owl:DatatypeProperty ; rdfs:range xsd:double .
+:validForS a owl:DatatypeProperty ; rdfs:comment "freshness: older facts are unknown" .
+:indicates a owl:ObjectProperty ; rdfs:domain :QualityIndicator ; rdfs:range :EnvironmentContext .
+:sharedBy a owl:ObjectProperty ; rdfs:comment "common-cause dependency (R10)" .
+:implementsRule a owl:DatatypeProperty .
+:candidateId a owl:DatatypeProperty ; rdfs:domain :Estimator ; rdfs:range xsd:string .
+:rank a owl:DatatypeProperty ; rdfs:domain :StateQuality ; rdfs:range xsd:integer .
+
+# ---- state qualities (Notion: 사용 가능 / 제한적 사용 / 사용 불가 / 판단 불가) -------------
+:Usable a :StateQuality ; rdfs:label "사용 가능" ; :rank 3 .
+:Limited a :StateQuality ; rdfs:label "제한적 사용" ; :rank 2 .
+:Unknown a :StateQuality ; rdfs:label "판단 불가" ; :rank 1 .
+:Unusable a :StateQuality ; rdfs:label "사용 불가" ; :rank 0 .
+
+# ---- sensors and the measurements they provide ---------------------------------------
+:IMU a :Sensor ; :providesMeasurement :Inertial .
+:GNSSReceiver a :Sensor ; :providesMeasurement :GnssPosition , :GnssVelocity .
+:Barometer a :Sensor ; :providesMeasurement :BaroHeight .
+:Magnetometer a :Sensor ; :providesMeasurement :MagHeading .
+:StereoCamera a :Sensor ; :providesMeasurement :VisualFeatures .
+:Lidar3D a :Sensor ; :providesMeasurement :LidarStructure .
+:Inertial a :MeasurementCapability .
+:GnssPosition a :MeasurementCapability .
+:GnssVelocity a :MeasurementCapability .
+:BaroHeight a :MeasurementCapability .
+:MagHeading a :MeasurementCapability .
+:VisualFeatures a :MeasurementCapability .
+:LidarStructure a :MeasurementCapability .
+:IMU :sharedBy :PX4_EKF2 , :OpenVINS , :GLIM , :INS_DR .
+
+# ---- state capabilities ---------------------------------------------------------------
+:GlobalPosition a :StateCapability .
+:LocalPosition a :StateCapability .
+:Velocity a :StateCapability .
+:Attitude a :StateCapability .
+:Height a :StateCapability .
+
+# ---- estimators (candidates) -----------------------------------------------------------
+:PX4_EKF2 a :GlobalEstimator ; rdfs:label "PX4 EKF2 (GNSS/INS)" ; :candidateId "px4" ;
+    :requiresEssential :Inertial ; :usesAiding :GnssPosition , :GnssVelocity , :BaroHeight , :MagHeading .
+:OpenVINS a :LocalEstimator ; rdfs:label "OpenVINS stereo VIO" ; :candidateId "openvins" ;
+    :requiresEssential :Inertial , :VisualFeatures .
+:GLIM a :LocalEstimator ; rdfs:label "GLIM LiDAR-IMU" ; :candidateId "glim" ;
+    :requiresEssential :Inertial , :LidarStructure .
+:INS_DR a :Baseline ; rdfs:label "INS dead reckoning" ; :candidateId "ins_dr" ;
+    :requiresEssential :Inertial .
+
+# provisions: which state an estimator provides under which measurements
+:px4_global a :Provision ; :ofEstimator :PX4_EKF2 ; :ofCapability :GlobalPosition ;
+    :validUnder :GnssPosition ; :deadReckonLimitS 5.0 .
+:px4_local a :Provision ; :ofEstimator :PX4_EKF2 ; :ofCapability :LocalPosition ;
+    :alternativelyUnder :GnssPosition , :GnssVelocity ; :deadReckonLimitS 5.0 .
+:px4_vel a :Provision ; :ofEstimator :PX4_EKF2 ; :ofCapability :Velocity ;
+    :alternativelyUnder :GnssVelocity , :GnssPosition ; :deadReckonLimitS 5.0 .
+:px4_att a :Provision ; :ofEstimator :PX4_EKF2 ; :ofCapability :Attitude ;
+    :validUnder :Inertial ; :limitedWithout :MagHeading .
+:px4_hgt a :Provision ; :ofEstimator :PX4_EKF2 ; :ofCapability :Height ;
+    :alternativelyUnder :GnssPosition , :BaroHeight .
+:vio_local a :Provision ; :ofEstimator :OpenVINS ; :ofCapability :LocalPosition ; :validUnder :VisualFeatures .
+:vio_vel a :Provision ; :ofEstimator :OpenVINS ; :ofCapability :Velocity ; :validUnder :VisualFeatures .
+:vio_att a :Provision ; :ofEstimator :OpenVINS ; :ofCapability :Attitude ; :validUnder :VisualFeatures .
+:vio_hgt a :Provision ; :ofEstimator :OpenVINS ; :ofCapability :Height ; :validUnder :VisualFeatures .
+:vio_global a :Provision ; :ofEstimator :OpenVINS ; :ofCapability :GlobalPosition ;
+    :validUnder :VisualFeatures ; :requiresAlignment true .
+:lio_local a :Provision ; :ofEstimator :GLIM ; :ofCapability :LocalPosition ; :validUnder :LidarStructure .
+:lio_vel a :Provision ; :ofEstimator :GLIM ; :ofCapability :Velocity ; :validUnder :LidarStructure .
+:lio_att a :Provision ; :ofEstimator :GLIM ; :ofCapability :Attitude ; :validUnder :LidarStructure .
+:lio_hgt a :Provision ; :ofEstimator :GLIM ; :ofCapability :Height ; :validUnder :LidarStructure .
+:lio_global a :Provision ; :ofEstimator :GLIM ; :ofCapability :GlobalPosition ;
+    :validUnder :LidarStructure ; :requiresAlignment true .
+:dr_local a :Provision ; :ofEstimator :INS_DR ; :ofCapability :LocalPosition ;
+    :validUnder :Inertial ; :deadReckonLimitS 0.0 .
+:dr_vel a :Provision ; :ofEstimator :INS_DR ; :ofCapability :Velocity ; :validUnder :Inertial ; :deadReckonLimitS 0.0 .
+:dr_att a :Provision ; :ofEstimator :INS_DR ; :ofCapability :Attitude ; :validUnder :Inertial ; :deadReckonLimitS 0.0 .
+:dr_global a :Provision ; :ofEstimator :INS_DR ; :ofCapability :GlobalPosition ;
+    :validUnder :Inertial ; :deadReckonLimitS 0.0 ; :requiresAlignment true .
+
+# ---- environment contexts and what they degrade ----------------------------------------
+:LowVisualTexture a :EnvironmentContext ; :degrades :VisualFeatures .
+:LowLight a :EnvironmentContext ; :degrades :VisualFeatures .
+:CameraOccluded a :EnvironmentContext ; :degrades :VisualFeatures .
+:LidarGeometryDegenerate a :EnvironmentContext ; :degrades :LidarStructure .
+:LidarSparse a :EnvironmentContext ; :degrades :LidarStructure .
+:GnssDenied a :EnvironmentContext ; :degrades :GnssPosition , :GnssVelocity .
+:GnssPositionInconsistent a :EnvironmentContext ; :degrades :GnssPosition .
+:GnssVelocityInconsistent a :EnvironmentContext ; :degrades :GnssVelocity .
+:ImuAnomaly a :EnvironmentContext ; :degrades :Inertial .
+
+# ---- task requirements ------------------------------------------------------------------
+:LocalFlight a :TaskRequirement ; rdfs:label "국소 비행 (위치·속도·자세)" ;
+    :requiresCapability :LocalPosition , :Velocity , :Attitude ; :maxOutputAgeS 0.3 ; :alarmLimitM 2.0 .
+:GlobalWaypoint a :TaskRequirement ; rdfs:label "전역 waypoint (절대 위치·방위)" ;
+    :requiresCapability :GlobalPosition , :Velocity , :Attitude ; :maxOutputAgeS 0.3 ; :alarmLimitM 2.0 .
+
+# ---- rules (Notion R01-R10) and where the generic selector implements them -------------
+:R01 a :Rule ; rdfs:label "입력·초기화·freshness 관문" ; :implementsRule "gate_inputs" .
+:R02 a :Rule ; rdfs:label "GNSS 위치·속도 분리" ; :implementsRule "provision_and_or" .
+:R03 a :Rule ; rdfs:label "영상 특징·가시성 열화" ; :implementsRule "context_degrades" .
+:R04 a :Rule ; rdfs:label "라이다 구조·축별 관측성" ; :implementsRule "context_degrades" .
+:R05 a :Rule ; rdfs:label "임무 요구와 항법 능력 일치" ; :implementsRule "match_requirement" .
+:R06 a :Rule ; rdfs:label "교차 후보 품질 보정" ; :implementsRule "quality_cost" .
+:R07 a :Rule ; rdfs:label "전환 hysteresis와 복구" ; :implementsRule "hysteresis" .
+:R08 a :Rule ; rdfs:label "정렬·reset·전환 유효성" ; :implementsRule "alignment_gate" .
+:R09 a :Rule ; rdfs:label "전체 후보 부적합" ; :implementsRule "no_valid_nav" .
+:R10 a :Rule ; rdfs:label "공유 IMU·clock 고장" ; :implementsRule "common_cause" .

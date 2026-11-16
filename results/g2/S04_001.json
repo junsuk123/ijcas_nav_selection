@@ -1,0 +1,178 @@
+{
+ "run": "/home/j/ijcas_data/runs/validation/S04_001",
+ "scene": "corridor",
+ "seed": 1,
+ "sim_s": 180.15499597322196,
+ "rtf": 0.6901614289180782,
+ "candidates": {
+  "openvins": {
+   "outputs": 31869,
+   "first_output_s": 20.814999535,
+   "rate_hz": 200.0000000001819,
+   "max_gap_s": 0.005000000000023874,
+   "latency_median_s": 0.0,
+   "latency_p95_s": 2.842170943040401e-14,
+   "latency_note": "reception sim time - header stamp (/clock at 200 Hz: 5 ms quantised)",
+   "error_initial_4dof": {
+    "samples": 31869,
+    "t0": 20.814999535,
+    "t1": 180.154995973,
+    "pos_rmse_m": 0.5039078426612595,
+    "pos_p95_m": 0.907091964871196,
+    "pos_final_m": 0.9130226988411598,
+    "horiz_rmse_m": 0.20149974345975857,
+    "alt_rmse_m": 0.4618668285135621,
+    "yaw_rmse_deg": 0.5159946997232597,
+    "att_rmse_deg": 0.6583152829194604,
+    "alignment": {
+     "mode": "initial",
+     "window_s": 10.0,
+     "yaw_deg": 179.5100372524235,
+     "translation": [
+      24.501,
+      -9.453,
+      1.98
+     ]
+    }
+   },
+   "error_full_4dof": {
+    "samples": 31869,
+    "t0": 20.814999535,
+    "t1": 180.154995973,
+    "pos_rmse_m": 0.303840289245154,
+    "pos_p95_m": 0.5427859632090044,
+    "pos_final_m": 0.5632794282497388,
+    "horiz_rmse_m": 0.14386096137845503,
+    "alt_rmse_m": 0.267624634814969,
+    "yaw_rmse_deg": 0.4434483603497122,
+    "att_rmse_deg": 0.603241085367681,
+    "alignment": {
+     "mode": "full",
+     "window_s": 10.0,
+     "yaw_deg": 179.78042834804992,
+     "translation": [
+      24.631,
+      -9.277,
+      1.604
+     ]
+    }
+   },
+   "drift": {
+    "segments": 39,
+    "drift_per_10m_mean_m": 0.06834479687292101,
+    "drift_per_10m_p95_m": 0.14646724413509235
+   }
+  },
+  "glim": {
+   "outputs": 1769,
+   "first_output_s": 3.259999926,
+   "rate_hz": 10.000000199999878,
+   "max_gap_s": 0.09999999900000489,
+   "latency_median_s": 0.11499999800000182,
+   "latency_p95_s": 0.11999999900001512,
+   "latency_note": "reception sim time - header stamp (/clock at 200 Hz: 5 ms quantised)",
+   "error_initial_4dof": {
+    "samples": 1769,
+    "t0": 3.259999926,
+    "t1": 180.059995974,
+    "pos_rmse_m": 0.08421329636192973,
+    "pos_p95_m": 0.18322077591230088,
+    "pos_final_m": 0.10761503975529185,
+    "horiz_rmse_m": 0.02842529079588519,
+    "alt_rmse_m": 0.07927094125410376,
+    "yaw_rmse_deg": 0.08025352104262073,
+    "att_rmse_deg": 0.2620443966687902,
+    "alignment": {
+     "mode": "initial",
+     "window_s": 10.0,
+     "yaw_deg": -0.00659524416027917,
+     "translation": [
+      0.009,
+      -9.499,
+      2.002
+     ]
+    }
+   },
+   "error_full_4dof": {
+    "samples": 1769,
+    "t0": 3.259999926,
+    "t1": 180.059995974,
+    "pos_rmse_m": 0.0757784310850867,
+    "pos_p95_m": 0.15277578549357484,
+    "pos_final_m": 0.07134042466498007,
+    "horiz_rmse_m": 0.018649932533963205,
+    "alt_rmse_m": 0.07344760468657814,
+    "yaw_rmse_deg": 0.07425571362997718,
+    "att_rmse_deg": 0.26027018841948696,
+    "alignment": {
+     "mode": "full",
+     "window_s": 10.0,
+     "yaw_deg": 0.013589019480036131,
+     "translation": [
+      0.032,
+      -9.502,
+      1.972
+     ]
+    }
+   },
+   "drift": {
+    "segments": 41,
+    "drift_per_10m_mean_m": 0.027569794611783372,
+    "drift_per_10m_p95_m": 0.051261018440848245
+   }
+  },
+  "px4": {
+   "outputs": 8917,
+   "first_output_s": 1.815,
+   "rate_hz": 50.000000000001066,
+   "max_gap_s": 0.030000000000001137,
+   "latency_median_s": 0.03599794400001599,
+   "latency_p95_s": 0.05999938140000083,
+   "latency_note": "reception sim time - header stamp (/clock at 200 Hz: 5 ms quantised)",
+   "error_origin_initial": {
+    "samples": 8607,
+    "t0": 8.005,
+    "t1": 180.129,
+    "pos_rmse_m": 1.0182944847248212,
+    "pos_p95_m": 1.5013924193385753,
+    "pos_final_m": 1.0919203303473763,
+    "horiz_rmse_m": 0.5982363316322292,
+    "alt_rmse_m": 0.8240369828692172,
+    "yaw_rmse_deg": 1.269825471093962,
+    "att_rmse_deg": 1.3032405663348092,
+    "alignment": {
+     "mode": "origin",
+     "window_s": 10.0,
+     "yaw_deg": 0.0,
+     "translation": [
+      -0.383,
+      -10.043,
+      2.467
+     ]
+    }
+   },
+   "drift": {
+    "segments": 42,
+    "drift_per_10m_mean_m": 0.3127433582310818,
+    "drift_per_10m_p95_m": 0.5194854340901081
+   }
+  },
+  "gnss_only": {
+   "outputs": 900,
+   "rate_hz": 5.000000100000294,
+   "pos_rmse_m": 0.9115795493546197,
+   "pos_p95_m": 1.468994677098739,
+   "horiz_rmse_m": 0.6338732481268766,
+   "vel_rmse_mps": 0.08427676251200202,
+   "reported_sigma_h_m": 0.6
+  },
+  "ins_dr": {
+   "free_inertial_drift_m": {
+    "10s": 4.273807551388239,
+    "30s": 37.56153086604814,
+    "60s": 121.1169120116541
+   },
+   "note": "GT-anchored characterisation of the baseline"
+  }
+ }
+}

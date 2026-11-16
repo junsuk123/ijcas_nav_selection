@@ -1,0 +1,4 @@
+@prefix : <https://incsl.sejong.ac.kr/ijcas/nav#> .
+# C1: a new mission -- hold height (e.g. corridor inspection at constant height).
+:HeightHold a :TaskRequirement ; :requiresCapability :Height , :Velocity ;
+    :maxOutputAgeS 0.3 ; :alarmLimitM 1.0 .

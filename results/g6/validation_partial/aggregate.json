@@ -1,0 +1,3289 @@
+{
+ "failed_runs": [],
+ "scenarios": {
+  "S00": {
+   "runs": 2,
+   "scenes": [
+    "corridor",
+    "open_field"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.6960750423088238,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.048303932501275404,
+      "ci95": [
+       0.028735251033956577,
+       0.06787261396859423
+      ]
+     },
+     "pos_p95_m": 1.1054403643402897,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.05268215783021407,
+      "ci95": [
+       -0.0073630290071241555,
+       0.1127273446675523
+      ]
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -6.5,
+      "ci95": [
+       -12.0,
+       -1.0
+      ]
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8421718945370327,
+      "ci95": [
+       -1.0602318733383123,
+       -0.6241119157357532
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "F-V": {
+     "availability": 0.6797752808988764,
+     "availability_minus_ontology": {
+      "mean": -0.3202247191011236,
+      "ci95": [
+       -0.6404494382022472,
+       0.0
+      ]
+     },
+     "output_fraction": 0.6797752808988764,
+     "output_fraction_minus_ontology": {
+      "mean": -0.3202247191011236,
+      "ci95": [
+       -0.6404494382022472,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 51.300000000000004,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 51.300000000000004,
+      "ci95": [
+       0.0,
+       102.60000000000001
+      ]
+     },
+     "pos_rmse_m": 0.6557519868832745,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.007980877075726145,
+      "ci95": [
+       -0.010213111776904427,
+       0.026174865928356716
+      ]
+     },
+     "pos_p95_m": 1.0189117471218458,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.03384645938822972,
+      "ci95": [
+       -0.06769291877645944,
+       0.0
+      ]
+     },
+     "switches": 24.0,
+     "switches_minus_ontology": {
+      "mean": 17.5,
+      "ci95": [
+       -1.0,
+       36.0
+      ]
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8421718945370327,
+      "ci95": [
+       -1.0602318733383123,
+       -0.6241119157357532
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 0.3595505617977528,
+      "open_field": 1.0
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.6462125603778934,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.001558549429654943,
+      "ci95": [
+       -0.0231158399244219,
+       0.019998741065112013
+      ]
+     },
+     "pos_p95_m": 1.0849371213934744,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.03217891488339869,
+      "ci95": [
+       -0.03981841167191169,
+       0.10417624143870907
+      ]
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -6.5,
+      "ci95": [
+       -12.0,
+       -1.0
+      ]
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8421718945370327,
+      "ci95": [
+       -1.0602318733383123,
+       -0.6241119157357532
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.6960750423088238,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.048303932501275404,
+      "ci95": [
+       0.028735251033956577,
+       0.06787261396859423
+      ]
+     },
+     "pos_p95_m": 1.1054403643402897,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.05268215783021407,
+      "ci95": [
+       -0.0073630290071241555,
+       0.1127273446675523
+      ]
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -6.5,
+      "ci95": [
+       -12.0,
+       -1.0
+      ]
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8421718945370327,
+      "ci95": [
+       -1.0602318733383123,
+       -0.6241119157357532
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.6477711098075484,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_p95_m": 1.0527582065100756,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "switches": 6.5,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "max_jump_m": 0.8421718945370327,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.6477711098075484,
+     "pos_p95_m": 1.0527582065100756,
+     "switches": 6.5,
+     "max_jump_m": 0.8421718945370327,
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.536390801974121,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.11138030783342728,
+      "ci95": [
+       -0.132492814446026,
+       -0.09026780122082856
+      ]
+     },
+     "pos_p95_m": 0.9086129719075269,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.14414523460254886,
+      "ci95": [
+       -0.16689259064759676,
+       -0.12139787855750095
+      ]
+     },
+     "switches": 50.5,
+     "switches_minus_ontology": {
+      "mean": 44.0,
+      "ci95": [
+       38.0,
+       50.0
+      ]
+     },
+     "max_jump_m": 0.6691470372544408,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.17302485728259198,
+      "ci95": [
+       -0.3209911900572453,
+       -0.025058524507938662
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    }
+   }
+  },
+  "S01": {
+   "runs": 2,
+   "scenes": [
+    "corridor",
+    "open_field"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 0.9784644194756554,
+     "availability_minus_ontology": {
+      "mean": -0.021535580524344566,
+      "ci95": [
+       -0.02933832709113604,
+       -0.013732833957553092
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 3.45,
+     "false_normal_s_minus_ontology": {
+      "mean": 3.45,
+      "ci95": [
+       2.2,
+       4.7
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.8540293565787789,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.1592640046967963,
+      "ci95": [
+       0.028300156644550323,
+       0.2902278527490423
+      ]
+     },
+     "pos_p95_m": 1.2346801639754155,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.03663065679949873,
+      "ci95": [
+       -0.28287078891599626,
+       0.2096094753169988
+      ]
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -8.0,
+      "ci95": [
+       -15.0,
+       -1.0
+      ]
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.972375189638095,
+      "ci95": [
+       -1.5171672137124235,
+       -0.4275831655637666
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 0.970661672908864,
+      "open_field": 0.9862671660424469
+     }
+    },
+    "F-V": {
+     "availability": 0.6766541822721598,
+     "availability_minus_ontology": {
+      "mean": -0.3233458177278402,
+      "ci95": [
+       -0.6466916354556804,
+       0.0
+      ]
+     },
+     "output_fraction": 0.6766541822721598,
+     "output_fraction_minus_ontology": {
+      "mean": -0.3233458177278402,
+      "ci95": [
+       -0.6466916354556804,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 51.800000000000004,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 51.800000000000004,
+      "ci95": [
+       0.0,
+       103.60000000000001
+      ]
+     },
+     "pos_rmse_m": 0.7252261407762004,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.030460788894217772,
+      "ci95": [
+       -0.0103401163199347,
+       0.07126169410837024
+      ]
+     },
+     "pos_p95_m": 1.2034931880708095,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.06781763270410468,
+      "ci95": [
+       -0.13563526540820936,
+       0.0
+      ]
+     },
+     "switches": 23.0,
+     "switches_minus_ontology": {
+      "mean": 15.0,
+      "ci95": [
+       -1.0,
+       31.0
+      ]
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.972375189638095,
+      "ci95": [
+       -1.5171672137124235,
+       -0.4275831655637666
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 0.3533083645443196,
+      "open_field": 1.0
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.6394046755187881,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.05536067636319458,
+      "ci95": [
+       -0.11867336293406228,
+       0.00795201020767311
+      ]
+     },
+     "pos_p95_m": 1.09275000888236,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.17856081189255407,
+      "ci95": [
+       -0.35164769136087337,
+       -0.005473932424234773
+      ]
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -8.0,
+      "ci95": [
+       -15.0,
+       -1.0
+      ]
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.972375189638095,
+      "ci95": [
+       -1.5171672137124235,
+       -0.4275831655637666
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 0.9996878901373283,
+     "availability_minus_ontology": {
+      "mean": -0.0003121098626716612,
+      "ci95": [
+       -0.0006242197253433224,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.05,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.05,
+      "ci95": [
+       0.0,
+       0.1
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.7000293276915275,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.005263975809544907,
+      "ci95": [
+       -0.0597406362309324,
+       0.07026858785002221
+      ]
+     },
+     "pos_p95_m": 1.115013208684985,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.15629761208992904,
+      "ci95": [
+       -0.3134230198954956,
+       0.0008277957156375138
+      ]
+     },
+     "switches": 2.5,
+     "switches_minus_ontology": {
+      "mean": -5.5,
+      "ci95": [
+       -12.0,
+       1.0
+      ]
+     },
+     "max_jump_m": 3.253526455947803,
+     "max_jump_m_minus_ontology": {
+      "mean": 2.281151266309708,
+      "ci95": [
+       0.8519132123583308,
+       3.7103893202610854
+      ]
+     },
+     "detection_delay_median_s": 0.25,
+     "per_scene_availability": {
+      "corridor": 0.9993757802746567,
+      "open_field": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.6947653518819826,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_p95_m": 1.271310820774914,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "switches": 8.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "max_jump_m": 0.972375189638095,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "detection_delay_median_s": 0.25,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.6947653518819826,
+     "pos_p95_m": 1.271310820774914,
+     "switches": 8.0,
+     "max_jump_m": 0.972375189638095,
+     "detection_delay_median_s": 0.25,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pos_rmse_m": 0.5520182562083161,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.1427470956736665,
+      "ci95": [
+       -0.19331425545527237,
+       -0.09217993589206064
+      ]
+     },
+     "pos_p95_m": 0.9786723208751962,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.29263849989971785,
+      "ci95": [
+       -0.4389055122441897,
+       -0.14637148755524598
+      ]
+     },
+     "switches": 53.5,
+     "switches_minus_ontology": {
+      "mean": 45.5,
+      "ci95": [
+       28.0,
+       63.0
+      ]
+     },
+     "max_jump_m": 0.6963546826422823,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.2760205069958127,
+      "ci95": [
+       -0.886604499344737,
+       0.3345634853531115
+      ]
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0,
+      "open_field": 1.0
+     }
+    }
+   }
+  },
+  "S02": {
+   "runs": 1,
+   "scenes": [
+    "open_field"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 0.6186017478152309,
+     "availability_minus_ontology": {
+      "mean": -0.3813982521847691,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 61.1,
+     "false_normal_s_minus_ontology": {
+      "mean": 61.1,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 2.9881124813039452,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 2.1342754611143584,
+      "ci95": null
+     },
+     "pos_p95_m": 5.041884344690711,
+     "pos_p95_m_minus_ontology": {
+      "mean": 3.738893117247277,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -3.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.6437658717121517,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "open_field": 0.6186017478152309
+     }
+    },
+    "F-V": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.8467106933636703,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.007126326825916407,
+      "ci95": null
+     },
+     "pos_p95_m": 1.302991227443434,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -3.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.6437658717121517,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "open_field": 1.0
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5204792685099229,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.33335775167966386,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7756311785808211,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.527360048862613,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -3.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.6437658717121517,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "open_field": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 0.6186017478152309,
+     "availability_minus_ontology": {
+      "mean": -0.3813982521847691,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 61.1,
+     "false_normal_s_minus_ontology": {
+      "mean": 61.1,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 2.9881124813039452,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 2.1342754611143584,
+      "ci95": null
+     },
+     "pos_p95_m": 5.041884344690711,
+     "pos_p95_m_minus_ontology": {
+      "mean": 3.738893117247277,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -3.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.6437658717121517,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "open_field": 0.6186017478152309
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.8538370201895867,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 1.302991227443434,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 3.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.6437658717121517,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "open_field": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.8538370201895867,
+     "pos_p95_m": 1.302991227443434,
+     "switches": 3.0,
+     "max_jump_m": 0.6437658717121517,
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "open_field": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.4695524425190245,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.38428457767056223,
+      "ci95": null
+     },
+     "pos_p95_m": 0.6869337589773274,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.6160574684661067,
+      "ci95": null
+     },
+     "switches": 35.0,
+     "switches_minus_ontology": {
+      "mean": 32.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.6589132267710837,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.015147355058931944,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.8999999999999986,
+     "per_scene_availability": {
+      "open_field": 1.0
+     }
+    }
+   }
+  },
+  "S03": {
+   "runs": 1,
+   "scenes": [
+    "warehouse"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6420624522525255,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.005082830272876482,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8850263134200348,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.005213340685574885,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -14.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7593959626291296,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "F-V": {
+     "availability": 0.5786516853932584,
+     "availability_minus_ontology": {
+      "mean": -0.4213483146067416,
+      "ci95": null
+     },
+     "output_fraction": 0.5786516853932584,
+     "output_fraction_minus_ontology": {
+      "mean": -0.4213483146067416,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 67.5,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 67.5,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.675344024186155,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.02819874166075309,
+      "ci95": null
+     },
+     "pos_p95_m": 0.9111303922929035,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.02089073818729381,
+      "ci95": null
+     },
+     "switches": 21.0,
+     "switches_minus_ontology": {
+      "mean": 7.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7593959626291296,
+      "ci95": null
+     },
+     "detection_delay_median_s": 1.1000000000000014,
+     "per_scene_availability": {
+      "warehouse": 0.5786516853932584
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6154462781722932,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.031699004353108684,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8903224612055877,
+     "pos_p95_m_minus_ontology": {
+      "mean": 8.280709997798841e-05,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -14.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7593959626291296,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6420624522525255,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.005082830272876482,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8850263134200348,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.005213340685574885,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -14.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7593959626291296,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6471452825254019,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8902396541056097,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 14.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.7593959626291296,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.6471452825254019,
+     "pos_p95_m": 0.8902396541056097,
+     "switches": 14.0,
+     "max_jump_m": 0.7593959626291296,
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5351321481720086,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.11201313435339333,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7791324129783267,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.11110724112728299,
+      "ci95": null
+     },
+     "switches": 32.0,
+     "switches_minus_ontology": {
+      "mean": 18.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.6027592862687565,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.15663667636037304,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    }
+   }
+  },
+  "S04": {
+   "runs": 1,
+   "scenes": [
+    "corridor"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6547930949048634,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.016326719563209857,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8949737636704665,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.1014177367637299,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -13.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.9790335828869261,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "F-V": {
+     "availability": 0.7677902621722846,
+     "availability_minus_ontology": {
+      "mean": -0.23220973782771537,
+      "ci95": null
+     },
+     "output_fraction": 0.7677902621722846,
+     "output_fraction_minus_ontology": {
+      "mean": -0.23220973782771537,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 37.2,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 37.2,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6428368402887972,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.028282974179276055,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8387764195855557,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.15761508084864073,
+      "ci95": null
+     },
+     "switches": 17.0,
+     "switches_minus_ontology": {
+      "mean": 4.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.9790335828869261,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 0.7677902621722846
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.7075236276679273,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.036403813199854085,
+      "ci95": null
+     },
+     "pos_p95_m": 1.018387529900204,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.02199602946600765,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -13.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.9790335828869261,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6547930949048634,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.016326719563209857,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8949737636704665,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.1014177367637299,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -13.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.9790335828869261,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6711198144680732,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 0.9963915004341964,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 13.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.9790335828869261,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.6711198144680732,
+     "pos_p95_m": 0.9963915004341964,
+     "switches": 13.0,
+     "max_jump_m": 0.9790335828869261,
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5543905038189583,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.11672931064911496,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7708256351068471,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.22556586532734935,
+      "ci95": null
+     },
+     "switches": 71.0,
+     "switches_minus_ontology": {
+      "mean": 58.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.7140558894238216,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.2649776934631045,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    }
+   }
+  },
+  "S05": {
+   "runs": 1,
+   "scenes": [
+    "warehouse"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 0.7297128589263421,
+     "availability_minus_ontology": {
+      "mean": -0.2702871410736579,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 43.300000000000004,
+     "false_normal_s_minus_ontology": {
+      "mean": 43.300000000000004,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 14.733817997455997,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 14.169023959312163,
+      "ci95": null
+     },
+     "pos_p95_m": 38.50644183411172,
+     "pos_p95_m_minus_ontology": {
+      "mean": 37.67378365175936,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -24.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8871671878803875,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 0.7297128589263421
+     }
+    },
+    "F-V": {
+     "availability": 0.47191011235955055,
+     "availability_minus_ontology": {
+      "mean": -0.5280898876404494,
+      "ci95": null
+     },
+     "output_fraction": 0.47191011235955055,
+     "output_fraction_minus_ontology": {
+      "mean": -0.5280898876404494,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 84.60000000000001,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 84.60000000000001,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5909045765868993,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.026110538443065434,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7897291286613028,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.04292905369106159,
+      "ci95": null
+     },
+     "switches": 9.0,
+     "switches_minus_ontology": {
+      "mean": -15.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8871671878803875,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 0.47191011235955055
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5415087620532689,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.023285276090564966,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7940502226559946,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.038607959696369876,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -24.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8871671878803875,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5606433122417455,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.004150725902088426,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8334378936411347,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0007797112887703017,
+      "ci95": null
+     },
+     "switches": 2.0,
+     "switches_minus_ontology": {
+      "mean": -22.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.6887398191872397,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.1984273686931478,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5647940381438339,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8326581823523644,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 24.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.8871671878803875,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.05000000000000071,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.5647940381438339,
+     "pos_p95_m": 0.8326581823523644,
+     "switches": 24.0,
+     "max_jump_m": 0.8871671878803875,
+     "detection_delay_median_s": 0.05000000000000071,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.49276742751484065,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.07202661062899324,
+      "ci95": null
+     },
+     "pos_p95_m": 0.706590631865351,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.12606755048701346,
+      "ci95": null
+     },
+     "switches": 34.0,
+     "switches_minus_ontology": {
+      "mean": 10.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.7323843471388743,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.15478284074151316,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    }
+   }
+  },
+  "S06": {
+   "runs": 1,
+   "scenes": [
+    "corridor"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 0.7515605493133583,
+     "availability_minus_ontology": {
+      "mean": -0.24843945068664175,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 39.800000000000004,
+     "false_normal_s_minus_ontology": {
+      "mean": 39.800000000000004,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 17.63515920627402,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 16.966821007932104,
+      "ci95": null
+     },
+     "pos_p95_m": 48.28570745285356,
+     "pos_p95_m_minus_ontology": {
+      "mean": 47.284810891276955,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -10.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.9147162189878184,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 0.7515605493133583
+     }
+    },
+    "F-V": {
+     "availability": 0.5674157303370787,
+     "availability_minus_ontology": {
+      "mean": -0.4325842696629213,
+      "ci95": null
+     },
+     "output_fraction": 0.5674157303370787,
+     "output_fraction_minus_ontology": {
+      "mean": -0.4325842696629213,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 69.3,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 69.3,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6586777827318893,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.00966041561002784,
+      "ci95": null
+     },
+     "pos_p95_m": 0.9664268743637272,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.034469687212875355,
+      "ci95": null
+     },
+     "switches": 13.0,
+     "switches_minus_ontology": {
+      "mean": 3.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.9147162189878184,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 0.5674157303370787
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.663302359748114,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.005035838593803077,
+      "ci95": null
+     },
+     "pos_p95_m": 1.020300526185667,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.01940396460906446,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -10.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.9147162189878184,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6133903364129427,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.054947861928974384,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8543744082358493,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.14652215334075325,
+      "ci95": null
+     },
+     "switches": 3.0,
+     "switches_minus_ontology": {
+      "mean": -7.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.7160321743997586,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.19868404458805977,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6683381983419171,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 1.0008965615766026,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 10.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.9147162189878184,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.05000000000000071,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.6683381983419171,
+     "pos_p95_m": 1.0008965615766026,
+     "switches": 10.0,
+     "max_jump_m": 0.9147162189878184,
+     "detection_delay_median_s": 0.05000000000000071,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5425563205113658,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.12578187783055128,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7755909738710501,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.22530558770555242,
+      "ci95": null
+     },
+     "switches": 67.0,
+     "switches_minus_ontology": {
+      "mean": 57.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.8325011285030208,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.08221509048479758,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.6000000000000014,
+     "per_scene_availability": {
+      "corridor": 1.0
+     }
+    }
+   }
+  },
+  "S07": {
+   "runs": 1,
+   "scenes": [
+    "warehouse"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6422484791913518,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.004102551774321395,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8835576381549541,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.01718093793790787,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -15.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8276998983241212,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "F-V": {
+     "availability": 0.7453183520599251,
+     "availability_minus_ontology": {
+      "mean": -0.25468164794007486,
+      "ci95": null
+     },
+     "output_fraction": 0.7453183520599251,
+     "output_fraction_minus_ontology": {
+      "mean": -0.25468164794007486,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 40.800000000000004,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 40.800000000000004,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6725056086074401,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.026154577641766985,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8595349140000866,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.006841786216959633,
+      "ci95": null
+     },
+     "switches": 13.0,
+     "switches_minus_ontology": {
+      "mean": -2.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8276998983241212,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 0.7453183520599251
+     }
+    },
+    "F-L": {
+     "availability": 0.9862671660424469,
+     "availability_minus_ontology": {
+      "mean": -0.013732833957553092,
+      "ci95": null
+     },
+     "output_fraction": 0.9862671660424469,
+     "output_fraction_minus_ontology": {
+      "mean": -0.013732833957553092,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 2.2,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 2.2,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6161516852463531,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.030199345719320037,
+      "ci95": null
+     },
+     "pos_p95_m": 0.905918431974357,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.03954173175731068,
+      "ci95": null
+     },
+     "switches": 38.0,
+     "switches_minus_ontology": {
+      "mean": 23.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8276998983241212,
+      "ci95": null
+     },
+     "detection_delay_median_s": 1.1000000000000014,
+     "per_scene_availability": {
+      "warehouse": 0.9862671660424469
+     }
+    },
+    "H-FSM": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6422484791913518,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.004102551774321395,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8835576381549541,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.01718093793790787,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -15.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.8276998983241212,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6463510309656731,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8663767002170463,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 15.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.8276998983241212,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.5500000000000007,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.6463510309656731,
+     "pos_p95_m": 0.8663767002170463,
+     "switches": 15.0,
+     "max_jump_m": 0.8276998983241212,
+     "detection_delay_median_s": 0.5500000000000007,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5369372535898059,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.10941377737586722,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7769851172143178,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.08939158300272843,
+      "ci95": null
+     },
+     "switches": 114.0,
+     "switches_minus_ontology": {
+      "mean": 99.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.6891482694032497,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.13855162892087147,
+      "ci95": null
+     },
+     "detection_delay_median_s": 1.1000000000000014,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    }
+   }
+  },
+  "S08": {
+   "runs": 1,
+   "scenes": [
+    "open_field"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 0.8508114856429463,
+     "availability_minus_ontology": {
+      "mean": 0.011860174781523014,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.1067415730337079,
+      "ci95": null
+     },
+     "false_normal_s": 23.900000000000002,
+     "false_normal_s_minus_ontology": {
+      "mean": 15.200000000000001,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": -17.1,
+      "ci95": null
+     },
+     "pos_rmse_m": 12.598038486261103,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 11.051804847085092,
+      "ci95": null
+     },
+     "pos_p95_m": 40.9672460611002,
+     "pos_p95_m_minus_ontology": {
+      "mean": 38.081784257670634,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -6.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.77168997075142,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "open_field": 0.8508114856429463
+     }
+    },
+    "F-V": {
+     "availability": 0.7759051186017478,
+     "availability_minus_ontology": {
+      "mean": -0.06304619225967545,
+      "ci95": null
+     },
+     "output_fraction": 0.7846441947565543,
+     "output_fraction_minus_ontology": {
+      "mean": -0.10861423220973776,
+      "ci95": null
+     },
+     "false_normal_s": 1.4000000000000001,
+     "false_normal_s_minus_ontology": {
+      "mean": -7.300000000000001,
+      "ci95": null
+     },
+     "no_valid_nav_s": 34.5,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 17.4,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.7920895213541006,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.7541441178219099,
+      "ci95": null
+     },
+     "pos_p95_m": 1.6020610828264705,
+     "pos_p95_m_minus_ontology": {
+      "mean": -1.2834007206030904,
+      "ci95": null
+     },
+     "switches": 2.0,
+     "switches_minus_ontology": {
+      "mean": -4.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.77168997075142,
+      "ci95": null
+     },
+     "detection_delay_median_s": 1.1000000000000014,
+     "per_scene_availability": {
+      "open_field": 0.7759051186017478
+     }
+    },
+    "F-L": {
+     "availability": 0.15792759051186017,
+     "availability_minus_ontology": {
+      "mean": -0.681023720349563,
+      "ci95": null
+     },
+     "output_fraction": 0.15792759051186017,
+     "output_fraction_minus_ontology": {
+      "mean": -0.735330836454432,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": -8.700000000000001,
+      "ci95": null
+     },
+     "no_valid_nav_s": 134.9,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 117.80000000000001,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5637533366971392,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.9824803024788713,
+      "ci95": null
+     },
+     "pos_p95_m": 0.6764060436429182,
+     "pos_p95_m_minus_ontology": {
+      "mean": -2.2090557597866427,
+      "ci95": null
+     },
+     "switches": 1.0,
+     "switches_minus_ontology": {
+      "mean": -5.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.77168997075142,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.29999999999999716,
+     "per_scene_availability": {
+      "open_field": 0.15792759051186017
+     }
+    },
+    "H-FSM": {
+     "availability": 0.8595505617977528,
+     "availability_minus_ontology": {
+      "mean": 0.020599250936329527,
+      "ci95": null
+     },
+     "output_fraction": 0.8801498127340824,
+     "output_fraction_minus_ontology": {
+      "mean": -0.013108614232209659,
+      "ci95": null
+     },
+     "false_normal_s": 3.3000000000000003,
+     "false_normal_s_minus_ontology": {
+      "mean": -5.4,
+      "ci95": null
+     },
+     "no_valid_nav_s": 19.200000000000003,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 2.1000000000000014,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.7665832571516573,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.7796503820243532,
+      "ci95": null
+     },
+     "pos_p95_m": 0.9144645164878853,
+     "pos_p95_m_minus_ontology": {
+      "mean": -1.9709972869416756,
+      "ci95": null
+     },
+     "switches": 4.0,
+     "switches_minus_ontology": {
+      "mean": -2.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.5841234276153761,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.18756654313604393,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.20000000000000284,
+     "per_scene_availability": {
+      "open_field": 0.8595505617977528
+     }
+    },
+    "Flat-K": {
+     "availability": 0.8389513108614233,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 0.8932584269662921,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 8.700000000000001,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 17.1,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 1.5462336391760105,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 2.885461803429561,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 6.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.77168997075142,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "open_field": 0.8389513108614233
+     }
+    },
+    "Ontology-K": {
+     "availability": 0.8389513108614233,
+     "output_fraction": 0.8932584269662921,
+     "false_normal_s": 8.700000000000001,
+     "no_valid_nav_s": 17.1,
+     "pos_rmse_m": 1.5462336391760105,
+     "pos_p95_m": 2.885461803429561,
+     "switches": 6.0,
+     "max_jump_m": 0.77168997075142,
+     "detection_delay_median_s": 0.10000000000000142,
+     "per_scene_availability": {
+      "open_field": 0.8389513108614233
+     }
+    },
+    "Oracle": {
+     "availability": 0.8508114856429463,
+     "availability_minus_ontology": {
+      "mean": 0.011860174781523014,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.1067415730337079,
+      "ci95": null
+     },
+     "false_normal_s": 23.900000000000002,
+     "false_normal_s_minus_ontology": {
+      "mean": 15.200000000000001,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": -17.1,
+      "ci95": null
+     },
+     "pos_rmse_m": 12.595635133517868,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 11.049401494341858,
+      "ci95": null
+     },
+     "pos_p95_m": 40.9672460611002,
+     "pos_p95_m_minus_ontology": {
+      "mean": 38.081784257670634,
+      "ci95": null
+     },
+     "switches": 28.0,
+     "switches_minus_ontology": {
+      "mean": 22.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.920893949515468,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.149203978764048,
+      "ci95": null
+     },
+     "detection_delay_median_s": 1.1000000000000014,
+     "per_scene_availability": {
+      "open_field": 0.8508114856429463
+     }
+    }
+   }
+  },
+  "S10": {
+   "runs": 1,
+   "scenes": [
+    "warehouse"
+   ],
+   "selectors": {
+    "F-G": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6468205639140442,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.013119944573413145,
+      "ci95": null
+     },
+     "pos_p95_m": 0.911146145716859,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.028036638936662528,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -17.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7813134251292657,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "F-V": {
+     "availability": 0.7478152309612984,
+     "availability_minus_ontology": {
+      "mean": -0.2521847690387016,
+      "ci95": null
+     },
+     "output_fraction": 0.7478152309612984,
+     "output_fraction_minus_ontology": {
+      "mean": -0.2521847690387016,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 40.400000000000006,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 40.400000000000006,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6314534179784708,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.002247201362160278,
+      "ci95": null
+     },
+     "pos_p95_m": 0.874268891096507,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.008840615683689546,
+      "ci95": null
+     },
+     "switches": 13.0,
+     "switches_minus_ontology": {
+      "mean": -4.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7813134251292657,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 0.7478152309612984
+     }
+    },
+    "F-L": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6017009178861706,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.031999701454460405,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8669180577639846,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.016191449016211945,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -17.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7813134251292657,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "H-FSM": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.6468205639140442,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.013119944573413145,
+      "ci95": null
+     },
+     "pos_p95_m": 0.911146145716859,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.028036638936662528,
+      "ci95": null
+     },
+     "switches": 0.0,
+     "switches_minus_ontology": {
+      "mean": -17.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.0,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.7813134251292657,
+      "ci95": null
+     },
+     "detection_delay_median_s": null,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Flat-K": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.633700619340631,
+     "pos_rmse_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_p95_m": 0.8831095067801965,
+     "pos_p95_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "switches": 17.0,
+     "switches_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.7813134251292657,
+     "max_jump_m_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "detection_delay_median_s": 2.0,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Ontology-K": {
+     "availability": 1.0,
+     "output_fraction": 1.0,
+     "false_normal_s": 0.0,
+     "no_valid_nav_s": 0.0,
+     "pos_rmse_m": 0.633700619340631,
+     "pos_p95_m": 0.8831095067801965,
+     "switches": 17.0,
+     "max_jump_m": 0.7813134251292657,
+     "detection_delay_median_s": 2.0,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    },
+    "Oracle": {
+     "availability": 1.0,
+     "availability_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "output_fraction": 1.0,
+     "output_fraction_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "false_normal_s": 0.0,
+     "false_normal_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "no_valid_nav_s": 0.0,
+     "no_valid_nav_s_minus_ontology": {
+      "mean": 0.0,
+      "ci95": null
+     },
+     "pos_rmse_m": 0.5066039079911843,
+     "pos_rmse_m_minus_ontology": {
+      "mean": -0.12709671134944678,
+      "ci95": null
+     },
+     "pos_p95_m": 0.7506736741884585,
+     "pos_p95_m_minus_ontology": {
+      "mean": -0.13243583259173797,
+      "ci95": null
+     },
+     "switches": 34.0,
+     "switches_minus_ontology": {
+      "mean": 17.0,
+      "ci95": null
+     },
+     "max_jump_m": 0.6058748403056561,
+     "max_jump_m_minus_ontology": {
+      "mean": -0.17543858482360963,
+      "ci95": null
+     },
+     "detection_delay_median_s": 25.10000000000001,
+     "per_scene_availability": {
+      "warehouse": 1.0
+     }
+    }
+   }
+  }
+ }
+}

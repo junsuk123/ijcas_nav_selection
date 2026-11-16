@@ -1,0 +1,22 @@
+id: S05
+seed: 8
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: outage
+  start_s: 68.0
+  end_s: 118.0
+- target: camera
+  kind: brightness
+  start_s: 78.0
+  end_s: 113.0
+  params:
+    scale: 0.2
+variant:
+  visual: brightness_0.2
+  outage_s: 50.0
+scene: warehouse

@@ -1,0 +1,72 @@
+# IJCAS scenes and their forced (Stage A) trajectories.  Waypoints are ENU metres in the scene
+# frame; the loop is a periodic quintic spline flown at constant speed after hover + ramp.
+# Development/validation uses warehouse, open_field, corridor; office is held out for S09.
+scenes:
+  warehouse:
+    kind: isaac_environment
+    environment: "Full Warehouse"          # Pegasus/Isaac asset, feature-rich, shelving aisles
+    clearance_grid: results/g1/scenes/Full_Warehouse.npz
+    trajectory:
+      speed_mps: 1.5
+      corner_radius_m: 2.0
+      yaw: heading
+      waypoints:                            # open floor -> aisle x=-8 -> top band -> aisle x=-18 -> back
+        - [-5.0, -15.0, 2.5]
+        - [-8.0, -4.0, 2.5]
+        - [-8.0, 12.0, 2.5]
+        - [-8.0, 28.0, 2.8]
+        - [-18.0, 28.0, 2.8]
+        - [-18.0, 12.0, 2.5]
+        - [-18.0, -4.0, 2.5]
+        - [-15.0, -15.0, 3.0]
+        - [-10.0, -19.0, 3.0]
+  open_field:
+    kind: procedural_open_field
+    size_m: 200.0
+    objects: 40                              # sparse boxes / cylinders, 1-6 m tall
+    object_area_m: 90.0
+    trajectory:
+      speed_mps: 3.0
+      corner_radius_m: 8.0
+      yaw: heading
+      waypoints:                            # 3 -> 10 m altitude (Notion 04: 고도 3-10 m)
+        - [0.0, 0.0, 3.0]
+        - [25.0, -8.0, 5.0]
+        - [40.0, 10.0, 8.0]
+        - [25.0, 30.0, 10.0]
+        - [0.0, 32.0, 7.0]
+        - [-15.0, 15.0, 4.0]
+  corridor:
+    kind: procedural_corridor
+    outer_m: [60.0, 24.0]                    # rectangular ring of corridors (closed loop)
+    width_m: 5.0
+    height_m: 4.0
+    pattern_period_m: 2.0                    # repeated wall texture -> LiDAR/visual aliasing
+    trajectory:
+      speed_mps: 2.5
+      corner_radius_m: 2.0
+      yaw: heading
+      waypoints:                            # corridor centreline, corners rounded by the spline
+        - [0.0, -9.5, 2.0]
+        - [25.5, -9.5, 2.0]
+        - [27.5, -7.5, 2.0]
+        - [27.5, 7.5, 2.0]
+        - [25.5, 9.5, 2.0]
+        - [-25.5, 9.5, 2.0]
+        - [-27.5, 7.5, 2.0]
+        - [-27.5, -7.5, 2.0]
+        - [-25.5, -9.5, 2.0]
+  office:
+    kind: isaac_environment
+    environment: "Office"                   # held out: S09 (never used for calibration)
+    clearance_grid: results/g1/scenes/Office.npz
+    clearance_alts: [1.5, 2.0]              # desks below, ceiling (~2.5 m occupied) above
+    trajectory:                             # designed from the free-space grid only (2026-11-16)
+      speed_mps: 1.2
+      corner_radius_m: 1.5
+      yaw: heading
+      waypoints:                            # loop around the central desk block (x -9..-2, y -4..5)
+        - [-11.8, -7.0, 1.6]
+        - [-11.8, 8.3, 1.6]
+        - [-0.3, 8.3, 1.8]
+        - [-0.3, -7.0, 1.6]

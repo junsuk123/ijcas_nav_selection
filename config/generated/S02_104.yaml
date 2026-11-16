@@ -1,0 +1,22 @@
+id: S02
+seed: 104
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: position_bias
+  start_s: 51.9
+  end_s: 111.9
+  params:
+    vector_m:
+    - 9.641
+    - -2.657
+    - 0.0
+    ramp_s: 5.0
+variant:
+  bias_m: 10.0
+  velocity_valid: true
+scene: open_field

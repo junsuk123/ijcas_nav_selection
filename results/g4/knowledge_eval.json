@@ -1,0 +1,34 @@
+{
+ "ontology_triples_base": 460,
+ "ontology_triples_added": 20,
+ "ontology_selector_code_lines_changed": 0,
+ "flat_code_lines_added": 51,
+ "integrity_after_change": {},
+ "equivalence_after_change": {
+  "ticks": 9000,
+  "mismatches": 0,
+  "history": "first flat implementation of C2 mapped GnssPosition=Unknown to Unusable for the new candidate (292/9000 mismatching ticks, HeightHold); found by this fuzz comparison and fixed in flat_ext.py. The ontology change needed no code."
+ },
+ "seeded_omissions": {
+  "C2_without_velocity_provision": {
+   "candidate_cannot_serve_any_task": [
+    [
+     "GnssOnly"
+    ]
+   ]
+  },
+  "new_sensor_without_indicator": {
+   "measurement_without_indicator": [
+    [
+     "RadarRange"
+    ]
+   ],
+   "candidate_cannot_serve_any_task": [
+    [
+     "RadarOdom"
+    ]
+   ]
+  },
+  "flat_equivalent": "no static check: the same omissions compile and run, the candidate is silently never usable (found only by inspecting behaviour)"
+ }
+}

@@ -1,0 +1,44 @@
+id: S07
+seed: 5
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: camera
+  kind: delay
+  start_s: 67.5
+  end_s: 127.5
+  params:
+    mean_s: 0.1
+    jitter_s: 0.025
+- target: camera
+  kind: drop
+  start_s: 67.5
+  end_s: 127.5
+  params:
+    probability: 0.2
+- target: lidar
+  kind: delay
+  start_s: 67.5
+  end_s: 127.5
+  params:
+    mean_s: 0.1
+    jitter_s: 0.025
+- target: lidar
+  kind: drop
+  start_s: 67.5
+  end_s: 127.5
+  params:
+    probability: 0.2
+- target: gnss_ros
+  kind: delay
+  start_s: 67.5
+  end_s: 127.5
+  params:
+    mean_s: 0.1
+    jitter_s: 0.025
+variant:
+  delay_s: 0.1
+scene: open_field

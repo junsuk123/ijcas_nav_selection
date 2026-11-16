@@ -1,0 +1,42 @@
+{
+  "sim_s": 120.01,
+  "wall_s": 64.4,
+  "rtf": 1.864,
+  "rigid_bodies_gravity_off": {
+    "rigid_bodies": 5,
+    "colliders": 5,
+    "articulations": 1,
+    "joints": 4
+  },
+  "vehicle_physics_disabled": {
+    "rigid_bodies": 5,
+    "colliders": 5,
+    "articulations": 1,
+    "joints": 4
+  },
+  "keeper": {
+    "armed": true,
+    "offboard": true,
+    "events": [
+      [
+        3.609999919310212,
+        "armed=True offboard=True"
+      ]
+    ],
+    "statustexts": []
+  },
+  "params_readback": {
+    "COM_RC_IN_MODE": 4,
+    "EKF2_EV_CTRL": 0,
+    "COM_DISARM_LAND": -1.0,
+    "UXRCE_DDS_DOM_ID": 42,
+    "UXRCE_DDS_SYNCT": null,
+    "SDLOG_MODE": -1,
+    "EKF2_GPS_CTRL": 7,
+    "EKF2_HGT_REF": 1,
+    "EKF2_NOAID_TOUT": 5000000
+  },
+  "ros_domain": "42",
+  "imu_samples": 24002,
+  "gnss_samples": 601
+}

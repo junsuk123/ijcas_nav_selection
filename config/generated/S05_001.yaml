@@ -1,0 +1,23 @@
+id: S05
+seed: 1
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: outage
+  start_s: 42.5
+  end_s: 92.5
+- target: camera
+  kind: occlusion
+  start_s: 52.5
+  end_s: 87.5
+  params:
+    fraction: 0.85
+    side: both
+variant:
+  visual: occlusion
+  outage_s: 50.0
+scene: warehouse

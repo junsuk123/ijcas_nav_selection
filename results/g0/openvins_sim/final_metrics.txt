@@ -1,0 +1,3 @@
+[95merror to gt => 0.353, 0.078 (deg,m) | rmse => 0.182, 0.045 (deg,m) | called 2916 times
+[0m[95mnees => 0.2, 0.8 (ori,pos) | avg nees = 1.8, 0.4 (ori,pos)
+[0mq_GtoI = -0.007,-0.014,1.000,0.015 | p_IinG = 0.350,-0.350,1.984 | dist = 295.75 (meters)

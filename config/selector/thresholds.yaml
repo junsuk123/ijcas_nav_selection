@@ -1,0 +1,65 @@
+# Quality indicators (Notion 03): observation-based signal -> measurement / estimator state.
+# Initial values (G4 development); G3 fixes them on the validation set (seeds 1-10) and this file
+# is then frozen for the test set.  Both Ontology-K (loaded as :QualityIndicator individuals) and
+# Flat-K (hard-coded rules generated from the same numbers) use exactly these values.
+version: initial
+indicators:
+  # ---- GNSS -------------------------------------------------------------------------------
+  - {id: gnss_fix, assesses: [GnssPosition, GnssVelocity], signal: gnss.fix, invalid_below: 0.5,
+     valid_for_s: 1.0, missing: invalid}
+  - {id: gnss_pos_vel_residual, assesses: [GnssPosition], signal: gnss.pos_vel_residual_m,
+     degraded_above: 1.2, invalid_above: 2.5, valid_for_s: 1.0, missing: unknown}
+  - {id: px4_pos_ratio, assesses: [GnssPosition], signal: px4.pos_horiz_ratio,
+     degraded_above: 0.6, invalid_above: 1.0, valid_for_s: 1.0, missing: unknown}
+  - {id: gnss_local_consistency, assesses: [GnssPosition], signal: consistency.gnss_local_z,
+     degraded_above: 1.0, invalid_above: 1.5, valid_for_s: 1.0, missing: skip}
+  - {id: px4_vel_ratio, assesses: [GnssVelocity], signal: px4.vel_ratio,
+     degraded_above: 0.6, invalid_above: 1.0, valid_for_s: 1.0, missing: unknown}
+  # ---- vision ------------------------------------------------------------------------------
+  - {id: vis_age, assesses: [VisualFeatures], signal: vision.image_age_s, invalid_above: 0.5,
+     valid_for_s: 1.0, missing: invalid}
+  - {id: vis_features, assesses: [VisualFeatures], signal: vision.features,
+     degraded_below: 300, invalid_below: 80, valid_for_s: 0.5, missing: unknown}
+  - {id: vis_coverage, assesses: [VisualFeatures], signal: vision.grid_cells_ge10,
+     degraded_below: 6, invalid_below: 3, valid_for_s: 0.5, missing: unknown}
+  - {id: vis_brightness, assesses: [VisualFeatures], signal: vision.mean,
+     degraded_below: 30, invalid_below: 12, valid_for_s: 0.5, missing: unknown}
+  - {id: vis_stereo, assesses: [VisualFeatures], signal: vision.stereo_matches,
+     degraded_below: 40, invalid_below: 10, valid_for_s: 0.5, missing: unknown}
+  # ---- LiDAR -------------------------------------------------------------------------------
+  - {id: lidar_age, assesses: [LidarStructure], signal: lidar.scan_age_s, invalid_above: 1.5,
+     valid_for_s: 1.0, missing: invalid}
+  - {id: lidar_points, assesses: [LidarStructure], signal: lidar.points,
+     degraded_below: 6000, invalid_below: 1500, valid_for_s: 1.0, missing: unknown}
+  - {id: lidar_geometry, assesses: [LidarStructure], signal: lidar.lambda_ratio,
+     degraded_below: 0.12, invalid_below: 0.03, valid_for_s: 1.0, missing: unknown}
+  # ---- IMU (common cause, R10) -----------------------------------------------------------
+  - {id: imu_rate, assesses: [Inertial], signal: imu.rate_hz, invalid_below: 150,
+     valid_for_s: 1.0, missing: invalid}
+  - {id: imu_monotonic, assesses: [Inertial], signal: imu.non_monotonic, invalid_above: 0.5,
+     valid_for_s: 1.0, missing: unknown}
+  - {id: imu_clock_offset, assesses: [Inertial], signal: imu.stamp_lead_s,
+     degraded_above: 0.01, invalid_above: 0.1, valid_for_s: 1.0, missing: unknown}
+  - {id: imu_saturation, assesses: [Inertial], signal: imu.saturation_frac,
+     degraded_above: 0.01, invalid_above: 0.2, valid_for_s: 1.0, missing: unknown}
+  - {id: mag_rate, assesses: [MagHeading], signal: aux.mag_rate_hz, invalid_below: 10,
+     valid_for_s: 1.0, missing: unknown}
+  - {id: baro_rate, assesses: [BaroHeight], signal: aux.baro_rate_hz, invalid_below: 10,
+     valid_for_s: 1.0, missing: unknown}
+  # ---- estimator-level (R01 initialisation / tracking) -----------------------------------
+  - {id: ov_tracking, assesses: [OpenVINS], signal: openvins.tracked_features,
+     degraded_below: 15, invalid_below: 4, valid_for_s: 1.0, missing: unknown}
+  - {id: px4_abs_pos_flag, assesses: [PX4_EKF2], signal: px4.flag_pos_horiz_abs, invalid_below: 0.5,
+     valid_for_s: 1.0, missing: unknown}
+selection:
+  rate_hz: 10.0
+  weights: {q: 0.65, age: 0.25, switch: 0.10}       # Notion 03 starting values
+  margin: 0.08
+  min_dwell_s: 2.0
+  recovery_confirm_s: 1.0
+  limited_penalty: 0.3
+  max_dr_s: 10.0                                    # limited INS-DR output after aiding loss
+  alignment_window_s: 30.0
+  alignment_min_path_m: 10.0
+  alignment_stale_s: 30.0                           # frozen alignment older than this -> limited+
+  local_drift_rate: {openvins: 0.02, glim: 0.004}   # m per m flown (G2: VIO 0.6-1.8 %, LIO 0.25 %)

@@ -1,0 +1,13 @@
+{
+  "matched_states": 2917,
+  "duration_s": 291.5997200012207,
+  "path_length_m": 295.87421881789646,
+  "position_rmse_m": 0.04544175109006364,
+  "orientation_rmse_deg": 0.18172221787597748,
+  "final_position_error_m": 0.07815115457880324,
+  "official_log": [
+    "\u001b[95merror to gt => 0.353, 0.078 (deg,m) | rmse => 0.182, 0.045 (deg,m) | called 2916 times",
+    "\u001b[0m\u001b[95mnees => 0.2, 0.8 (ori,pos) | avg nees = 1.8, 0.4 (ori,pos)",
+    "\u001b[0mq_GtoI = -0.007,-0.014,1.000,0.015 | p_IinG = 0.350,-0.350,1.984 | dist = 295.75 (meters)"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "os": "Ubuntu 22.04.5 LTS",
+  "kernel": "6.1.0-1013-oem",
+  "cpu": "Model name:                      13th Gen Intel(R) Core(TM) i7-13650HX",
+  "cores": 20,
+  "ram_gb": "31",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 570.172.08",
+  "cuda": "Build cuda_12.8.r12.8/compiler.35583870_0",
+  "ros": {
+    "distro": "humble",
+    "rmw": "rmw_fastrtps_cpp",
+    "domain": "42"
+  },
+  "isaac_sim": {
+    "version_file": "5.1.0-rc.19+main.0.47d886f2.local",
+    "path": "/home/j/isaacsim",
+    "commit": "47d886f2858d1ceed556b21c88927aa67bc81c12",
+    "describe": "v5.1.0",
+    "remote": "https://github.com/isaac-sim/IsaacSim.git"
+  },
+  "pegasus": {
+    "path": "/home/j/SynologyDrive/junsuk/\ud559\uc220\ub300\ud68c/CICS2026/Ontology_RGAT_UAV_RL_ISAAC_PX4/Ontology_RGAT_UAV_RL_ISAAC_PX4/external/PegasusSimulator",
+    "commit": "644da37e9d5268e5f9a34e78bdcfd57a8bab82b4",
+    "describe": "v5.1.0",
+    "remote": "https://github.com/PegasusSimulator/PegasusSimulator.git"
+  },
+  "px4": {
+    "path": "/home/j/SynologyDrive/junsuk/\ud559\uc220\ub300\ud68c/CICS2026/Ontology_RGAT_UAV_RL_ISAAC_PX4/Ontology_RGAT_UAV_RL_ISAAC_PX4/external/PX4-Autopilot",
+    "commit": "1dacb4cdef2d7145754fc788fa8dc482eed74b40",
+    "describe": "v1.14.3",
+    "remote": "https://github.com/PX4/PX4-Autopilot.git"
+  },
+  "openvins": {
+    "path": "/home/j/ijcas_ws/src/open_vins",
+    "commit": "93adc241390d13e99232652cf05cbe18a93c7bea",
+    "describe": "v2.7",
+    "remote": "https://github.com/rpng/open_vins.git"
+  },
+  "px4_msgs": {
+    "path": "/home/j/ijcas_ws/src/px4_msgs",
+    "commit": "ffb6e80e1c17e5714395611a020c282a87af8fa4",
+    "describe": "v1.14.0",
+    "remote": "https://github.com/PX4/px4_msgs.git"
+  },
+  "xrce_agent": {
+    "path": "/home/j/SynologyDrive/junsuk/\ud559\uc220\ub300\ud68c/CICS2026/Ontology_RGAT_UAV_RL_ISAAC_PX4/Ontology_RGAT_UAV_RL_ISAAC_PX4/external/Micro-XRCE-DDS-Agent",
+    "commit": "57d086216d01ec43121845d385894a25987f8a2c",
+    "describe": "v2.4.2",
+    "remote": "https://github.com/eProsima/Micro-XRCE-DDS-Agent.git"
+  },
+  "glim_debs_sha256": [
+    "08b0c4b3293c997da30d7b6ae7dd467d9bd49f0a34f73e67da662bed027666f7  libgtsam-notbb-dev_4.3.0_amd64.deb",
+    "df6145b82d70001b9214a27beb024d183deb9f23b341373838ee206c648b84ef  libgtsam-points-dev_1.2.2_amd64.deb",
+    "27f353dfc2f1c2f8ff2eb35bef090fd474c87246cac7dba7d3aa0ed9a58bac5e  libiridescence-dev_1.0.2_amd64.deb",
+    "57257873c8c56354c62d8c11d0ecfc4cf87cc4d2e3e3ec8f056189ebc48a5264  ros-humble-glim_1.2.2-0jammy_amd64.deb",
+    "7b369c76dcbb71c7d8eeb5a03830c110545e98c18cd82951d09eb54fd413dace  ros-humble-glim-ros_1.2.2-0jammy_amd64.deb"
+  ],
+  "python_system": "3.10.12",
+  "isaac_python_packages": [
+    "numpy                                1.26.0",
+    "opencv-python-headless               4.11.0.86",
+    "pegasus-simulator                    5.1.0        /home/j/SynologyDrive/junsuk/\ud559\uc220\ub300\ud68c/CICS2026/Ontology_RGAT_UAV_RL_ISAAC_PX4/Ontology_RGAT_UAV_RL_ISAAC_PX4/external/PegasusSimulator/extensions/pegasus.simulator",
+    "pymavlink                            2.4.49",
+    "scipy                                1.15.3"
+  ]
+}

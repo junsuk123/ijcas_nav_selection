@@ -1,0 +1,2897 @@
+[
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S00_001",
+  "scene": "open_field",
+  "seed": 1,
+  "scenario": "S00",
+  "variant": {},
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.633295817590101,
+    "pos_p95_m": 0.8496027924338897,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.1788521351192927,
+    "fault_events": []
+   },
+   "F-V": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5552100918446023,
+    "pos_p95_m": 0.8569658214410139,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 1.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.132869659646361,
+    "fault_events": []
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5854219446866188,
+    "pos_p95_m": 0.8171474097691022,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.0973090358411501,
+    "fault_events": []
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.633295817590101,
+    "pos_p95_m": 0.8496027924338897,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.7015488506015546,
+    "fault_events": []
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5654232036215068,
+    "pos_p95_m": 0.8569658214410139,
+    "switches": 1,
+    "max_jump_m": 0.6241119157357532,
+    "median_jump_m": 0.6241119157357532,
+    "max_vel_jump_mps": 0.18445284401496892,
+    "max_yaw_jump_deg": 5.606789661657846,
+    "selected_share": {
+     "px4": 0.09051186017478152,
+     "openvins": 0.9094881398252185,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.8637379798363338,
+    "fault_events": []
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5654232036215068,
+    "pos_p95_m": 0.8569658214410139,
+    "switches": 1,
+    "max_jump_m": 0.6241119157357532,
+    "median_jump_m": 0.6241119157357532,
+    "max_vel_jump_mps": 0.18445284401496892,
+    "max_yaw_jump_deg": 5.606789661657846,
+    "selected_share": {
+     "px4": 0.09051186017478152,
+     "openvins": 0.9094881398252185,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.9424967737653827,
+    "fault_events": []
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.4751554024006782,
+    "pos_p95_m": 0.6900732307934171,
+    "switches": 51,
+    "max_jump_m": 0.5990533912278145,
+    "median_jump_m": 0.2814779041645251,
+    "max_vel_jump_mps": 0.42748208684367156,
+    "max_yaw_jump_deg": 7.298726467863377,
+    "selected_share": {
+     "px4": 0.30774032459425715,
+     "openvins": 0.5068664169787765,
+     "glim": 0.1853932584269663,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 9.27426816950806,
+    "fault_events": []
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S00_002",
+  "scene": "corridor",
+  "seed": 2,
+  "scenario": "S00",
+  "variant": {},
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7588542670275465,
+    "pos_p95_m": 1.3612779362466898,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7974266509038357,
+    "fault_events": []
+   },
+   "F-V": {
+    "availability": 0.3595505617977528,
+    "output_fraction": 0.3595505617977528,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 102.60000000000001,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7562938819219467,
+    "pos_p95_m": 1.180857672802678,
+    "switches": 48,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.3595505617977528,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.6404494382022472
+    },
+    "selector_ms_per_tick": 0.7327029232087254,
+    "fault_events": []
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7070031760691681,
+    "pos_p95_m": 1.3527268330178466,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7321272645678799,
+    "fault_events": []
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7588542670275465,
+    "pos_p95_m": 1.3612779362466898,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.3480656944809462,
+    "fault_events": []
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.73011901599359,
+    "pos_p95_m": 1.2485505915791375,
+    "switches": 12,
+    "max_jump_m": 1.0602318733383123,
+    "median_jump_m": 0.5255936042759336,
+    "max_vel_jump_mps": 0.5009791349628979,
+    "max_yaw_jump_deg": 11.292111167541524,
+    "selected_share": {
+     "px4": 0.38701622971285893,
+     "openvins": 0.012484394506866416,
+     "glim": 0.6004993757802747,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.477130642348227,
+    "fault_events": []
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.73011901599359,
+    "pos_p95_m": 1.2485505915791375,
+    "switches": 12,
+    "max_jump_m": 1.0602318733383123,
+    "median_jump_m": 0.5255936042759336,
+    "max_vel_jump_mps": 0.5009791349628979,
+    "max_yaw_jump_deg": 11.292111167541524,
+    "selected_share": {
+     "px4": 0.38701622971285893,
+     "openvins": 0.012484394506866416,
+     "glim": 0.6004993757802747,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.5351225258467067,
+    "fault_events": []
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.597626201547564,
+    "pos_p95_m": 1.1271527130216366,
+    "switches": 50,
+    "max_jump_m": 0.739240683281067,
+    "median_jump_m": 0.3019565853938645,
+    "max_vel_jump_mps": 0.49651201059796574,
+    "max_yaw_jump_deg": 10.429762475536537,
+    "selected_share": {
+     "px4": 0.4581772784019975,
+     "openvins": 0.11298377028714107,
+     "glim": 0.4288389513108614,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.713163898082378,
+    "fault_events": []
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S01_001",
+  "scene": "open_field",
+  "seed": 1,
+  "scenario": "S01",
+  "variant": {
+   "outage_s": 10.0
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 0.9862671660424469,
+    "output_fraction": 1.0,
+    "false_normal_s": 2.2,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7148765939949756,
+    "pos_p95_m": 0.8875705900416864,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.081887698378869,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6762363210304906,
+    "pos_p95_m": 1.1704413789576826,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 1.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.0332251013192488,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.567903074416363,
+    "pos_p95_m": 0.8187936875968093,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.0000316969838836,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6268358011194929,
+    "pos_p95_m": 0.857018359062187,
+    "switches": 2,
+    "max_jump_m": 1.2794963779220974,
+    "median_jump_m": 0.9640940854208775,
+    "max_vel_jump_mps": 0.14630745362382241,
+    "max_yaw_jump_deg": 1.9468364403396294,
+    "selected_share": {
+     "px4": 0.9375780274656679,
+     "openvins": 0.062421972534332085,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.602402033707306,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.30000000000000426
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6865764373504253,
+    "pos_p95_m": 1.1704413789576826,
+    "switches": 1,
+    "max_jump_m": 0.4275831655637666,
+    "median_jump_m": 0.4275831655637666,
+    "max_vel_jump_mps": 0.12006934493497402,
+    "max_yaw_jump_deg": 4.358072623155818,
+    "selected_share": {
+     "px4": 0.09051186017478152,
+     "openvins": 0.9094881398252185,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.7711193059873083,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.30000000000000426
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6865764373504253,
+    "pos_p95_m": 1.1704413789576826,
+    "switches": 1,
+    "max_jump_m": 0.4275831655637666,
+    "median_jump_m": 0.4275831655637666,
+    "max_vel_jump_mps": 0.12006934493497402,
+    "max_yaw_jump_deg": 4.358072623155818,
+    "selected_share": {
+     "px4": 0.09051186017478152,
+     "openvins": 0.9094881398252185,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.8340609404377366,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.30000000000000426
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.4932621818951529,
+    "pos_p95_m": 0.7315358667134929,
+    "switches": 64,
+    "max_jump_m": 0.762146650916878,
+    "median_jump_m": 0.246862116261597,
+    "max_vel_jump_mps": 0.3366459318206151,
+    "max_yaw_jump_deg": 4.975840492978492,
+    "selected_share": {
+     "px4": 0.3096129837702871,
+     "openvins": 0.28214731585518105,
+     "glim": 0.40823970037453183,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 9.037869129538576,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S01_002",
+  "scene": "corridor",
+  "seed": 2,
+  "scenario": "S01",
+  "variant": {
+   "outage_s": 10.0
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 0.970661672908864,
+    "output_fraction": 1.0,
+    "false_normal_s": 4.7,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.9931821191625823,
+    "pos_p95_m": 1.5817897379091443,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7602366140675418,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 0.3533083645443196,
+    "output_fraction": 0.3533083645443196,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 103.60000000000001,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7742159605219102,
+    "pos_p95_m": 1.2365449971839362,
+    "switches": 46,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.3533083645443196,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.6466916354556804
+    },
+    "selector_ms_per_tick": 0.6984312607708187,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7109062766212131,
+    "pos_p95_m": 1.3667063301679108,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7001152891031716,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 0.9993757802746567,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.1,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7732228542635622,
+    "pos_p95_m": 1.373008058307783,
+    "switches": 3,
+    "max_jump_m": 5.227556533973509,
+    "median_jump_m": 0.24964666835084817,
+    "max_vel_jump_mps": 2.4946726514698176,
+    "max_yaw_jump_deg": 2.1507791434508605,
+    "selected_share": {
+     "px4": 0.9382022471910112,
+     "openvins": 0.03682896379525593,
+     "glim": 0.024968789013732832,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.3084560114298758,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.19999999999999574
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.1,
+    "pos_rmse_m": 0.70295426641354,
+    "pos_p95_m": 1.3721802625921455,
+    "switches": 15,
+    "max_jump_m": 1.5171672137124235,
+    "median_jump_m": 0.35158705888667413,
+    "max_vel_jump_mps": 0.49989522210317494,
+    "max_yaw_jump_deg": 4.746980348516011,
+    "selected_share": {
+     "px4": 0.23595505617977527,
+     "openvins": 0.012484394506866416,
+     "glim": 0.7509363295880149,
+     "ins_dr": 0.0006242197253433209,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.4348372843929424,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.19999999999999574
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.1,
+    "pos_rmse_m": 0.70295426641354,
+    "pos_p95_m": 1.3721802625921455,
+    "switches": 15,
+    "max_jump_m": 1.5171672137124235,
+    "median_jump_m": 0.35158705888667413,
+    "max_vel_jump_mps": 0.49989522210317494,
+    "max_yaw_jump_deg": 4.746980348516011,
+    "selected_share": {
+     "px4": 0.23595505617977527,
+     "openvins": 0.012484394506866416,
+     "glim": 0.7509363295880149,
+     "ins_dr": 0.0006242197253433209,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.4964705177979427,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.19999999999999574
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6107743305214793,
+    "pos_p95_m": 1.2258087750368996,
+    "switches": 43,
+    "max_jump_m": 0.6305627143676865,
+    "median_jump_m": 0.335402775242718,
+    "max_vel_jump_mps": 0.526037163327587,
+    "max_yaw_jump_deg": 11.60093387972279,
+    "selected_share": {
+     "px4": 0.3982521847690387,
+     "openvins": 0.08926342072409488,
+     "glim": 0.5124843945068664,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.756724715152437,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S02_001",
+  "scene": "open_field",
+  "seed": 1,
+  "scenario": "S02",
+  "variant": {
+   "bias_m": 5.0,
+   "velocity_valid": true
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 0.6186017478152309,
+    "output_fraction": 1.0,
+    "false_normal_s": 61.1,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 2.9881124813039452,
+    "pos_p95_m": 5.041884344690711,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.8066208836434307,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "position_bias",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.8467106933636703,
+    "pos_p95_m": 1.302991227443434,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 1.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7672874483658412,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "position_bias",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5204792685099229,
+    "pos_p95_m": 0.7756311785808211,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7416424495987656,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "position_bias",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 0.6186017478152309,
+    "output_fraction": 1.0,
+    "false_normal_s": 61.1,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 2.9881124813039452,
+    "pos_p95_m": 5.041884344690711,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.3438604867045996,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "position_bias",
+      "candidate": "px4",
+      "delay_s": null
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.8538370201895867,
+    "pos_p95_m": 1.302991227443434,
+    "switches": 3,
+    "max_jump_m": 0.6437658717121517,
+    "median_jump_m": 0.417704508477419,
+    "max_vel_jump_mps": 0.293954354798517,
+    "max_yaw_jump_deg": 4.628204854181714,
+    "selected_share": {
+     "px4": 0.19787765293383272,
+     "openvins": 0.8021223470661673,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.505151349433989,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "position_bias",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.8538370201895867,
+    "pos_p95_m": 1.302991227443434,
+    "switches": 3,
+    "max_jump_m": 0.6437658717121517,
+    "median_jump_m": 0.417704508477419,
+    "max_vel_jump_mps": 0.293954354798517,
+    "max_yaw_jump_deg": 4.628204854181714,
+    "selected_share": {
+     "px4": 0.19787765293383272,
+     "openvins": 0.8021223470661673,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.5571060619727584,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "position_bias",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.4695524425190245,
+    "pos_p95_m": 0.6869337589773274,
+    "switches": 35,
+    "max_jump_m": 0.6589132267710837,
+    "median_jump_m": 0.2159684875327626,
+    "max_vel_jump_mps": 0.3199907024186263,
+    "max_yaw_jump_deg": 5.719034897433894,
+    "selected_share": {
+     "px4": 0.20599250936329588,
+     "openvins": 0.17540574282147317,
+     "glim": 0.6186017478152309,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.731047895863426,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "position_bias",
+      "candidate": "px4",
+      "delay_s": 0.8999999999999986
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S03_001",
+  "scene": "warehouse",
+  "seed": 1,
+  "scenario": "S03",
+  "variant": {
+   "visual": "brightness_0.2"
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6420624522525255,
+    "pos_p95_m": 0.8850263134200348,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.9538165489103084,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "brightness",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 0.5786516853932584,
+    "output_fraction": 0.5786516853932584,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 67.5,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.675344024186155,
+    "pos_p95_m": 0.9111303922929035,
+    "switches": 21,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.5786516853932584,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.42134831460674155
+    },
+    "selector_ms_per_tick": 0.88695213781708,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "brightness",
+      "candidate": "openvins",
+      "delay_s": 1.1000000000000014
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6154462781722932,
+    "pos_p95_m": 0.8903224612055877,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.8676680363275148,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "brightness",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6420624522525255,
+    "pos_p95_m": 0.8850263134200348,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.4815501306557108,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "brightness",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6471452825254019,
+    "pos_p95_m": 0.8902396541056097,
+    "switches": 14,
+    "max_jump_m": 0.7593959626291296,
+    "median_jump_m": 0.3990423640336545,
+    "max_vel_jump_mps": 0.12947570745011128,
+    "max_yaw_jump_deg": 2.103606080506689,
+    "selected_share": {
+     "px4": 0.7240948813982522,
+     "openvins": 0.09176029962546817,
+     "glim": 0.18414481897627966,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.6062178763807615,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "brightness",
+      "candidate": "openvins",
+      "delay_s": 0.10000000000000142
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6471452825254019,
+    "pos_p95_m": 0.8902396541056097,
+    "switches": 14,
+    "max_jump_m": 0.7593959626291296,
+    "median_jump_m": 0.3990423640336545,
+    "max_vel_jump_mps": 0.12947570745011128,
+    "max_yaw_jump_deg": 2.103606080506689,
+    "selected_share": {
+     "px4": 0.7240948813982522,
+     "openvins": 0.09176029962546817,
+     "glim": 0.18414481897627966,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.6586511407959181,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "brightness",
+      "candidate": "openvins",
+      "delay_s": 0.10000000000000142
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5351321481720086,
+    "pos_p95_m": 0.7791324129783267,
+    "switches": 32,
+    "max_jump_m": 0.6027592862687565,
+    "median_jump_m": 0.33389263988698376,
+    "max_vel_jump_mps": 0.14771535269958494,
+    "max_yaw_jump_deg": 5.425948539189361,
+    "selected_share": {
+     "px4": 0.35580524344569286,
+     "openvins": 0.13295880149812733,
+     "glim": 0.5112359550561798,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.926425851648286,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "brightness",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S04_001",
+  "scene": "corridor",
+  "seed": 1,
+  "scenario": "S04",
+  "variant": {
+   "lidar": "corridor_geometry"
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6547930949048634,
+    "pos_p95_m": 0.8949737636704665,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.9642157660394406,
+    "fault_events": []
+   },
+   "F-V": {
+    "availability": 0.7677902621722846,
+    "output_fraction": 0.7677902621722846,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 37.2,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6428368402887972,
+    "pos_p95_m": 0.8387764195855557,
+    "switches": 17,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.7677902621722846,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.23220973782771537
+    },
+    "selector_ms_per_tick": 0.9018862402161737,
+    "fault_events": []
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7075236276679273,
+    "pos_p95_m": 1.018387529900204,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.8816932346015085,
+    "fault_events": []
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6547930949048634,
+    "pos_p95_m": 0.8949737636704665,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.5009838334289376,
+    "fault_events": []
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6711198144680732,
+    "pos_p95_m": 0.9963915004341964,
+    "switches": 13,
+    "max_jump_m": 0.9790335828869261,
+    "median_jump_m": 0.38094175117499685,
+    "max_vel_jump_mps": 0.3784022041997726,
+    "max_yaw_jump_deg": 7.220170565085124,
+    "selected_share": {
+     "px4": 0.44569288389513106,
+     "openvins": 0.0,
+     "glim": 0.5543071161048689,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.6315283843880826,
+    "fault_events": []
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6711198144680732,
+    "pos_p95_m": 0.9963915004341964,
+    "switches": 13,
+    "max_jump_m": 0.9790335828869261,
+    "median_jump_m": 0.38094175117499685,
+    "max_vel_jump_mps": 0.3784022041997726,
+    "max_yaw_jump_deg": 7.220170565085124,
+    "selected_share": {
+     "px4": 0.44569288389513106,
+     "openvins": 0.0,
+     "glim": 0.5543071161048689,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.687484136630038,
+    "fault_events": []
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5543905038189583,
+    "pos_p95_m": 0.7708256351068471,
+    "switches": 71,
+    "max_jump_m": 0.7140558894238216,
+    "median_jump_m": 0.18608797459122814,
+    "max_vel_jump_mps": 0.4218794263968483,
+    "max_yaw_jump_deg": 8.48572852946046,
+    "selected_share": {
+     "px4": 0.46254681647940077,
+     "openvins": 0.23595505617977527,
+     "glim": 0.301498127340824,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.850429699573146,
+    "fault_events": []
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S05_001",
+  "scene": "warehouse",
+  "seed": 1,
+  "scenario": "S05",
+  "variant": {
+   "visual": "occlusion",
+   "outage_s": 50.0
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 0.7297128589263421,
+    "output_fraction": 1.0,
+    "false_normal_s": 43.300000000000004,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 14.733817997455997,
+    "pos_p95_m": 38.50644183411172,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7453329139402025,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 0.47191011235955055,
+    "output_fraction": 0.47191011235955055,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 84.60000000000001,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5909045765868993,
+    "pos_p95_m": 0.7897291286613028,
+    "switches": 9,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.47191011235955055,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.5280898876404494
+    },
+    "selector_ms_per_tick": 0.6855629414704207,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5415087620532689,
+    "pos_p95_m": 0.7940502226559946,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.6803171506212576,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5606433122417455,
+    "pos_p95_m": 0.8334378936411347,
+    "switches": 2,
+    "max_jump_m": 0.6887398191872397,
+    "median_jump_m": 0.5769411576367358,
+    "max_vel_jump_mps": 0.1234715349791516,
+    "max_yaw_jump_deg": 0.8764385354836395,
+    "selected_share": {
+     "px4": 0.6872659176029963,
+     "openvins": 0.0,
+     "glim": 0.31273408239700373,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.3149012055202516,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 2.1,
+    "pos_rmse_m": 0.5647940381438339,
+    "pos_p95_m": 0.8326581823523644,
+    "switches": 24,
+    "max_jump_m": 0.8871671878803875,
+    "median_jump_m": 0.007744695026774677,
+    "max_vel_jump_mps": 0.14209961470101426,
+    "max_yaw_jump_deg": 5.196293101591311,
+    "selected_share": {
+     "px4": 0.6242197253433208,
+     "openvins": 0.05056179775280899,
+     "glim": 0.3121098626716604,
+     "ins_dr": 0.013108614232209739,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.4273083985585104,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 2.1,
+    "pos_rmse_m": 0.5647940381438339,
+    "pos_p95_m": 0.8326581823523644,
+    "switches": 24,
+    "max_jump_m": 0.8871671878803875,
+    "median_jump_m": 0.007744695026774677,
+    "max_vel_jump_mps": 0.14209961470101426,
+    "max_yaw_jump_deg": 5.196293101591311,
+    "selected_share": {
+     "px4": 0.6242197253433208,
+     "openvins": 0.05056179775280899,
+     "glim": 0.3121098626716604,
+     "ins_dr": 0.013108614232209739,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.4778213001614946,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.49276742751484065,
+    "pos_p95_m": 0.706590631865351,
+    "switches": 34,
+    "max_jump_m": 0.7323843471388743,
+    "median_jump_m": 0.20279859633986755,
+    "max_vel_jump_mps": 0.3942495818338621,
+    "max_yaw_jump_deg": 15.137091416808843,
+    "selected_share": {
+     "px4": 0.25780274656679153,
+     "openvins": 0.11235955056179775,
+     "glim": 0.6298377028714107,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.761221979528061,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S06_001",
+  "scene": "corridor",
+  "seed": 1,
+  "scenario": "S06",
+  "variant": {
+   "outage_s": 50.0,
+   "extra_lidar_dropout": true
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 0.7515605493133583,
+    "output_fraction": 1.0,
+    "false_normal_s": 39.800000000000004,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 17.63515920627402,
+    "pos_p95_m": 48.28570745285356,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.7018749078237728,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 0.5674157303370787,
+    "output_fraction": 0.5674157303370787,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 69.3,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6586777827318893,
+    "pos_p95_m": 0.9664268743637272,
+    "switches": 13,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.5674157303370787,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.43258426966292135
+    },
+    "selector_ms_per_tick": 0.6452097667630416,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.663302359748114,
+    "pos_p95_m": 1.020300526185667,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.6405755169436269,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6133903364129427,
+    "pos_p95_m": 0.8543744082358493,
+    "switches": 3,
+    "max_jump_m": 0.7160321743997586,
+    "median_jump_m": 0.46586997405060304,
+    "max_vel_jump_mps": 0.13560230414294278,
+    "max_yaw_jump_deg": 2.0002666879813416,
+    "selected_share": {
+     "px4": 0.6872659176029963,
+     "openvins": 0.07677902621722846,
+     "glim": 0.23595505617977527,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.2648680448976306,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6683381983419171,
+    "pos_p95_m": 1.0008965615766026,
+    "switches": 10,
+    "max_jump_m": 0.9147162189878184,
+    "median_jump_m": 0.4670965407846196,
+    "max_vel_jump_mps": 0.15216239371144194,
+    "max_yaw_jump_deg": 0.9298144188341185,
+    "selected_share": {
+     "px4": 0.3938826466916355,
+     "openvins": 0.012484394506866416,
+     "glim": 0.5936329588014981,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.3807528906089173,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": 0.0
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6683381983419171,
+    "pos_p95_m": 1.0008965615766026,
+    "switches": 10,
+    "max_jump_m": 0.9147162189878184,
+    "median_jump_m": 0.4670965407846196,
+    "max_vel_jump_mps": 0.15216239371144194,
+    "max_yaw_jump_deg": 0.9298144188341185,
+    "selected_share": {
+     "px4": 0.3938826466916355,
+     "openvins": 0.012484394506866416,
+     "glim": 0.5936329588014981,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.4308491423245167,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": 0.0
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5425563205113658,
+    "pos_p95_m": 0.7755909738710501,
+    "switches": 67,
+    "max_jump_m": 0.8325011285030208,
+    "median_jump_m": 0.14098986795640597,
+    "max_vel_jump_mps": 0.38243112762254566,
+    "max_yaw_jump_deg": 8.885105284392836,
+    "selected_share": {
+     "px4": 0.3358302122347066,
+     "openvins": 0.1797752808988764,
+     "glim": 0.484394506866417,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.634375066608646,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.6000000000000014
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S07_001",
+  "scene": "warehouse",
+  "seed": 1,
+  "scenario": "S07",
+  "variant": {
+   "delay_s": 0.05
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6422484791913518,
+    "pos_p95_m": 0.8835576381549541,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.9249339674210082,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "delay",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "drop",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "delay",
+      "candidate": "glim",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "drop",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 0.7453183520599251,
+    "output_fraction": 0.7453183520599251,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 40.800000000000004,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6725056086074401,
+    "pos_p95_m": 0.8595349140000866,
+    "switches": 13,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.7453183520599251,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.2546816479400749
+    },
+    "selector_ms_per_tick": 0.8652273279566655,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "delay",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "drop",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "delay",
+      "candidate": "glim",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "drop",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 0.9862671660424469,
+    "output_fraction": 0.9862671660424469,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 2.2,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6161516852463531,
+    "pos_p95_m": 0.905918431974357,
+    "switches": 38,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 0.9862671660424469,
+     "ins_dr": 0.0,
+     "null": 0.01373283395755306
+    },
+    "selector_ms_per_tick": 0.8452685781199173,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "delay",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "drop",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "delay",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     },
+     {
+      "target": "lidar",
+      "kind": "drop",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6422484791913518,
+    "pos_p95_m": 0.8835576381549541,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.4537033583384023,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "delay",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "drop",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "delay",
+      "candidate": "glim",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "drop",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6463510309656731,
+    "pos_p95_m": 0.8663767002170463,
+    "switches": 15,
+    "max_jump_m": 0.8276998983241212,
+    "median_jump_m": 0.5401833648595114,
+    "max_vel_jump_mps": 0.20278083446916909,
+    "max_yaw_jump_deg": 8.408413870773476,
+    "selected_share": {
+     "px4": 0.5855181023720349,
+     "openvins": 0.2727840199750312,
+     "glim": 0.14169787765293385,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.6001103638383305,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "delay",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     },
+     {
+      "target": "camera",
+      "kind": "drop",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     },
+     {
+      "target": "lidar",
+      "kind": "delay",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     },
+     {
+      "target": "lidar",
+      "kind": "drop",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6463510309656731,
+    "pos_p95_m": 0.8663767002170463,
+    "switches": 15,
+    "max_jump_m": 0.8276998983241212,
+    "median_jump_m": 0.5401833648595114,
+    "max_vel_jump_mps": 0.20278083446916909,
+    "max_yaw_jump_deg": 8.408413870773476,
+    "selected_share": {
+     "px4": 0.5855181023720349,
+     "openvins": 0.2727840199750312,
+     "glim": 0.14169787765293385,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.6481758285751322,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "delay",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     },
+     {
+      "target": "camera",
+      "kind": "drop",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     },
+     {
+      "target": "lidar",
+      "kind": "delay",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     },
+     {
+      "target": "lidar",
+      "kind": "drop",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5369372535898059,
+    "pos_p95_m": 0.7769851172143178,
+    "switches": 114,
+    "max_jump_m": 0.6891482694032497,
+    "median_jump_m": 0.34293043041368365,
+    "max_vel_jump_mps": 0.3770308446278354,
+    "max_yaw_jump_deg": 16.194841244452615,
+    "selected_share": {
+     "px4": 0.36641697877652935,
+     "openvins": 0.1317103620474407,
+     "glim": 0.50187265917603,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.93930025967686,
+    "fault_events": [
+     {
+      "target": "camera",
+      "kind": "delay",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "drop",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "delay",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     },
+     {
+      "target": "lidar",
+      "kind": "drop",
+      "candidate": "glim",
+      "delay_s": 1.1000000000000014
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S08_001",
+  "scene": "open_field",
+  "seed": 1,
+  "scenario": "S08",
+  "variant": {
+   "outage_s": 30.0,
+   "mag_baro_lost": false
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 0.8508114856429463,
+    "output_fraction": 1.0,
+    "false_normal_s": 23.900000000000002,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 12.598038486261103,
+    "pos_p95_m": 40.9672460611002,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.6783881436967224,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 0.7759051186017478,
+    "output_fraction": 0.7846441947565543,
+    "false_normal_s": 1.4000000000000001,
+    "no_valid_nav_s": 34.5,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.7920895213541006,
+    "pos_p95_m": 1.6020610828264705,
+    "switches": 2,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.7846441947565543,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.2153558052434457
+    },
+    "selector_ms_per_tick": 0.634465801559579,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": 1.1000000000000014
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 0.15792759051186017,
+    "output_fraction": 0.15792759051186017,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 134.9,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5637533366971392,
+    "pos_p95_m": 0.6764060436429182,
+    "switches": 1,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 0.15792759051186017,
+     "ins_dr": 0.0,
+     "null": 0.8420724094881398
+    },
+    "selector_ms_per_tick": 0.5954100432296877,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": 0.29999999999999716
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 0.8595505617977528,
+    "output_fraction": 0.8801498127340824,
+    "false_normal_s": 3.3000000000000003,
+    "no_valid_nav_s": 19.200000000000003,
+    "limited_dr_s": 10.0,
+    "pos_rmse_m": 0.7665832571516573,
+    "pos_p95_m": 0.9144645164878853,
+    "switches": 4,
+    "max_jump_m": 0.5841234276153761,
+    "median_jump_m": 0.2924009924345302,
+    "max_vel_jump_mps": 0.16155546662168976,
+    "max_yaw_jump_deg": 1.1803613200393255,
+    "selected_share": {
+     "px4": 0.8121098626716604,
+     "openvins": 0.0056179775280898875,
+     "glim": 0.0,
+     "ins_dr": 0.062421972534332085,
+     "null": 0.1198501872659176
+    },
+    "selector_ms_per_tick": 1.2288996791425701,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.20000000000000284
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 0.8389513108614233,
+    "output_fraction": 0.8932584269662921,
+    "false_normal_s": 8.700000000000001,
+    "no_valid_nav_s": 17.1,
+    "limited_dr_s": 10.0,
+    "pos_rmse_m": 1.5462336391760105,
+    "pos_p95_m": 2.885461803429561,
+    "switches": 6,
+    "max_jump_m": 0.77168997075142,
+    "median_jump_m": 0.5002482655039676,
+    "max_vel_jump_mps": 0.15909977962282965,
+    "max_yaw_jump_deg": 4.51756979552426,
+    "selected_share": {
+     "px4": 0.2671660424469413,
+     "openvins": 0.5636704119850188,
+     "glim": 0.0,
+     "ins_dr": 0.062421972534332085,
+     "null": 0.10674157303370786
+    },
+    "selector_ms_per_tick": 1.336355660575339,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.20000000000000284
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": 0.0
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 0.8389513108614233,
+    "output_fraction": 0.8932584269662921,
+    "false_normal_s": 8.700000000000001,
+    "no_valid_nav_s": 17.1,
+    "limited_dr_s": 10.0,
+    "pos_rmse_m": 1.5462336391760105,
+    "pos_p95_m": 2.885461803429561,
+    "switches": 6,
+    "max_jump_m": 0.77168997075142,
+    "median_jump_m": 0.5002482655039676,
+    "max_vel_jump_mps": 0.15909977962282965,
+    "max_yaw_jump_deg": 4.51756979552426,
+    "selected_share": {
+     "px4": 0.2671660424469413,
+     "openvins": 0.5636704119850188,
+     "glim": 0.0,
+     "ins_dr": 0.062421972534332085,
+     "null": 0.10674157303370786
+    },
+    "selector_ms_per_tick": 1.3890062710389222,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": 0.20000000000000284
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": 0.10000000000000142
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": 0.0
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 0.8508114856429463,
+    "output_fraction": 1.0,
+    "false_normal_s": 23.900000000000002,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 12.595635133517868,
+    "pos_p95_m": 40.9672460611002,
+    "switches": 28,
+    "max_jump_m": 0.920893949515468,
+    "median_jump_m": 0.28757567764494096,
+    "max_vel_jump_mps": 0.2132220004979494,
+    "max_yaw_jump_deg": 4.803542048022181,
+    "selected_share": {
+     "px4": 0.6566791510611736,
+     "openvins": 0.31897627965043696,
+     "glim": 0.024344569288389514,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 8.57229690657756,
+    "fault_events": [
+     {
+      "target": "gnss",
+      "kind": "outage",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "camera",
+      "kind": "occlusion",
+      "candidate": "openvins",
+      "delay_s": 1.1000000000000014
+     },
+     {
+      "target": "lidar",
+      "kind": "dropout",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   }
+  }
+ },
+ {
+  "run": "/home/j/ijcas_data/runs/validation/S10_001",
+  "scene": "warehouse",
+  "seed": 1,
+  "scenario": "S10",
+  "variant": {
+   "imu": "accel_bias_step"
+  },
+  "origin_method": "gps_global_origin",
+  "selectors": {
+   "F-G": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6468205639140442,
+    "pos_p95_m": 0.911146145716859,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.004046399489165,
+    "fault_events": [
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-V": {
+    "availability": 0.7478152309612984,
+    "output_fraction": 0.7478152309612984,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 40.400000000000006,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6314534179784708,
+    "pos_p95_m": 0.874268891096507,
+    "switches": 13,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.7478152309612984,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.25218476903870163
+    },
+    "selector_ms_per_tick": 0.9390046683784941,
+    "fault_events": [
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "F-L": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6017009178861706,
+    "pos_p95_m": 0.8669180577639846,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 0.0,
+     "openvins": 0.0,
+     "glim": 1.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 0.9210238673789908,
+    "fault_events": [
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "H-FSM": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.6468205639140442,
+    "pos_p95_m": 0.911146145716859,
+    "switches": 0,
+    "max_jump_m": 0.0,
+    "median_jump_m": 0.0,
+    "max_vel_jump_mps": 0.0,
+    "max_yaw_jump_deg": 0.0,
+    "selected_share": {
+     "px4": 1.0,
+     "openvins": 0.0,
+     "glim": 0.0,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.530323449060991,
+    "fault_events": [
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "glim",
+      "delay_s": null
+     }
+    ]
+   },
+   "Flat-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.633700619340631,
+    "pos_p95_m": 0.8831095067801965,
+    "switches": 17,
+    "max_jump_m": 0.7813134251292657,
+    "median_jump_m": 0.43391982321474193,
+    "max_vel_jump_mps": 0.21067482153144015,
+    "max_yaw_jump_deg": 2.941888495931327,
+    "selected_share": {
+     "px4": 0.6429463171036205,
+     "openvins": 0.13982521847690388,
+     "glim": 0.21722846441947566,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.6678667044616629,
+    "fault_events": [
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "px4",
+      "delay_s": 2.0
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "glim",
+      "delay_s": 2.0
+     }
+    ]
+   },
+   "Ontology-K": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.633700619340631,
+    "pos_p95_m": 0.8831095067801965,
+    "switches": 17,
+    "max_jump_m": 0.7813134251292657,
+    "median_jump_m": 0.43391982321474193,
+    "max_vel_jump_mps": 0.21067482153144015,
+    "max_yaw_jump_deg": 2.941888495931327,
+    "selected_share": {
+     "px4": 0.6429463171036205,
+     "openvins": 0.13982521847690388,
+     "glim": 0.21722846441947566,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 1.7100782179855936,
+    "fault_events": [
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "px4",
+      "delay_s": 2.0
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "openvins",
+      "delay_s": 0.0
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "glim",
+      "delay_s": 2.0
+     }
+    ]
+   },
+   "Oracle": {
+    "availability": 1.0,
+    "output_fraction": 1.0,
+    "false_normal_s": 0.0,
+    "no_valid_nav_s": 0.0,
+    "limited_dr_s": 0.0,
+    "pos_rmse_m": 0.5066039079911843,
+    "pos_p95_m": 0.7506736741884585,
+    "switches": 34,
+    "max_jump_m": 0.6058748403056561,
+    "median_jump_m": 0.2954420955691078,
+    "max_vel_jump_mps": 0.3959377972287502,
+    "max_yaw_jump_deg": 11.04230903909082,
+    "selected_share": {
+     "px4": 0.2958801498127341,
+     "openvins": 0.2209737827715356,
+     "glim": 0.48314606741573035,
+     "ins_dr": 0.0,
+     "null": 0.0
+    },
+    "selector_ms_per_tick": 9.027072504662579,
+    "fault_events": [
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "px4",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "openvins",
+      "delay_s": null
+     },
+     {
+      "target": "imu",
+      "kind": "accel_bias_step",
+      "candidate": "glim",
+      "delay_s": 25.10000000000001
+     }
+    ]
+   }
+  }
+ }
+]
