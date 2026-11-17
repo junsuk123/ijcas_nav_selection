@@ -55,3 +55,4 @@
 2026-11-17 12:13:19 {"nav": 0.16152, "edge": 0.51329, "switch": 0.00686, "ce": 0.03076, "skipped_updates": 0, "epoch": 54, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 24.61544}
 2026-11-17 12:13:43 {"nav": 0.16163, "edge": 0.51317, "switch": 0.00693, "ce": 0.02936, "skipped_updates": 0, "epoch": 55, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 24.13509}
 2026-11-17 12:14:07 {"nav": 0.1598, "edge": 0.51269, "switch": 0.00712, "ce": 0.02999, "skipped_updates": 0, "epoch": 56, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 23.65428}
+2026-11-17 12:14:34 {"nav": 0.16037, "edge": 0.51234, "switch": 0.00705, "ce": 0.02937, "skipped_updates": 0, "epoch": 57, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 27.32914}
