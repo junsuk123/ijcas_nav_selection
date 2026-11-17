@@ -1,0 +1,38 @@
+{
+ "kept_gated": [
+  "E_geo->S_imu",
+  "E_geo->S_lidar",
+  "E_gnss->S_cam",
+  "E_gnss->S_imu",
+  "E_gnss->S_lidar",
+  "E_mot->S_cam",
+  "E_mot->S_imu",
+  "E_mot->S_lidar",
+  "E_vis->S_cam",
+  "E_vis->S_imu",
+  "E_vis->S_lidar",
+  "N_gi->N_vio",
+  "N_ins->N_vio",
+  "N_lio->N_vio",
+  "N_vio->N_gi",
+  "N_vio->N_ins",
+  "N_vio->N_lio",
+  "S_cam->N_gi",
+  "S_cam->N_ins",
+  "S_cam->N_lio",
+  "S_gnss->N_vio",
+  "S_lidar->N_gi",
+  "S_lidar->N_ins",
+  "S_lidar->N_vio"
+ ],
+ "n_gated_full": 53,
+ "protected": [
+  "S_gnss->N_gi",
+  "S_imu->N_gi",
+  "S_imu->N_vio",
+  "S_imu->N_lio",
+  "S_imu->N_ins",
+  "S_cam->N_vio",
+  "S_lidar->N_lio"
+ ]
+}

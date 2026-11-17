@@ -1,0 +1,21 @@
+id: S09
+seed: 106
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: outage
+  start_s: 57.6
+  end_s: 97.6
+- target: camera
+  kind: blur
+  start_s: 67.6
+  end_s: 92.6
+  params:
+    kernel_px: 41
+variant:
+  combo: gnss_outage+blur
+scene: office

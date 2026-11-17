@@ -1,0 +1,3 @@
+2026-11-17 10:32:11 cr init group 0: D=558 d=32 M=1024 nodes=['E_gnss', 'E_vis', 'E_geo', 'E_mot', 'S_gnss', 'S_imu', 'S_cam', 'S_lidar', 'N_gi', 'N_vio', 'N_lio', 'N_ins']
+2026-11-17 10:32:56 select tuned: margin 0.1 dwell 2.0 -> rmse 0.830 switches 2.77
+2026-11-17 10:32:59 cr_plain seed 2: val rmse 0.830 avail 0.986 switches 2.77 hold 0.107 stored 59938 train 0.4 min

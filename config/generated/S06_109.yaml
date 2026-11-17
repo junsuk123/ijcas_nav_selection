@@ -1,0 +1,22 @@
+id: S06
+seed: 109
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: outage
+  start_s: 62.6
+  end_s: 112.6
+- target: lidar
+  kind: dropout
+  start_s: 72.6
+  end_s: 107.6
+  params:
+    fraction: 0.9
+variant:
+  outage_s: 50.0
+  extra_lidar_dropout: true
+scene: corridor

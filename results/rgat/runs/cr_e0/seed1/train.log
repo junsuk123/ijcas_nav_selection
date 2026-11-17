@@ -1,0 +1,37 @@
+2026-11-17 10:38:53 cr init group 0: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 10:38:56 cr init group 1: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 10:38:59 cr init group 2: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 10:39:02 cr init group 3: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 10:39:06 {"nav": 0.24651, "ce": 0.10304, "kd": 0.0, "epoch": 0, "train_objective": 0.3262, "sec": 2.4}
+2026-11-17 10:39:08 {"nav": 0.28237, "ce": 0.09416, "kd": 0.0, "epoch": 1, "train_objective": 0.31143, "sec": 2.0}
+2026-11-17 10:39:10 {"nav": 0.21011, "ce": 0.09368, "kd": 0.0, "epoch": 2, "train_objective": 0.2984, "sec": 2.5}
+2026-11-17 10:39:13 {"nav": 0.19857, "ce": 0.04921, "kd": 0.0, "epoch": 3, "train_objective": 0.25012, "sec": 2.5}
+2026-11-17 10:39:15 {"nav": 0.19259, "ce": 0.05094, "kd": 0.0, "epoch": 4, "train_objective": 0.23921, "sec": 2.5}
+2026-11-17 10:39:18 {"nav": 0.19296, "ce": 0.0475, "kd": 0.0, "epoch": 5, "train_objective": 0.24134, "sec": 2.4}
+2026-11-17 10:39:20 {"nav": 0.21338, "ce": 0.05706, "kd": 0.0, "epoch": 6, "train_objective": 0.33283, "sec": 2.5}
+2026-11-17 10:39:23 {"nav": 0.26389, "ce": 0.05732, "kd": 0.0, "epoch": 7, "train_objective": 0.34145, "sec": 2.5}
+2026-11-17 10:39:25 {"nav": 0.25796, "ce": 0.06295, "kd": 0.0, "epoch": 8, "train_objective": 0.33608, "sec": 2.3}
+2026-11-17 10:39:27 {"nav": 0.22504, "ce": 0.05903, "kd": 0.0, "epoch": 9, "train_objective": 0.27999, "sec": 2.1}
+2026-11-17 10:39:29 {"nav": 0.19648, "ce": 0.05811, "kd": 0.0, "epoch": 10, "train_objective": 0.25651, "sec": 2.1}
+2026-11-17 10:39:32 {"nav": 0.19497, "ce": 0.05239, "kd": 0.0, "epoch": 11, "train_objective": 0.24818, "sec": 2.3}
+2026-11-17 10:39:34 {"nav": 0.21247, "ce": 0.06775, "kd": 0.0, "epoch": 12, "train_objective": 0.34164, "sec": 2.4}
+2026-11-17 10:39:36 {"nav": 0.26255, "ce": 0.07808, "kd": 0.0, "epoch": 13, "train_objective": 0.33987, "sec": 2.5}
+2026-11-17 10:39:39 {"nav": 0.26205, "ce": 0.07683, "kd": 0.0, "epoch": 14, "train_objective": 0.34079, "sec": 2.3}
+2026-11-17 10:39:41 {"nav": 0.2614, "ce": 0.07788, "kd": 0.0, "epoch": 15, "train_objective": 0.33866, "sec": 2.3}
+2026-11-17 10:39:43 {"nav": 0.25944, "ce": 0.07693, "kd": 0.0, "epoch": 16, "train_objective": 0.33067, "sec": 2.3}
+2026-11-17 10:39:46 {"nav": 0.19342, "ce": 0.05949, "kd": 0.0, "epoch": 17, "train_objective": 0.23881, "sec": 2.4}
+2026-11-17 10:39:48 {"nav": 0.18134, "ce": 0.05539, "kd": 0.0, "epoch": 18, "train_objective": 0.2384, "sec": 2.5}
+2026-11-17 10:39:51 {"nav": 0.18075, "ce": 0.05554, "kd": 0.0, "epoch": 19, "train_objective": 0.23772, "sec": 2.4}
+2026-11-17 10:39:53 {"nav": 0.18073, "ce": 0.05579, "kd": 0.0, "epoch": 20, "train_objective": 0.23662, "sec": 2.5}
+2026-11-17 10:39:56 {"nav": 0.18022, "ce": 0.0551, "kd": 0.0, "epoch": 21, "train_objective": 0.23567, "sec": 2.6}
+2026-11-17 10:39:58 {"nav": 0.18025, "ce": 0.0545, "kd": 0.0, "epoch": 22, "train_objective": 0.23539, "sec": 2.4}
+2026-11-17 10:40:00 {"nav": 0.18042, "ce": 0.05419, "kd": 0.0, "epoch": 23, "train_objective": 0.23539, "sec": 2.3}
+2026-11-17 10:40:03 {"nav": 0.18047, "ce": 0.05417, "kd": 0.0, "epoch": 24, "train_objective": 0.23496, "sec": 2.3}
+2026-11-17 10:40:05 {"nav": 0.18042, "ce": 0.05387, "kd": 0.0, "epoch": 25, "train_objective": 0.23483, "sec": 2.3}
+2026-11-17 10:40:08 {"nav": 0.18035, "ce": 0.05377, "kd": 0.0, "epoch": 26, "train_objective": 0.23458, "sec": 2.6}
+2026-11-17 10:40:10 {"nav": 0.18069, "ce": 0.05447, "kd": 0.0, "epoch": 27, "train_objective": 0.23459, "sec": 2.7}
+2026-11-17 10:40:13 {"nav": 0.18031, "ce": 0.05356, "kd": 0.0, "epoch": 28, "train_objective": 0.23447, "sec": 2.2}
+2026-11-17 10:40:15 {"nav": 0.1816, "ce": 0.0543, "kd": 0.0, "epoch": 29, "train_objective": 0.23449, "sec": 2.3}
+2026-11-17 10:40:15 {"kept_epoch": 28, "train_objective": 0.23447}
+2026-11-17 10:41:03 select tuned: margin 0.1 dwell 2.0 -> rmse 0.949 switches 8.60
+2026-11-17 10:41:06 cr_e0 seed 1: val rmse 0.949 avail 0.984 switches 8.60 hold 0.000 stored 74172 train 1.5 min

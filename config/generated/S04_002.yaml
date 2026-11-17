@@ -11,7 +11,8 @@ faults:
   start_s: 59.2
   end_s: 99.2
   params:
-    fraction: 0.9
+    fraction: 1.0
 variant:
   lidar: point_dropout
+  level: 1.0
 scene: warehouse

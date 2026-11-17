@@ -1,0 +1,18 @@
+id: S10
+seed: 107
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: imu
+  kind: saturation
+  start_s: 66.3
+  end_s: 116.3
+  params:
+    gyro_rad_s: 0.25
+    accel_mps2: 12.0
+variant:
+  imu: saturation
+scene: corridor

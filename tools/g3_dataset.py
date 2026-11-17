@@ -6,7 +6,8 @@ Per tick (10 Hz, after the first 20 s): every observation signal the selectors u
 ages, and outcome labels computed from ground truth:
   gnss_pos_err   |GNSS-only fix - truth|            (NaN without fix)
   gnss_vel_err   |GNSS velocity - truth|
-  rel_err_<c>    2 s relative position error of engine c (yaw from the run-level 4-DOF fit)
+  rel_err_<c>    2 s relative position error of engine c (yaw from a 4-DOF fit on the run's
+                 segment before the first fault)
   glob_err_<c>   global error of candidate c in PX4's frame after the selector's causal alignment
   imu_fault      1 inside an injected IMU fault window (scenario label; calibration only)
   imu_fault_kind the injected IMU fault kind ('' outside), for kind-specific indicator labels
@@ -38,9 +39,9 @@ SIGNALS = ["gnss.fix", "consistency.gnss_local_z", "gnss.pos_vel_residual_m", "p
            "openvins.tracked_features", "lidar.scan_age_s", "lidar.points", "lidar.lambda_ratio",
            "imu.rate_hz", "imu.non_monotonic", "imu.stamp_lead_s",
            "imu.saturation_frac", "aux.mag_rate_hz", "aux.baro_rate_hz",
-           "align.openvins.residual_m", "align.glim.residual_m",
-           "align.openvins.vel_disagree_mps", "align.glim.vel_disagree_mps"]
-CANDS = ("px4", "openvins", "glim")
+           "align.openvins.residual_m", "align.fastlio.residual_m",
+           "align.openvins.vel_disagree_mps", "align.fastlio.vel_disagree_mps"]
+CANDS = ("px4", "openvins", "fastlio")
 
 
 def run_rows(run: Path, cfg):
@@ -48,10 +49,15 @@ def run_rows(run: Path, cfg):
     gt = np.load(run / "gt.npz")["gt"]
     rec = np.load(run / "record.npz")
     offset, _ = px4_to_world(run, gt, man)
-    # run-level yaw of each local engine (evaluation of relative error only)
+    # yaw of each local engine (evaluation of relative error only), fitted on the run's fault-free
+    # segment before the first injected fault (>= 40 s of flight).  A whole-run fit is corrupted
+    # when the engine later diverges (FAST-LIO2 in the S04 corridor: tens of metres), which then
+    # mislabels every tick of the run, including the healthy ones (fixed 2026-11-17).
+    t_clean = min((f["start_s"] for f in man["scenario"]["faults"]), default=np.inf)
     yaw = {}
-    for c in ("openvins", "glim"):
+    for c in ("openvins", "fastlio"):
         a = rec[f"odom_{c}"]
+        a = a[a[:, 0] < t_clean] if len(a) else a
         if len(a) > 50:
             gp, _, _ = gt_at(gt, a[:, 0])
             rot, _ = fit_4dof(a[:, 2:5], gp)

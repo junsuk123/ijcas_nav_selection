@@ -51,7 +51,7 @@ def px4_to_world(run_dir: Path, gt: np.ndarray, manifest: dict):
 
 
 def make_selectors(cfg, gt, offset):
-    return {"F-G": Fixed("px4", cfg), "F-V": Fixed("openvins", cfg), "F-L": Fixed("glim", cfg),
+    return {"F-G": Fixed("px4", cfg), "F-V": Fixed("openvins", cfg), "F-L": Fixed("fastlio", cfg),
             "H-FSM": HealthFsm(cfg),
             "Flat-K": SelectionEngine(FlatRules(cfg), cfg, name="flat"),
             "Ontology-K": SelectionEngine(OntologyReasoner(cfg), cfg, name="ontology"),
@@ -119,7 +119,7 @@ def replay(run_dir: str | Path, cfg: dict | None = None, alarm: float = 2.0,
             "max_vel_jump_mps": max(vjumps) if vjumps else 0.0,
             "max_yaw_jump_deg": max(yjumps) if yjumps else 0.0,
             "selected_share": {c: float(np.mean([s == c for s, mm in zip(sel, m) if mm]))
-                               for c in ("px4", "openvins", "glim", "ins_dr", None)},
+                               for c in ("px4", "openvins", "fastlio", "ins_dr", None)},
             "selector_ms_per_tick": 1000 * timing[name] / max(len(tr), 1)}
         if keep_trace:
             res["selectors"][name]["trace"] = [(r[0], r[1], r[2], None if np.isnan(x) else x)

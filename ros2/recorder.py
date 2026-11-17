@@ -30,7 +30,7 @@ from std_msgs.msg import String
 
 REL = QoSProfile(depth=200, reliability=ReliabilityPolicy.RELIABLE)
 BE = QoSProfile(depth=200, reliability=ReliabilityPolicy.BEST_EFFORT)
-ODOM = {"openvins": "/ov_msckf/odomimu", "glim": "/glim_ros/odom", "px4": "/ijcas/px4/odom",
+ODOM = {"openvins": "/ov_msckf/odomimu", "fastlio": "/fast_lio/odom", "px4": "/ijcas/px4/odom",
         "gt": "/ijcas/gt/odom", "selected": "/ijcas/nav/selected"}
 STRINGS = ["/ijcas/px4/status", "/ijcas/gt/faults", "/ijcas/run/meta", "/ijcas/diag/vision",
            "/ijcas/diag/lidar", "/ijcas/diag/gnss", "/ijcas/diag/imu", "/ijcas/nav/decision"]

@@ -1,0 +1,18 @@
+id: S04
+seed: 106
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: lidar
+  kind: dropout
+  start_s: 69.1
+  end_s: 109.1
+  params:
+    fraction: 1.0
+variant:
+  lidar: point_dropout
+  level: 1.0
+scene: warehouse

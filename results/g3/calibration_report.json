@@ -4,19 +4,19 @@
  "indicators": [
   {
    "id": "gnss_pos_vel_residual",
-   "samples": 143278,
-   "bad_share": 0.06398749284607547,
-   "auc": 0.5938603470842552,
+   "samples": 143281,
+   "bad_share": 0.06398615308380036,
+   "auc": 0.5931665282613321,
    "status": "uninformative (AUC<0.6): thresholds disabled"
   },
   {
    "id": "px4_pos_ratio",
    "samples": 144060,
-   "bad_share": 0.0639802859919478,
-   "auc": 0.6256144195970826,
+   "bad_share": 0.06397334443981674,
+   "auc": 0.62556224668838,
    "status": "calibrated",
-   "youden_j": 0.1947711179800001,
-   "degraded_above": 0.1824815,
+   "youden_j": 0.19503091496778996,
+   "degraded_above": 0.16654249999999998,
    "invalid_above": 1.0,
    "design": {
     "degraded_above": 0.6,
@@ -25,12 +25,12 @@
   },
   {
    "id": "gnss_local_consistency",
-   "samples": 121887,
-   "bad_share": 0.07238671884614438,
-   "auc": 0.8140712626110949,
+   "samples": 115636,
+   "bad_share": 0.07567712477083262,
+   "auc": 0.8126866102998903,
    "status": "calibrated",
-   "youden_j": 0.6296678433975692,
-   "degraded_above": 1.5,
+   "youden_j": 0.6167801618053106,
+   "degraded_above": 1.393186,
    "invalid_above": 1.5,
    "design": {
     "degraded_above": 1.0,
@@ -40,60 +40,53 @@
   {
    "id": "vis_features",
    "samples": 157903,
-   "bad_share": 0.11892110979525405,
-   "auc": 0.4972676919149045,
+   "bad_share": 0.1450004116451239,
+   "auc": 0.4712650145629791,
    "status": "uninformative (AUC<0.6): thresholds disabled"
   },
   {
    "id": "vis_coverage",
    "samples": 157903,
-   "bad_share": 0.11892110979525405,
-   "auc": 0.5053271067048409,
+   "bad_share": 0.1450004116451239,
+   "auc": 0.5211173423406672,
    "status": "uninformative (AUC<0.6): thresholds disabled"
   },
   {
    "id": "vis_brightness",
    "samples": 157903,
-   "bad_share": 0.11892110979525405,
-   "auc": 0.48290652296464,
+   "bad_share": 0.1450004116451239,
+   "auc": 0.4802815674782648,
    "status": "uninformative (AUC<0.6): thresholds disabled"
   },
   {
    "id": "vis_stereo",
    "samples": 157903,
-   "bad_share": 0.11892110979525405,
-   "auc": 0.5003924364473462,
+   "bad_share": 0.1450004116451239,
+   "auc": 0.47258416219917304,
    "status": "uninformative (AUC<0.6): thresholds disabled"
   },
   {
    "id": "lidar_points",
-   "samples": 142706,
-   "bad_share": 0.07761411573444704,
-   "auc": 0.6055572928314144,
-   "status": "calibrated",
-   "youden_j": 0.2646162718984211,
-   "degraded_below": 31071.5,
-   "invalid_below": 1500,
-   "design": {
-    "degraded_below": 6000,
-    "invalid_below": 1500
-   }
+   "samples": 152719,
+   "bad_share": 0.05935083388445445,
+   "auc": 0.5601330291636304,
+   "status": "uninformative (AUC<0.6): thresholds disabled"
   },
   {
    "id": "lidar_geometry",
-   "samples": 142706,
-   "bad_share": 0.07761411573444704,
-   "auc": 0.4545732581507743,
+   "samples": 152719,
+   "bad_share": 0.05935083388445445,
+   "auc": 0.5743331845570117,
    "status": "uninformative (AUC<0.6): thresholds disabled"
   },
   {
    "id": "imu_clock_offset",
    "samples": 156700,
    "bad_share": 0.009572431397574984,
-   "auc": 0.903365558419244,
+   "auc": 0.9084395661512027,
    "invalid_removed": true,
    "status": "calibrated",
-   "youden_j": 0.8706151202749142,
+   "youden_j": 0.8752817869415808,
    "degraded_above": 0.0025,
    "invalid_above": null,
    "design": {
@@ -105,11 +98,11 @@
    "id": "imu_saturation",
    "samples": 156200,
    "bad_share": 0.006402048655569782,
-   "auc": 0.610981030927835,
+   "auc": 0.6024713240979381,
    "invalid_removed": true,
    "status": "calibrated",
-   "youden_j": 0.22196134020618558,
-   "degraded_above": 0.009091,
+   "youden_j": 0.20494201030927833,
+   "degraded_above": 0.0086215,
    "invalid_above": null,
    "design": {
     "degraded_above": 0.01,
@@ -119,11 +112,11 @@
   {
    "id": "ov_tracking",
    "samples": 157903,
-   "bad_share": 0.11892110979525405,
-   "auc": 0.7191696252912811,
+   "bad_share": 0.1450004116451239,
+   "auc": 0.6727415750647958,
    "status": "calibrated",
-   "youden_j": 0.400150103966935,
-   "degraded_below": 9.5,
+   "youden_j": 0.32410308750354566,
+   "degraded_below": 8.5,
    "invalid_below": 4,
    "design": {
     "degraded_below": 15,
@@ -135,23 +128,23 @@
   {
    "candidate": "px4",
    "samples": 160200,
-   "bad_share": 0.26566167290886394,
+   "bad_share": 0.26579900124843947,
    "status": "fitted",
-   "auc_train": 0.7613618806354547
+   "auc_train": 0.7512633474410295
   },
   {
    "candidate": "openvins",
-   "samples": 99591,
-   "bad_share": 0.2374110110351337,
+   "samples": 98434,
+   "bad_share": 0.21252819147855415,
    "status": "fitted",
-   "auc_train": 0.6854018884502118
+   "auc_train": 0.6555130847639143
   },
   {
-   "candidate": "glim",
-   "samples": 144703,
-   "bad_share": 0.16182110944486292,
+   "candidate": "fastlio",
+   "samples": 149390,
+   "bad_share": 0.166249414284758,
    "status": "fitted",
-   "auc_train": 0.6026336877750278
+   "auc_train": 0.5869974356796239
   }
  ]
 }

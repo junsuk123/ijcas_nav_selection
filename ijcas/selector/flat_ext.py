@@ -34,7 +34,7 @@ class FlatRulesExt(FlatRules):
                                   + ([imu] if imu != USABLE else []))
             states["openvins"] = worst([gate("openvins", ["Inertial", "VisualFeatures"], ms["OpenVINS"]),
                                         ms["VisualFeatures"]] + ([imu] if imu != USABLE else []))
-            states["glim"] = worst([gate("glim", ["Inertial", "LidarStructure"]), ms["LidarStructure"]]
+            states["fastlio"] = worst([gate("fastlio", ["Inertial", "LidarStructure"]), ms["LidarStructure"]]
                                    + ([imu] if imu != USABLE else []))
             dr_v = self._dr(("INS_DR", "Velocity"), imu, t, 0.0)
             states["ins_dr"] = worst([gate("ins_dr", ["Inertial"]), UNUSABLE, dr_v]

@@ -71,7 +71,7 @@ def random_snapshot(rng, t):
         px4 = ({"t": t - rng.choice([0.05, 0.5, 2.0]), "flags": int(rng.choice([831, 831, 815, 0])),
                 "vel_ratio": float(rng.uniform(0, 1.5)), "pos_horiz_ratio": float(rng.uniform(0, 1.5))}, t)
     outs = {}
-    for c in ("px4", "openvins", "glim"):
+    for c in ("px4", "openvins", "fastlio"):
         if maybe(0.9):
             outs[c] = Output(t - float(rng.choice([0.01, 0.1, 0.25, 0.4, 2.0])), np.zeros(3),
                              np.array([0, 0, 0, 1.0]), np.zeros(3))
@@ -92,7 +92,7 @@ def test_fuzzed_equivalence(task, thr):
         from ijcas.selector.common import signals
         sig = signals(snap)
         align = {"openvins": FakeAlign(bool(rng.random() < 0.7), t - rng.choice([0.0, 2.0, 40.0])),
-                 "glim": FakeAlign(bool(rng.random() < 0.7), t - rng.choice([0.0, 2.0, 40.0])),
+                 "fastlio": FakeAlign(bool(rng.random() < 0.7), t - rng.choice([0.0, 2.0, 40.0])),
                  "ins_dr": FakeAlign(bool(rng.random() < 0.5), t - rng.choice([0.0, 5.0]))}
         so, _, mo = onto.evaluate(task, sig, t, snap.outputs, align, 30.0)
         sf, _, mf = flat.evaluate(task, sig, t, snap.outputs, align, 30.0)
@@ -103,7 +103,10 @@ def test_fuzzed_equivalence(task, thr):
     assert not mismatches, mismatches[:5]
 
 
-RUN = Path(os.environ.get("IJCAS_DATA", Path.home() / "ijcas_data")) / "g2/S00_corridor_1"
+_VAL = Path(os.environ.get("IJCAS_DATA", Path.home() / "ijcas_data")) / "runs/validation"
+# first finished FAST-LIO2-era validation run (the GLIM-era g2 recordings carry odom_glim)
+RUN = next((r for r in sorted(_VAL.iterdir()) if (r / "DONE").exists()), _VAL / "none") \
+    if _VAL.exists() else _VAL / "none"
 
 
 @pytest.mark.skipif(not (RUN / "record.npz").exists(), reason="no recorded run")

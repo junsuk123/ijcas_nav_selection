@@ -11,7 +11,7 @@ import time
 import psutil
 
 COMPONENTS = {"isaac_sim": "kit/python/bin/python3", "px4": "bin/px4", "openvins": "run_subscribe_msckf",
-              "glim": "glim_rosnode", "xrce_agent": "MicroXRCEAgent",
+              "fastlio": "fastlio_mapping", "xrce_agent": "MicroXRCEAgent",
               "context_monitor": "ros2/context_monitor.py", "selector": "ros2/navigation_selector.py",
               "recorder": "ros2/recorder.py"}
 

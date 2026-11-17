@@ -9,7 +9,7 @@ otherwise the indicator's thresholds are disabled and it is reported as uninform
   invalid threshold   most permissive value whose flagged set is >= 90 % bad (>= 50 samples);
                       if none exists the design value is kept
 Outcome labels: VisualFeatures / OpenVINS <- rel_err_openvins > 0.3 m per 2 s, LidarStructure <-
-rel_err_glim > 0.3 m per 2 s, GnssPosition <- GNSS-only error > alarm (2 m).
+rel_err_fastlio > 0.3 m per 2 s, GnssPosition <- GNSS-only error > alarm (2 m).
 Inertial (shared IMU, R10) has two labels because its two levels mean different things:
   degraded  the injected IMU fault of the indicator's own kind (saturation for imu_saturation,
             time_offset for imu_clock_offset); ticks of other IMU fault kinds are excluded
@@ -38,21 +38,21 @@ ROOT = Path(__file__).resolve().parents[1]
 REL_BAD = 0.3
 ALARM = 2.0
 LABELS = {"VisualFeatures": ("rel_err_openvins", REL_BAD), "OpenVINS": ("rel_err_openvins", REL_BAD),
-          "LidarStructure": ("rel_err_glim", REL_BAD), "GnssPosition": ("gnss_pos_err", ALARM),
+          "LidarStructure": ("rel_err_fastlio", REL_BAD), "GnssPosition": ("gnss_pos_err", ALARM),
           "Inertial": ("imu_fault", 0.5)}
 CALIBRATED = {"gnss_local_consistency", "vis_features", "vis_coverage", "vis_brightness", "vis_stereo", "ov_tracking",
               "lidar_points", "lidar_geometry", "gnss_pos_vel_residual", "px4_pos_ratio",
               "imu_clock_offset", "imu_saturation"}
 IMU_KIND = {"imu_saturation": "saturation", "imu_clock_offset": "time_offset"}
-IMU_DEPENDENT = ("px4", "openvins", "glim")
+IMU_DEPENDENT = ("px4", "openvins", "fastlio")
 QUALITY_FEATURES = {
     "px4": ["gnss.fix", "gnss.pos_vel_residual_m", "px4.pos_horiz_ratio", "px4.vel_ratio",
             "consistency.gnss_local_z"],
     "openvins": ["vision.features", "vision.grid_cells_ge10", "vision.mean",
                  "vision.stereo_matches", "openvins.tracked_features", "align_age_openvins",
                  "align.openvins.residual_m", "align.openvins.vel_disagree_mps"],
-    "glim": ["lidar.points", "lidar.lambda_ratio", "align_age_glim", "align.glim.residual_m",
-             "align.glim.vel_disagree_mps"],
+    "fastlio": ["lidar.points", "lidar.lambda_ratio", "align_age_fastlio", "align.fastlio.residual_m",
+             "align.fastlio.vel_disagree_mps"],
 }
 
 

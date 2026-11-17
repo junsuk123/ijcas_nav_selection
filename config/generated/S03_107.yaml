@@ -1,0 +1,17 @@
+id: S03
+seed: 107
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: camera
+  kind: blur
+  start_s: 45.3
+  end_s: 85.3
+  params:
+    kernel_px: 31
+variant:
+  visual: blur
+scene: corridor

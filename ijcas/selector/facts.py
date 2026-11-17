@@ -13,10 +13,10 @@ from pathlib import Path
 
 import numpy as np
 
-CANDIDATES = ("px4", "openvins", "glim")
+CANDIDATES = ("px4", "openvins", "fastlio")
 # nav_msgs/Odometry twist frames as published (checked on recorded data, results/g5):
-# OpenVINS reports the IMU-frame (body) velocity; GLIM and the PX4 republisher the odom/world one.
-TWIST_IN_BODY = {"openvins": True, "glim": False, "px4": False}
+# OpenVINS reports the IMU-frame (body) velocity; FAST-LIO2 (IJCAS output adapter) and the PX4 republisher the odom/world one.
+TWIST_IN_BODY = {"openvins": True, "fastlio": False, "px4": False}
 
 
 def make_output(name, stamp, pos, quat, vel) -> "Output":

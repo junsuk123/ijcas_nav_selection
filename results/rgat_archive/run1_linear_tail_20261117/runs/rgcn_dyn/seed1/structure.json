@@ -1,0 +1,16 @@
+{
+ "kept_gated": [
+  "E_gnss->S_cam",
+  "E_mot->S_cam"
+ ],
+ "n_gated_full": 53,
+ "protected": [
+  "S_gnss->N_gi",
+  "S_imu->N_gi",
+  "S_imu->N_vio",
+  "S_imu->N_lio",
+  "S_imu->N_ins",
+  "S_cam->N_vio",
+  "S_lidar->N_lio"
+ ]
+}

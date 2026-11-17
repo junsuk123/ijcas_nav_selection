@@ -7,6 +7,7 @@ run starts with >= 20 s of normal observation (hover 8 s + ramp 4 s + cruise), t
 
 Levels follow the Notion starting values (S01 10/30/60 s, S02 3/5/10 m, S03 brightness
 1.0/0.5/0.2, S07 20/50/100 ms); S10 magnitudes are pilot values to be confirmed on validation.
+S04 levels were re-set for FAST-LIO2 on 2026-11-16 from engine-only pilots (see the S04 branch).
 """
 from __future__ import annotations
 
@@ -75,15 +76,29 @@ def resolve(sid: str, seed: int) -> dict:
                       "params": {"kernel_px": 31}})
         s["variant"] = {"visual": kind}
     elif sid == "S04":
+        # Levels re-set for FAST-LIO2 on 2026-11-16 (user decision: strengthen S04 only).  The
+        # GLIM-era levels (corridor scene alone / point dropout 0.9 / range 4 m) left FAST-LIO2 at
+        # <= 0.2 m.  Pilots (tools/lio_fault_probe.py, seeds 901-907, $IJCAS_DATA/fastlio_pilot),
+        # rule fixed before the pilots: the mildest tested level at which FAST-LIO2 fails (error
+        # > 2 m within the window or 30 s after it, or > 1 s without output):
+        #   corridor + range 5 m -> 44 m divergence while still publishing (3 m: km-scale)
+        #   warehouse range 3 m  -> 24 m and 29 s without output (2 m: 294 m)
+        #   point dropout 0.99 / 0.997 / 0.999 -> <= 0.24 m, no failure -> full LiDAR blackout
         kind = _pick(["corridor_geometry", "corridor_geometry", "point_dropout", "range_limit"], seed)
         s["scene"] = "corridor" if kind == "corridor_geometry" else _pick(("warehouse", "open_field"), seed)
-        if kind == "point_dropout":
-            F.append({"target": "lidar", "kind": "dropout", "start_s": onset, "end_s": onset + 40,
-                      "params": {"fraction": 0.9}})
-        elif kind == "range_limit":
+        if kind == "corridor_geometry":
+            level = 5.0
             F.append({"target": "lidar", "kind": "range_limit", "start_s": onset,
-                      "end_s": onset + 40, "params": {"max_m": 4.0}})
-        s["variant"] = {"lidar": kind}
+                      "end_s": onset + 40, "params": {"max_m": level}})
+        elif kind == "point_dropout":
+            level = 1.0
+            F.append({"target": "lidar", "kind": "dropout", "start_s": onset, "end_s": onset + 40,
+                      "params": {"fraction": level}})
+        else:
+            level = 3.0
+            F.append({"target": "lidar", "kind": "range_limit", "start_s": onset,
+                      "end_s": onset + 40, "params": {"max_m": level}})
+        s["variant"] = {"lidar": kind, "level": level}
     elif sid == "S05":
         s["scene"] = "warehouse"
         gnss_outage(onset, 50.0)

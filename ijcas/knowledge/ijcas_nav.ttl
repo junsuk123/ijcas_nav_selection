@@ -89,7 +89,7 @@
 :MagHeading a :MeasurementCapability .
 :VisualFeatures a :MeasurementCapability .
 :LidarStructure a :MeasurementCapability .
-:IMU :sharedBy :PX4_EKF2 , :OpenVINS , :GLIM , :INS_DR .
+:IMU :sharedBy :PX4_EKF2 , :OpenVINS , :FAST_LIO , :INS_DR .
 
 # ---- state capabilities ---------------------------------------------------------------
 :GlobalPosition a :StateCapability .
@@ -103,7 +103,7 @@
     :requiresEssential :Inertial ; :usesAiding :GnssPosition , :GnssVelocity , :BaroHeight , :MagHeading .
 :OpenVINS a :LocalEstimator ; rdfs:label "OpenVINS stereo VIO" ; :candidateId "openvins" ;
     :requiresEssential :Inertial , :VisualFeatures .
-:GLIM a :LocalEstimator ; rdfs:label "GLIM LiDAR-IMU" ; :candidateId "glim" ;
+:FAST_LIO a :LocalEstimator ; rdfs:label "FAST-LIO2 LiDAR-IMU" ; :candidateId "fastlio" ;
     :requiresEssential :Inertial , :LidarStructure .
 :INS_DR a :Baseline ; rdfs:label "INS dead reckoning" ; :candidateId "ins_dr" ;
     :requiresEssential :Inertial .
@@ -125,11 +125,11 @@
 :vio_hgt a :Provision ; :ofEstimator :OpenVINS ; :ofCapability :Height ; :validUnder :VisualFeatures .
 :vio_global a :Provision ; :ofEstimator :OpenVINS ; :ofCapability :GlobalPosition ;
     :validUnder :VisualFeatures ; :requiresAlignment true .
-:lio_local a :Provision ; :ofEstimator :GLIM ; :ofCapability :LocalPosition ; :validUnder :LidarStructure .
-:lio_vel a :Provision ; :ofEstimator :GLIM ; :ofCapability :Velocity ; :validUnder :LidarStructure .
-:lio_att a :Provision ; :ofEstimator :GLIM ; :ofCapability :Attitude ; :validUnder :LidarStructure .
-:lio_hgt a :Provision ; :ofEstimator :GLIM ; :ofCapability :Height ; :validUnder :LidarStructure .
-:lio_global a :Provision ; :ofEstimator :GLIM ; :ofCapability :GlobalPosition ;
+:lio_local a :Provision ; :ofEstimator :FAST_LIO ; :ofCapability :LocalPosition ; :validUnder :LidarStructure .
+:lio_vel a :Provision ; :ofEstimator :FAST_LIO ; :ofCapability :Velocity ; :validUnder :LidarStructure .
+:lio_att a :Provision ; :ofEstimator :FAST_LIO ; :ofCapability :Attitude ; :validUnder :LidarStructure .
+:lio_hgt a :Provision ; :ofEstimator :FAST_LIO ; :ofCapability :Height ; :validUnder :LidarStructure .
+:lio_global a :Provision ; :ofEstimator :FAST_LIO ; :ofCapability :GlobalPosition ;
     :validUnder :LidarStructure ; :requiresAlignment true .
 :dr_local a :Provision ; :ofEstimator :INS_DR ; :ofCapability :LocalPosition ;
     :validUnder :Inertial ; :deadReckonLimitS 0.0 .

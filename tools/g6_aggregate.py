@@ -25,8 +25,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 DATA = Path(os.environ.get("IJCAS_DATA", Path.home() / "ijcas_data"))
-AFFECTS = {"gnss": ["px4"], "camera": ["openvins"], "lidar": ["glim"],
-           "imu": ["px4", "openvins", "glim"]}
+AFFECTS = {"gnss": ["px4"], "camera": ["openvins"], "lidar": ["fastlio"],
+           "imu": ["px4", "openvins", "fastlio"]}
 METRICS = ["availability", "output_fraction", "false_normal_s", "no_valid_nav_s",
            "pos_rmse_m", "pos_p95_m", "switches", "max_jump_m", "median_jump_m", "max_vel_jump_mps",
            "max_yaw_jump_deg", "limited_dr_s"]

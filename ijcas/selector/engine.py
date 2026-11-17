@@ -23,11 +23,11 @@ GLOBAL_TASK = "GlobalWaypoint"
 # R08: the essential exteroceptive input of each local engine (ontology :requiresEssential).
 # Losing it invalidates the engine's alignment: what it outputs after the loss must be re-aligned
 # before it can be used globally or testify against GNSS (S08 recovery deadlock, results/g5).
-LOCAL_INPUT = {"openvins": "VisualFeatures", "glim": "LidarStructure"}
+LOCAL_INPUT = {"openvins": "VisualFeatures", "fastlio": "LidarStructure"}
 # The engine's own estimator-level indicator (e.g. OpenVINS tracked features) reports the same loss
 # from the inside; G3 found it the informative one (the image-level cues were not), so a confirmed
 # 'Unusable' of either invalidates the alignment.
-LOCAL_ESTIMATOR = {"openvins": "OpenVINS", "glim": "GLIM"}
+LOCAL_ESTIMATOR = {"openvins": "OpenVINS", "fastlio": "FAST_LIO"}
 
 
 class DrAnchor:
@@ -67,7 +67,7 @@ class QualityModel:
     causal alignment)."""
 
     INPUTS = {"px4": ["GnssPosition", "GnssVelocity"], "openvins": ["VisualFeatures"],
-              "glim": ["LidarStructure"], "ins_dr": []}
+              "fastlio": ["LidarStructure"], "ins_dr": []}
 
     def __init__(self, cfg: dict, coef: dict | None = None):
         self.coef = coef or {"limited": 0.5, "unknown": 0.7, "align_age_s": 60.0, "dr": 0.8}
@@ -93,7 +93,7 @@ class QualityModel:
         st = [ms.get(m, UNKNOWN) for m in self.INPUTS[cid]]
         q = max([0.0] + [self.coef["limited"] if s == LIMITED else
                          self.coef["unknown"] if s in (UNKNOWN, UNUSABLE) else 0.0 for s in st])
-        if cid in ("openvins", "glim") and align_age is not None and np.isfinite(align_age):
+        if cid in ("openvins", "fastlio") and align_age is not None and np.isfinite(align_age):
             q = min(1.0, q + align_age / self.coef["align_age_s"])
         return q
 
@@ -108,7 +108,7 @@ class SelectionEngine:
         s = self.cfg["selection"]
         self.align = {c: Alignment(window_s=s["alignment_window_s"],
                                    min_path_m=s["alignment_min_path_m"])
-                      for c in ("openvins", "glim")}
+                      for c in ("openvins", "fastlio")}
         self.dr = DrAnchor(s["max_dr_s"])
         self.stale = s["alignment_stale_s"]
         self.cost = CostModel(self.cfg, 0.3)
@@ -151,7 +151,7 @@ class SelectionEngine:
         if px4 is None or snap.t - px4.stamp > 0.3:
             return {}
         out = self._agreement_signals(snap, px4)
-        rates = self.cfg["selection"].get("local_drift_rate", {"openvins": 0.02, "glim": 0.004})
+        rates = self.cfg["selection"].get("local_drift_rate", {"openvins": 0.02, "fastlio": 0.004})
         best = None
         for c, al in self.align.items():
             o = snap.outputs.get(c)
@@ -281,7 +281,7 @@ class HealthFsm:
         fix = bool(g and g[0].get("fix") and snap.t - g[0]["t"] < 1.0)
         sel = None
         for cid, ok in (("px4", fix and fresh("px4")), ("openvins", fresh("openvins")),
-                        ("glim", fresh("glim"))):
+                        ("fastlio", fresh("fastlio"))):
             if ok and e.global_state(cid, snap) is not None:
                 sel = cid
                 break
@@ -311,7 +311,7 @@ class Oracle:
         e._update_alignment(snap, _ms_for_alignment(snap, e.cfg, e))
         gp, _, _ = gt_at(self.gt, np.array([snap.t]))
         best, err = None, np.inf
-        for cid in ("px4", "openvins", "glim"):
+        for cid in ("px4", "openvins", "fastlio"):
             o = snap.outputs.get(cid)
             g = e.global_state(cid, snap)
             if o is None or g is None or snap.t - o.stamp > 0.3:
@@ -337,7 +337,7 @@ def _ms_for_alignment(snap, cfg, engine=None):
     if engine is not None:
         sig.update(engine.derived_signals(snap))
     out = {}
-    for m in ("GnssPosition", "PX4_EKF2", "VisualFeatures", "LidarStructure", "OpenVINS", "GLIM"):
+    for m in ("GnssPosition", "PX4_EKF2", "VisualFeatures", "LidarStructure", "OpenVINS", "FAST_LIO"):
         inds = [i for i in cfg["indicators"] if m in i["assesses"]]
         out[m] = worst(indicator_state(i, sig, snap.t)[0] for i in inds)
     return out

@@ -1,7 +1,7 @@
 """state_handover (Notion 05, G5): causal alignment of local engines, reset detection, single
 output authority with switch-jump logging.
 
-Causal alignment (R08).  A local engine (OpenVINS, GLIM) reports a metric pose in its own
+Causal alignment (R08).  A local engine (OpenVINS, FAST-LIO2) reports a metric pose in its own
 gravity-aligned odometry frame.  While the global reference (PX4 EKF2 global position) is judged
 *Usable* by the selector, pairs (local position, reference position) at common times are kept in
 a sliding window and a 4-DOF transform (yaw + translation; no scale, no roll/pitch) is fitted.

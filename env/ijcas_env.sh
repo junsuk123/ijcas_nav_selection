@@ -8,8 +8,6 @@ export IJCAS_DATA=${IJCAS_DATA:-$HOME/ijcas_data}
 export ISAACSIM_PATH=${ISAACSIM_PATH:-$HOME/isaacsim/_build/linux-x86_64/release}
 export PX4_DIR=${PX4_DIR:-$IJCAS_WS/third_party/PX4-Autopilot}
 export XRCE_AGENT=${XRCE_AGENT:-$IJCAS_WS/third_party/xrce_install/bin/MicroXRCEAgent}
-GLIM_ROOT=$IJCAS_WS/third_party/glim_root
-export GLIM_ROOT
 
 # ROS 2 Humble, Fast DDS (the PX4 XRCE agent and Isaac's bridge both use it), private domain
 set +u
@@ -20,9 +18,10 @@ export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 export ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-42}
 unset CYCLONEDDS_URI
 
-# GLIM 1.2.2 (official PPA debs extracted without root, see docs/G0_KO.md)
-export AMENT_PREFIX_PATH=$GLIM_ROOT/opt/ros/humble${AMENT_PREFIX_PATH:+:$AMENT_PREFIX_PATH}
-export LD_LIBRARY_PATH=$GLIM_ROOT/opt/ros/humble/lib:$GLIM_ROOT/usr/local/lib:$GLIM_ROOT/usr/lib/x86_64-linux-gnu:$IJCAS_WS/third_party/xrce_install/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+# LIO engine: FAST-LIO2 built in $IJCAS_WS (src/fast_lio + IJCAS adapter patch), sourced above.
+# GLIM 1.2.2 (third_party/glim_root) was used until 2026-11-16; it is no longer on the paths so its
+# bundled libraries cannot shadow the system ones FAST-LIO2 links against.
+export LD_LIBRARY_PATH=$IJCAS_WS/third_party/xrce_install/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 export PYTHONPATH=$IJCAS_ROOT${PYTHONPATH:+:$PYTHONPATH}
 
 # A terminal inside the VS Code snap exports snap GTK paths that crash rviz2; restore host GUI env.

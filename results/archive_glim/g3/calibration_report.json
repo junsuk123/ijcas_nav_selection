@@ -1,0 +1,157 @@
+{
+ "dataset": "results/g3/dataset.npz",
+ "rows": 160200,
+ "indicators": [
+  {
+   "id": "gnss_pos_vel_residual",
+   "samples": 143278,
+   "bad_share": 0.06398749284607547,
+   "auc": 0.5938603470842552,
+   "status": "uninformative (AUC<0.6): thresholds disabled"
+  },
+  {
+   "id": "px4_pos_ratio",
+   "samples": 144060,
+   "bad_share": 0.0639802859919478,
+   "auc": 0.6256144195970826,
+   "status": "calibrated",
+   "youden_j": 0.1947711179800001,
+   "degraded_above": 0.1824815,
+   "invalid_above": 1.0,
+   "design": {
+    "degraded_above": 0.6,
+    "invalid_above": 1.0
+   }
+  },
+  {
+   "id": "gnss_local_consistency",
+   "samples": 121887,
+   "bad_share": 0.07238671884614438,
+   "auc": 0.8140712626110949,
+   "status": "calibrated",
+   "youden_j": 0.6296678433975692,
+   "degraded_above": 1.5,
+   "invalid_above": 1.5,
+   "design": {
+    "degraded_above": 1.0,
+    "invalid_above": 1.5
+   }
+  },
+  {
+   "id": "vis_features",
+   "samples": 157903,
+   "bad_share": 0.11892110979525405,
+   "auc": 0.4972676919149045,
+   "status": "uninformative (AUC<0.6): thresholds disabled"
+  },
+  {
+   "id": "vis_coverage",
+   "samples": 157903,
+   "bad_share": 0.11892110979525405,
+   "auc": 0.5053271067048409,
+   "status": "uninformative (AUC<0.6): thresholds disabled"
+  },
+  {
+   "id": "vis_brightness",
+   "samples": 157903,
+   "bad_share": 0.11892110979525405,
+   "auc": 0.48290652296464,
+   "status": "uninformative (AUC<0.6): thresholds disabled"
+  },
+  {
+   "id": "vis_stereo",
+   "samples": 157903,
+   "bad_share": 0.11892110979525405,
+   "auc": 0.5003924364473462,
+   "status": "uninformative (AUC<0.6): thresholds disabled"
+  },
+  {
+   "id": "lidar_points",
+   "samples": 142706,
+   "bad_share": 0.07761411573444704,
+   "auc": 0.6055572928314144,
+   "status": "calibrated",
+   "youden_j": 0.2646162718984211,
+   "degraded_below": 31071.5,
+   "invalid_below": 1500,
+   "design": {
+    "degraded_below": 6000,
+    "invalid_below": 1500
+   }
+  },
+  {
+   "id": "lidar_geometry",
+   "samples": 142706,
+   "bad_share": 0.07761411573444704,
+   "auc": 0.4545732581507743,
+   "status": "uninformative (AUC<0.6): thresholds disabled"
+  },
+  {
+   "id": "imu_clock_offset",
+   "samples": 156700,
+   "bad_share": 0.009572431397574984,
+   "auc": 0.903365558419244,
+   "invalid_removed": true,
+   "status": "calibrated",
+   "youden_j": 0.8706151202749142,
+   "degraded_above": 0.0025,
+   "invalid_above": null,
+   "design": {
+    "degraded_above": 0.01,
+    "invalid_above": 0.1
+   }
+  },
+  {
+   "id": "imu_saturation",
+   "samples": 156200,
+   "bad_share": 0.006402048655569782,
+   "auc": 0.610981030927835,
+   "invalid_removed": true,
+   "status": "calibrated",
+   "youden_j": 0.22196134020618558,
+   "degraded_above": 0.009091,
+   "invalid_above": null,
+   "design": {
+    "degraded_above": 0.01,
+    "invalid_above": 0.2
+   }
+  },
+  {
+   "id": "ov_tracking",
+   "samples": 157903,
+   "bad_share": 0.11892110979525405,
+   "auc": 0.7191696252912811,
+   "status": "calibrated",
+   "youden_j": 0.400150103966935,
+   "degraded_below": 9.5,
+   "invalid_below": 4,
+   "design": {
+    "degraded_below": 15,
+    "invalid_below": 4
+   }
+  }
+ ],
+ "quality": [
+  {
+   "candidate": "px4",
+   "samples": 160200,
+   "bad_share": 0.26566167290886394,
+   "status": "fitted",
+   "auc_train": 0.7613618806354547
+  },
+  {
+   "candidate": "openvins",
+   "samples": 99591,
+   "bad_share": 0.2374110110351337,
+   "status": "fitted",
+   "auc_train": 0.6854018884502118
+  },
+  {
+   "candidate": "glim",
+   "samples": 144703,
+   "bad_share": 0.16182110944486292,
+   "status": "fitted",
+   "auc_train": 0.6026336877750278
+  }
+ ]
+}

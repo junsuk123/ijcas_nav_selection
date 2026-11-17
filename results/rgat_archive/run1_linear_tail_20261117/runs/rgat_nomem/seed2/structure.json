@@ -1,0 +1,26 @@
+{
+ "kept_gated": [
+  "N_gi->N_ins",
+  "N_gi->N_lio",
+  "N_gi->N_vio",
+  "N_ins->N_gi",
+  "N_lio->N_gi",
+  "N_lio->N_ins",
+  "N_lio->N_vio",
+  "N_vio->N_gi",
+  "S_cam->N_gi",
+  "S_cam->N_lio",
+  "S_gnss->N_lio",
+  "S_lidar->N_gi"
+ ],
+ "n_gated_full": 53,
+ "protected": [
+  "S_gnss->N_gi",
+  "S_imu->N_gi",
+  "S_imu->N_vio",
+  "S_imu->N_lio",
+  "S_imu->N_ins",
+  "S_cam->N_vio",
+  "S_lidar->N_lio"
+ ]
+}

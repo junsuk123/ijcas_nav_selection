@@ -83,7 +83,7 @@ if __name__ == "__main__":
         (out_dir / f"{name}.json").write_text(json.dumps(r, indent=1))
         print(f"== {name}  rtf {r['rtf']:.2f}")
         for k, c in r["candidates"].items():
-            if k in ("openvins", "glim", "px4") and c.get("outputs"):
+            if k in ("openvins", "fastlio", "px4") and c.get("outputs"):
                 e = c.get("error_initial_4dof") or c.get("error_origin_initial")
                 f = c.get("error_full_4dof", {})
                 print(f"  {k:8s} n={c['outputs']:5d} first={c['first_output_s']:6.1f}s "
@@ -93,7 +93,7 @@ if __name__ == "__main__":
                       f"yaw {e.get('yaw_rmse_deg', float('nan')):5.1f} deg | full-align "
                       f"{f.get('pos_rmse_m', float('nan')):6.2f} m | drift/10m "
                       f"{c['drift']['drift_per_10m_mean_m']}")
-            elif k in ("openvins", "glim", "px4"):
+            elif k in ("openvins", "fastlio", "px4"):
                 print(f"  {k:8s} NO OUTPUT")
         g = r["candidates"]["gnss_only"]
         print(f"  gnss     pos RMSE {g['pos_rmse_m']:.2f} m (horiz {g['horiz_rmse_m']:.2f}) "

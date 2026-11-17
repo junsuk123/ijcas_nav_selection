@@ -2,7 +2,7 @@
 
     python3 ros2/navigation_selector.py --selector ontology|flat [--thresholds <yaml>]
 
-Inputs: candidate outputs (/ijcas/px4/odom, /ov_msckf/odomimu, /glim_ros/odom), diagnostics
+Inputs: candidate outputs (/ijcas/px4/odom, /ov_msckf/odomimu, /fast_lio/odom), diagnostics
 (/ijcas/diag/*, /ijcas/px4/status), GNSS fix, IMU.  Never /ijcas/gt/*.
 Outputs (single authority for the navigation solution, Notion 05 state output contract):
   /ijcas/nav/selected    nav_msgs/Odometry in "map" (= PX4 local ENU) or nothing on no-valid-nav
@@ -39,7 +39,7 @@ from ijcas.selector.ontology import OntologyReasoner  # noqa: E402
 
 BE = QoSProfile(depth=50, reliability=ReliabilityPolicy.BEST_EFFORT)
 REL = QoSProfile(depth=50, reliability=ReliabilityPolicy.RELIABLE)
-ODOM = {"px4": "/ijcas/px4/odom", "openvins": "/ov_msckf/odomimu", "glim": "/glim_ros/odom"}
+ODOM = {"px4": "/ijcas/px4/odom", "openvins": "/ov_msckf/odomimu", "fastlio": "/fast_lio/odom"}
 
 
 def st(h):

@@ -44,7 +44,7 @@ def main():
         err = None if out is None else float(np.linalg.norm(np.asarray(out[0]) + offset - gp))
         cerr = {}
         if hasattr(sel, "global_state"):
-            for c in ("px4", "openvins", "glim"):
+            for c in ("px4", "openvins", "fastlio"):
                 g = sel.global_state(c, snap)
                 cerr[c] = None if g is None else round(float(np.linalg.norm(g[0] + offset - gp)), 1)
         rows.append((snap.t, d.selected, d.output_mode, err, dict(d.states), cerr,

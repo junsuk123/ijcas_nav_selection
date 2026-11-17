@@ -1,0 +1,101 @@
+2026-11-17 03:27:32 {"nav": 5.08647, "edge": 0.97213, "switch": 0.032, "skipped_updates": 0, "epoch": 0, "gate_mode": "soft", "lam_E": 0.0, "sec": 14.94272}
+2026-11-17 03:27:49 {"nav": 0.41632, "edge": 0.96938, "switch": 0.02341, "skipped_updates": 0, "epoch": 1, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.32097}
+2026-11-17 03:28:06 {"nav": 0.35557, "edge": 0.96425, "switch": 0.00091, "skipped_updates": 0, "epoch": 2, "gate_mode": "soft", "lam_E": 0.0, "sec": 17.03859}
+2026-11-17 03:28:23 {"nav": 0.35549, "edge": 0.9626, "switch": 0.00047, "skipped_updates": 0, "epoch": 3, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.88696}
+2026-11-17 03:28:40 {"nav": 0.35548, "edge": 0.96228, "switch": 0.0004, "skipped_updates": 0, "epoch": 4, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.91641}
+2026-11-17 03:28:57 {"nav": 0.35548, "edge": 0.96221, "switch": 0.00032, "skipped_updates": 0, "epoch": 5, "gate_mode": "soft", "lam_E": 0.0, "sec": 17.04852}
+2026-11-17 03:29:14 {"nav": 0.35548, "edge": 0.96219, "switch": 0.0003, "skipped_updates": 0, "epoch": 6, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.88672}
+2026-11-17 03:29:31 {"nav": 0.35547, "edge": 0.96214, "switch": 0.00026, "skipped_updates": 0, "epoch": 7, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.91503}
+2026-11-17 03:29:47 {"nav": 0.35547, "edge": 0.96209, "switch": 0.00021, "skipped_updates": 0, "epoch": 8, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.84408}
+2026-11-17 03:30:04 {"nav": 0.35547, "edge": 0.96202, "switch": 0.00018, "skipped_updates": 0, "epoch": 9, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.22369}
+2026-11-17 03:30:20 {"nav": 0.35547, "edge": 0.96194, "switch": 0.00015, "skipped_updates": 0, "epoch": 10, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.24561}
+2026-11-17 03:30:36 {"nav": 0.35547, "edge": 0.96191, "switch": 0.00014, "skipped_updates": 0, "epoch": 11, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.12892}
+2026-11-17 03:30:52 {"nav": 0.35547, "edge": 0.96139, "switch": 0.00012, "skipped_updates": 0, "epoch": 12, "gate_mode": "soft", "lam_E": 0.0011, "sec": 16.09658}
+2026-11-17 03:31:09 {"nav": 0.35547, "edge": 0.95667, "switch": 0.00012, "skipped_updates": 0, "epoch": 13, "gate_mode": "soft", "lam_E": 0.00476, "sec": 16.47528}
+2026-11-17 03:31:25 {"nav": 0.35547, "edge": 0.92944, "switch": 9e-05, "skipped_updates": 0, "epoch": 14, "gate_mode": "soft", "lam_E": 0.00842, "sec": 16.52754}
+2026-11-17 03:31:42 {"nav": 0.35547, "edge": 0.89221, "switch": 0.00011, "skipped_updates": 0, "epoch": 15, "gate_mode": "soft", "lam_E": 0.01209, "sec": 16.65586}
+2026-11-17 03:31:58 {"nav": 0.35547, "edge": 0.84644, "switch": 0.00014, "skipped_updates": 0, "epoch": 16, "gate_mode": "soft", "lam_E": 0.01575, "sec": 16.70647}
+2026-11-17 03:32:15 {"nav": 0.35552, "edge": 0.7955, "switch": 0.00035, "skipped_updates": 0, "epoch": 17, "gate_mode": "soft", "lam_E": 0.01941, "sec": 16.66318}
+2026-11-17 03:32:32 {"nav": 0.35548, "edge": 0.71368, "switch": 0.00012, "skipped_updates": 0, "epoch": 18, "gate_mode": "soft", "lam_E": 0.02308, "sec": 16.79388}
+2026-11-17 03:32:49 {"nav": 0.35545, "edge": 0.50401, "switch": 0.00033, "skipped_updates": 0, "epoch": 19, "gate_mode": "soft", "lam_E": 0.02674, "sec": 16.88623}
+2026-11-17 03:33:05 {"nav": 0.35548, "edge": 0.33225, "switch": 0.00043, "skipped_updates": 0, "epoch": 20, "gate_mode": "soft", "lam_E": 0.0304, "sec": 16.54289}
+2026-11-17 03:33:19 {"nav": 0.35551, "edge": 0.41454, "switch": 0.00244, "skipped_updates": 0, "epoch": 21, "gate_mode": "soft", "lam_E": 0.03407, "sec": 13.41371}
+2026-11-17 03:33:32 {"nav": 0.35551, "edge": 0.44895, "switch": 0.00022, "skipped_updates": 0, "epoch": 22, "gate_mode": "soft", "lam_E": 0.03773, "sec": 13.46852}
+2026-11-17 03:33:47 {"nav": 0.35546, "edge": 0.39759, "switch": 8e-05, "skipped_updates": 0, "epoch": 23, "gate_mode": "soft", "lam_E": 0.04139, "sec": 15.0615}
+2026-11-17 03:34:04 {"nav": 0.35547, "edge": 0.34892, "switch": 0.00017, "skipped_updates": 0, "epoch": 24, "gate_mode": "soft", "lam_E": 0.04505, "sec": 16.67001}
+2026-11-17 03:34:21 {"nav": 0.35549, "edge": 0.33926, "switch": 0.00013, "skipped_updates": 0, "epoch": 25, "gate_mode": "soft", "lam_E": 0.04872, "sec": 16.70874}
+2026-11-17 03:34:38 {"nav": 0.35554, "edge": 0.33241, "switch": 0.00015, "skipped_updates": 0, "epoch": 26, "gate_mode": "soft", "lam_E": 0.05238, "sec": 17.04478}
+2026-11-17 03:34:55 {"nav": 0.35553, "edge": 0.32427, "switch": 0.00012, "skipped_updates": 0, "epoch": 27, "gate_mode": "soft", "lam_E": 0.05604, "sec": 16.86522}
+2026-11-17 03:35:12 {"nav": 0.35551, "edge": 0.31112, "switch": 5e-05, "skipped_updates": 0, "epoch": 28, "gate_mode": "soft", "lam_E": 0.05971, "sec": 17.05116}
+2026-11-17 03:35:28 {"nav": 0.3555, "edge": 0.30414, "switch": 5e-05, "skipped_updates": 0, "epoch": 29, "gate_mode": "soft", "lam_E": 0.06337, "sec": 16.78769}
+2026-11-17 03:35:45 {"nav": 0.35548, "edge": 0.30271, "switch": 2e-05, "skipped_updates": 0, "epoch": 30, "gate_mode": "soft", "lam_E": 0.06703, "sec": 16.75721}
+2026-11-17 03:36:02 {"nav": 0.35547, "edge": 0.30158, "switch": 2e-05, "skipped_updates": 0, "epoch": 31, "gate_mode": "soft", "lam_E": 0.0707, "sec": 16.72721}
+2026-11-17 03:36:18 {"nav": 0.35546, "edge": 0.30082, "switch": 2e-05, "skipped_updates": 0, "epoch": 32, "gate_mode": "soft", "lam_E": 0.07436, "sec": 16.46201}
+2026-11-17 03:36:35 {"nav": 0.35546, "edge": 0.30039, "switch": 2e-05, "skipped_updates": 0, "epoch": 33, "gate_mode": "soft", "lam_E": 0.07802, "sec": 16.57906}
+2026-11-17 03:36:52 {"nav": 0.35545, "edge": 0.30005, "switch": 2e-05, "skipped_updates": 0, "epoch": 34, "gate_mode": "soft", "lam_E": 0.08168, "sec": 16.63513}
+2026-11-17 03:37:08 {"nav": 0.35544, "edge": 0.29977, "switch": 2e-05, "skipped_updates": 0, "epoch": 35, "gate_mode": "soft", "lam_E": 0.08535, "sec": 16.43547}
+2026-11-17 03:37:25 {"nav": 0.35543, "edge": 0.29952, "switch": 3e-05, "skipped_updates": 0, "epoch": 36, "gate_mode": "soft", "lam_E": 0.08901, "sec": 16.54001}
+2026-11-17 03:37:41 {"nav": 0.35543, "edge": 0.29932, "switch": 3e-05, "skipped_updates": 0, "epoch": 37, "gate_mode": "soft", "lam_E": 0.09267, "sec": 16.43335}
+2026-11-17 03:37:58 {"nav": 0.35542, "edge": 0.29912, "switch": 3e-05, "skipped_updates": 0, "epoch": 38, "gate_mode": "soft", "lam_E": 0.09634, "sec": 16.61596}
+2026-11-17 03:38:14 {"nav": 0.35541, "edge": 0.29893, "switch": 3e-05, "skipped_updates": 0, "epoch": 39, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.86086}
+2026-11-17 03:38:27 prune: 53 gated edges, 29 rarely used (< 0.05)
+2026-11-17 03:42:03 prune: kept 24 / 53 gated edges
+2026-11-17 03:42:18 {"skipped_update": {"chunk_start": 3000, "phase": "soft", "loss_finite": true, "terms": [0.24512523412704468, 0.6336618661880493, 6.003207317917258e-07], "nonfinite_grads": []}}
+2026-11-17 03:42:18 {"skipped_update": {"chunk_start": 3200, "phase": "soft", "loss_finite": true, "terms": [0.1827990710735321, 0.6343613266944885, 5.23919879924506e-07], "nonfinite_grads": []}}
+2026-11-17 03:42:19 {"skipped_update": {"chunk_start": 3400, "phase": "soft", "loss_finite": true, "terms": [0.2283155620098114, 0.6337070465087891, 6.529703568958212e-07], "nonfinite_grads": []}}
+2026-11-17 03:42:19 {"nav": 0.35548, "edge": 0.59989, "switch": 5e-05, "skipped_updates": 3, "epoch": 0, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.58706}
+2026-11-17 03:42:36 {"nav": 0.35543, "edge": 0.64964, "switch": 5e-05, "skipped_updates": 0, "epoch": 1, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.67918}
+2026-11-17 03:42:53 {"nav": 0.35529, "edge": 0.65151, "switch": 0.00011, "skipped_updates": 0, "epoch": 2, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.60782}
+2026-11-17 03:43:09 {"nav": 0.35851, "edge": 0.65161, "switch": 0.00022, "skipped_updates": 0, "epoch": 3, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.60111}
+2026-11-17 03:43:26 {"nav": 0.35536, "edge": 0.65114, "switch": 3e-05, "skipped_updates": 0, "epoch": 4, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.64845}
+2026-11-17 03:43:43 {"nav": 0.35533, "edge": 0.65098, "switch": 4e-05, "skipped_updates": 0, "epoch": 5, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.69026}
+2026-11-17 03:43:59 {"nav": 0.52424, "edge": 0.65717, "switch": 0.00023, "skipped_updates": 0, "epoch": 6, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.58011}
+2026-11-17 03:44:16 {"nav": 0.3555, "edge": 0.67272, "switch": 2e-05, "skipped_updates": 0, "epoch": 7, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.69876}
+2026-11-17 03:44:33 {"nav": 0.35548, "edge": 0.64682, "switch": 0.0001, "skipped_updates": 0, "epoch": 8, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.66531}
+2026-11-17 03:44:45 {"nav": 0.35566, "edge": 0.58126, "switch": 0.00152, "skipped_updates": 0, "epoch": 9, "gate_mode": "soft", "lam_E": 0.1, "sec": 11.901}
+2026-11-17 03:44:48 {"skipped_update": {"chunk_start": 800, "phase": "hard_st", "loss_finite": true, "terms": [0.3587360382080078, 0.402294784784317, 0.00023500784300267696], "nonfinite_grads": []}}
+2026-11-17 03:44:48 {"skipped_update": {"chunk_start": 1000, "phase": "hard_st", "loss_finite": true, "terms": [1.849457025527954, 0.3878290057182312, 0.0006709368899464607], "nonfinite_grads": []}}
+2026-11-17 03:44:50 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.4076732397079468, 0.360315203666687, 0.001753403921611607], "nonfinite_grads": ["w_in", "b_in", "gru_wi", "gru_wh", "gru_bi", "gru_bh", "U", "V"]}}
+2026-11-17 03:44:51 {"skipped_update": {"chunk_start": 1600, "phase": "hard_st", "loss_finite": true, "terms": [0.41324350237846375, 0.36006924510002136, 0.0013502183137461543], "nonfinite_grads": []}}
+2026-11-17 03:44:52 {"skipped_update": {"chunk_start": 1800, "phase": "hard_st", "loss_finite": true, "terms": [0.596644937992096, 0.3614218831062317, 0.0012064225738868117], "nonfinite_grads": []}}
+2026-11-17 03:44:52 {"skipped_update": {"chunk_start": 2000, "phase": "hard_st", "loss_finite": true, "terms": [0.37883469462394714, 0.3635689616203308, 0.0014275943394750357], "nonfinite_grads": []}}
+2026-11-17 03:44:58 {"nav": 0.35799, "edge": 0.37421, "switch": 0.00469, "skipped_updates": 6, "epoch": 10, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 13.85791}
+2026-11-17 03:45:05 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.4078172743320465, 0.3735349774360657, 0.00040636371704749763], "nonfinite_grads": []}}
+2026-11-17 03:45:06 {"skipped_update": {"chunk_start": 1600, "phase": "hard_st", "loss_finite": true, "terms": [0.41192808747291565, 0.3715689480304718, 0.0005259286263026297], "nonfinite_grads": []}}
+2026-11-17 03:45:07 {"skipped_update": {"chunk_start": 1800, "phase": "hard_st", "loss_finite": true, "terms": [0.5917999744415283, 0.3617898225784302, 0.0003348340978845954], "nonfinite_grads": []}}
+2026-11-17 03:45:14 {"nav": 0.35666, "edge": 0.34673, "switch": 0.00148, "skipped_updates": 3, "epoch": 11, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 15.98994}
+2026-11-17 03:45:16 {"skipped_update": {"chunk_start": 200, "phase": "hard_st", "loss_finite": true, "terms": [0.07312082499265671, 0.22540690004825592, 0.0007237267564050853], "nonfinite_grads": []}}
+2026-11-17 03:45:18 {"skipped_update": {"chunk_start": 600, "phase": "hard_st", "loss_finite": true, "terms": [0.10586588829755783, 0.28226009011268616, 0.0010929377749562263], "nonfinite_grads": []}}
+2026-11-17 03:45:19 {"skipped_update": {"chunk_start": 800, "phase": "hard_st", "loss_finite": true, "terms": [0.35889145731925964, 0.2940015196800232, 0.0005081386188976467], "nonfinite_grads": []}}
+2026-11-17 03:45:22 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.40780553221702576, 0.27154040336608887, 0.0004708677006419748], "nonfinite_grads": []}}
+2026-11-17 03:45:23 {"skipped_update": {"chunk_start": 1600, "phase": "hard_st", "loss_finite": true, "terms": [0.412091463804245, 0.2718363404273987, 0.0005720077897422016], "nonfinite_grads": []}}
+2026-11-17 03:45:24 {"skipped_update": {"chunk_start": 1800, "phase": "hard_st", "loss_finite": true, "terms": [0.5921168923377991, 0.27229976654052734, 0.0006622810615226626], "nonfinite_grads": []}}
+2026-11-17 03:45:31 {"nav": 0.3556, "edge": 0.26466, "switch": 0.00137, "skipped_updates": 6, "epoch": 12, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.93262}
+2026-11-17 03:45:36 {"skipped_update": {"chunk_start": 800, "phase": "hard_st", "loss_finite": true, "terms": [0.3598482608795166, 0.2377486675977707, 0.0026114191859960556], "nonfinite_grads": []}}
+2026-11-17 03:45:39 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.4080345928668976, 0.23120860755443573, 0.0007590798195451498], "nonfinite_grads": []}}
+2026-11-17 03:45:40 {"skipped_update": {"chunk_start": 1600, "phase": "hard_st", "loss_finite": true, "terms": [0.4123290181159973, 0.2319646030664444, 0.000931752729229629], "nonfinite_grads": []}}
+2026-11-17 03:45:41 {"skipped_update": {"chunk_start": 1800, "phase": "hard_st", "loss_finite": true, "terms": [0.5915380716323853, 0.23453505337238312, 0.0009207653347402811], "nonfinite_grads": []}}
+2026-11-17 03:45:48 {"nav": 0.35598, "edge": 0.22331, "switch": 0.00112, "skipped_updates": 4, "epoch": 13, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.9767}
+2026-11-17 03:45:53 {"skipped_update": {"chunk_start": 800, "phase": "hard_st", "loss_finite": true, "terms": [0.35871124267578125, 0.2325202077627182, 9.023713937494904e-05], "nonfinite_grads": []}}
+2026-11-17 03:45:54 {"skipped_update": {"chunk_start": 1000, "phase": "hard_st", "loss_finite": true, "terms": [1.849377989768982, 0.22745287418365479, 7.362984615610912e-05], "nonfinite_grads": []}}
+2026-11-17 03:45:56 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.4077356457710266, 0.22214841842651367, 4.18050040025264e-05], "nonfinite_grads": []}}
+2026-11-17 03:46:05 {"nav": 0.35548, "edge": 0.21271, "switch": 5e-05, "skipped_updates": 3, "epoch": 14, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.9491}
+2026-11-17 03:46:11 {"skipped_update": {"chunk_start": 1000, "phase": "hard_st", "loss_finite": true, "terms": [1.849385380744934, 0.21088548004627228, 1.381689162371913e-05], "nonfinite_grads": []}}
+2026-11-17 03:46:12 {"skipped_update": {"chunk_start": 1200, "phase": "hard_st", "loss_finite": true, "terms": [0.31346485018730164, 0.20952638983726501, 1.746377893141471e-05], "nonfinite_grads": ["w_in", "b_in", "gru_wi", "gru_wh", "gru_bi", "gru_bh", "U", "V"]}}
+2026-11-17 03:46:13 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.40790989995002747, 0.20928415656089783, 1.5161424016696401e-05], "nonfinite_grads": ["w_in", "b_in", "gru_wi", "gru_wh", "gru_bi", "gru_bh", "U", "V"]}}
+2026-11-17 03:46:14 {"skipped_update": {"chunk_start": 1600, "phase": "hard_st", "loss_finite": true, "terms": [0.4117784798145294, 0.21146263182163239, 1.458049337088596e-05], "nonfinite_grads": []}}
+2026-11-17 03:46:15 {"skipped_update": {"chunk_start": 1800, "phase": "hard_st", "loss_finite": true, "terms": [0.5911458730697632, 0.21254657208919525, 1.3325776308192872e-05], "nonfinite_grads": ["w_in", "b_in", "gru_wi", "gru_wh", "gru_bi", "gru_bh", "U", "V"]}}
+2026-11-17 03:46:15 {"skipped_update": {"chunk_start": 2000, "phase": "hard_st", "loss_finite": true, "terms": [0.3758662939071655, 0.21492396295070648, 2.4085560653475113e-05], "nonfinite_grads": ["w_in", "b_in", "gru_wi", "gru_wh", "gru_bi", "gru_bh", "U", "V"]}}
+2026-11-17 03:46:23 {"nav": 0.3555, "edge": 0.20326, "switch": 2e-05, "skipped_updates": 6, "epoch": 15, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 17.32804}
+2026-11-17 03:46:28 {"skipped_update": {"chunk_start": 1000, "phase": "hard_st", "loss_finite": true, "terms": [1.849590539932251, 0.18578669428825378, 2.0812422008020803e-05], "nonfinite_grads": []}}
+2026-11-17 03:46:40 {"nav": 0.3559, "edge": 0.18548, "switch": 2e-05, "skipped_updates": 1, "epoch": 16, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.97856}
+2026-11-17 03:46:46 {"skipped_update": {"chunk_start": 1200, "phase": "hard_st", "loss_finite": true, "terms": [0.3134281635284424, 0.1970185935497284, 1.8724942947301315e-06], "nonfinite_grads": []}}
+2026-11-17 03:46:47 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.4077431559562683, 0.1959158331155777, 2.6042027911898913e-06], "nonfinite_grads": []}}
+2026-11-17 03:46:57 {"nav": 0.35546, "edge": 0.19307, "switch": 0.0, "skipped_updates": 2, "epoch": 17, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 17.12276}
+2026-11-17 03:47:13 {"nav": 0.35547, "edge": 0.18443, "switch": 0.0, "skipped_updates": 0, "epoch": 18, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.60396}
+2026-11-17 03:47:19 {"skipped_update": {"chunk_start": 1000, "phase": "hard_st", "loss_finite": true, "terms": [1.849374771118164, 0.1529455929994583, 5.759004125138745e-06], "nonfinite_grads": []}}
+2026-11-17 03:47:21 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.4077731668949127, 0.14104744791984558, 4.803778665518621e-06], "nonfinite_grads": []}}
+2026-11-17 03:47:23 {"skipped_update": {"chunk_start": 1800, "phase": "hard_st", "loss_finite": true, "terms": [0.5911107063293457, 0.13697543740272522, 1.0193703019467648e-05], "nonfinite_grads": []}}
+2026-11-17 03:47:30 {"nav": 0.35548, "edge": 0.14059, "switch": 1e-05, "skipped_updates": 3, "epoch": 19, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.78909}
+2026-11-17 03:48:14 select tuned: margin 0.0 dwell 2.0 -> rmse 0.870 switches 1.27
+2026-11-17 03:48:28 rgcn_dyn seed 0: val rmse 0.870 avail 0.978 switches 1.27 train 20.2 min

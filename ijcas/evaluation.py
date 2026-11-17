@@ -42,7 +42,7 @@ def load_run(run_dir: str | Path) -> dict:
     rec = np.load(run / "record.npz")
     gt = np.load(run / "gt.npz")["gt"]
     tracks = {}
-    for name in ("openvins", "glim", "px4"):
+    for name in ("openvins", "fastlio", "px4"):
         a = rec[f"odom_{name}"]
         if a.size == 0:
             tracks[name] = None

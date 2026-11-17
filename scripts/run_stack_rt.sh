@@ -16,10 +16,10 @@ SELECTOR=${SELECTOR:-ontology}
 WORLD=${WORLD:-$IJCAS_ROOT/isaac/ijcas_world.py}
 [[ "$WORLD" = /* ]] || WORLD="$IJCAS_ROOT/$WORLD"
 OV_BIN=$IJCAS_WS/install/ov_msckf/lib/ov_msckf/run_subscribe_msckf
-GLIM_BIN=$GLIM_ROOT/opt/ros/humble/lib/glim_ros/glim_rosnode
+LIO_BIN=$IJCAS_WS/install/fast_lio/lib/fast_lio/fastlio_mapping
 # patterns anchored at the start of a process command line (a shell whose command text merely
 # mentions these paths must not match)
-for pat in "^$OV_BIN" "^$GLIM_BIN" "^$ISAACSIM_PATH/kit/python/bin/python3 $IJCAS_ROOT/isaac/ijcas_world" \
+for pat in "^$OV_BIN" "^$LIO_BIN" "^$ISAACSIM_PATH/kit/python/bin/python3 $IJCAS_ROOT/isaac/ijcas_world" \
            "^python3 $IJCAS_ROOT/ros2/"; do
   if pgrep -f "$pat" >/dev/null; then echo "refusing: '$pat' is still running" >&2; exit 1; fi
 done
@@ -38,8 +38,8 @@ trap stop_all EXIT
 start "$out/agent.log" "$XRCE_AGENT" udp4 -p 8888
 start "$out/openvins.log" "$OV_BIN" --ros-args -r __ns:=/ov_msckf \
   -p config_path:="$IJCAS_ROOT/config/engines/openvins/estimator_config.yaml" -p use_sim_time:=true
-start "$out/glim.log" "$GLIM_BIN" --ros-args -p config_path:="$IJCAS_ROOT/config/engines/glim" \
-  -p use_sim_time:=true
+start "$out/fastlio.log" "$LIO_BIN" --ros-args --params-file "$IJCAS_ROOT/config/engines/fast_lio/ijcas.yaml" \
+  -r /Odometry:=/fast_lio/odom -p use_sim_time:=true
 if [[ -f "$IJCAS_ROOT/ros2/context_monitor.py" ]]; then
   start "$out/context_monitor.log" python3 "$IJCAS_ROOT/ros2/context_monitor.py"
 fi
@@ -53,7 +53,7 @@ sleep 3
 args=(--scenario "$scenario" --scene "$scene" --seed "$seed" --out "$out")
 [[ -n "$dur" ]] && args+=(--duration "$dur")
 args+=("${extra[@]}")
-( sleep 90; { ros2 node info /ov_msckf/run_subscribe_msckf 2>/dev/null; ros2 node info /glim_ros 2>/dev/null
+( sleep 90; { ros2 node info /ov_msckf/run_subscribe_msckf 2>/dev/null; ros2 node info /laser_mapping 2>/dev/null
               ros2 node info /ijcas_context_monitor 2>/dev/null; ros2 node list 2>/dev/null; } \
               > "$out/subscriptions.txt" ) &
 "$IJCAS_ROOT/isaac/run_isaac.sh" "$WORLD" "${args[@]}" \

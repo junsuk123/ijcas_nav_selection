@@ -98,15 +98,15 @@ class FlatRules:
                 s = self._align(s, alignment.get("openvins"), t, stale_alignment_s)
             cs.append(s)
         states["openvins"] = worst([st] + cs + ([imu] if imu != USABLE else []))
-        # GLIM -------------------------------------------------------------------------------
-        st = gate("glim", ["Inertial", "LidarStructure"])
+        # FAST_LIO -------------------------------------------------------------------------------
+        st = gate("fastlio", ["Inertial", "LidarStructure"])
         cs = []
         for cap in caps:
             s = ms["LidarStructure"]
             if cap == "GlobalPosition":
-                s = self._align(s, alignment.get("glim"), t, stale_alignment_s)
+                s = self._align(s, alignment.get("fastlio"), t, stale_alignment_s)
             cs.append(s)
-        states["glim"] = worst([st] + cs + ([imu] if imu != USABLE else []))
+        states["fastlio"] = worst([st] + cs + ([imu] if imu != USABLE else []))
         # INS dead reckoning --------------------------------------------------------------------
         st = gate("ins_dr", ["Inertial"])
         cs = []

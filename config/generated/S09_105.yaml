@@ -1,0 +1,27 @@
+id: S09
+seed: 105
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: position_bias
+  start_s: 69.1
+  end_s: 119.1
+  params:
+    vector_m:
+    - 4.0
+    - -4.0
+    - 0.0
+    ramp_s: 8.0
+- target: lidar
+  kind: dropout
+  start_s: 84.1
+  end_s: 114.1
+  params:
+    fraction: 0.95
+variant:
+  combo: gnss_bias+lidar_dropout
+scene: office

@@ -62,4 +62,4 @@ selection:
   alignment_window_s: 30.0
   alignment_min_path_m: 10.0
   alignment_stale_s: 30.0                           # frozen alignment older than this -> limited+
-  local_drift_rate: {openvins: 0.02, glim: 0.004}   # m per m flown (G2: VIO 0.6-1.8 %, LIO 0.25 %)
+  local_drift_rate: {openvins: 0.02, fastlio: 0.004}   # m per m flown (G2: VIO 0.6-1.8 %, LIO 0.25 %)

@@ -11,7 +11,8 @@ faults:
   start_s: 46.3
   end_s: 86.3
   params:
-    max_m: 4.0
+    max_m: 3.0
 variant:
   lidar: range_limit
+  level: 3.0
 scene: open_field

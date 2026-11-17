@@ -61,7 +61,7 @@ def main():
                                                np.zeros(3), np.array([0, 0, 0, 1.0]), np.zeros(3))
         sig = signals(snap)
         al = {c: FakeAlign(bool(rng.random() < 0.7), t - rng.choice([0.0, 2.0, 40.0]))
-              for c in ("openvins", "glim", "ins_dr")}
+              for c in ("openvins", "fastlio", "ins_dr")}
         for task in ("GlobalWaypoint", "LocalFlight", "HeightHold"):
             so, _, _ = onto.evaluate(task, sig, t, snap.outputs, al, 30.0)
             sf, _, _ = flat.evaluate(task, sig, t, snap.outputs, al, 30.0)
