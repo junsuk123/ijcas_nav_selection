@@ -22,7 +22,8 @@
 
 1. **[구현] 의존 관계와 후보 제외가 서로 다른 곳에 구현돼 있다.**
    - 온톨로지의 필수 입력(`requiresEssential`)은 Ontology-K에서만 후보 제외로 이어진다.
-   - 학습 선택기의 적격성은 `features.py`에 따로 구현돼 있다. 여기에는 IMU 상태 검사가 없다.
+   - 학습 선택기의 적격성은 `features.py`에 따로 구현돼 있다. 기준 커밋에는 IMU 상태 검사가 없었다.
+     2026-11-18에 IMU 수신 검사를 모든 선택기에 추가했다(7.6절).
    - R-GAT의 '보호 간선'은 메시지 전달 경로일 뿐, 후보 제외와는 관계가 없다.
 2. **[구현] R-GAT의 '환경 노드'에는 실제 환경 정보가 없다.**
    - 영상 밝기, 점군 고유값 비, 수신기가 보고한 σ, IMU 통계처럼 센서 자료에서 계산한 진단값이 들어 있다.
@@ -674,7 +675,7 @@ flowchart LR
 | [ijcas/knowledge/checks.py](../ijcas/knowledge/checks.py) | SPARQL 무결성 검사 | SHACL 검증 추가. 기존 검사를 v2 질의로 옮긴다. | — | 없음 |
 | [config/selector/thresholds_validated.yaml](../config/selector/thresholds_validated.yaml) | 지표 임계(동결) | 원본은 YAML로 유지한다. RDF 프로파일 생성기, 판·해시를 추가한다. | 값이 같으면 동작도 같다 | 없음 |
 | [ijcas/selector/common.py](../ijcas/selector/common.py) | `signals()`, `indicator_state()` | `signals()`는 `ObservationRecord`를 돌려준다(값·3시각·절차 판·상태). `indicator_state()`는 `evaluate_criterion()`으로 바꾼다(Pass·Fail·Undetermined + 근거 상태). `skip`은 'not_evaluated'로 기록한다. | 판정 결과는 그대로 둘 수 있다. 기록만 달라진다. | 같은 결과인지 확인하는 시험 |
-| `ijcas/selector/eligibility.py` (신규) | — | `EligibilityGate.evaluate(t, records) -> {cand: EligibilityResult}`. 프로파일 정책에서 생성한다. `CandidateBank`·`SelectionEngine`·`HealthFsm`·`Oracle`·`Fixed`가 함께 쓴다. | 학습 경로와 규칙 경로의 적격성이 같아진다. | 규칙 비교 재평가. IMU 수신 검사를 넣으면 학습 변형 전부 재학습 |
+| [ijcas/selector/eligibility.py](../ijcas/selector/eligibility.py) | 2026-11-18 신설. 현재는 `ImuReception`(IMU 수신 검사)만 있다. | `EligibilityGate.evaluate(t, records) -> {cand: EligibilityResult}`. 프로파일 정책에서 생성한다. `CandidateBank`·`SelectionEngine`·`HealthFsm`·`Oracle`·`Fixed`가 함께 쓴다. | 학습 경로와 규칙 경로의 적격성이 같아진다. | 규칙 비교 재평가. IMU 수신 검사를 넣으면 학습 변형 전부 재학습 |
 | [ijcas/selector/engine.py](../ijcas/selector/engine.py) | `SelectionEngine`, 비교 방법, `DrAnchor`, 정렬 | 적격성은 관문에 맡긴다. INS 기준점 정책을 하나로 정한다(프로파일 항목). 정렬 인스턴스를 공유한다. 판단 기록을 남긴다. 하드코딩한 후보 맵은 nav 정의에서 생성한다. | Ontology-K·H-FSM의 기준점·주기·적격성이 바뀐다. | 재평가 |
 | [ijcas/selector/ontology.py](../ijcas/selector/ontology.py) | TTL 컴파일, R01–R10 상태 | v2 질의로 옮긴다. `requiresInput` → 수신 검사 항목, `frameKind`·`referencedBy` → 정렬 요구. `EnvironmentContext`는 환경 모듈로 옮긴다. | — | 재평가 |
 | [ijcas/selector/facts.py](../ijcas/selector/facts.py) | 수신 시각 기준 스냅샷 | `Snapshot.records` 추가 | 없음 | 없음 |
@@ -736,8 +737,7 @@ class SelectionResult:            # nav:SelectionResult
 ### 7.3 기존 동작과의 차이 (요약)
 
 - 학습 경로와 규칙 경로의 적격성이 하나로 같아진다.
-  - IMU 수신 검사를 넣을지는 사용자가 결정한다.
-  - 넣으면 IMU 결함 구간에서 정상 후보가 모두 빠지고 INS 제한 모드나 '유효 항법 없음'이 늘어난다.
+  - IMU 수신 검사는 2026-11-18에 채택·구현했다(7.6절). IMU가 수신되지 않는 동안에는 정상 후보와 INS가 모두 빠져 '유효 항법 없음'이 된다.
 - 규칙 비교가 20 Hz, 같은 INS 기준점, 같은 정렬 인스턴스로 돈다. 그래서 기존 Ontology-K·H-FSM 수치가 바뀐다.
 - 진단 기록에서 계산 불가가 0.0이 아니라 상태로 남는다. 학습 입력도 바뀐다.
 - 판단마다 근거 기록 ID가 남는다.
@@ -747,7 +747,7 @@ class SelectionResult:            # nav:SelectionResult
 
 | 변경 | 재학습 | 재평가 | 비고 |
 |---|---|---|---|
-| 적격성 관문 통일 | 학습 경로 정책이 그대로면 불필요. IMU 검사를 넣거나 기준을 바꾸면 필요(학습 목표의 정의역 `valid`가 바뀜). | 필요 | 비교 조건 통일 효과는 검증 세트에서만 본다. |
+| 적격성 관문 통일 | 학습 경로 정책이 그대로면 불필요. 기준을 바꾸면 필요(학습 목표의 정의역 `valid`가 바뀜). IMU 수신 검사는 기존 기록에서 `valid`를 바꾸지 않아 불필요했다(7.6절). | 필요 | 비교 조건 통일 효과는 검증 세트에서만 본다. |
 | 고유값 비 결측 처리, 진단 상태 필드 | 필요(입력 분포가 바뀜, 정규화 재적합) | 필요 | — |
 | 노드·간선 이름만 변경 | 불필요 | 불필요 | `structure.json`·FROZEN 해시 대응표 |
 | 관계 유형 분리(필수와 선택) | 필요 | 필요 | 관계별 가중치 수가 바뀐다. |
@@ -767,6 +767,44 @@ class SelectionResult:            # nav:SelectionResult
    - [미확인] 항목(자동 노출, 창고 광원, 충돌 형상, LiDAR 최대 거리)을 여기서 확인한다.
 4. **수집과 평가**
    - 사전 등록 → 수집 → 재학습 → 검증 → 동결 → 시험 1회.
+
+### 7.6 결정 기록
+
+**2026-11-18: 적격성에 IMU 수신 검사 추가 (사용자 결정) [구현] [검증]**
+
+- **기준:** 선택기가 판단 시점까지 받은 IMU 표본이 최근 1 s에 150 Hz 이상이어야 한다.
+  - 선택기가 1 s 미만 동작했으면 경과 시간으로 나눈다.
+  - 값은 동결 지표 `imu_rate`(150 Hz 미만이면 사용 불가, 1 s 유효)와 같다.
+  - 수신 검사일 뿐이며 IMU 품질(포화, 바이어스, 시각 오프셋)은 판정하지 않는다.
+- **적용 범위:** 네 후보 모두와 INS 대체 출력에 적용한다.
+  - 공용 모듈: [eligibility.py](../ijcas/selector/eligibility.py)
+  - 사용처: [features.py](../ijcas/rgat/features.py) `CandidateBank`(학습 선택기·Oracle·F-\*의 `valid`), [engine.py](../ijcas/selector/engine.py)의 `SelectionEngine`(Ontology-K)·`HealthFsm`·`Fixed`·`Oracle`
+  - 온라인 노드는 `SelectionEngine`·`HealthFsm`·`Fixed`를 쓰므로 같은 검사를 따른다.
+- **반응 시간:** IMU가 끊기면 0.3 s 안에 적격이 사라진다(시험 `tests/test_eligibility.py`: 0.25 s까지는 유지, 0.35 s부터 불충족).
+- **기존 기록에 대한 영향(성능은 다시 계산하지 않음):**
+  - 검증 기록 100건을 새 코드로 다시 만들었다. 66개 배열(입력·적격 마스크·규칙 비교 출력)이 모두 비트 단위로 같았다.
+  - 시험 기록 330건은 적격 마스크와 IMU 시각만 대조했다. 바뀌는 시점은 S01_109의 t = 1.45 s 한 곳이다(평가 구간 밖).
+  - 평가 구간의 최저 수신 주기는 194 Hz였다.
+  - 따라서 재학습은 필요 없었다. 기존 결과는 이 정책에서도 인용할 수 있다.
+  - 이 검사는 S10 IMU 결함을 걸러내지 못한다. S10은 수신 결함이 아니라 품질 결함이기 때문이다.
+**2026-11-18: 적격성에 IMU 품질(포화) 검사 추가, v2 재실험 (사용자 결정) [구현] [진행 중]**
+
+- **기준:** IMU 진단의 포화 비율 > 0.05 보고가 1 s 이내면 포화로 본다. 정상 실행 390회에서 최대 0.000, 포화 결함 중 0.99였다.
+- **결과는 출력의 정의를 따른다(공용 모듈 [eligibility.py](../ijcas/selector/eligibility.py) `ImuSaturation`):**
+  - VIO·LIO(국소 출력): 정렬을 무효화한다. 포화가 끝난 뒤 적합 잔차 ≤ 1.5 m인 새 정렬이 있어야 적격이다.
+  - INS: 포화 이후에 잡은 고정점이 필요하다.
+  - GNSS/INS: GNSS가 출력 기준을 고정하므로 이 검사로 제외하지 않는다.
+- **넣지 않은 것:**
+  - 시각 오프셋: 검출은 되지만 후보 오차가 1 m 이하였다.
+  - 바이어스 계단: IMU 진단으로는 검출되지 않는다.
+- **재실험:** 사전 등록은 [RGAT_DESIGN_KO.md](RGAT_DESIGN_KO.md) 13절이다.
+  - 학습·검증 풀: 시드 1–10과 101–130(S09 제외)
+  - 층화 검증 분할: 시드 6, 9, 111, 112, 115, 125, 128, 130
+  - 시험2: 새 시드 201–230. 수집 중이며 1회만 평가한다.
+  - 시험2에서 (a) v1 모델 + v1 정책, (b) v1 모델 + v2 정책, (c) v2 모델 + v2 정책을 비교해 정책 효과와 재학습 효과를 나눈다.
+- **검증 풀에서 확인한 정책 동작(성능 평가 아님):**
+  - 포화 실행 9건 모두에서, 결함 뒤 발산한 채 적격이던 LIO(RMSE 10–31 m)가 다시 정렬돼 0.3–1.5 m가 됐다.
+  - 대신 포화 구간에서 GNSS/INS도 오염된 실행(13.8–23.7 m)에서는, 그 구간에 쓸 수 있는 후보가 더 나빠졌다.
 
 ---
 

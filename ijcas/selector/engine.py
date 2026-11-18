@@ -18,7 +18,7 @@ from ..baselines import InsDr, InsState
 from ..handover import Alignment
 from .common import (LIMITED, UNKNOWN, UNUSABLE, USABLE, CostModel, Decision, SwitchManager,
                      load_config, signals)
-from .eligibility import ImuReception
+from .eligibility import IMU_SAT_REALIGN_MAX_RESIDUAL_M, ImuReception, ImuSaturation
 
 GLOBAL_TASK = "GlobalWaypoint"
 # R08: the essential exteroceptive input of each local engine (ontology :requiresEssential).
@@ -117,6 +117,7 @@ class SelectionEngine:
         self.quality = quality or QualityModel(self.cfg)
         self.last_ms = {}
         self.imu_rx = ImuReception.from_cfg(self.cfg)
+        self.imu_sat = ImuSaturation.from_cfg(self.cfg)
 
     def imu_received(self, snap) -> bool:
         """IMU reception criterion shared by every selector (2026-11-18): the IMU is the essential
@@ -146,6 +147,15 @@ class SelectionEngine:
             out = snap.outputs.get(c)
             if ref_ok and out is not None and abs(out.stamp - ref.stamp) < 0.1:
                 al.add_pair(snap.t, out.pos, ref.pos)
+        # IMU quality (2026-11-18): a saturation report means the local engines' states may be
+        # corrupted -> their alignment is invalidated (re-established only after the saturation ends,
+        # and no witness role until mature again).  Called once per tick by every selector.
+        self.imu_sat.update(snap.t, snap.diag.get("imu"))
+        if self.imu_sat.active(snap.t):
+            for c, al in self.align.items():
+                if al.valid or al.pairs or al.yaw is not None:
+                    al.invalidate(snap.t, "imu_saturation")
+                al.require_residual_m = IMU_SAT_REALIGN_MAX_RESIDUAL_M
 
     def derived_signals(self, snap) -> dict:
         """Cross-source consistency (R02).  Each causally aligned local engine is a witness for
@@ -232,9 +242,14 @@ class SelectionEngine:
         if not imu_ok:
             for cid in states:
                 reasons.setdefault(cid, []).append(self.imu_rx.reason(snap.t))
+        ins_clean = self.imu_sat.clean_since(self.dr.anchor_t)
+        if not ins_clean and "ins_dr" in states:
+            reasons.setdefault("ins_dr", []).append("imu_saturation:anchor_before_saturation")
         costs, eligible = {}, {}
         for cid, st in states.items():
             if not imu_ok or st not in (USABLE, LIMITED):
+                continue
+            if cid == "ins_dr" and not ins_clean:
                 continue
             if self.global_state(cid, snap) is None and self.task == GLOBAL_TASK:
                 continue
@@ -301,7 +316,7 @@ class HealthFsm:
                 sel = cid
                 break
         mode = "normal"
-        if sel is None and e.dr.valid and imu_ok:
+        if sel is None and e.dr.valid and imu_ok and e.imu_sat.clean_since(e.dr.anchor_t):
             sel, mode = "ins_dr", "limited_dr"
         elif sel is None:
             mode = "no_valid_nav"

@@ -54,3 +54,69 @@ class ImuReception:
         r = self.rate(t)
         return (f"imu_reception:{r:.0f}Hz>={self.min_rate_hz:.0f}" if r >= self.min_rate_hz
                 else f"imu_reception:{r:.0f}Hz<{self.min_rate_hz:.0f}")
+
+
+IMU_SAT_FRAC = 0.05
+IMU_SAT_VALID_S = 1.0
+# re-alignment after a saturation is accepted only with a fit residual <= this (the 'mature'
+# alignment limit already used for GNSS witnesses, ijcas/handover.py Alignment.mature)
+IMU_SAT_REALIGN_MAX_RESIDUAL_M = 1.5
+
+
+class ImuSaturation:
+    """IMU quality criterion (adopted 2026-11-18, user decision): IMU saturation reported by the IMU
+    diagnostic (``saturation_frac`` = share of samples pinned at the window maximum on any axis, one
+    report per 0.5 s, ros2/context_monitor.py).  Saturated while a report with value > ``frac`` is at
+    most ``valid_s`` old.  Threshold: every healthy run of the v1 data (390 runs, t >= 20 s) reported
+    exactly 0.0; saturation-fault windows reach 0.99.
+
+    The consequence follows the output's definition (applied by the selectors, not here):
+      * output re-referenced by an absolute input (PX4 EKF2 global position <- GNSS): not excluded by
+        this check; its own GNSS conditions apply.
+      * local engines (VIO, LIO): their state may be corrupted, so their alignment is invalidated at
+        every saturation report (like R08's essential-input loss).  They need a new alignment after the
+        saturation ends whose fit residual is <= IMU_SAT_REALIGN_MAX_RESIDUAL_M (a diverged engine
+        cannot be fitted), and cannot testify against GNSS until that alignment is mature again.
+      * INS propagation: eligible only with an anchor taken after the last saturation report.
+    A missing or stale diagnostic leaves the state undetermined: this check then excludes nothing
+    (the IMU stream itself is checked by ImuReception).  Call ``update`` once per tick.
+    """
+
+    def __init__(self, frac: float = IMU_SAT_FRAC, valid_s: float = IMU_SAT_VALID_S, enabled: bool = False):
+        # Disabled by default since 2026-11-18 17:00: on test1 (seeds 101-130, post hoc) it raised the
+        # oracle RMSE 0.833 -> 1.321 m (docs/STOP_RECORD_20261118_KO.md).  Kept as an opt-in policy.
+        self.enabled = bool(enabled)
+        self.frac = float(frac)
+        self.valid_s = float(valid_s)
+        self.last_sat_t = float("-inf")       # source stamp of the latest saturated report
+        self.last_report_t = float("-inf")
+
+    @classmethod
+    def from_cfg(cls, cfg: dict | None) -> "ImuSaturation":
+        e = ((cfg or {}).get("eligibility") or {}).get("imu_saturation") or {}
+        return cls(e.get("frac", IMU_SAT_FRAC), e.get("valid_s", IMU_SAT_VALID_S), e.get("enabled", False))
+
+    def update(self, t: float, diag_imu) -> None:
+        """diag_imu: Snapshot.diag['imu'] = (payload, reception time) or None."""
+        if not diag_imu:
+            return
+        p = diag_imu[0]
+        st = float(p["t"])
+        self.last_report_t = max(self.last_report_t, st)
+        v = p.get("saturation_frac")
+        if v is not None and float(v) > self.frac:
+            self.last_sat_t = max(self.last_sat_t, st)
+
+    def active(self, t: float) -> bool:
+        return self.enabled and t - self.last_sat_t <= self.valid_s
+
+    def state(self, t: float) -> str:
+        if self.active(t):
+            return "saturated"
+        return "ok" if t - self.last_report_t <= self.valid_s else "undetermined"
+
+    def clean_since(self, anchor_t: float | None) -> bool:
+        """True if a state anchored at ``anchor_t`` was taken after the last saturation report."""
+        if not self.enabled:
+            return True
+        return anchor_t is not None and anchor_t > self.last_sat_t

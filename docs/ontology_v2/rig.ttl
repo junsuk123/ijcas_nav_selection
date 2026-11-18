@@ -43,6 +43,7 @@ rig:proc_fast_t20 a sosa:Procedure ; rdfs:comment "OpenCV FAST threshold=20 on c
 rig:proc_lidar_pca a sosa:Procedure ; rdfs:comment "voxel 0.7 m, k=12 local PCA normals; < 50 points -> not computable" .
 rig:proc_count_ov_points a sosa:Procedure ; rdfs:comment "points in /ov_msckf/points_msckf + points_slam" .
 rig:alignment_module a sosa:Sensor ; rdfs:comment "ijcas/handover.py Alignment (causal 4-DOF)" .
+rig:selector_input a sosa:Sensor ; rdfs:comment "선택기 입력 수신 감시(ijcas/selector/eligibility.py ImuReception)" .
 rig:git_878eac1 a core:Configuration ; rdfs:comment "code version" .
 
 # 후보 추정기 (설정 기준 구현)

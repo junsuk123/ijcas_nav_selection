@@ -1,0 +1,15 @@
+id: S01
+seed: 202
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: outage
+  start_s: 66.6
+  end_s: 96.6
+variant:
+  outage_s: 30.0
+scene: open_field

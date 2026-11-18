@@ -202,7 +202,7 @@ class RosIO:
 
     # --- odometry (PX4 estimate, ground truth) ----------------------------------------------
     def odometry(self, key: str, t: float, frame: str, child: str, pos, quat_xyzw, vel_world,
-                 body_rates=None):
+                 body_rates=None, pose_cov=None, twist_cov=None):
         m = self.msg["Odom"]()
         m.header.stamp = stamp(t)
         m.header.frame_id = frame
@@ -216,6 +216,10 @@ class RosIO:
         if body_rates is not None:
             m.twist.twist.angular.x, m.twist.twist.angular.y, m.twist.twist.angular.z = \
                 map(float, body_rates)
+        if pose_cov is not None:
+            m.pose.covariance = [float(v) for v in pose_cov]
+        if twist_cov is not None:
+            m.twist.covariance = [float(v) for v in twist_cov]
         self._send(key, m)
 
     def json(self, key: str, payload):

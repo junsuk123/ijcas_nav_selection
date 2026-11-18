@@ -31,12 +31,37 @@ from ijcas.rgat.learn import (infer, load_run, metrics_for_selection, metrics_ru
 DATA = Path(os.environ.get("IJCAS_DATA", Path.home() / "ijcas_data"))
 DS = DATA / "rgat" / "dataset"
 RES = ROOT / "results" / "rgat"
+VERSION = os.environ.get("IJCAS_RGAT_VERSION", "v1")
+POOL_SETS, TEST_SET, EXCLUDE, VAL_LABEL = ("validation",), "test", (), "val (validation seeds 8-10)"
+SCHED = None                                             # v1: one batch = all training runs
+if VERSION == "v2":
+    # v2 (2026-11-18, design 13): IMU quality eligibility.  Train/val pool = validation seeds 1-10 + the
+    # first test set 101-130 (used once for v1), without S09 (it stays the unseen scene of the new
+    # test); val = the pre-registered stratified seeds; test = test2 (seeds 201-230), once.
+    from ijcas.scenarios import TEST_SEEDS as _T1, VALIDATION_SEEDS as _V1
+    VAL2_SEEDS = (6, 9, 111, 112, 115, 125, 128, 130)  # pre-registered (design 13.2, tools/rgat_v2_split.py)
+    X.VAL_SEEDS = tuple(VAL2_SEEDS)
+    X.TRAIN_SEEDS = tuple(s for s in list(_V1) + list(_T1) if s not in X.VAL_SEEDS)
+    DS = DATA / "rgat" / "dataset_v2"
+    RES = ROOT / "results" / "rgat_v2"
+    POOL_SETS, TEST_SET, EXCLUDE = ("validation", "test"), "test2", ("S09",)
+    VAL_LABEL = f"val v2 (seeds {', '.join(map(str, X.VAL_SEEDS))})"
+    # 320 training runs do not fit one batch on the 8 GB GPU next to the simulator (B = 160 OOM,
+    # B = 80 peak 2.4 GB): minibatches of 80 -> 4 updates per epoch (design 13 change log).
+    SCHED = {"batch": 80}
+
+
+def pool_paths() -> list:
+    """Training/validation pool of the current version (split by seed in experiment.split)."""
+    return sorted(str(p) for s in POOL_SETS for p in (DS / s).glob("*.npz")
+                  if not p.stem.startswith(EXCLUDE))
 ORDER = ["rgat_dyn", "rgcn_dyn", "rgat_dense", "rgat_static", "rgat_nomem", "gru_flat",
          "cr_plain", "cr_e0", "cr_gstar", "cr_gstar_kd"]          # cr_*: retrieval selector (design 12)
 CODE = ["ijcas/rgat/graph.py", "ijcas/rgat/features.py", "ijcas/rgat/dataset.py",
         "ijcas/rgat/model.py", "ijcas/rgat/learn.py", "ijcas/rgat/experiment.py", "ijcas/rgat/retrieval.py",
         "config/selector/thresholds_validated.yaml", "ijcas/knowledge/ijcas_nav.ttl",
-        "ijcas/selector/engine.py", "ijcas/handover.py", "tools/rgat_run.py"]
+        "ijcas/selector/engine.py", "ijcas/handover.py", "tools/rgat_run.py",
+        "ijcas/selector/eligibility.py"]
 
 
 def sha(p: Path) -> str:
@@ -57,7 +82,7 @@ def logger(path: Path):
 
 # ------------------------------------------------------------------------------- train
 def cmd_train(a):
-    paths = sorted(str(p) for p in (DS / "validation").glob("*.npz"))
+    paths = pool_paths()
     assert paths, "no validation dataset"
     variants = a.variants.split(",")
     seeds = [int(s) for s in a.seeds.split(",")]
@@ -77,7 +102,7 @@ def cmd_train(a):
                 run_cr_variant(v, paths, out, seed=seed, device=a.device, structure_from=struct,
                                teacher_from=struct if v == "cr_gstar_kd" else None, log=log)
                 continue
-            X.run_variant(v, paths, out, seed=seed, device=a.device, structure_from=struct, log=log)
+            X.run_variant(v, paths, out, seed=seed, device=a.device, structure_from=struct, sched=SCHED, log=log)
 
 
 # ------------------------------------------------------------------------------- val summary
@@ -110,13 +135,13 @@ def cmd_val_summary(a):
                                for x in reps]
         rows[vdir.name] = r
     # rule-based / fixed / oracle on the same val runs
-    _, va_p = X.split(sorted(str(p) for p in (DS / "validation").glob("*.npz")))
+    _, va_p = X.split(pool_paths())
     va = [load_run(p) for p in va_p]
     base = baselines(va)
     out = {"learned": rows, "baselines": base}
     RES.mkdir(parents=True, exist_ok=True)
     (RES / "val_summary.json").write_text(json.dumps(out, indent=1))
-    (RES / "val_summary.md").write_text(render(out, "val (validation seeds 8-10)"))
+    (RES / "val_summary.md").write_text(render(out, VAL_LABEL))
     print((RES / "val_summary.md").read_text())
 
 
@@ -173,7 +198,7 @@ def cmd_freeze(a):
             if (d / f).exists():
                 models[str((d / f).relative_to(RES))] = sha(d / f)
     frozen = {"frozen_at": time.strftime("%F %T"), "code": files, "models": models,
-              "test_dataset_built_before_freeze": (DS / "test").exists()}
+              "test_dataset_built_before_freeze": (DS / TEST_SET).exists()}
     (RES / "FROZEN.json").write_text(json.dumps(frozen, indent=1))
     print(f"frozen {len(models)} model files, {len(files)} code/config files -> {RES / 'FROZEN.json'}")
 
@@ -189,25 +214,32 @@ def check_frozen():
 
 def cmd_test(a):
     check_frozen()
-    paths = sorted(str(p) for p in (DS / "test").glob("*.npz"))
+    paths = sorted(str(p) for p in (DS / TEST_SET).glob("*.npz"))
     assert paths, "no test dataset"
     runs = [load_run(p) for p in paths]
     out_dir = RES / "test"
     out_dir.mkdir(parents=True, exist_ok=True)
-    per_method, learned = {}, {}
-    for vdir in sorted((RES / "runs").glob("*")):
+    learned = eval_learned(RES, runs, a.device)
+    base = eval_baselines(runs)
+    _write_test(out_dir, learned, base, f"test (seeds of {TEST_SET})")
+
+
+def eval_learned(res: Path, runs: list, device: str) -> dict:
+    """Every frozen model under <res>/runs on the given runs (selection rule of each model)."""
+    learned = {}
+    for vdir in sorted((res / "runs").glob("*")):
         seeds = []
         for d in sorted(vdir.glob("seed*")):
             if (d / "model.npz").exists():                      # retrieval selector (design 12)
                 from ijcas.rgat.retrieval import load_cr, predict
-                cb, norm, cfg, rep = load_cr(d, a.device)
+                cb, norm, cfg, rep = load_cr(d, device)
                 pr = predict(cb, runs, norm)
                 pis = [p for p, _, _ in pr]
                 holds = [h for _, h, _ in pr]
             else:
-                model, norm, cfg, rep = X.load_model(d, a.device)
+                model, norm, cfg, rep = X.load_model(d, device)
                 Xt, Vt, _ = stack(runs, norm)
-                pa = infer(model, Xt, Vt, a.device)["pi"]
+                pa = infer(model, Xt, Vt, device)["pi"]
                 pis = [pa[b, :len(r["t"])] for b, r in enumerate(runs)]
                 holds = [None] * len(runs)
             per = []
@@ -220,6 +252,10 @@ def cmd_test(a):
             seeds.append({"seed": d.name, "pooled": pool(per), "per_run": per, "params": rep.get("params"),
                           "dims": [g["D"] for g in rep["groups"]] if "groups" in rep else None})
         learned[vdir.name] = seeds
+    return learned
+
+
+def eval_baselines(runs: list) -> dict:
     base = {}
     for name, f in [(f"F-{c}", (lambda k: lambda r: metrics_for_selection(r, np.where(r["valid"][:, k], k, -1)))(k))
                     for k, c in enumerate(CANDIDATES)] + \
@@ -231,6 +267,10 @@ def cmd_test(a):
             m.update(run=r["meta"]["id"], scenario=r["meta"]["scenario"], scene=r["meta"]["scene"])
             per.append(m)
         base[name] = {"pooled": pool(per), "per_run": per}
+    return base
+
+
+def _write_test(out_dir: Path, learned: dict, base: dict, title: str):
     (out_dir / "results.json").write_text(json.dumps({"learned": learned, "baselines": base}, default=str))
     summary = {"learned": {}, "baselines": {k: v["pooled"] for k, v in base.items()}}
     for v, seeds in learned.items():
@@ -246,13 +286,13 @@ def cmd_test(a):
             r["params"], r["dims"] = seeds[0]["params"], [s_["dims"] for s_ in seeds]
         summary["learned"][v] = r
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=1))
-    (out_dir / "summary.md").write_text(render(summary, "test (seeds 101-130)"))
+    (out_dir / "summary.md").write_text(render(summary, title))
     print((out_dir / "summary.md").read_text())
 
 
 def cmd_latency(a):
     """Selector-only operation cost on one validation run (CPU, 1 thread, B = 1)."""
-    _, va_p = X.split(sorted(str(p) for p in (DS / "validation").glob("*.npz")))
+    _, va_p = X.split(pool_paths())
     r = load_run(va_p[0])
     out = {}
     for d in sorted((RES / "runs").glob("*/seed0")):

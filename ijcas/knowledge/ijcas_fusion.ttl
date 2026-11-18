@@ -1,0 +1,102 @@
+@prefix : <https://incsl.sejong.ac.kr/ijcas/nav#> .
+@prefix fus: <https://incsl.sejong.ac.kr/ijcas/fusion#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =====================================================================================
+# IJCAS navigation-solution FUSION layer (2026-11-18).  Extends the v1 selection ontology
+# (ijcas_nav.ttl, namespace :) without changing it; new terms live in fus: to avoid clashes
+# (v1 already has :requiresAlignment as a datatype property of :Provision).
+# Used by: ijcas/fusion/graph.py (protected edges), ijcas/fusion/ontology.py (shared sources ->
+# CI is required; alignment requirement), docs/FUSION_DESIGN_KO.md.
+# Definitional relations only; runtime quantities (weights, eligibility results) are records.
+# =====================================================================================
+<https://incsl.sejong.ac.kr/ijcas/fusion> a owl:Ontology ;
+    owl:imports <https://incsl.sejong.ac.kr/ijcas/nav> ;
+    owl:versionInfo "fusion-1.0" .
+
+# ---- semantic layer -------------------------------------------------------------------
+fus:NavigationSolution a owl:Class ; rdfs:subClassOf ssn:Output ;
+    rdfs:comment "State output (position, velocity, attitude) of one navigation estimator; an estimate, not ground truth." .
+fus:GnssInsSolution a owl:Class ; rdfs:subClassOf fus:NavigationSolution .
+fus:VioSolution a owl:Class ; rdfs:subClassOf fus:NavigationSolution .
+fus:LioSolution a owl:Class ; rdfs:subClassOf fus:NavigationSolution .
+fus:FusedNavigationSolution a owl:Class ; rdfs:subClassOf fus:NavigationSolution .
+
+fus:Uncertainty a owl:Class .
+fus:PositionCovariance a owl:Class ; rdfs:subClassOf fus:Uncertainty .
+fus:VelocityCovariance a owl:Class ; rdfs:subClassOf fus:Uncertainty .
+fus:AttitudeCovariance a owl:Class ; rdfs:subClassOf fus:Uncertainty .
+fus:AlignmentUncertainty a owl:Class ; rdfs:subClassOf fus:Uncertainty .
+fus:TimingUncertainty a owl:Class ; rdfs:subClassOf fus:Uncertainty .
+
+fus:StateQuality a owl:Class .
+fus:Available a fus:StateQuality ; rdfs:seeAlso :Usable .
+fus:Degraded a fus:StateQuality ; rdfs:seeAlso :Limited .
+fus:Unavailable a fus:StateQuality ; rdfs:seeAlso :Unusable .
+fus:UnknownQuality a fus:StateQuality ; rdfs:seeAlso :Unknown .
+
+# ---- fusion layer ---------------------------------------------------------------------
+fus:FusionProcess a owl:Class ; rdfs:subClassOf sosa:Procedure .
+fus:FusionPolicy a owl:Class ; rdfs:subClassOf prov:Plan .
+fus:FusionEligibility a owl:Class ; rdfs:comment "Policy result: a solution may enter the fusion at this time." .
+fus:FusionWeight a owl:Class ; rdfs:comment "Learned weight passed to the CI; not a selection probability." .
+fus:FusionContribution a owl:Class .
+fus:CrossEstimatorDependency a owl:Class .
+fus:SharedMeasurementSource a owl:Class ; rdfs:subClassOf fus:CrossEstimatorDependency ;
+    rdfs:comment "Two estimators use the same measurement capability: their errors may be correlated by an unknown amount." .
+fus:NavigationConsistency a owl:Class ; rdfs:comment "Observed agreement between solutions (diagnostic; agreement does not prove accuracy)." .
+
+fus:producesEstimate a owl:ObjectProperty ; rdfs:domain :Estimator ; rdfs:range fus:NavigationSolution .
+fus:hasUncertainty a owl:ObjectProperty ; rdfs:domain fus:NavigationSolution ; rdfs:range fus:Uncertainty .
+fus:reportedByEstimator a owl:DatatypeProperty ; rdfs:domain fus:Uncertainty ; rdfs:range xsd:boolean ;
+    rdfs:comment "true: the estimator publishes this covariance block (used as is); false: not available (never substituted)." .
+fus:sharesMeasurementSource a owl:ObjectProperty , owl:SymmetricProperty ;
+    rdfs:domain :Estimator ; rdfs:range :Estimator ;
+    rdfs:comment "Derived from :requiresEssential / :usesAiding on the same :MeasurementCapability (ijcas/fusion/ontology.py)." .
+fus:requiresAlignment a owl:DatatypeProperty ; rdfs:domain fus:NavigationSolution ; rdfs:range xsd:boolean ;
+    rdfs:comment "The solution is expressed in the estimator's own local frame; it needs the causal alignment to the common frame." .
+fus:contributesToFusion a owl:ObjectProperty ; rdfs:domain fus:NavigationSolution ; rdfs:range fus:FusionProcess .
+fus:hasFusionWeight a owl:ObjectProperty ; rdfs:domain fus:FusionContribution ; rdfs:range fus:FusionWeight .
+fus:producesFusedSolution a owl:ObjectProperty ; rdfs:domain fus:FusionProcess ; rdfs:range fus:FusedNavigationSolution .
+fus:requiresMethodUnderSharedSource a owl:DatatypeProperty ; rdfs:domain fus:FusionProcess ; rdfs:range xsd:string ;
+    rdfs:comment "Fusion method required when contributing solutions share a measurement source." .
+fus:solutionId a owl:DatatypeProperty ; rdfs:domain fus:NavigationSolution ; rdfs:range xsd:string .
+
+# ---- individuals ----------------------------------------------------------------------
+fus:sol_gnss_ins a fus:GnssInsSolution ; fus:solutionId "gnss_ins" ; fus:requiresAlignment false ;
+    fus:contributesToFusion fus:nav_fusion ;
+    fus:hasUncertainty fus:gi_pos_cov , fus:gi_vel_cov , fus:gi_att_cov .
+fus:sol_vio a fus:VioSolution ; fus:solutionId "vio" ; fus:requiresAlignment true ;
+    fus:contributesToFusion fus:nav_fusion ;
+    fus:hasUncertainty fus:vio_pos_cov , fus:vio_vel_cov , fus:vio_att_cov , fus:vio_align_unc .
+fus:sol_lio a fus:LioSolution ; fus:solutionId "lio" ; fus:requiresAlignment true ;
+    fus:contributesToFusion fus:nav_fusion ;
+    fus:hasUncertainty fus:lio_pos_cov , fus:lio_vel_cov , fus:lio_att_cov , fus:lio_align_unc .
+fus:sol_fused a fus:FusedNavigationSolution ; fus:solutionId "fused" .
+
+:PX4_EKF2 fus:producesEstimate fus:sol_gnss_ins .
+:OpenVINS fus:producesEstimate fus:sol_vio .
+:FAST_LIO fus:producesEstimate fus:sol_lio .
+# :INS_DR produces no fusion input: it stays a separate limited fallback mode.
+
+fus:nav_fusion a fus:FusionProcess ; fus:producesFusedSolution fus:sol_fused ;
+    fus:requiresMethodUnderSharedSource "covariance_intersection" .
+
+# covariance blocks: reported by the estimator (records from 2026-11-18 on; see ijcas/fusion/covariance.py)
+fus:gi_pos_cov a fus:PositionCovariance ; fus:reportedByEstimator true .
+fus:gi_vel_cov a fus:VelocityCovariance ; fus:reportedByEstimator true .
+fus:gi_att_cov a fus:AttitudeCovariance ; fus:reportedByEstimator true .
+fus:vio_pos_cov a fus:PositionCovariance ; fus:reportedByEstimator true .
+fus:vio_vel_cov a fus:VelocityCovariance ; fus:reportedByEstimator true .
+fus:vio_att_cov a fus:AttitudeCovariance ; fus:reportedByEstimator true .
+fus:lio_pos_cov a fus:PositionCovariance ; fus:reportedByEstimator true .
+fus:lio_vel_cov a fus:VelocityCovariance ; fus:reportedByEstimator true .
+fus:lio_att_cov a fus:AttitudeCovariance ; fus:reportedByEstimator true .
+fus:vio_align_unc a fus:AlignmentUncertainty ; fus:reportedByEstimator false .
+fus:lio_align_unc a fus:AlignmentUncertainty ; fus:reportedByEstimator false .

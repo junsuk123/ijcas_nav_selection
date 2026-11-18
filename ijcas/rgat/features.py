@@ -20,6 +20,9 @@ last external aiding input not older than AID_LIMIT_S.  Since 2026-11-18 (user d
 candidate also requires IMU reception (>= 150 Hz over the last 1 s, ijcas.selector.eligibility):
 the IMU is the essential input of all four (ontology :requiresEssential :Inertial).  On the existing
 recordings this changed no eligibility in the evaluation windows (validation: no tick at all).
+IMU quality (2026-11-18, v2 policy): a reported IMU saturation invalidates the VIO/LIO alignment
+(SelectionEngine._update_alignment) and INS needs an anchor taken after the last saturation report
+(ijcas.selector.eligibility.ImuSaturation); PX4 EKF2 stays under its GNSS conditions.
 Output age and the time since the last external aiding input (GNSS fix / tracked visual features /
 usable LiDAR scan) are kept apart: an IMU-propagated output can be fresh while aiding stopped.
 Aiding *reception* is a proxy, not proof that the engine fused it (ontology doc).
@@ -148,7 +151,8 @@ class CandidateBank:
         for k in CANDIDATES:
             if k == "ins":
                 ok = imu_ok and ins is not None and self.dr.anchor_t is not None and \
-                    self.dr.age(snap.t) <= self.dr.max_dr_s
+                    self.dr.age(snap.t) <= self.dr.max_dr_s and \
+                    self.eng.imu_sat.clean_since(self.dr.anchor_t)      # IMU quality (2026-11-18)
                 out[k] = ins if ok else None
                 continue
             src = NAV_SRC[k]

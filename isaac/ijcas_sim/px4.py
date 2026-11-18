@@ -113,7 +113,7 @@ class Px4Keeper:
         self.statustexts: list[tuple[float, str]] = []
         # EKF2 output in PX4 lockstep time (time_boot_ms / time_usec), see record_streams()
         self.records: dict[str, list] = {"lpos": [], "att": [], "est": [], "ext": [], "gps": [],
-                                         "himu": [], "origin": []}
+                                         "himu": [], "origin": [], "odo": []}
         self._streams_requested = False
 
     def _poll(self, now: float) -> None:
@@ -152,6 +152,15 @@ class Px4Keeper:
             elif kind == "HIGHRES_IMU":
                 self.records["himu"].append([msg.time_usec * 1e-6, msg.xacc, msg.yacc, msg.zacc,
                                              msg.xgyro, msg.ygyro, msg.zgyro, now])
+            elif kind == "ODOMETRY":
+                # EKF2's own variances (vehicle_odometry -> MAVLink ODOMETRY, PX4 v1.14 streams/ODOMETRY.hpp):
+                # pose_covariance / velocity_covariance are 6x6 upper-right triangles; PX4 fills the diagonal
+                # (position x,y,z; orientation roll,pitch,yaw; velocity x,y,z) in frame_id / child_frame_id.
+                pc, vc = msg.pose_covariance, msg.velocity_covariance
+                self.records["odo"].append([msg.time_usec * 1e-6, int(msg.frame_id), int(msg.child_frame_id),
+                                            pc[0], pc[6], pc[11], pc[15], pc[18], pc[20],
+                                            vc[0], vc[6], vc[11], int(msg.reset_counter), int(msg.quality),
+                                            now])
             elif kind == "GPS_RAW_INT":
                 self.records["gps"].append([msg.time_usec * 1e-6, int(msg.fix_type), msg.lat,
                                             msg.lon, msg.alt, msg.eph, msg.satellites_visible, now])
@@ -164,7 +173,8 @@ class Px4Keeper:
                                 mav.MAVLINK_MSG_ID_ESTIMATOR_STATUS: 10,
                                 mav.MAVLINK_MSG_ID_EXTENDED_SYS_STATE: 5,
                                 mav.MAVLINK_MSG_ID_GPS_RAW_INT: 10,
-                                mav.MAVLINK_MSG_ID_HIGHRES_IMU: 50}
+                                mav.MAVLINK_MSG_ID_HIGHRES_IMU: 50,
+                                mav.MAVLINK_MSG_ID_ODOMETRY: 50}
         for msg_id, hz in rates_hz.items():
             self.conn.mav.command_long_send(self.target_system, 1,
                                             mav.MAV_CMD_SET_MESSAGE_INTERVAL, 0, msg_id,

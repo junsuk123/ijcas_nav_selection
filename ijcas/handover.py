@@ -91,6 +91,9 @@ class Alignment:
     invalidations: list = field(default_factory=list)
     established_at: float | None = None      # first valid fit since the last reset/invalidation
     path_since_update_m: float = 0.0         # local path flown since the alignment was last fitted
+    # v2 IMU quality (2026-11-18): after an IMU-saturation invalidation the engine state may be
+    # corrupted; a new alignment only counts as established while its fit residual stays <= this.
+    require_residual_m: float | None = None
 
     def invalidate(self, t: float, reason: str):
         """R08: the engine lost its essential input; its alignment must be re-established."""
@@ -111,7 +114,10 @@ class Alignment:
 
     @property
     def valid(self) -> bool:
-        return self.yaw is not None
+        if self.yaw is None:
+            return False
+        return self.require_residual_m is None or (self.residual_m is not None
+                                                   and self.residual_m <= self.require_residual_m)
 
     def age(self, t: float) -> float:
         return float("inf") if self.updated_at is None else t - self.updated_at

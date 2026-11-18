@@ -16,19 +16,21 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from ijcas.scenarios import ALL, TEST_SEEDS, VALIDATION_SEEDS, resolve  # noqa: E402
+from ijcas.scenarios import ALL, TEST2_SEEDS, TEST_SEEDS, VALIDATION_SEEDS, resolve  # noqa: E402
 
 DATA = Path(os.environ.get("IJCAS_DATA", Path.home() / "ijcas_data"))
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--set", choices=("validation", "test"), required=True)
+    ap.add_argument("--set", choices=("validation", "test", "test2", "fusion_dev"), required=True)
     ap.add_argument("--only", default="")
     ap.add_argument("--retries", type=int, default=1)
     a = ap.parse_args()
-    seeds = VALIDATION_SEEDS if a.set == "validation" else TEST_SEEDS
-    sids = [s for s in ALL if not (a.set == "validation" and s == "S09")]
+    # fusion_dev (2026-11-18): seeds 1-10 re-recorded with the full estimator covariances (ros2/recorder.py)
+    seeds = {"validation": VALIDATION_SEEDS, "test": TEST_SEEDS, "test2": TEST2_SEEDS,
+             "fusion_dev": VALIDATION_SEEDS}[a.set]
+    sids = [s for s in ALL if not (a.set in ("validation", "fusion_dev") and s == "S09")]
     if a.only:
         sids = [s for s in sids if s in a.only.split(",")]
     gen = ROOT / "config/generated"

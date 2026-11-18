@@ -40,13 +40,15 @@ def _one(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--set", required=True, choices=("validation", "test"))
+    ap.add_argument("--set", required=True, choices=("validation", "test", "test2"))
     ap.add_argument("--thresholds", required=True)
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--runs-root", default=str(DATA / "runs"))
+    ap.add_argument("--out-root", default=str(DATA / "rgat" / "dataset"),
+                    help="v2 (IMU quality eligibility, 2026-11-18): $IJCAS_DATA/rgat/dataset_v2")
     a = ap.parse_args()
     src = Path(a.runs_root) / a.set
-    dst = DATA / "rgat" / "dataset" / a.set
+    dst = Path(a.out_root) / a.set
     dst.mkdir(parents=True, exist_ok=True)
     jobs = [(r, dst / f"{r.name}.npz", a.thresholds) for r in sorted(src.iterdir())
             if (r / "DONE").exists() and not (dst / f"{r.name}.npz").exists()]

@@ -17,6 +17,9 @@ import numpy as np
 
 VALIDATION_SEEDS = list(range(1, 11))
 TEST_SEEDS = list(range(101, 131))
+# Second fixed test set (2026-11-18): the first one (101-130) was used once for the v1 evaluation and
+# then joined the v2 training/validation pool; v2 (IMU quality eligibility) is tested once on these.
+TEST2_SEEDS = list(range(201, 231))
 DEV_SCENES = ("warehouse", "open_field", "corridor")
 DURATION_S = 180.0
 

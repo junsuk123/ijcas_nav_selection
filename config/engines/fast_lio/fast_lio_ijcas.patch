@@ -1,5 +1,5 @@
 diff --git a/src/laserMapping.cpp b/src/laserMapping.cpp
-index e5d9950..aff975f 100644
+index e5d9950..7bd22e6 100644
 --- a/src/laserMapping.cpp
 +++ b/src/laserMapping.cpp
 @@ -631,7 +631,11 @@ void publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPt
@@ -15,15 +15,20 @@ index e5d9950..aff975f 100644
      auto P = kf.get_P();
      for (int i = 0; i < 6; i ++)
      {
-@@ -643,6 +647,7 @@ void publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPt
+@@ -643,6 +647,12 @@ void publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPt
          odomAftMapped.pose.covariance[i*6 + 4] = P(k, 1);
          odomAftMapped.pose.covariance[i*6 + 5] = P(k, 2);
      }
++    // IJCAS output adapter (2026-11-18): the filter's own velocity covariance (state vel = error-state
++    // indices 12-14, world = camera_init frame) in the twist covariance (linear block).
++    for (int r = 0; r < 3; r ++)
++        for (int c = 0; c < 3; c ++)
++            odomAftMapped.twist.covariance[r*6 + c] = P(12 + r, 12 + c);
 +    pubOdomAftMapped->publish(odomAftMapped);
  
      geometry_msgs::msg::TransformStamped trans;
      trans.header.frame_id = "camera_init";
-@@ -924,9 +929,9 @@ public:
+@@ -924,9 +934,9 @@ public:
          }
          else
          {

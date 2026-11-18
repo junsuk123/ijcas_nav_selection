@@ -35,7 +35,11 @@ SCHEDULE = {"A": 40, "C1": 10, "C2": 10, "lam_E": 0.1, "lam_S": 0.1, "lr": 2e-3,
             "batch": None}
 
 
-def split(paths, train_seeds=TRAIN_SEEDS, val_seeds=VAL_SEEDS):
+def split(paths, train_seeds=None, val_seeds=None):
+    """Run-level split.  Defaults are read at call time, so a caller (tools/rgat_run.py, v2) can set
+    TRAIN_SEEDS / VAL_SEEDS of this module once for the whole experiment."""
+    train_seeds = TRAIN_SEEDS if train_seeds is None else train_seeds
+    val_seeds = VAL_SEEDS if val_seeds is None else val_seeds
     tr, va = [], []
     for p in paths:
         seed = int(Path(p).stem.split("_")[1])
@@ -142,7 +146,7 @@ def build(variant: str, dims, edges, gated=True):
 
 def run_variant(variant: str, paths: list, out_dir: Path, seed: int = 0, device="cuda",
                 structure_from: Path | None = None, sched: dict | None = None, log=print,
-                train_seeds=TRAIN_SEEDS, val_seeds=VAL_SEEDS):
+                train_seeds=None, val_seeds=None):
     sched = {**SCHEDULE, **(sched or {})}
     out_dir.mkdir(parents=True, exist_ok=True)
     tr_p, va_p = split(paths, train_seeds, val_seeds)

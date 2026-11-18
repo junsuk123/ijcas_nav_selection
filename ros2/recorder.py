@@ -4,7 +4,7 @@ its header stamp *and* the simulation time at reception (for output age / latenc
     python3 ros2/recorder.py --out $RUN/record.npz --seconds 600
 
 Saved arrays (one row per message):
-  odom/<name>   stamp recv px py pz qx qy qz qw vx vy vz  [+ pose covariance diag 6]
+  odom/<name>   stamp recv px py pz qx qy qz qw vx vy vz  pose-cov diag 6 | pose cov 36 | twist cov 36
   imu           stamp ax..  (for the INS-DR baseline and the context monitor)
   fix           stamp recv status lat lon alt cov_h cov_v
   gvel          stamp recv vx vy vz
@@ -69,8 +69,11 @@ class Recorder(Node):
     def on_odom(self, name, m):
         p, q, v = m.pose.pose.position, m.pose.pose.orientation, m.twist.twist.linear
         c = m.pose.covariance
+        # columns 0-17 unchanged (readers of older records); 18-53 full 6x6 pose covariance and 54-89 full
+        # 6x6 twist covariance, row-major, exactly as published by the estimator (2026-11-18, fusion)
         self.odom[name].append([st(m.header), self.now_s(), p.x, p.y, p.z, q.x, q.y, q.z, q.w,
-                                v.x, v.y, v.z, c[0], c[7], c[14], c[21], c[28], c[35]])
+                                v.x, v.y, v.z, c[0], c[7], c[14], c[21], c[28], c[35],
+                                *[float(x) for x in c], *[float(x) for x in m.twist.covariance]])
 
     def on_ov_pose(self, m):
         c = m.pose.covariance

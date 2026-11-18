@@ -200,9 +200,28 @@ if backend is not None:
 px4_published = {"lpos": 0, "est": 0}
 
 
+def _px4_covariance(odo_row, q_ned):
+    """EKF2 variances (MAVLink ODOMETRY diagonal) as ROS 6x6 pose / twist covariances in the published
+    frames: position and velocity in local ENU (NED axes swapped; a body-FRD velocity variance is rotated
+    to the world), orientation as body-axis variances (roll, pitch, yaw; FRD -> FLU keeps the diagonal).
+    Values are the estimator's own; only the frame changes (unknown cross terms stay 0 = not reported)."""
+    pc = np.zeros((6, 6))
+    pc[0, 0], pc[1, 1], pc[2, 2] = odo_row[4], odo_row[3], odo_row[5]
+    pc[3, 3], pc[4, 4], pc[5, 5] = odo_row[6], odo_row[7], odo_row[8]
+    tc = np.zeros((6, 6))
+    vv = np.diag([odo_row[9], odo_row[10], odo_row[11]])
+    if int(odo_row[2]) == 12:                       # MAV_FRAME_BODY_FRD: rotate to NED first
+        r = q_ned.as_matrix()
+        vv = r @ vv @ r.T
+    swap = np.array([[0, 1, 0], [1, 0, 0], [0, 0, -1.0]])
+    tc[:3, :3] = swap @ vv @ swap.T
+    return pc.ravel(), tc.ravel()
+
+
 def publish_px4():
     rec = keeper.records
     att = rec["att"]
+    odo = rec["odo"]
     for row in rec["lpos"][px4_published["lpos"]:]:
         tb = row[0]
         if not att:
@@ -210,8 +229,13 @@ def publish_px4():
         a = min(att[-50:], key=lambda r: abs(r[0] - tb))
         q_ned = Rotation.from_quat([a[2], a[3], a[4], a[1]])
         q_enu = (NED2ENU * q_ned * FRD2FLU).as_quat()
+        cov = {}
+        if odo:
+            o = min(odo[-50:], key=lambda r: abs(r[0] - tb))
+            if abs(o[0] - tb) <= 0.05 and all(np.isfinite(o[3:12])):
+                cov["pose_cov"], cov["twist_cov"] = _px4_covariance(o, q_ned)
         ros.odometry("px4_odom", tb, "px4_local_enu", "base_link_px4",
-                     [row[2], row[1], -row[3]], q_enu, [row[5], row[4], -row[6]])
+                     [row[2], row[1], -row[3]], q_enu, [row[5], row[4], -row[6]], **cov)
     px4_published["lpos"] = len(rec["lpos"])
     for row in rec["est"][px4_published["est"]:]:
         ros.json("px4_status", {"t": row[0], "flags": row[1], "vel_ratio": row[2],

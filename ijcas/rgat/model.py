@@ -23,7 +23,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from .graph import CANDIDATES, KINDS, NAV, NODE_KIND, NODES, RELATIONS, edge_index
+from .graph import CANDIDATES, V1, GraphSpec, edge_index
 
 HC_BETA, HC_GAMMA, HC_ZETA = 2.0 / 3.0, -0.1, 1.1          # Louizos et al. 2018 defaults
 HC_SHIFT = HC_BETA * math.log(-HC_GAMMA / HC_ZETA)          # P(z != 0) = sigmoid(l - shift)
@@ -36,9 +36,10 @@ def p_active(logit):
 class RecurrentRelGNN(nn.Module):
     def __init__(self, in_dims: list[int], edges, d: int = 32, d_g: int = 16, layers: int = 2,
                  heads: int = 2, agg: str = "gat", gated: bool = True, memory: bool = True,
-                 th_on: float = 0.6, th_off: float = 0.4):
+                 th_on: float = 0.6, th_off: float = 0.4, spec: GraphSpec | None = None):
         super().__init__()
-        self.N, self.d, self.d_g, self.L, self.H = len(NODES), d, d_g, layers, heads
+        self.spec = spec = spec or V1
+        self.N, self.d, self.d_g, self.L, self.H = len(spec.nodes), d, d_g, layers, heads
         self.agg, self.gated, self.memory = agg, gated, memory
         self.th_on, self.th_off = th_on, th_off
         self.in_dims = list(in_dims)
@@ -51,15 +52,15 @@ class RecurrentRelGNN(nn.Module):
         for i, f in enumerate(in_dims):
             mask[i, :f] = 1
         self.register_buffer("in_mask", mask)
-        kind = torch.tensor([KINDS.index(NODE_KIND[n]) for n in NODES])
+        kind = torch.tensor([spec.kinds.index(spec.node_kind[n]) for n in spec.nodes])
         self.register_buffer("kind", kind)
-        nk = len(KINDS)
+        nk = len(spec.kinds)
         self.gru_wi = nn.Parameter(torch.randn(nk, 3 * d, d) / math.sqrt(d))
         self.gru_wh = nn.Parameter(torch.randn(nk, 3 * d, d) / math.sqrt(d))
         self.gru_bi = nn.Parameter(torch.zeros(nk, 3 * d))
         self.gru_bh = nn.Parameter(torch.zeros(nk, 3 * d))
         self.set_edges(edges)
-        R = len(RELATIONS)
+        R = len(spec.relations)
         self.U = nn.Parameter(torch.randn(R, d_g, d) / math.sqrt(d))
         self.V = nn.Parameter(torch.randn(R, d_g, d) / math.sqrt(d))
         self.gate_b = nn.Parameter(torch.full((R,), 2.0))    # start with edges on (P ~ 0.97)
@@ -68,15 +69,15 @@ class RecurrentRelGNN(nn.Module):
         self.att_src = nn.Parameter(torch.randn(layers, R, heads, dh) * 0.1)
         self.att_dst = nn.Parameter(torch.randn(layers, R, heads, dh) * 0.1)
         self.head = nn.Sequential(nn.Linear(d, d), nn.ELU(), nn.Linear(d, 1))
-        self.cand_bias = nn.Parameter(torch.zeros(len(CANDIDATES)))
-        self.register_buffer("nav_idx", torch.tensor([NODES.index(n) for n in NAV]))
+        self.cand_bias = nn.Parameter(torch.zeros(len(spec.candidates)))
+        self.register_buffer("nav_idx", torch.tensor([spec.nodes.index(n) for n in spec.out_nodes]))
 
     # -- structure ----------------------------------------------------------------------
     def set_edges(self, edges):
         """Candidate structure (E_full in training, E_* after pruning).  Removed edges are not
         computed at all: they are absent from the index tensors."""
         self.edges = list(edges)
-        ei = edge_index(self.edges)
+        ei = edge_index(self.edges, self.spec)
         dev = self.gru_wi.device
         self.register_buffer("e_src", torch.tensor(ei["src"], device=dev), persistent=False)
         self.register_buffer("e_dst", torch.tensor(ei["dst"], device=dev), persistent=False)
@@ -88,7 +89,7 @@ class RecurrentRelGNN(nn.Module):
         dst1h = torch.zeros(self.N, E, device=dev)
         dst1h[torch.tensor(ei["dst"], device=dev), torch.arange(E, device=dev)] = 1.0
         self.register_buffer("dst1h", dst1h, persistent=False)
-        R = len(RELATIONS)
+        R = len(self.spec.relations)
         nr = torch.zeros(self.N * R, E, device=dev)              # (dst, rel) groups for R-GCN
         nr[torch.tensor(ei["dst"] * R + ei["rel"], device=dev), torch.arange(E, device=dev)] = 1.0
         self.register_buffer("dstrel1h", nr, persistent=False)
@@ -155,7 +156,7 @@ class RecurrentRelGNN(nn.Module):
             aux["active_idx"] = act
         Ea = len(src)
         v = u
-        R = len(RELATIONS)
+        R = len(self.spec.relations)
         for l in range(self.L):
             Wl = self.W[l]
             msg = torch.einsum("bed,ekd->bek", v[:, src], Wl[rel])               # [B,Ea,d]
@@ -191,15 +192,19 @@ class RecurrentRelGNN(nn.Module):
                     aux["attn"] = norm
             v = v + torch.tanh(agg)
         h_new = torch.tanh(v)
-        score = self.head(v[:, self.nav_idx]).squeeze(-1) + self.cand_bias
-        logits = score.masked_fill(~valid, -1e9)
+        logits = self.scores(v).masked_fill(~valid, -1e9)
         return logits, {"h": h_new, "z": new_z}, aux
+
+    def scores(self, v):
+        """Per-candidate logits from the final node embeddings v [B, N, d] (overridden by the fusion
+        weight head, ijcas/fusion/weights.py)."""
+        return self.head(v[:, self.nav_idx]).squeeze(-1) + self.cand_bias
 
 
 class FlatGru(nn.Module):
     """Non-graph baseline: the same packed inputs concatenated -> GRU -> per-candidate scores."""
 
-    def __init__(self, in_dims: list[int], hidden: int = 96):
+    def __init__(self, in_dims: list[int], hidden: int = 96, n_out: int | None = None):
         super().__init__()
         self.in_dims = list(in_dims)
         self.fmax = max(in_dims)
@@ -209,7 +214,7 @@ class FlatGru(nn.Module):
         self.register_buffer("in_mask", mask)
         self.inp = nn.Linear(sum(in_dims), hidden)
         self.gru = nn.GRUCell(hidden, hidden)
-        self.out = nn.Sequential(nn.Linear(hidden, hidden), nn.ELU(), nn.Linear(hidden, len(CANDIDATES)))
+        self.out = nn.Sequential(nn.Linear(hidden, hidden), nn.ELU(), nn.Linear(hidden, n_out or len(CANDIDATES)))
         self.hidden = hidden
         self.memory = True
 

@@ -32,9 +32,9 @@ ijcas:crit_gi_fix a core:Criterion ; core:onProperty nav:FixType ;
     rdfs:comment "NavSatFix status >= 0(fix)가 마지막으로 보고된 뒤 5.0 s 이내." .
 ijcas:crit_ins_anchor a core:Criterion ; core:onProperty nav:VehiclePose ; core:reportedBy rig:ins_dr ;
     core:comparator "anchored" ; core:maxEvidenceAgeS 10.0 ; core:ifMissing core:Fail .
-ijcas:crit_imu_received a core:Criterion ; core:onProperty nav:ImuSampleRate ;
-    core:comparator ">=" ; core:threshold 150 ; core:maxEvidenceAgeS 1.0 ; core:ifMissing core:Undetermined ;
-    rdfs:comment "v2 제안: 정의상 필수 입력(nav:ImuSamples)의 수신 검사. 현재 학습 선택기의 적격성에는 없다." .
+ijcas:crit_imu_received a core:Criterion ; core:onProperty nav:ImuSampleRate ; core:reportedBy rig:selector_input ;
+    core:comparator ">=" ; core:threshold 150 ; core:maxEvidenceAgeS 1.0 ; core:ifMissing core:Fail ;
+    rdfs:comment "정의상 필수 입력(nav:ImuSamples)의 수신 검사: 선택기가 받은 표본의 최근 1 s 주기. 2026-11-18 채택·구현(ijcas/selector/eligibility.py). 품질 판정이 아니다." .
 
 # ---- 정책 ---------------------------------------------------------------------------------------
 ijcas:pol_elig_vio a core:Policy ; owl:versionInfo "2.0-draft" ;

@@ -41,6 +41,11 @@ ONTOLOGY_NAME = {"N_gi": "PX4_EKF2", "N_vio": "OpenVINS", "N_lio": "FAST_LIO", "
                  "S_gnss": "GnssPosition"}
 
 
+# relations whose edges are always active (never gated or pruned).  "nav>fusion" exists only in the
+# fusion graph (ijcas/fusion): every navigation solution must reach the fusion node.
+PROTECTED_RELATIONS = ("sensor>nav:def", "nav>fusion", "self")
+
+
 @dataclass(frozen=True)
 class Edge:
     src: str
@@ -49,37 +54,62 @@ class Edge:
 
     @property
     def protected(self) -> bool:
-        return self.rel in ("sensor>nav:def", "self")
+        return self.rel in PROTECTED_RELATIONS
 
     @property
     def name(self) -> str:
         return f"{self.src}->{self.dst}"
 
 
-def candidate_edges() -> list[Edge]:
+@dataclass(frozen=True)
+class GraphSpec:
+    """Node / relation layout of one computation graph.  ``V1`` is the selection graph above; the
+    fusion graph (ijcas/fusion/graph.py) reuses the same code with its own spec."""
+    nodes: tuple
+    node_kind: dict
+    kinds: tuple
+    relations: tuple
+    definitional: frozenset          # (sensor, nav) pairs carried by "sensor>nav:def"
+    out_nodes: tuple                 # nodes whose final embeddings are scored (one per candidate)
+    candidates: tuple
+    nav_fusion_rel: str = "nav>fusion"
+
+
+V1 = GraphSpec(nodes=NODES, node_kind=NODE_KIND, kinds=KINDS, relations=RELATIONS,
+               definitional=frozenset(DEFINITIONAL), out_nodes=NAV, candidates=CANDIDATES)
+
+
+def candidate_edges(spec: GraphSpec | None = None) -> list[Edge]:
     """All edges allowed by kind, direction and the definitional constraints (self loops last)."""
+    spec = spec or V1
+    of = lambda k: [n for n in spec.nodes if spec.node_kind[n] == k]  # noqa: E731
+    env, sensor, nav, fus = of("env"), of("sensor"), of("nav"), of("fusion")
     out = []
-    for s in ENV:
-        for d in SENSOR:
+    for s in env:
+        for d in sensor:
             out.append(Edge(s, d, "env>sensor"))
-        for d in NAV:
+        for d in nav:
             out.append(Edge(s, d, "env>nav"))
-    for s in SENSOR:
-        for d in NAV:
-            out.append(Edge(s, d, "sensor>nav:def" if (s, d) in DEFINITIONAL else "sensor>nav:aux"))
-    for s in NAV:
-        for d in NAV:
+    for s in sensor:
+        for d in nav:
+            out.append(Edge(s, d, "sensor>nav:def" if (s, d) in spec.definitional else "sensor>nav:aux"))
+    for s in nav:
+        for d in nav:
             if s != d:
                 out.append(Edge(s, d, "nav>nav"))
-    out += [Edge(n, n, "self") for n in NODES]
+    for s in nav:
+        for d in fus:
+            out.append(Edge(s, d, spec.nav_fusion_rel))
+    out += [Edge(n, n, "self") for n in spec.nodes]
     return out
 
 
-def edge_index(edges: list[Edge]) -> dict:
-    idx = {n: i for i, n in enumerate(NODES)}
+def edge_index(edges: list[Edge], spec: GraphSpec | None = None) -> dict:
+    spec = spec or V1
+    idx = {n: i for i, n in enumerate(spec.nodes)}
     return {"src": np.array([idx[e.src] for e in edges]),
             "dst": np.array([idx[e.dst] for e in edges]),
-            "rel": np.array([RELATIONS.index(e.rel) for e in edges]),
+            "rel": np.array([spec.relations.index(e.rel) for e in edges]),
             "gated": np.array([not e.protected for e in edges]),
             "names": [e.name for e in edges]}
 
