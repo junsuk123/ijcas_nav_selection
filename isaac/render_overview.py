@@ -13,7 +13,8 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--out", required=True)
-parser.add_argument("--scene", required=True, choices=("warehouse", "open_field", "corridor"))
+parser.add_argument("--scene", required=True,
+                    choices=("warehouse", "open_field", "corridor", "urban", "solar_farm", "tunnel_road"))
 parser.add_argument("--seed", type=int, default=1)
 parser.add_argument("--width", type=int, default=1600)
 parser.add_argument("--height", type=int, default=900)
@@ -93,10 +94,16 @@ def render(name, eye, target, cams):
     print(f"[render] {name}.png mean={img.mean():.1f}", flush=True)
 
 
-VIEWS = {   # scene -> (chase sample time s, list of (name, eye offset or absolute, target))
-    "warehouse": {"t": 14.0, "overview": ((4.0, -38.0, 7.5), (-12.0, 5.0, 0.5))},  # inside: roof ~9.3 m
-    "open_field": {"t": 18.0, "overview": ((-40.0, -45.0, 32.0), (15.0, 12.0, 0.0))},
-    "corridor": {"t": 10.0, "overview": ((0.0, -38.0, 42.0), (0.0, 0.0, 0.0)), "hide": "/World/Scene/ceiling"},
+VIEWS = {   # scene -> chase sample time t [s after hover + ramp], fixed views (name suffix, eye, target)
+    "warehouse": {"t": 14.0, "views": [("overview", (4.0, -38.0, 7.5), (-12.0, 5.0, 0.5))]},  # roof ~9.3 m
+    "open_field": {"t": 18.0, "views": [("overview", (-40.0, -45.0, 32.0), (15.0, 12.0, 0.0))]},
+    "corridor": {"t": 10.0, "views": [("overview_ceiling_hidden", (0.0, -38.0, 42.0), (0.0, 0.0, 0.0))],
+                 "hide": "/World/Scene/ceiling"},
+    "urban": {"t": 20.0, "views": [("overview", (-150.0, -170.0, 120.0), (0.0, 0.0, 10.0)),
+                                   ("street", (56.0, -85.0, 9.0), (56.0, 40.0, 14.0))]},
+    "solar_farm": {"t": 10.0, "views": [("overview", (-110.0, -80.0, 40.0), (20.0, 10.0, 0.0))]},
+    "tunnel_road": {"t": 40.0, "views": [("portal", (-330.0, 60.0, 45.0), (-200.0, 0.0, 5.0)),
+                                         ("overview", (-520.0, -260.0, 220.0), (0.0, 0.0, 0.0))]},
 }
 
 if True:
@@ -131,8 +138,7 @@ if True:
     render(f"{scene}_chase", p - 4.5 * heading + np.array([0, 0, 1.4]), p + 3.0 * heading, cams)
     if "hide" in v:
         UsdGeom.Imageable(stage.GetPrimAtPath(v["hide"])).MakeInvisible()
-        render(f"{scene}_overview_ceiling_hidden", *v["overview"], cams)
-    else:
-        render(f"{scene}_overview", *v["overview"], cams)
+    for suffix, eye, target in v["views"]:
+        render(f"{scene}_{suffix}", eye, target, cams)
 
 app.close()

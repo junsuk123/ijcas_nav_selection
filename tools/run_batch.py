@@ -16,21 +16,29 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from ijcas.scenarios import ALL, TEST2_SEEDS, TEST_SEEDS, VALIDATION_SEEDS, resolve  # noqa: E402
+from ijcas.scenarios import (ALL, OUTDOOR, OUTDOOR_DEV_SEEDS, OUTDOOR_TEST_SEEDS, TEST2_SEEDS,  # noqa: E402
+                             TEST_SEEDS, VALIDATION_SEEDS, resolve)
 
 DATA = Path(os.environ.get("IJCAS_DATA", Path.home() / "ijcas_data"))
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--set", choices=("validation", "test", "test2", "fusion_dev"), required=True)
+    ap.add_argument("--set", choices=("validation", "test", "test2", "fusion_dev", "outdoor_dev",
+                                     "outdoor_test", "outdoor_pilot"), required=True)
+    ap.add_argument("--seeds", default="", help="override the seeds of the set (pilots)")
     ap.add_argument("--only", default="")
     ap.add_argument("--retries", type=int, default=1)
     a = ap.parse_args()
     # fusion_dev (2026-11-18): seeds 1-10 re-recorded with the full estimator covariances (ros2/recorder.py)
     seeds = {"validation": VALIDATION_SEEDS, "test": TEST_SEEDS, "test2": TEST2_SEEDS,
-             "fusion_dev": VALIDATION_SEEDS}[a.set]
-    sids = [s for s in ALL if not (a.set in ("validation", "fusion_dev") and s == "S09")]
+             "fusion_dev": VALIDATION_SEEDS, "outdoor_dev": OUTDOOR_DEV_SEEDS,
+             "outdoor_test": OUTDOOR_TEST_SEEDS, "outdoor_pilot": [901]}[a.set]
+    if a.seeds:
+        seeds = [int(x) for x in a.seeds.split(",")]
+    # outdoor sets (2026-11-19): urban / solar farm / tunnel road x 3, 6, 9 m/s (ijcas/scenarios.py)
+    sids = OUTDOOR if a.set.startswith("outdoor") else \
+        [s for s in ALL if not (a.set in ("validation", "fusion_dev") and s == "S09")]
     if a.only:
         sids = [s for s in sids if s in a.only.split(",")]
     gen = ROOT / "config/generated"

@@ -23,6 +23,17 @@ TEST2_SEEDS = list(range(201, 231))
 DEV_SCENES = ("warehouse", "open_field", "corridor")
 DURATION_S = 180.0
 
+# Outdoor experiment (2026-11-19, user decision): three outdoor environments x three flight speeds,
+# S<e><v>: e = 1 urban, 2 solar farm, 3 tunnel road; v = 1/2/3 -> 3/6/9 m/s along the scene's loop.
+# Degradations come from the environment itself (buildings, repetitive panel rows, the tunnel) through
+# the rendered sensors and the ray-traced GNSS model (isaac/ijcas_sim/gnss_sky.py); no fault schedule.
+# The seed sets the textures, building heights / roadside objects, GNSS constellations and epoch, noise.
+OUTDOOR_SCENES = {"1": "urban", "2": "solar_farm", "3": "tunnel_road"}
+OUTDOOR_SPEEDS_MPS = {"1": 3.0, "2": 6.0, "3": 9.0}
+OUTDOOR = [f"S{e}{v}" for e in OUTDOOR_SCENES for v in OUTDOOR_SPEEDS_MPS]
+OUTDOOR_DEV_SEEDS = list(range(1, 11))
+OUTDOOR_TEST_SEEDS = list(range(301, 311))       # untouched until the models are frozen
+
 
 def _rng(sid: str, seed: int):
     return np.random.default_rng(int(seed) * 1000 + int(sid[1:]))
@@ -38,6 +49,11 @@ def resolve(sid: str, seed: int) -> dict:
     base = {"id": sid, "seed": seed, "duration_s": DURATION_S, "hover_s": 8.0, "ramp_s": 4.0,
             "normal_s": 20.0, "gnss_rate_hz": 5.0, "faults": [], "variant": {}}
     s = copy.deepcopy(base)
+    if sid in OUTDOOR:
+        s["scene"] = OUTDOOR_SCENES[sid[1]]
+        s["speed_mps"] = OUTDOOR_SPEEDS_MPS[sid[2]]
+        s["variant"] = {"environment": s["scene"], "speed_mps": s["speed_mps"]}
+        return s
     F = s["faults"]
 
     def gnss_outage(t0, dur):

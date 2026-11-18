@@ -70,3 +70,76 @@ scenes:
         - [-11.8, 8.3, 1.6]
         - [-0.3, 8.3, 1.8]
         - [-0.3, -7.0, 1.6]
+
+  # --- outdoor experiment (2026-11-19): builders in isaac/ijcas_sim/outdoor.py; gnss_sky -> ray-traced
+  # GNSS (isaac/ijcas_sim/gnss_sky.py).  speed_mps below is the default; scenarios S11-S33 set 3/6/9 m/s.
+  urban:
+    kind: procedural_urban
+    gnss_sky: true
+    blocks: 4                               # 4 x 4 blocks of 40 m, 16 m streets, 2 x 2 buildings per block
+    block_m: 40.0
+    street_m: 16.0
+    building_gap_m: 4.0
+    height_m: [12.0, 60.0]                  # seeded per building
+    plazas: [[-28, -84], [-28, -28]]        # open blocks (start area)
+    trajectory:
+      speed_mps: 6.0
+      corner_radius_m: 8.0
+      yaw: heading
+      waypoints:                            # street centre lines around the central blocks, 6 m altitude
+        - [-40.0, -56.0, 6.0]
+        - [56.0, -56.0, 6.0]
+        - [56.0, 56.0, 6.0]
+        - [-56.0, 56.0, 6.0]
+        - [-56.0, -56.0, 6.0]
+  solar_farm:
+    kind: procedural_solar_farm
+    gnss_sky: true
+    rows: 16
+    row_pitch_m: 7.0
+    row_length_m: 500.0                     # row ends >= 166 m from the track (LiDAR range 120 m)
+    table_m: 30.0
+    table_gap_m: 1.0
+    table_width_m: 4.0
+    tilt_deg: 25.0
+    low_edge_m: 0.8
+    trajectory:
+      speed_mps: 6.0
+      corner_radius_m: 10.0
+      yaw: heading
+      waypoints:                            # racetrack over the aisles y = -14 / +14, 5 m altitude
+        - [-40.0, -14.0, 5.0]
+        - [70.0, -14.0, 5.0]
+        - [84.0, 0.0, 5.0]
+        - [70.0, 14.0, 5.0]
+        - [-70.0, 14.0, 5.0]
+        - [-84.0, 0.0, 5.0]
+        - [-70.0, -14.0, 5.0]
+  tunnel_road:
+    kind: procedural_tunnel_road
+    gnss_sky: true
+    road_length_m: 900.0
+    tunnel_x_m: [-200.0, 200.0]             # 400 m; the middle 160 m is > 120 m from both portals
+    tunnel_width_m: 11.0
+    tunnel_height_m: 7.0
+    hill_height_m: 18.0
+    light_spacing_m: 12.0
+    light_intensity: 40000.0
+    roadside_objects: 24
+    outside_furniture_x_m: 340.0
+    trajectory:
+      speed_mps: 6.0
+      corner_radius_m: 12.0
+      yaw: heading
+      waypoints:                            # east lane through the tunnel, turn, west lane back; 4 m altitude
+        - [-300.0, 2.5, 4.0]
+        - [350.0, 2.5, 4.0]
+        - [395.0, 22.0, 4.0]
+        - [435.0, 0.0, 4.0]
+        - [395.0, -22.0, 4.0]
+        - [350.0, -2.5, 4.0]
+        - [-350.0, -2.5, 4.0]
+        - [-395.0, -22.0, 4.0]
+        - [-435.0, 0.0, 4.0]
+        - [-395.0, 22.0, 4.0]
+        - [-350.0, 2.5, 4.0]
