@@ -451,7 +451,7 @@ def _lidar_bev(ax, pts, rmax=25.0):
     xy = pts[:, :2]
     r = np.linalg.norm(xy, axis=1)
     k = r < rmax
-    ax.scatter(xy[k, 0], xy[k, 1], c=pts[k, 2], s=0.25, cmap="viridis", vmin=-1.5, vmax=4.0, rasterized=True,
+    ax.scatter(xy[k, 0], xy[k, 1], c=pts[k, 2], s=0.5, cmap="viridis", vmin=-2.0, vmax=4.0, rasterized=True,
                linewidths=0)
     ax.scatter([0], [0], marker="^", s=40, c="#B5470A", zorder=3)
     ax.set_xlim(-rmax, rmax)
@@ -463,6 +463,15 @@ def _lidar_bev(ax, pts, rmax=25.0):
         s.set_color("#BBBBBB")
 
 
+CAM_GAMMA = 0.5   # one display curve for every frame (raw mono8 is dark indoors); never per-image scaling
+
+
+def _title(c):
+    tag = c["tag"].replace("_", " ")
+    tag = "nominal flight" if tag == "normal" else f"fault: {tag}"
+    return f"{c['sid']} · {c['scene'].replace('_', ' ')} · {tag}"
+
+
 def sensors(cap_dir: Path, picks: list[str] | None = None):
     caps = _load_caps(cap_dir)
     if not caps:
@@ -471,28 +480,33 @@ def sensors(cap_dir: Path, picks: list[str] | None = None):
     if picks:
         caps = [c for p in picks for c in caps if c["path"].stem == p]
     n = len(caps)
-    fig, axes = plt.subplots(n, 3, figsize=(12, 3.05 * n), gridspec_kw={"width_ratios": [1.33, 1.33, 1.0]})
-    axes = np.atleast_2d(axes)
+    rows = int(np.ceil(n / 2))
+    H = 3.3 * rows + 1.0
+    fig = plt.figure(figsize=(14, H))
+    gs = fig.add_gridspec(rows, 5, width_ratios=[1.33, 1.0, 0.07, 1.33, 1.0], wspace=0.03, hspace=0.22,
+                          left=0.005, right=0.995, bottom=0.01, top=1 - 1.05 / H)
     for i, c in enumerate(caps):
+        r, k = divmod(i, 2)
         z = c["z"]
-        for j, key in enumerate(("cam0", "cam1")):
-            ax = axes[i, j]
-            if key in z:
-                ax.imshow(z[key], cmap="gray", vmin=0, vmax=255, interpolation="nearest")
-            ax.set_xticks([])
-            ax.set_yticks([])
-            if i == 0:
-                ax.set_title(f"stereo camera {'left' if j == 0 else 'right'}  (640x480, 20 Hz)", fontsize=10)
-        ax = axes[i, 2]
+        ax = fig.add_subplot(gs[r, 3 * k])
+        if "cam0" in z:
+            img = 255.0 * (z["cam0"].astype(float) / 255.0) ** CAM_GAMMA
+            ax.imshow(img, cmap="gray", vmin=0, vmax=255, interpolation="antialiased")
+        ax.set_xticks([])
+        ax.set_yticks([])
+        ax.set_title(_title(c), fontsize=10.5, weight="bold", loc="left")
+        ax2 = fig.add_subplot(gs[r, 3 * k + 1])
         if "lidar" in z:
-            _lidar_bev(ax, z["lidar"])
-        if i == 0:
-            ax.set_title("3D LiDAR scan, top view  (colour = height)", fontsize=10)
-        tag = c["tag"].replace("_", " ")
-        axes[i, 0].set_ylabel(f"{c['sid']}  {c['scene'].replace('_', ' ')}\n{tag}", fontsize=10, weight="bold")
-    fig.suptitle("Isaac Sim sensor outputs as seen by the estimators  (nominal flight and injected faults)",
-                 fontsize=13, weight="bold", x=0.01, ha="left", y=1.0)
-    fig.tight_layout()
+            _lidar_bev(ax2, z["lidar"], rmax=30.0)
+        ax2.text(0.03, 0.97, "LiDAR, top view", transform=ax2.transAxes, fontsize=8.5, color=MUTED,
+                 va="top")
+    fig.text(0.005, 1 - 0.28 / H, "Isaac Sim sensor outputs as received by the estimators", fontsize=13.5,
+             weight="bold", ha="left", va="center")
+    fig.text(0.005, 1 - 0.62 / H,
+             f"Left stereo camera (640x480 mono, 20 Hz; all frames shown with the same gamma {CAM_GAMMA}) and one 3D "
+             "LiDAR scan (10 Hz, sensor frame, 30 m around the vehicle, colour = height). "
+             "Single frames grabbed from running experiment runs.", fontsize=8.8, color=MUTED, ha="left",
+             va="center")
     save(fig, "isaac_sensor_views")
 
 

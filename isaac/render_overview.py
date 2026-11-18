@@ -1,6 +1,6 @@
 """Third-person documentation renders of the IJCAS scenes (not used by any experiment).
 
-    isaac/run_isaac.sh isaac/render_overview.py --out <dir> [--scenes warehouse,open_field,corridor]
+    for s in warehouse open_field corridor; do isaac/run_isaac.sh isaac/render_overview.py --scene $s --out <dir>; done
 
 Builds each scene exactly as isaac/ijcas_world.py does (same build_scene, same seed, same lights), puts
 the Iris model on the reference trajectory, marks the reference loop with small spheres and renders
@@ -13,7 +13,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--out", required=True)
-parser.add_argument("--scenes", default="warehouse,open_field,corridor")
+parser.add_argument("--scene", required=True, choices=("warehouse", "open_field", "corridor"))
 parser.add_argument("--seed", type=int, default=1)
 parser.add_argument("--width", type=int, default=1600)
 parser.add_argument("--height", type=int, default=900)
@@ -94,19 +94,16 @@ def render(name, eye, target, cams):
 
 
 VIEWS = {   # scene -> (chase sample time s, list of (name, eye offset or absolute, target))
-    "warehouse": {"t": 14.0, "overview": ((5.0, -26.0, 9.0), (-12.0, 6.0, 0.0))},
+    "warehouse": {"t": 14.0, "overview": ((4.0, -38.0, 7.5), (-12.0, 5.0, 0.5))},  # inside: roof ~9.3 m
     "open_field": {"t": 18.0, "overview": ((-40.0, -45.0, 32.0), (15.0, 12.0, 0.0))},
     "corridor": {"t": 10.0, "overview": ((0.0, -38.0, 42.0), (0.0, 0.0, 0.0)), "hide": "/World/Scene/ceiling"},
 }
 
-for scene in [s for s in args.scenes.split(",") if s]:
+if True:
+    scene = args.scene
     cfg = SCENES[scene]
-    omni.usd.get_context().new_stage()
-    for _ in range(5):
-        app.update()
     pg = PegasusInterface()
     pg._world_settings = {"physics_dt": 1.0 / 200.0, "stage_units_in_meters": 1.0, "rendering_dt": 0.05}
-    World.clear_instance()
     pg._world = World(**pg._world_settings)
     tc = cfg["trajectory"]
     traj = LoopTrajectory(tc["waypoints"], speed=float(tc["speed_mps"]), hover_s=8.0, ramp_s=4.0,
@@ -126,6 +123,7 @@ for scene in [s for s in args.scenes.split(",") if s]:
     step = max(1, int(len(path) / max(1.0, traj.length / 1.2)))
     mark_path(stage, path[::step])
     pg.world.reset()
+    pg.world.pause()                                   # render only: no physics, the model stays put
     cams = {}
     heading = Rotation.from_quat(st.quat_xyzw).apply([1.0, 0.0, 0.0])
     heading[2] = 0.0
@@ -136,6 +134,5 @@ for scene in [s for s in args.scenes.split(",") if s]:
         render(f"{scene}_overview_ceiling_hidden", *v["overview"], cams)
     else:
         render(f"{scene}_overview", *v["overview"], cams)
-    cams.clear()
 
 app.close()
