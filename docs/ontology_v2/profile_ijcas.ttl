@@ -1,0 +1,50 @@
+@prefix ijcas: <https://incsl.sejong.ac.kr/ijcas/profile#> .
+@prefix rig:  <https://incsl.sejong.ac.kr/ijcas/rig#> .
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix nav:  <https://incsl.sejong.ac.kr/onto/nav#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# IJCAS 적용 프로파일.  아래 수치는 이 연구의 운용 정책이며 센서·알고리즘의 보편적 정의가 아니다.
+# 값의 출처: 현재 구현(ijcas/rgat/features.py AID_LIMIT_S, MAX_OUTPUT_AGE_S; config/selector/
+# thresholds_validated.yaml).  "v2 제안" 표시는 현재 구현에 없는 검사다.
+<https://incsl.sejong.ac.kr/ijcas/profile> a owl:Ontology ; owl:versionInfo "ijcas-profile 2.0-draft" .
+
+ijcas:minDwellS a owl:DatatypeProperty ; rdfs:domain core:Policy ; rdfs:range xsd:decimal .
+ijcas:marginProb a owl:DatatypeProperty ; rdfs:domain core:Policy ; rdfs:range xsd:decimal .
+ijcas:recoveryConfirmS a owl:DatatypeProperty ; rdfs:domain core:Policy ; rdfs:range xsd:decimal .
+
+# ---- 적격성 검사 항목 -------------------------------------------------------------------------
+ijcas:crit_vio_output a core:Criterion ; core:onProperty nav:VehiclePose ; core:reportedBy rig:openvins ;
+    core:comparator "present" ; core:maxEvidenceAgeS 0.3 ; core:ifMissing core:Fail .
+ijcas:crit_vio_tracking a core:Criterion ; core:onProperty nav:TrackedFeatureCount ;
+    core:comparator ">=" ; core:threshold 4 ; core:maxEvidenceAgeS 1.0 ; core:ifMissing core:Fail ;
+    rdfs:comment "마지막으로 4개 이상이 보고된 뒤 1.0 s 이내. 보고 수신은 융합 성공의 대용 지표다." .
+ijcas:crit_vio_aligned a core:Criterion ; core:onProperty nav:AlignmentEstablished ; core:reportedBy rig:alignment_module ;
+    core:comparator "==" ; core:threshold true ; core:maxEvidenceAgeS 0.3 ; core:ifMissing core:Fail .
+ijcas:crit_lio_output a core:Criterion ; core:onProperty nav:VehiclePose ; core:reportedBy rig:fastlio ;
+    core:comparator "present" ; core:maxEvidenceAgeS 0.3 ; core:ifMissing core:Fail .
+ijcas:crit_lio_points a core:Criterion ; core:onProperty nav:PointCount ;
+    core:comparator ">=" ; core:threshold 1500 ; core:maxEvidenceAgeS 1.5 ; core:ifMissing core:Fail .
+ijcas:crit_gi_fix a core:Criterion ; core:onProperty nav:FixType ;
+    core:comparator ">=" ; core:threshold 0 ; core:maxEvidenceAgeS 5.0 ; core:ifMissing core:Fail ;
+    rdfs:comment "NavSatFix status >= 0(fix)가 마지막으로 보고된 뒤 5.0 s 이내." .
+ijcas:crit_ins_anchor a core:Criterion ; core:onProperty nav:VehiclePose ; core:reportedBy rig:ins_dr ;
+    core:comparator "anchored" ; core:maxEvidenceAgeS 10.0 ; core:ifMissing core:Fail .
+ijcas:crit_imu_received a core:Criterion ; core:onProperty nav:ImuSampleRate ;
+    core:comparator ">=" ; core:threshold 150 ; core:maxEvidenceAgeS 1.0 ; core:ifMissing core:Undetermined ;
+    rdfs:comment "v2 제안: 정의상 필수 입력(nav:ImuSamples)의 수신 검사. 현재 학습 선택기의 적격성에는 없다." .
+
+# ---- 정책 ---------------------------------------------------------------------------------------
+ijcas:pol_elig_vio a core:Policy ; owl:versionInfo "2.0-draft" ;
+    core:hasCriterion ijcas:crit_vio_output , ijcas:crit_vio_tracking , ijcas:crit_vio_aligned , ijcas:crit_imu_received .
+ijcas:pol_elig_lio a core:Policy ; owl:versionInfo "2.0-draft" ;
+    core:hasCriterion ijcas:crit_lio_output , ijcas:crit_lio_points , ijcas:crit_imu_received .
+ijcas:pol_elig_gi a core:Policy ; owl:versionInfo "2.0-draft" ;
+    core:hasCriterion ijcas:crit_gi_fix , ijcas:crit_imu_received .
+ijcas:pol_elig_ins a core:Policy ; owl:versionInfo "2.0-draft" ;
+    core:hasCriterion ijcas:crit_ins_anchor , ijcas:crit_imu_received .
+ijcas:pol_switching a core:Policy ; owl:versionInfo "2.0-draft" ;
+    ijcas:minDwellS 2.0 ; ijcas:marginProb 0.1 ; ijcas:recoveryConfirmS 1.0 ;
+    rdfs:comment "적격 상실 시 즉시 전환, 그 밖에는 유지·확인·margin 조건. 값은 검증 세트에서 고정." .

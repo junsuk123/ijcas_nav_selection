@@ -18,6 +18,7 @@ from ..baselines import InsDr, InsState
 from ..handover import Alignment
 from .common import (LIMITED, UNKNOWN, UNUSABLE, USABLE, CostModel, Decision, SwitchManager,
                      load_config, signals)
+from .eligibility import ImuReception
 
 GLOBAL_TASK = "GlobalWaypoint"
 # R08: the essential exteroceptive input of each local engine (ontology :requiresEssential).
@@ -115,6 +116,14 @@ class SelectionEngine:
         self.switch = SwitchManager(self.cfg)
         self.quality = quality or QualityModel(self.cfg)
         self.last_ms = {}
+        self.imu_rx = ImuReception.from_cfg(self.cfg)
+
+    def imu_received(self, snap) -> bool:
+        """IMU reception criterion shared by every selector (2026-11-18): the IMU is the essential
+        input of all candidates, so none is eligible (and no INS fallback) while it is not
+        received.  Call once per tick."""
+        self.imu_rx.update(snap.t, snap.imu_window)
+        return self.imu_rx.ok(snap.t)
 
     # -- G5 helpers -------------------------------------------------------------------------
     def _update_alignment(self, snap, ms):
@@ -219,9 +228,13 @@ class SelectionEngine:
         self._update_alignment(snap, ms)
         self._dr_state = self.dr.propagate(snap.imu_window if snap.imu_window is not None else [],
                                            snap.t)
+        imu_ok = self.imu_received(snap)
+        if not imu_ok:
+            for cid in states:
+                reasons.setdefault(cid, []).append(self.imu_rx.reason(snap.t))
         costs, eligible = {}, {}
         for cid, st in states.items():
-            if st not in (USABLE, LIMITED):
+            if not imu_ok or st not in (USABLE, LIMITED):
                 continue
             if self.global_state(cid, snap) is None and self.task == GLOBAL_TASK:
                 continue
@@ -254,9 +267,10 @@ class Fixed:
 
     def step(self, snap):
         self.inner._update_alignment(snap, _ms_for_alignment(snap, self.inner.cfg, self.inner))
+        imu_ok = self.inner.imu_received(snap)
         out = self.inner.global_state(self.cid, snap)
         o = snap.outputs.get(self.cid)
-        if o is not None and snap.t - o.stamp > 0.3:
+        if not imu_ok or (o is not None and snap.t - o.stamp > 0.3):
             out = None
         d = Decision(snap.t, GLOBAL_TASK, {}, {}, {}, {}, self.cid if out is not None else None,
                      "normal" if out is not None else "no_valid_nav")
@@ -276,17 +290,18 @@ class HealthFsm:
         e._update_alignment(snap, ms)
         e._dr_state = e.dr.propagate(snap.imu_window if snap.imu_window is not None else [],
                                      snap.t)
+        imu_ok = e.imu_received(snap)
         fresh = lambda c: snap.outputs.get(c) is not None and snap.t - snap.outputs[c].stamp < 0.3  # noqa
         g = snap.diag.get("gnss")
         fix = bool(g and g[0].get("fix") and snap.t - g[0]["t"] < 1.0)
         sel = None
         for cid, ok in (("px4", fix and fresh("px4")), ("openvins", fresh("openvins")),
                         ("fastlio", fresh("fastlio"))):
-            if ok and e.global_state(cid, snap) is not None:
+            if imu_ok and ok and e.global_state(cid, snap) is not None:
                 sel = cid
                 break
         mode = "normal"
-        if sel is None and e.dr.valid:
+        if sel is None and e.dr.valid and imu_ok:
             sel, mode = "ins_dr", "limited_dr"
         elif sel is None:
             mode = "no_valid_nav"
@@ -309,12 +324,13 @@ class Oracle:
         from ..evaluation import gt_at
         e = self.inner
         e._update_alignment(snap, _ms_for_alignment(snap, e.cfg, e))
+        imu_ok = e.imu_received(snap)
         gp, _, _ = gt_at(self.gt, np.array([snap.t]))
         best, err = None, np.inf
         for cid in ("px4", "openvins", "fastlio"):
             o = snap.outputs.get(cid)
             g = e.global_state(cid, snap)
-            if o is None or g is None or snap.t - o.stamp > 0.3:
+            if not imu_ok or o is None or g is None or snap.t - o.stamp > 0.3:
                 continue
             d = float(np.linalg.norm(g[0] + self.offset - gp[0]))
             if d < err:

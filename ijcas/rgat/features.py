@@ -16,7 +16,10 @@ first-implementation indicators (config/selector/thresholds_validated.yaml).
   ins       free-inertial strapdown anchored on PX4's state while GNSS position is Usable and
             propagated from the IMU otherwise; valid for max_dr_s after the last anchor
 Eligibility (policy, not learned): output age <= 0.3 s, alignment established (vio, lio), and the
-last external aiding input not older than AID_LIMIT_S.
+last external aiding input not older than AID_LIMIT_S.  Since 2026-11-18 (user decision) every
+candidate also requires IMU reception (>= 150 Hz over the last 1 s, ijcas.selector.eligibility):
+the IMU is the essential input of all four (ontology :requiresEssential :Inertial).  On the existing
+recordings this changed no eligibility in the evaluation windows (validation: no tick at all).
 Output age and the time since the last external aiding input (GNSS fix / tracked visual features /
 usable LiDAR scan) are kept apart: an IMU-propagated output can be fresh while aiding stopped.
 Aiding *reception* is a proxy, not proof that the engine fused it (ontology doc).
@@ -125,6 +128,7 @@ class CandidateBank:
         sig = signals(snap)
         sig.update(self.eng.derived_signals(snap))      # GNSS-local consistency, alignment stats
         self._track_aiding(snap, sig)
+        imu_ok = self.eng.imu_received(snap)            # essential input of every candidate
         states = {m: worst(indicator_state(i, sig, snap.t)[0] for i in self.inds[m])
                   for m in CAPABILITIES}
         self.eng._update_alignment(snap, states)
@@ -143,14 +147,14 @@ class CandidateBank:
         out = {}
         for k in CANDIDATES:
             if k == "ins":
-                ok = ins is not None and self.dr.anchor_t is not None and \
+                ok = imu_ok and ins is not None and self.dr.anchor_t is not None and \
                     self.dr.age(snap.t) <= self.dr.max_dr_s
                 out[k] = ins if ok else None
                 continue
             src = NAV_SRC[k]
             o = snap.outputs.get(src)
             g = self.eng.global_state(src, snap)
-            out[k] = g if (o is not None and g is not None
+            out[k] = g if (imu_ok and o is not None and g is not None
                            and snap.t - o.stamp <= MAX_OUTPUT_AGE_S
                            and self.aid_age(k, snap.t) <= AID_LIMIT_S[k]) else None
         return out, states, sig

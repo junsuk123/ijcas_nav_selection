@@ -1,0 +1,53 @@
+@prefix rig:  <https://incsl.sejong.ac.kr/ijcas/rig#> .
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix nav:  <https://incsl.sejong.ac.kr/onto/nav#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn:  <http://www.w3.org/ns/ssn/> .
+@prefix ssn-system: <http://www.w3.org/ns/ssn/systems/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 구성·사양 (준정적).  현재 리그의 장치·소프트웨어·보정과 그 성립 조건.
+
+rig:uav1 a sosa:Platform ; sosa:hosts rig:cam0 , rig:lidar0 , rig:imu0 , rig:gnss0 .
+
+# 카메라: 사양은 '시뮬레이터 설정값'이라는 조건 아래에서만 성립한다.
+rig:cam0 a sosa:Sensor ; sosa:observes nav:ImageIrradiance ; ssn:implements rig:proc_cam_capture ;
+    ssn-system:hasSystemCapability rig:cam0_cap .
+rig:cam0_cap a ssn-system:SystemCapability ;
+    ssn-system:hasSystemProperty rig:cam0_hfov ; ssn-system:inCondition rig:cond_isaac_rtx .
+rig:cam0_hfov a nav:HorizontalFieldOfView ; qudt:numericValue 90.0 ; qudt:unit unit:DEG .
+rig:cond_isaac_rtx a ssn-system:Condition ;
+    rdfs:comment "Isaac Sim RTX 렌더링, isaac/ijcas_sim/rig.py CameraSpec 기본값. 데이터시트 값이 아니다." .
+rig:cam0_mount a core:Configuration ; nav:parentFrame "base_link" ; nav:childFrame "cam0" ;
+    core:storageRef "file:config/engines/calibration_source.json"^^xsd:anyURI ;
+    rdfs:comment "외재 보정. 스테이지에서 측정한 값의 판(version) 하나. 보정 정확도는 별도 항목." .
+
+rig:lidar0 a sosa:Sensor ; sosa:observes nav:SurfaceRange ; ssn:implements rig:proc_lidar_scan .
+rig:imu0 a sosa:Sensor ; sosa:observes nav:SpecificForce , nav:AngularRate ; ssn:implements rig:proc_imu_sample .
+rig:gnss0 a sosa:Sensor ; sosa:observes nav:AntennaPosition ; ssn:implements rig:proc_receiver_pvt .
+# 센서 -implements-> 절차 -hasOutput-> 데이터 종류  (기존 :providesMeasurement를 대체하는 경로)
+rig:proc_cam_capture a sosa:Procedure ; ssn:hasOutput nav:StereoImages .
+rig:proc_lidar_scan a sosa:Procedure ; ssn:hasOutput nav:PointClouds .
+rig:proc_imu_sample a sosa:Procedure ; ssn:hasOutput nav:ImuSamples .
+rig:proc_receiver_pvt a sosa:Procedure ; ssn:hasOutput nav:GnssFixes .
+
+# 처리 모듈(소프트웨어 Sensor)과 절차의 판(version)
+rig:context_monitor a sosa:Sensor ; rdfs:comment "ros2/context_monitor.py" ;
+    ssn:implements rig:proc_fast_t20 , rig:proc_lidar_pca , rig:proc_count_ov_points .
+rig:proc_fast_t20 a sosa:Procedure ; rdfs:comment "OpenCV FAST threshold=20 on cam0 gray frame" ;
+    prov:wasAttributedTo rig:git_878eac1 .
+rig:proc_lidar_pca a sosa:Procedure ; rdfs:comment "voxel 0.7 m, k=12 local PCA normals; < 50 points -> not computable" .
+rig:proc_count_ov_points a sosa:Procedure ; rdfs:comment "points in /ov_msckf/points_msckf + points_slam" .
+rig:alignment_module a sosa:Sensor ; rdfs:comment "ijcas/handover.py Alignment (causal 4-DOF)" .
+rig:git_878eac1 a core:Configuration ; rdfs:comment "code version" .
+
+# 후보 추정기 (설정 기준 구현)
+rig:openvins a nav:Estimator ; ssn:implements nav:proc_openvins_stereo ; nav:candidateId "vio" .
+rig:fastlio a nav:Estimator ; ssn:implements nav:proc_fastlio2 ; nav:candidateId "lio" .
+rig:px4 a nav:Estimator ; ssn:implements nav:proc_px4_ekf2 ; nav:candidateId "gnss_ins" .
+rig:ins_dr a nav:Estimator ; ssn:implements nav:proc_ins_strapdown ; nav:candidateId "ins" .
+rig:rgat_dyn_s0 a prov:SoftwareAgent ; rdfs:comment "학습 선택기 체크포인트(sha256은 results/rgat/FROZEN.json)" .

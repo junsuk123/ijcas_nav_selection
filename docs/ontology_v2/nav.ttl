@@ -1,0 +1,120 @@
+@prefix nav:  <https://incsl.sejong.ac.kr/onto/nav#> .
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn:  <http://www.w3.org/ns/ssn/> .
+@prefix ssn-system: <http://www.w3.org/ns/ssn/systems/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 항법 모듈.  공통부(core)와 SOSA/SSN 위에 항법 추정기·입력 요구·상태 출력·선택 판단만 더한다.
+<https://incsl.sejong.ac.kr/onto/nav> a owl:Ontology ; owl:imports <https://incsl.sejong.ac.kr/onto/core> .
+
+# ---- 클래스 -----------------------------------------------------------------------------------
+nav:Estimator a owl:Class ; rdfs:subClassOf sosa:Sensor ;
+    rdfs:comment "항법 상태를 추정하는 소프트웨어(OpenVINS, FAST-LIO2, PX4 EKF2, INS 전파). SOSA의 Sensor 정의(소프트웨어 포함)를 따르며, 그 출력은 관측(추정)이지 참값이 아니다." .
+nav:EstimationProcedure a owl:Class ; rdfs:subClassOf sosa:Procedure .
+nav:DataStream a owl:Class ; rdfs:subClassOf ssn:Input , ssn:Output ;
+    rdfs:comment "센서 절차의 출력이자 추정 절차의 입력이 되는 정보 종류(영상, 점군, IMU 표본, GNSS 해)." .
+nav:StateOutput a owl:Class ; rdfs:subClassOf ssn:Output .
+nav:FrameKind a owl:Class .
+nav:LocalFrame a nav:FrameKind ; rdfs:comment "추정기 자체 원점의 국소 좌표계. 전역 사용에는 정렬이 필요." .
+nav:GlobalFrame a nav:FrameKind ; rdfs:comment "GNSS 원점에 묶인 좌표계(이 리그에서는 PX4 local ENU)." .
+
+nav:EligibilityCheck a owl:Class ; rdfs:subClassOf core:Assessment .
+nav:QualityScoring a owl:Class ; rdfs:subClassOf core:Assessment ;
+    rdfs:comment "적격 후보의 선택용 점수를 계산하는 활동(규칙 비용 또는 학습 모델)." .
+nav:Selection a owl:Class ; rdfs:subClassOf core:Assessment .
+nav:EligibilityResult a owl:Class ; rdfs:subClassOf core:AssessmentResult ;
+    rdfs:comment "정책 조건의 충족 여부. 실제 정확도를 보증하지 않는다." .
+nav:QualityScore a owl:Class ; rdfs:subClassOf core:AssessmentResult ;
+    rdfs:comment "적격 후보의 선택용 점수. 참값이 아니다." .
+nav:SelectionResult a owl:Class ; rdfs:subClassOf core:AssessmentResult .
+nav:EstimateObservation a owl:Class ; rdfs:subClassOf sosa:Observation ;
+    rdfs:comment "추정기 출력 한 개. SOSA의 Observation(절차를 수행해 값을 추정)이며 참값이 아니다." .
+
+# ---- 정의·의존 관계 속성 ----------------------------------------------------------------------
+nav:requiresInput a owl:ObjectProperty ; rdfs:subPropertyOf ssn:hasInput ;
+    rdfs:domain nav:EstimationProcedure ; rdfs:range nav:DataStream ;
+    rdfs:comment "구현상 필수 입력: 없으면 이 절차는 정의대로 동작하지 않는다. 실시간 적격성은 이 관계만으로 정해지지 않고 프로파일 정책이 검사한다." ;
+    core:tosmModel core:Implicit ; core:propertyNature core:Extrinsic ; core:updateClass core:Static .
+nav:usesOptionalInput a owl:ObjectProperty ; rdfs:subPropertyOf ssn:hasInput ;
+    rdfs:domain nav:EstimationProcedure ; rdfs:range nav:DataStream ;
+    core:tosmModel core:Implicit ; core:propertyNature core:Extrinsic ; core:updateClass core:Static .
+nav:referencedBy a owl:ObjectProperty ; rdfs:domain nav:StateOutput ; rdfs:range nav:DataStream ;
+    rdfs:comment "출력의 기준 좌표가 이 입력에 의해 고정된다(예: PX4 전역 위치는 GNSS 해)." .
+nav:frameKind a owl:ObjectProperty ; rdfs:domain nav:StateOutput ; rdfs:range nav:FrameKind .
+nav:inFrame a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "결과가 표현된 좌표계 ID(ROS frame_id)." ;
+    core:tosmModel core:Symbolic ; core:propertyNature core:Extrinsic ; core:updateClass core:QuasiStatic .
+nav:candidateId a owl:DatatypeProperty ; rdfs:domain nav:Estimator ; rdfs:range xsd:string ;
+    core:tosmModel core:Symbolic ; core:propertyNature core:Intrinsic ; core:updateClass core:Static .
+nav:parentFrame a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    core:tosmModel core:Symbolic ; core:propertyNature core:Extrinsic ; core:updateClass core:QuasiStatic .
+nav:childFrame a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    core:tosmModel core:Symbolic ; core:propertyNature core:Extrinsic ; core:updateClass core:QuasiStatic .
+nav:selected a owl:ObjectProperty ; rdfs:domain core:AssessmentResult ; rdfs:range nav:Estimator .
+nav:outputMode a owl:DatatypeProperty ; rdfs:domain core:AssessmentResult ; rdfs:range xsd:string .
+
+# ---- 사양 속성 (SSN System Capabilities 확장; 조건 inCondition과 함께 쓴다) ---------------------
+nav:HorizontalFieldOfView a owl:Class ; rdfs:subClassOf ssn-system:SystemProperty ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:QuasiStatic .
+
+# ---- 관측 속성: 물리량 (FoI = 차체·주변 표면) ------------------------------------------------
+nav:SpecificForce a sosa:ObservableProperty .
+nav:AngularRate a sosa:ObservableProperty .
+nav:AntennaPosition a sosa:ObservableProperty .
+nav:ImageIrradiance a sosa:ObservableProperty .
+nav:SurfaceRange a sosa:ObservableProperty .
+nav:VehiclePose a sosa:ObservableProperty ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Extrinsic ; core:updateClass core:Dynamic .
+
+# ---- 관측 속성: 처리 결과에 대한 진단 (FoI = 데이터 항목 또는 추정기 상태, 환경이 아님) -------
+nav:FastCornerCount a sosa:ObservableProperty ;
+    rdfs:comment "한 영상 프레임에서 지정 절차가 검출한 코너 수. 환경의 시각 특징량이 아니다." ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+nav:MeanImageIntensity a sosa:ObservableProperty ;
+    rdfs:comment "영상 화소값 평균(DN). 공간 조도가 아니다." ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+nav:TrackedFeatureCount a sosa:ObservableProperty ;
+    rdfs:comment "추정기가 보고한 추적 중 특징 수." ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+nav:PointCount a sosa:ObservableProperty ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+nav:NormalInfoEigenRatio a sosa:ObservableProperty ;
+    rdfs:comment "한 스캔의 법선 정보행렬 최소/최대 고유값 비. 항법 상태의 가관측성 참값이 아니다." ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+nav:FixType a sosa:ObservableProperty ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+nav:AlignmentEstablished a sosa:ObservableProperty ;
+    rdfs:comment "정렬 모듈이 보고한 국소->전역 인과 정렬 성립 여부." ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Extrinsic ; core:updateClass core:Dynamic .
+nav:ImuSampleRate a sosa:ObservableProperty ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+nav:ReportedHorizontalSigma a sosa:ObservableProperty ;
+    rdfs:comment "수신기가 스스로 보고한 수평 정확도. 실제 위치 오차가 아니다." ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Intrinsic ; core:updateClass core:Dynamic .
+
+# ---- 데이터 종류와 출력 -------------------------------------------------------------------------
+nav:StereoImages a nav:DataStream .
+nav:PointClouds a nav:DataStream .
+nav:ImuSamples a nav:DataStream .
+nav:GnssFixes a nav:DataStream .
+nav:MagSamples a nav:DataStream .
+nav:BaroSamples a nav:DataStream .
+nav:AnchorState a nav:DataStream ; rdfs:comment "INS 전파의 초기·재고정 상태." .
+nav:LocalPoseOutput a nav:StateOutput ; nav:frameKind nav:LocalFrame .
+nav:AnchoredPoseOutput a nav:StateOutput ; nav:frameKind nav:GlobalFrame ; nav:referencedBy nav:AnchorState .
+nav:GlobalPoseOutput a nav:StateOutput ; nav:frameKind nav:GlobalFrame ; nav:referencedBy nav:GnssFixes .
+
+# ---- 정의·의존 관계 (구현·설정 기준; 이 리그에서 쓰는 구성) ------------------------------------
+nav:proc_openvins_stereo a nav:EstimationProcedure ;
+    nav:requiresInput nav:StereoImages , nav:ImuSamples ; ssn:hasOutput nav:LocalPoseOutput .
+nav:proc_fastlio2 a nav:EstimationProcedure ;
+    nav:requiresInput nav:PointClouds , nav:ImuSamples ; ssn:hasOutput nav:LocalPoseOutput .
+nav:proc_px4_ekf2 a nav:EstimationProcedure ;
+    nav:requiresInput nav:ImuSamples ;
+    nav:usesOptionalInput nav:GnssFixes , nav:MagSamples , nav:BaroSamples ;
+    ssn:hasOutput nav:GlobalPoseOutput .
+nav:proc_ins_strapdown a nav:EstimationProcedure ;
+    nav:requiresInput nav:ImuSamples , nav:AnchorState ; ssn:hasOutput nav:AnchoredPoseOutput .

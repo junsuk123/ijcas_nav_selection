@@ -1,0 +1,27 @@
+@prefix uwb:  <https://incsl.sejong.ac.kr/onto/uwb#> .
+@prefix rig:  <https://incsl.sejong.ac.kr/ijcas/rig#> .
+@prefix run:  <https://incsl.sejong.ac.kr/ijcas/run/E4_201#> .
+@prefix nav:  <https://incsl.sejong.ac.kr/onto/nav#> .
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn:  <http://www.w3.org/ns/ssn/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 확장 시험 1: 새 센서(UWB).  공통 관측 구조와 기존 shape를 바꾸지 않고 추가한다.
+uwb:RangeToAnchor a sosa:ObservableProperty ;
+    core:tosmModel core:Explicit ; core:propertyNature core:Extrinsic ; core:updateClass core:Dynamic .
+uwb:nlosFlag a rdfs:Property ; rdfs:comment "모듈이 보고한 NLOS 의심 플래그(보고값)." .
+uwb:RangeMeasurements a nav:DataStream .
+uwb:Anchor a rdfs:Class ; rdfs:subClassOf sosa:FeatureOfInterest .
+
+rig:uwb0 a sosa:Sensor ; sosa:observes uwb:RangeToAnchor ; ssn:implements rig:proc_twr .
+rig:anchorA a uwb:Anchor .
+rig:proc_twr a sosa:Procedure ; ssn:hasOutput uwb:RangeMeasurements ; rdfs:comment "two-way ranging, firmware 1.2" .
+
+run:obs_uwb_0001 a sosa:Observation ;
+    sosa:madeBySensor rig:uwb0 ; sosa:usedProcedure rig:proc_twr ;
+    sosa:observedProperty uwb:RangeToAnchor ; sosa:hasFeatureOfInterest rig:anchorA ;
+    sosa:hasSimpleResult 12.41 ; uwb:nlosFlag false ;
+    sosa:resultTime "2026-11-20T09:01:03.19Z"^^xsd:dateTime ;
+    core:receptionTime "2026-11-20T09:01:03.19Z"^^xsd:dateTime .

@@ -1,0 +1,23 @@
+@prefix run:  <https://incsl.sejong.ac.kr/ijcas/run/E4_201#> .
+@prefix rig:  <https://incsl.sejong.ac.kr/ijcas/rig#> .
+@prefix env:  <https://incsl.sejong.ac.kr/onto/env#> .
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 평가 그래프: 선택기 입력이 아니다.  시나리오 설정(시뮬레이터)과 인지 가설을 분리해 둔다.
+run:zone_tunnel a env:Zone ; env:zoneKind env:Tunnel ;
+    env:boundaryWkt "POLYGON((0 -3, 300 -3, 300 3, 0 3, 0 -3))" ;
+    prov:wasAttributedTo run:scenario_config .
+run:scenario_config a core:Configuration ; core:storageRef "file:config/scenarios/E4.yaml"^^xsd:anyURI .
+
+# 인지 모듈이 '천장·양측 벽 검출'에서 만든 가설: 보관만 하고 적격성에는 쓰지 않는다.
+run:hyp_6320 a env:ZoneHypothesis ;
+    prov:wasGeneratedBy run:zone_inference_6320 ; core:about rig:uav1 ;
+    core:scoreValue 0.8 ; core:reasonCode "ceiling and both walls detected in scan 0632" ;
+    prov:wasDerivedFrom run:obs_eig_0632 .
+run:zone_inference_6320 a core:Assessment ;
+    prov:wasAssociatedWith run:zone_classifier ; prov:used run:obs_eig_0632 ;
+    prov:endedAtTime "2026-11-20T09:01:03.20Z"^^xsd:dateTime .
+run:zone_classifier a prov:SoftwareAgent .

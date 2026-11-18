@@ -1,0 +1,33 @@
+@prefix pump: <https://example.org/plant/pump#> .
+@prefix plant: <https://example.org/plant/data#> .
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 확장 시험 2: 다른 도메인(펌프 진동·온도 감시).  core만 쓰고 항법 개념(nav:)을 쓰지 않는다.
+pump:Pump a rdfs:Class ; rdfs:subClassOf sosa:FeatureOfInterest .
+pump:VibrationVelocityRms a sosa:ObservableProperty .
+pump:BearingTemperature a sosa:ObservableProperty .
+pump:InspectionCheck a rdfs:Class ; rdfs:subClassOf core:Assessment .
+
+plant:P101 a pump:Pump .
+plant:acc7 a sosa:Sensor .
+plant:proc_iso_rms a sosa:Procedure ; rdfs:comment "10-1000 Hz band RMS velocity" .
+
+plant:obs_vib_88 a sosa:Observation ;
+    sosa:madeBySensor plant:acc7 ; sosa:usedProcedure plant:proc_iso_rms ;
+    sosa:observedProperty pump:VibrationVelocityRms ; sosa:hasFeatureOfInterest plant:P101 ;
+    sosa:hasSimpleResult 7.4 ;
+    sosa:resultTime "2026-11-20T10:00:00Z"^^xsd:dateTime ;
+    core:receptionTime "2026-11-20T10:00:02Z"^^xsd:dateTime .
+
+plant:crit_vib a core:Criterion ; core:onProperty pump:VibrationVelocityRms ;
+    core:comparator "<=" ; core:threshold 7.1 ; core:maxEvidenceAgeS 3600 ; core:ifMissing core:Undetermined .
+plant:pol_inspect a core:Policy ; core:hasCriterion plant:crit_vib .
+
+plant:chk_88 a pump:InspectionCheck ; core:appliedPolicy plant:pol_inspect ; prov:used plant:obs_vib_88 ;
+    prov:endedAtTime "2026-11-20T10:00:05Z"^^xsd:dateTime .
+plant:chk_88_r a core:AssessmentResult ; prov:wasGeneratedBy plant:chk_88 ; core:about plant:P101 ;
+    core:outcome core:Fail ; core:reasonCode "vibration 7.4 > 7.1 mm/s" ; prov:wasDerivedFrom plant:obs_vib_88 .

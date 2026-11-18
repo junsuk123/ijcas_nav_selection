@@ -1,0 +1,78 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix nav:  <https://incsl.sejong.ac.kr/onto/nav#> .
+@prefix shp:  <https://incsl.sejong.ac.kr/onto/shapes#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 데이터 교환 규약.  모든 shape는 열려 있다(sh:closed 없음): 새 속성은 허용하고, 필요한 항목만 요구한다.
+# 하위 클래스 인스턴스를 대상에 포함하려면 TBox(rdfs:subClassOf)를 데이터 그래프에 함께 넣어 검증한다.
+
+shp:prefixes owl:imports sh: ;
+    sh:declare [ sh:prefix "prov" ; sh:namespace "http://www.w3.org/ns/prov#"^^xsd:anyURI ] ,
+               [ sh:prefix "core" ; sh:namespace "https://incsl.sejong.ac.kr/onto/core#"^^xsd:anyURI ] ,
+               [ sh:prefix "rdfs" ; sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ,
+               [ sh:prefix "sosa" ; sh:namespace "http://www.w3.org/ns/sosa/"^^xsd:anyURI ] .
+
+# ---- 공통 규약 (core) ---------------------------------------------------------------------------
+shp:Observation a sh:NodeShape ; sh:targetClass sosa:Observation ;
+    sh:property [ sh:path sosa:madeBySensor ; sh:minCount 1 ; sh:maxCount 1 ] ,
+                [ sh:path sosa:observedProperty ; sh:minCount 1 ; sh:maxCount 1 ] ,
+                [ sh:path sosa:hasFeatureOfInterest ; sh:minCount 1 ; sh:maxCount 1 ] ,
+                [ sh:path sosa:usedProcedure ; sh:minCount 1 ] ,
+                [ sh:path sosa:resultTime ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ,
+                [ sh:path core:receptionTime ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ,
+                [ sh:path sosa:phenomenonTime ; sh:maxCount 1 ] ;
+    # 값이 있거나, 계산 불가 상태가 명시돼야 한다(둘 다는 안 됨).  누락을 0으로 쓰지 않게 한다.
+    sh:xone ( [ sh:or ( [ sh:path sosa:hasSimpleResult ; sh:minCount 1 ]
+                        [ sh:path sosa:hasResult ; sh:minCount 1 ] ) ]
+              [ sh:path core:resultStatus ; sh:hasValue core:NotComputable ] ) ;
+    sh:message "관측 기록에는 값 또는 '계산 불가' 상태 중 정확히 하나가 있어야 한다." .
+
+shp:Assessment a sh:NodeShape ; sh:targetClass core:Assessment ;
+    sh:property [ sh:path prov:endedAtTime ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ;
+    sh:or ( [ sh:path core:appliedPolicy ; sh:minCount 1 ]
+            [ sh:path prov:wasAssociatedWith ; sh:minCount 1 ] ) ;
+    # 판단 시점 이후에 수신된(또는 수신 시각이 없는) 관측을 쓰면 위반.
+    sh:sparql [ sh:prefixes shp:prefixes ;
+        sh:message "판단 시점 이후 수신됐거나 수신 시각이 없는 관측을 사용함: {?obs}" ;
+        sh:select """SELECT $this ?obs WHERE {
+            $this prov:used ?obs ; prov:endedAtTime ?t .
+            ?obs a/rdfs:subClassOf* sosa:Observation .
+            OPTIONAL { ?obs core:receptionTime ?r }
+            FILTER (!BOUND(?r) || ?r > ?t) }""" ] .
+
+shp:AssessmentResult a sh:NodeShape ; sh:targetClass core:AssessmentResult ;
+    sh:property [ sh:path prov:wasGeneratedBy ; sh:minCount 1 ; sh:maxCount 1 ; sh:class core:Assessment ] ,
+                [ sh:path core:about ; sh:maxCount 1 ] ;
+    sh:not [ sh:class sosa:Observation ] ;
+    sh:sparql [ sh:prefixes shp:prefixes ;
+        sh:message "판단 결과가 자기 자신을 근거로 유도됨(순환)" ;
+        sh:select """SELECT $this WHERE { $this prov:wasDerivedFrom+ $this . }""" ] .
+
+# ---- 항법 모듈 규약 (nav) ----------------------------------------------------------------------
+shp:EstimateObservation a sh:NodeShape ; sh:targetClass nav:EstimateObservation ;
+    sh:property [ sh:path nav:inFrame ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ,
+                [ sh:path core:receptionTime ; sh:minCount 1 ] .
+
+shp:EligibilityResult a sh:NodeShape ; sh:targetClass nav:EligibilityResult ;
+    sh:property [ sh:path core:outcome ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:in ( core:Pass core:Fail core:Undetermined ) ] ,
+                [ sh:path core:about ; sh:minCount 1 ; sh:class nav:Estimator ] ,
+                [ sh:path core:reasonCode ; sh:minCount 1 ] .
+
+# 적격성 판단은 보고 기록·정책·구성만 쓴다.  다른 판단 결과(장소 가설, 품질 점수 등)를 근거로 쓰면 위반.
+shp:EligibilityCheck a sh:NodeShape ; sh:targetClass nav:EligibilityCheck ;
+    sh:property [ sh:path core:appliedPolicy ; sh:minCount 1 ] ;
+    sh:sparql [ sh:prefixes shp:prefixes ;
+        sh:message "적격성 판단이 다른 판단 결과를 근거로 사용함: {?x}" ;
+        sh:select """SELECT $this ?x WHERE {
+            $this prov:used ?x . ?x a/rdfs:subClassOf* core:AssessmentResult . }""" ] .
+
+shp:SelectionResult a sh:NodeShape ; sh:targetClass nav:SelectionResult ;
+    sh:property [ sh:path nav:outputMode ; sh:minCount 1 ; sh:in ( "normal" "limited" "no_valid_nav" ) ] ,
+                [ sh:path nav:selected ; sh:maxCount 1 ; sh:class nav:Estimator ] ,
+                [ sh:path core:reasonCode ; sh:minCount 1 ] .

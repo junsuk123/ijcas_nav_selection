@@ -1,0 +1,77 @@
+@prefix core: <https://incsl.sejong.ac.kr/onto/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn:  <http://www.w3.org/ns/ssn/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 공통부 (도메인 중립).  SOSA/SSN·PROV-O를 그대로 쓰고, 표준에 없는 것만 여기서 정의한다.
+# "누가(sosa:madeBySensor) 무엇의(sosa:hasFeatureOfInterest) 어떤 속성을(sosa:observedProperty)
+#  언제(sosa:phenomenonTime / sosa:resultTime / core:receptionTime) 어떤 방법으로(sosa:usedProcedure)
+#  관측해 무엇을 보고했고(sosa:hasSimpleResult | sosa:hasResult | core:resultStatus),
+#  그 기록을 근거로(prov:used) 어떤 정책으로(core:appliedPolicy) 무엇을 판단했는가(core:AssessmentResult)"
+<https://incsl.sejong.ac.kr/onto/core> a owl:Ontology ; owl:versionInfo "2.0-draft" .
+
+# ---- 판단 (정책을 적용해 관측 기록으로부터 결과를 만드는 활동) ------------------------------
+core:Assessment a owl:Class ; rdfs:subClassOf prov:Activity ;
+    rdfs:comment "명시한 정책을 관측 기록에 적용하는 활동. 결과는 판단이지 관측이 아니다." .
+core:AssessmentResult a owl:Class ; rdfs:subClassOf prov:Entity ;
+    owl:disjointWith sosa:Observation ;
+    rdfs:comment "판단 결과. 그 자체가 새 관측 근거로 쓰이지 않는다." .
+core:Policy a owl:Class ; rdfs:subClassOf prov:Plan ;
+    rdfs:comment "적용 프로파일이 정한 운용 조건의 묶음. 자연법칙이나 센서의 보편적 정의가 아니다." .
+core:Criterion a owl:Class ;
+    rdfs:comment "정책의 한 검사 항목: 어떤 보고 속성을, 어떤 비교로, 얼마나 최근 보고까지 인정하며, 없을 때 어떻게 판정하는가." .
+core:Configuration a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:comment "적용 중인 설정·보정값의 한 판(version)." .
+core:DataItem a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:comment "원자료 한 단위(영상 프레임, 스캔, IMU 블록). 그래프에는 식별자와 저장 위치만 둔다." .
+
+# ---- 값 상태 (코드 목록) ---------------------------------------------------------------------
+core:ResultStatus a owl:Class .
+core:NotComputable a core:ResultStatus ;
+    rdfs:comment "절차는 실행됐으나 값을 계산할 수 없었다(예: 점이 50개 미만이라 고유값을 못 구함). 0과 다르다." .
+core:EvidenceStatus a owl:Class .
+core:Fresh a core:EvidenceStatus .
+core:Stale a core:EvidenceStatus .
+core:Missing a core:EvidenceStatus .
+core:Outcome a owl:Class .
+core:Pass a core:Outcome .
+core:Fail a core:Outcome .
+core:Undetermined a core:Outcome ; rdfs:comment "판단 불가: 근거가 없거나 오래되어 정책이 판정을 정하지 못함." .
+
+# ---- 속성 -------------------------------------------------------------------------------------
+core:receptionTime a owl:DatatypeProperty ; rdfs:range xsd:dateTime ;
+    rdfs:comment "판단 주체가 이 기록을 받은 시각. sosa:resultTime(처리 완료)·sosa:phenomenonTime(값이 가리키는 시각)과 구분." .
+core:resultStatus a owl:ObjectProperty ; rdfs:range core:ResultStatus .
+core:appliedPolicy a owl:ObjectProperty ; rdfs:subPropertyOf prov:used ; rdfs:range core:Policy .
+core:hasCriterion a owl:ObjectProperty ; rdfs:domain core:Policy ; rdfs:range core:Criterion .
+core:reportedBy a owl:ObjectProperty ; rdfs:domain core:Criterion ; rdfs:range sosa:Sensor ;
+    rdfs:comment "검사 대상 보고의 출처를 한정할 때." .
+core:onProperty a owl:ObjectProperty ; rdfs:domain core:Criterion ; rdfs:range sosa:ObservableProperty .
+core:comparator a owl:DatatypeProperty ; rdfs:domain core:Criterion ; rdfs:range xsd:string .
+core:threshold a owl:DatatypeProperty ; rdfs:domain core:Criterion .
+core:maxEvidenceAgeS a owl:DatatypeProperty ; rdfs:domain core:Criterion ; rdfs:range xsd:decimal ;
+    rdfs:comment "근거 경과 = 판단 시각 - 값이 가리키는 시각(sosa:phenomenonTime, 없으면 sosa:resultTime). 현재 구현의 원천 시각 기준과 같다." .
+core:ifMissing a owl:ObjectProperty ; rdfs:domain core:Criterion ; rdfs:range core:Outcome .
+core:outcome a owl:ObjectProperty ; rdfs:domain core:AssessmentResult ; rdfs:range core:Outcome .
+core:about a owl:ObjectProperty ; rdfs:domain core:AssessmentResult ;
+    rdfs:comment "판단 대상(후보, 설비 등)." .
+core:reasonCode a owl:DatatypeProperty ; rdfs:domain core:AssessmentResult ; rdfs:range xsd:string .
+core:evidenceStatus a owl:ObjectProperty ; rdfs:range core:EvidenceStatus .
+core:scoreValue a owl:DatatypeProperty ; rdfs:domain core:AssessmentResult ; rdfs:range xsd:decimal ;
+    rdfs:comment "선택을 위한 평가값. 참값(실제 오차)이 아니다." .
+core:storageRef a owl:DatatypeProperty ; rdfs:domain core:DataItem ; rdfs:range xsd:anyURI .
+core:retained a owl:DatatypeProperty ; rdfs:domain core:DataItem ; rdfs:range xsd:boolean .
+
+# ---- 세 가지 분류 축: 속성 정의(TBox)에 붙이는 주석. 서로 독립이며 서로 대응시키지 않는다 ----
+core:tosmModel a owl:AnnotationProperty ;
+    rdfs:comment "TOSM 구분(Joo et al. 2020, 3.1.1): Explicit = 센서 모달리티 처리로 직접 얻는 정보, Implicit = 지식 모델·DB로 유도한 관계·사실, Symbolic = 이름·ID." .
+core:Explicit a owl:NamedIndividual . core:Implicit a owl:NamedIndividual . core:Symbolic a owl:NamedIndividual .
+core:propertyNature a owl:AnnotationProperty ;
+    rdfs:comment "Intrinsic = 대상 자체에 속함(다른 개체·좌표계와 무관), Extrinsic = 다른 개체·좌표계와의 관계에 의존. 이 문서의 정의(TOSM 논문에는 없음)." .
+core:Intrinsic a owl:NamedIndividual . core:Extrinsic a owl:NamedIndividual .
+core:updateClass a owl:AnnotationProperty ;
+    rdfs:comment "Static = 판(version) 개정으로만 바뀜, QuasiStatic = 배치·임무 단위로 바뀜(설정·보정), Dynamic = 관측마다 바뀜. 이 문서의 정의." .
+core:Static a owl:NamedIndividual . core:QuasiStatic a owl:NamedIndividual . core:Dynamic a owl:NamedIndividual .
