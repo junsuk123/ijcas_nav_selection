@@ -1,0 +1,76 @@
+digraph G {
+graph [rankdir=LR, splines=true, nodesep=0.18, ranksep=0.9, bgcolor="white", fontname="DejaVu Sans", fontsize=11, pad=0.25];
+node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=10, penwidth=1.2];
+edge [fontname="DejaVu Sans", fontsize=8.5, color="#555555", arrowsize=0.7];
+labelloc=t; labeljust=l; fontsize=15; label=<<b>Operational ontology (ijcas_nav.ttl + ijcas_fusion.ttl): definitional knowledge behind the fusion graph</b><br/> >;
+"env0" [label=<<font point-size="8" color="#B5470A">EnvironmentContext</font><br/>GnssPositionInconsistent>, fillcolor="#FDECE3", color="#B5470A"];
+"env1" [label=<<font point-size="8" color="#B5470A">EnvironmentContext</font><br/>GnssDenied>, fillcolor="#FDECE3", color="#B5470A"];
+"env2" [label=<<font point-size="8" color="#B5470A">EnvironmentContext</font><br/>GnssVelocityInconsistent>, fillcolor="#FDECE3", color="#B5470A"];
+"env3" [label=<<font point-size="8" color="#B5470A">EnvironmentContext</font><br/>ImuAnomaly>, fillcolor="#FDECE3", color="#B5470A"];
+"env4" [label=<<font point-size="8" color="#B5470A">EnvironmentContext</font><br/>LidarGeometryDegenerate<br/>LidarSparse>, fillcolor="#FDECE3", color="#B5470A"];
+"env5" [label=<<font point-size="8" color="#B5470A">EnvironmentContext</font><br/>CameraOccluded<br/>LowLight<br/>LowVisualTexture>, fillcolor="#FDECE3", color="#B5470A"];
+"Barometer" [label=<<font point-size="8" color="#0B5E9C">Sensor</font><br/>Barometer>, fillcolor="#EAF2FB", color="#0B5E9C"];
+"GNSSReceiver" [label=<<font point-size="8" color="#0B5E9C">Sensor</font><br/>GNSSReceiver>, fillcolor="#EAF2FB", color="#0B5E9C"];
+"IMU" [label=<<font point-size="8" color="#0B5E9C">Sensor</font><br/>IMU>, fillcolor="#EAF2FB", color="#0B5E9C"];
+"Lidar3D" [label=<<font point-size="8" color="#0B5E9C">Sensor</font><br/>Lidar3D>, fillcolor="#EAF2FB", color="#0B5E9C"];
+"Magnetometer" [label=<<font point-size="8" color="#0B5E9C">Sensor</font><br/>Magnetometer>, fillcolor="#EAF2FB", color="#0B5E9C"];
+"StereoCamera" [label=<<font point-size="8" color="#0B5E9C">Sensor</font><br/>StereoCamera>, fillcolor="#EAF2FB", color="#0B5E9C"];
+subgraph cluster_cap { label=<<b>MeasurementCapability</b>>; fontcolor="#00704F"; color="#00704F"; style="rounded"; penwidth=1.2; labelloc=b;
+"BaroHeight" [label=<BaroHeight>, fillcolor="#E3F4EC", color="#00704F"];
+"GnssPosition" [label=<GnssPosition>, fillcolor="#E3F4EC", color="#00704F"];
+"GnssVelocity" [label=<GnssVelocity>, fillcolor="#E3F4EC", color="#00704F"];
+"Inertial" [label=<Inertial>, fillcolor="#E3F4EC", color="#00704F"];
+"LidarStructure" [label=<LidarStructure>, fillcolor="#E3F4EC", color="#00704F"];
+"MagHeading" [label=<MagHeading>, fillcolor="#E3F4EC", color="#00704F"];
+"VisualFeatures" [label=<VisualFeatures>, fillcolor="#E3F4EC", color="#00704F"];
+}
+subgraph cluster_est { label=<<b>Estimator</b>>; fontcolor="#A86A00"; color="#A86A00"; style="rounded"; penwidth=1.2; labelloc=t;
+"PX4_EKF2" [label=<<b>PX4_EKF2</b><br/><font point-size="8.5" color="#5A5A5A">PX4 EKF2 (GNSS/INS)<br/>:GlobalEstimator</font>>, fillcolor="#FDF0DA", color="#A86A00"];
+"OpenVINS" [label=<<b>OpenVINS</b><br/><font point-size="8.5" color="#5A5A5A">OpenVINS stereo VIO<br/>:LocalEstimator</font>>, fillcolor="#FDF0DA", color="#A86A00"];
+"FAST_LIO" [label=<<b>FAST_LIO</b><br/><font point-size="8.5" color="#5A5A5A">FAST-LIO2 LiDAR-IMU<br/>:LocalEstimator</font>>, fillcolor="#FDF0DA", color="#A86A00"];
+"INS_DR" [label=<<b>INS_DR</b><br/><font point-size="8.5" color="#5A5A5A">INS dead reckoning<br/>:Baseline</font>>, fillcolor="#FDF0DA", color="#A86A00"];
+}
+subgraph cluster_sol { label=<<b>NavigationSolution  (ssn:Output)</b>>; fontcolor="#8E3F6C"; color="#8E3F6C"; style="rounded"; penwidth=1.2; labelloc=t;
+"sol_gnss_ins" [label=<<b>sol_gnss_ins</b><br/><font point-size="8.5" color="#5A5A5A">reported covariance blocks: 3/3</font>>, fillcolor="#F6E8F0", color="#8E3F6C"];
+"sol_vio" [label=<<b>sol_vio</b><br/><font point-size="8.5" color="#5A5A5A">reported covariance blocks: 3/3<br/>requires alignment</font>>, fillcolor="#F6E8F0", color="#8E3F6C"];
+"sol_lio" [label=<<b>sol_lio</b><br/><font point-size="8.5" color="#5A5A5A">reported covariance blocks: 3/3<br/>requires alignment</font>>, fillcolor="#F6E8F0", color="#8E3F6C"];
+}
+"nav_fusion" [label=<<b>nav_fusion</b><br/><font point-size="8.5" color="#5A5A5A">:FusionProcess (sosa:Procedure)<br/>shared source &#8658; covariance_intersection</font>>, fillcolor="#F6E8F0", color="#8E3F6C"];
+"sol_fused" [label=<<b>sol_fused</b><br/><font point-size="8.5" color="#5A5A5A">:FusedNavigationSolution</font>>, fillcolor="#F6E8F0", color="#8E3F6C"];
+"IMU" -> "Inertial" [color="#0B5E9C"];
+"GNSSReceiver" -> "GnssPosition" [color="#0B5E9C"];
+"GNSSReceiver" -> "GnssVelocity" [color="#0B5E9C"];
+"Barometer" -> "BaroHeight" [color="#0B5E9C"];
+"Magnetometer" -> "MagHeading" [color="#0B5E9C"];
+"StereoCamera" -> "VisualFeatures" [color="#0B5E9C"];
+"Lidar3D" -> "LidarStructure" [color="#0B5E9C"];
+"env0" -> "GnssPosition" [color="#B5470A", style=dashed, arrowhead=tee];
+"env1" -> "GnssPosition" [color="#B5470A", style=dashed, arrowhead=tee];
+"env1" -> "GnssVelocity" [color="#B5470A", style=dashed, arrowhead=tee];
+"env2" -> "GnssVelocity" [color="#B5470A", style=dashed, arrowhead=tee];
+"env3" -> "Inertial" [color="#B5470A", style=dashed, arrowhead=tee];
+"env4" -> "LidarStructure" [color="#B5470A", style=dashed, arrowhead=tee];
+"env5" -> "VisualFeatures" [color="#B5470A", style=dashed, arrowhead=tee];
+"Inertial" -> "PX4_EKF2" [dir=back, color="#A86A00", penwidth=1.6];
+"GnssPosition" -> "PX4_EKF2" [dir=back, color="#A86A00", style=dashed];
+"GnssVelocity" -> "PX4_EKF2" [dir=back, color="#A86A00", style=dashed];
+"BaroHeight" -> "PX4_EKF2" [dir=back, color="#A86A00", style=dashed];
+"MagHeading" -> "PX4_EKF2" [dir=back, color="#A86A00", style=dashed];
+"Inertial" -> "OpenVINS" [dir=back, color="#A86A00", penwidth=1.6];
+"VisualFeatures" -> "OpenVINS" [dir=back, color="#A86A00", penwidth=1.6];
+"Inertial" -> "FAST_LIO" [dir=back, color="#A86A00", penwidth=1.6];
+"LidarStructure" -> "FAST_LIO" [dir=back, color="#A86A00", penwidth=1.6];
+"Inertial" -> "INS_DR" [dir=back, color="#A86A00", penwidth=1.6];
+"PX4_EKF2" -> "sol_gnss_ins" [color="#8E3F6C"];
+"sol_gnss_ins" -> "nav_fusion" [color="#8E3F6C", penwidth=1.8];
+"OpenVINS" -> "sol_vio" [color="#8E3F6C"];
+"sol_vio" -> "nav_fusion" [color="#8E3F6C", penwidth=1.8];
+"FAST_LIO" -> "sol_lio" [color="#8E3F6C"];
+"sol_lio" -> "nav_fusion" [color="#8E3F6C", penwidth=1.8];
+"nav_fusion" -> "sol_fused" [color="#8E3F6C", penwidth=1.8];
+"sol_gnss_ins" -> "sol_lio" [dir=both, arrowhead=none, arrowtail=none, style=dotted, color="#8E3F6C", constraint=false];
+"sol_gnss_ins" -> "sol_vio" [dir=both, arrowhead=none, arrowtail=none, style=dotted, color="#8E3F6C", constraint=false];
+"sol_lio" -> "sol_vio" [dir=both, arrowhead=none, arrowtail=none, style=dotted, color="#8E3F6C", constraint=false];
+legend [shape=plaintext, style="", label=<<table border="0" cellborder="0" cellspacing="2"><tr><td align="left"><font color="#0B5E9C">&#8594;</font> providesMeasurement</td></tr><tr><td align="left"><font color="#B5470A">- -&#8867;</font> degrades</td></tr><tr><td align="left"><font color="#A86A00">&#8592;</font> requiresEssential (bold) / usesAiding (dashed)</td></tr><tr><td align="left"><font color="#8E3F6C">&#8594;</font> producesEstimate, contributesToFusion</td></tr><tr><td align="left"><font color="#8E3F6C">&#183;&#183;&#183;</font> sharesMeasurementSource (Inertial, derived)</td></tr><tr><td align="left"><font color="#5A5A5A">INS_DR: separate limited fallback, not fused</font></td></tr></table>>];
+{rank=same; "nav_fusion"; legend;}
+}
