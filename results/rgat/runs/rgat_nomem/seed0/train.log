@@ -56,3 +56,7 @@
 2026-11-17 12:13:43 {"nav": 0.16163, "edge": 0.51317, "switch": 0.00693, "ce": 0.02936, "skipped_updates": 0, "epoch": 55, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 24.13509}
 2026-11-17 12:14:07 {"nav": 0.1598, "edge": 0.51269, "switch": 0.00712, "ce": 0.02999, "skipped_updates": 0, "epoch": 56, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 23.65428}
 2026-11-17 12:14:34 {"nav": 0.16037, "edge": 0.51234, "switch": 0.00705, "ce": 0.02937, "skipped_updates": 0, "epoch": 57, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 27.32914}
+2026-11-17 12:14:59 {"nav": 0.15955, "edge": 0.51207, "switch": 0.00724, "ce": 0.0295, "skipped_updates": 0, "epoch": 58, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 25.3951}
+2026-11-17 12:15:24 {"nav": 0.15992, "edge": 0.51193, "switch": 0.00704, "ce": 0.03023, "skipped_updates": 0, "epoch": 59, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 24.36565}
+2026-11-17 12:16:11 select tuned: margin 0.2 dwell 2.0 -> rmse 0.830 switches 4.67
+2026-11-17 12:16:31 rgat_nomem seed 0: val rmse 0.830 avail 0.986 switches 4.67 train 24.6 min

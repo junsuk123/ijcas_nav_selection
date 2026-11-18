@@ -1,0 +1,186 @@
+/home/j/SynologyDrive/junsuk/학술대회/IJCAS/ijcas_nav_selection/ijcas/rgat/experiment.py:209: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(d / "model.pt", map_location=device)
+{
+ "cr_e0": {
+  "total": {
+   "p50_ms": 0.22061850177124143,
+   "p95_ms": 0.319801177829504,
+   "p99_ms": 0.3543507680296894,
+   "max_ms": 0.5057730013504624
+  },
+  "features": {
+   "p50_ms": 0.04507298581302166,
+   "p95_ms": 0.06702261744067071,
+   "p99_ms": 0.07528864662162957,
+   "max_ms": 0.10214094072580338
+  },
+  "projection_search": {
+   "p50_ms": 0.17512496560811996,
+   "p95_ms": 0.26029426953755314,
+   "p99_ms": 0.2833903522696346,
+   "max_ms": 0.42019400279968977
+  },
+  "stored_floats": 74172,
+  "stored_kb": 289.734375,
+  "dims": [
+   774,
+   774,
+   774,
+   774
+  ]
+ },
+ "cr_gstar": {
+  "total": {
+   "p50_ms": 0.2212104736827314,
+   "p95_ms": 0.32127964659594,
+   "p99_ms": 0.362506469246,
+   "max_ms": 0.44376892037689686
+  },
+  "features": {
+   "p50_ms": 0.045545981265604496,
+   "p95_ms": 0.0677840958815068,
+   "p99_ms": 0.07731412537395947,
+   "max_ms": 0.09469001088291407
+  },
+  "projection_search": {
+   "p50_ms": 0.17504801508039236,
+   "p95_ms": 0.26153086218982935,
+   "p99_ms": 0.2896813000552356,
+   "max_ms": 0.35395100712776184
+  },
+  "stored_floats": 74172,
+  "stored_kb": 289.734375,
+  "dims": [
+   774,
+   774,
+   774,
+   774
+  ]
+ },
+ "cr_gstar_kd": {
+  "total": {
+   "p50_ms": 0.21911400835961103,
+   "p95_ms": 0.31275673536583765,
+   "p99_ms": 0.3475567488931119,
+   "max_ms": 0.4331020172685385
+  },
+  "features": {
+   "p50_ms": 0.04466203972697258,
+   "p95_ms": 0.06544403731822968,
+   "p99_ms": 0.07223801221698518,
+   "max_ms": 0.09802903514355421
+  },
+  "projection_search": {
+   "p50_ms": 0.17415202455595136,
+   "p95_ms": 0.2561704197432846,
+   "p99_ms": 0.2786227618344127,
+   "max_ms": 0.3480369923636317
+  },
+  "stored_floats": 74172,
+  "stored_kb": 289.734375,
+  "dims": [
+   774,
+   774,
+   774,
+   774
+  ]
+ },
+ "cr_plain": {
+  "total": {
+   "p50_ms": 0.13964698882773519,
+   "p95_ms": 0.20578776602633295,
+   "p99_ms": 0.23143949569202946,
+   "max_ms": 0.2797660417854786
+  },
+  "features": {
+   "p50_ms": 0.04340900341048837,
+   "p95_ms": 0.06535311113111675,
+   "p99_ms": 0.07442710688337677,
+   "max_ms": 0.0996709568426013
+  },
+  "projection_search": {
+   "p50_ms": 0.09619502816349268,
+   "p95_ms": 0.14277107547968623,
+   "p99_ms": 0.15903333434835062,
+   "max_ms": 0.19709800835698843
+  },
+  "stored_floats": 59938,
+  "stored_kb": 234.1328125,
+  "dims": [
+   558
+  ]
+ },
+ "gru_flat": {
+  "p50_ms": 0.09347399463877082,
+  "p95_ms": 0.14187516644597048,
+  "p99_ms": 0.17563012544997017,
+  "max_ms": 0.29809598345309496,
+  "active_gated_fraction": null,
+  "params": 65020
+ },
+ "rgat_dense": {
+  "p50_ms": 1.1757895117625594,
+  "p95_ms": 1.4636761450674385,
+  "p99_ms": 1.738534964388236,
+  "max_ms": 2.259835018776357,
+  "active_gated_fraction": null,
+  "params": 65035
+ },
+ "rgat_dyn": {
+  "p50_ms": 1.3971039443276823,
+  "p95_ms": 1.7016089172102509,
+  "p99_ms": 1.959550980245694,
+  "max_ms": 2.6417410699650645,
+  "active_gated_fraction": 0.5308958166899781,
+  "dense_masked": {
+   "p50_ms": 1.3882345519959927,
+   "p95_ms": 1.6850312589667735,
+   "p99_ms": 2.0354520389810196,
+   "max_ms": 2.60131002869457,
+   "active_gated_fraction": 0.5308958166899781
+  },
+  "params": 65035,
+  "permanent_pruning_ratio": 0.09433962264150941
+ },
+ "rgat_nomem": {
+  "p50_ms": 1.3926505343988538,
+  "p95_ms": 1.6890728380531068,
+  "p99_ms": 1.9844640977680668,
+  "max_ms": 2.6112979976460338,
+  "active_gated_fraction": 0.5506944283644358,
+  "dense_masked": {
+   "p50_ms": 1.4069280005060136,
+   "p95_ms": 1.6920254915021358,
+   "p99_ms": 1.9849243585485956,
+   "max_ms": 2.6462420355528593,
+   "active_gated_fraction": 0.5506944283644358
+  },
+  "params": 65035,
+  "permanent_pruning_ratio": 0.09433962264150941
+ },
+ "rgat_static": {
+  "p50_ms": 1.1457479558885098,
+  "p95_ms": 1.4284042408689857,
+  "p99_ms": 1.699190567014739,
+  "max_ms": 2.26310093421489,
+  "active_gated_fraction": null,
+  "params": 65035,
+  "permanent_pruning_ratio": 0.09433962264150941
+ },
+ "rgcn_dyn": {
+  "p50_ms": 0.826039002276957,
+  "p95_ms": 1.0411023744381964,
+  "p99_ms": 1.1990689439699054,
+  "max_ms": 1.4987749746069312,
+  "active_gated_fraction": 0.3340701804260413,
+  "dense_masked": {
+   "p50_ms": 0.7966249831952155,
+   "p95_ms": 1.014419854618609,
+   "p99_ms": 1.195951687404885,
+   "max_ms": 1.5840400010347366,
+   "active_gated_fraction": 0.3340701804260413
+  },
+  "params": 65035,
+  "permanent_pruning_ratio": 0.28301886792452835
+ }
+}

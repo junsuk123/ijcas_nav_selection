@@ -1,0 +1,65 @@
+2026-11-17 12:45:57 {"nav": 5.32888, "edge": 0.97305, "switch": 0.01653, "ce": 0.23336, "skipped_updates": 0, "epoch": 0, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.61656}
+2026-11-17 12:46:14 {"nav": 0.95679, "edge": 0.9648, "switch": 0.03007, "ce": 0.28297, "skipped_updates": 0, "epoch": 1, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.66111}
+2026-11-17 12:46:31 {"nav": 0.47956, "edge": 0.95659, "switch": 0.03792, "ce": 0.14327, "skipped_updates": 0, "epoch": 2, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.6012}
+2026-11-17 12:46:47 {"nav": 0.39983, "edge": 0.9723, "switch": 0.01938, "ce": 0.09305, "skipped_updates": 0, "epoch": 3, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.63681}
+2026-11-17 12:47:04 {"nav": 0.27128, "edge": 0.95, "switch": 0.0165, "ce": 0.07515, "skipped_updates": 0, "epoch": 4, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.52628}
+2026-11-17 12:47:20 {"nav": 0.21439, "edge": 0.93473, "switch": 0.01079, "ce": 0.05784, "skipped_updates": 0, "epoch": 5, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.62802}
+2026-11-17 12:47:37 {"nav": 0.21847, "edge": 0.94099, "switch": 0.00846, "ce": 0.055, "skipped_updates": 0, "epoch": 6, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.72386}
+2026-11-17 12:47:54 {"nav": 0.22397, "edge": 0.94642, "switch": 0.00874, "ce": 0.04992, "skipped_updates": 0, "epoch": 7, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.62494}
+2026-11-17 12:48:11 {"nav": 0.22299, "edge": 0.95376, "switch": 0.01047, "ce": 0.05856, "skipped_updates": 0, "epoch": 8, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.78031}
+2026-11-17 12:48:27 {"nav": 0.24595, "edge": 0.94463, "switch": 0.0079, "ce": 0.04522, "skipped_updates": 0, "epoch": 9, "gate_mode": "soft", "lam_E": 0.0, "sec": 16.45115}
+2026-11-17 12:48:40 {"nav": 0.21856, "edge": 0.94291, "switch": 0.0084, "ce": 0.05286, "skipped_updates": 0, "epoch": 10, "gate_mode": "soft", "lam_E": 0.0, "sec": 12.83106}
+2026-11-17 12:48:54 {"nav": 0.24914, "edge": 0.93369, "switch": 0.00871, "ce": 0.05385, "skipped_updates": 0, "epoch": 11, "gate_mode": "soft", "lam_E": 0.0, "sec": 13.69069}
+2026-11-17 12:49:10 {"nav": 0.20469, "edge": 0.94356, "switch": 0.01067, "ce": 0.0544, "skipped_updates": 0, "epoch": 12, "gate_mode": "soft", "lam_E": 0.0011, "sec": 16.0289}
+2026-11-17 12:49:27 {"nav": 0.23713, "edge": 0.95431, "switch": 0.00941, "ce": 0.04819, "skipped_updates": 0, "epoch": 13, "gate_mode": "soft", "lam_E": 0.00476, "sec": 17.3684}
+2026-11-17 12:49:45 {"nav": 0.27073, "edge": 0.9595, "switch": 0.00968, "ce": 0.05077, "skipped_updates": 0, "epoch": 14, "gate_mode": "soft", "lam_E": 0.00842, "sec": 17.60913}
+2026-11-17 12:50:02 {"nav": 0.21736, "edge": 0.94965, "switch": 0.00689, "ce": 0.04868, "skipped_updates": 0, "epoch": 15, "gate_mode": "soft", "lam_E": 0.01209, "sec": 17.64133}
+2026-11-17 12:50:20 {"nav": 0.19845, "edge": 0.94409, "switch": 0.00791, "ce": 0.05472, "skipped_updates": 0, "epoch": 16, "gate_mode": "soft", "lam_E": 0.01575, "sec": 18.1959}
+2026-11-17 12:50:38 {"nav": 0.21505, "edge": 0.93637, "switch": 0.00728, "ce": 0.04816, "skipped_updates": 0, "epoch": 17, "gate_mode": "soft", "lam_E": 0.01941, "sec": 17.71168}
+2026-11-17 12:50:56 {"nav": 0.19014, "edge": 0.942, "switch": 0.00789, "ce": 0.05056, "skipped_updates": 0, "epoch": 18, "gate_mode": "soft", "lam_E": 0.02308, "sec": 17.71657}
+2026-11-17 12:51:13 {"nav": 0.21295, "edge": 0.93439, "switch": 0.00689, "ce": 0.04338, "skipped_updates": 0, "epoch": 19, "gate_mode": "soft", "lam_E": 0.02674, "sec": 16.98526}
+2026-11-17 12:51:30 {"nav": 0.19023, "edge": 0.9249, "switch": 0.00905, "ce": 0.04826, "skipped_updates": 0, "epoch": 20, "gate_mode": "soft", "lam_E": 0.0304, "sec": 16.92852}
+2026-11-17 12:51:47 {"nav": 0.19582, "edge": 0.89819, "switch": 0.00664, "ce": 0.04584, "skipped_updates": 0, "epoch": 21, "gate_mode": "soft", "lam_E": 0.03407, "sec": 16.80065}
+2026-11-17 12:52:04 {"nav": 0.19232, "edge": 0.87281, "switch": 0.00714, "ce": 0.04677, "skipped_updates": 0, "epoch": 22, "gate_mode": "soft", "lam_E": 0.03773, "sec": 17.23466}
+2026-11-17 12:52:21 {"nav": 0.19307, "edge": 0.85178, "switch": 0.00674, "ce": 0.04209, "skipped_updates": 0, "epoch": 23, "gate_mode": "soft", "lam_E": 0.04139, "sec": 17.60196}
+2026-11-17 12:52:39 {"nav": 0.18202, "edge": 0.78834, "switch": 0.00818, "ce": 0.04317, "skipped_updates": 0, "epoch": 24, "gate_mode": "soft", "lam_E": 0.04505, "sec": 17.57339}
+2026-11-17 12:52:56 {"nav": 0.18092, "edge": 0.73092, "switch": 0.00678, "ce": 0.04085, "skipped_updates": 0, "epoch": 25, "gate_mode": "soft", "lam_E": 0.04872, "sec": 17.37544}
+2026-11-17 12:53:14 {"nav": 0.18515, "edge": 0.72584, "switch": 0.00729, "ce": 0.04135, "skipped_updates": 0, "epoch": 26, "gate_mode": "soft", "lam_E": 0.05238, "sec": 17.41208}
+2026-11-17 12:53:32 {"nav": 0.18213, "edge": 0.71553, "switch": 0.00658, "ce": 0.04107, "skipped_updates": 0, "epoch": 27, "gate_mode": "soft", "lam_E": 0.05604, "sec": 18.26389}
+2026-11-17 12:53:50 {"nav": 0.18567, "edge": 0.68065, "switch": 0.00785, "ce": 0.04166, "skipped_updates": 0, "epoch": 28, "gate_mode": "soft", "lam_E": 0.05971, "sec": 17.51036}
+2026-11-17 12:54:02 {"nav": 0.18287, "edge": 0.6321, "switch": 0.00807, "ce": 0.03752, "skipped_updates": 0, "epoch": 29, "gate_mode": "soft", "lam_E": 0.06337, "sec": 12.40687}
+2026-11-17 12:54:16 {"nav": 0.1782, "edge": 0.59357, "switch": 0.01113, "ce": 0.04213, "skipped_updates": 0, "epoch": 30, "gate_mode": "soft", "lam_E": 0.06703, "sec": 14.10865}
+2026-11-17 12:54:31 {"nav": 0.1826, "edge": 0.52355, "switch": 0.01292, "ce": 0.03996, "skipped_updates": 0, "epoch": 31, "gate_mode": "soft", "lam_E": 0.0707, "sec": 14.89241}
+2026-11-17 12:54:48 {"nav": 0.17756, "edge": 0.47153, "switch": 0.0093, "ce": 0.03845, "skipped_updates": 0, "epoch": 32, "gate_mode": "soft", "lam_E": 0.07436, "sec": 16.87721}
+2026-11-17 12:55:05 {"nav": 0.17826, "edge": 0.45748, "switch": 0.0064, "ce": 0.03602, "skipped_updates": 0, "epoch": 33, "gate_mode": "soft", "lam_E": 0.07802, "sec": 16.84904}
+2026-11-17 12:55:22 {"nav": 0.17314, "edge": 0.45671, "switch": 0.0058, "ce": 0.03871, "skipped_updates": 0, "epoch": 34, "gate_mode": "soft", "lam_E": 0.08168, "sec": 17.05554}
+2026-11-17 12:55:39 {"nav": 0.17987, "edge": 0.45529, "switch": 0.00573, "ce": 0.03542, "skipped_updates": 0, "epoch": 35, "gate_mode": "soft", "lam_E": 0.08535, "sec": 17.1295}
+2026-11-17 12:55:56 {"nav": 0.18315, "edge": 0.45984, "switch": 0.0064, "ce": 0.03975, "skipped_updates": 0, "epoch": 36, "gate_mode": "soft", "lam_E": 0.08901, "sec": 16.69503}
+2026-11-17 12:56:12 {"nav": 0.17947, "edge": 0.45296, "switch": 0.00549, "ce": 0.03822, "skipped_updates": 0, "epoch": 37, "gate_mode": "soft", "lam_E": 0.09267, "sec": 16.58982}
+2026-11-17 12:56:29 {"nav": 0.19157, "edge": 0.453, "switch": 0.00579, "ce": 0.04983, "skipped_updates": 0, "epoch": 38, "gate_mode": "soft", "lam_E": 0.09634, "sec": 16.63728}
+2026-11-17 12:56:45 {"nav": 0.21036, "edge": 0.45399, "switch": 0.00627, "ce": 0.04283, "skipped_updates": 0, "epoch": 39, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.46532}
+2026-11-17 12:56:58 prune: 53 gated edges, 6 rarely used (< 0.05)
+2026-11-17 12:57:45 prune: kept 47 / 53 gated edges
+2026-11-17 12:58:02 {"nav": 0.18563, "edge": 0.49554, "switch": 0.00637, "ce": 0.04367, "skipped_updates": 0, "epoch": 0, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.36725}
+2026-11-17 12:58:18 {"nav": 0.19023, "edge": 0.40443, "switch": 0.01807, "ce": 0.04483, "skipped_updates": 0, "epoch": 1, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.54057}
+2026-11-17 12:58:35 {"nav": 0.18112, "edge": 0.34693, "switch": 0.00939, "ce": 0.04167, "skipped_updates": 0, "epoch": 2, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.51451}
+2026-11-17 12:58:51 {"nav": 0.20808, "edge": 0.31604, "switch": 0.00789, "ce": 0.04638, "skipped_updates": 0, "epoch": 3, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.73852}
+2026-11-17 12:59:08 {"nav": 0.17847, "edge": 0.31093, "switch": 0.00792, "ce": 0.03869, "skipped_updates": 0, "epoch": 4, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.67686}
+2026-11-17 12:59:25 {"nav": 0.17484, "edge": 0.30794, "switch": 0.00755, "ce": 0.03708, "skipped_updates": 0, "epoch": 5, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.80473}
+2026-11-17 12:59:42 {"nav": 0.17695, "edge": 0.2986, "switch": 0.00652, "ce": 0.0346, "skipped_updates": 0, "epoch": 6, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.83324}
+2026-11-17 12:59:58 {"nav": 0.17594, "edge": 0.29466, "switch": 0.00588, "ce": 0.03704, "skipped_updates": 0, "epoch": 7, "gate_mode": "soft", "lam_E": 0.1, "sec": 16.50654}
+2026-11-17 13:00:11 {"nav": 0.17585, "edge": 0.28801, "switch": 0.00636, "ce": 0.03481, "skipped_updates": 0, "epoch": 8, "gate_mode": "soft", "lam_E": 0.1, "sec": 12.90991}
+2026-11-17 13:00:25 {"nav": 0.1722, "edge": 0.27896, "switch": 0.00584, "ce": 0.0349, "skipped_updates": 0, "epoch": 9, "gate_mode": "soft", "lam_E": 0.1, "sec": 13.6372}
+2026-11-17 13:00:40 {"nav": 0.16916, "edge": 0.20194, "switch": 0.00609, "ce": 0.03604, "skipped_updates": 0, "epoch": 10, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 15.32642}
+2026-11-17 13:00:56 {"nav": 0.17499, "edge": 0.15077, "switch": 0.00556, "ce": 0.03407, "skipped_updates": 0, "epoch": 11, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.24391}
+2026-11-17 13:01:13 {"nav": 0.17067, "edge": 0.11587, "switch": 0.00505, "ce": 0.03313, "skipped_updates": 0, "epoch": 12, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.34316}
+2026-11-17 13:01:29 {"nav": 0.16929, "edge": 0.08312, "switch": 0.00517, "ce": 0.03429, "skipped_updates": 0, "epoch": 13, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.34048}
+2026-11-17 13:01:45 {"nav": 0.16885, "edge": 0.07513, "switch": 0.00503, "ce": 0.0325, "skipped_updates": 0, "epoch": 14, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.08567}
+2026-11-17 13:02:02 {"nav": 0.16874, "edge": 0.06452, "switch": 0.00484, "ce": 0.03205, "skipped_updates": 0, "epoch": 15, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.89247}
+2026-11-17 13:02:18 {"nav": 0.168, "edge": 0.06604, "switch": 0.00486, "ce": 0.03246, "skipped_updates": 0, "epoch": 16, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.25434}
+2026-11-17 13:02:34 {"nav": 0.16547, "edge": 0.06735, "switch": 0.00519, "ce": 0.03417, "skipped_updates": 0, "epoch": 17, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.11702}
+2026-11-17 13:02:41 {"skipped_update": {"chunk_start": 1400, "phase": "hard_st", "loss_finite": true, "terms": [0.1876535266637802, 0.033746685832738876, 0.1357889473438263, 0.006650090683251619], "nonfinite_grads": []}}
+2026-11-17 13:02:50 {"nav": 0.1706, "edge": 0.06979, "switch": 0.00498, "ce": 0.03196, "skipped_updates": 1, "epoch": 18, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 16.07194}
+2026-11-17 13:03:06 {"nav": 0.20559, "edge": 0.07395, "switch": 0.00529, "ce": 0.03707, "skipped_updates": 0, "epoch": 19, "gate_mode": "hard_st", "lam_E": 0.1, "sec": 15.9793}
+2026-11-17 13:03:50 select tuned: margin 0.1 dwell 2.0 -> rmse 0.838 switches 6.43
+2026-11-17 13:04:03 rgcn_dyn seed 1: val rmse 0.838 avail 0.986 switches 6.43 train 17.4 min

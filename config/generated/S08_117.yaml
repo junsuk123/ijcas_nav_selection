@@ -1,0 +1,37 @@
+id: S08
+seed: 117
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: outage
+  start_s: 57.8
+  end_s: 87.8
+- target: camera
+  kind: occlusion
+  start_s: 57.8
+  end_s: 87.8
+  params:
+    fraction: 1.0
+    side: both
+- target: lidar
+  kind: dropout
+  start_s: 57.8
+  end_s: 87.8
+  params:
+    fraction: 1.0
+- target: mag
+  kind: loss
+  start_s: 57.8
+  end_s: 87.8
+- target: baro
+  kind: loss
+  start_s: 57.8
+  end_s: 87.8
+variant:
+  outage_s: 30.0
+  mag_baro_lost: true
+scene: warehouse

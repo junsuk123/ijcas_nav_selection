@@ -1,0 +1,29 @@
+id: S08
+seed: 127
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: outage
+  start_s: 49.3
+  end_s: 79.3
+- target: camera
+  kind: occlusion
+  start_s: 49.3
+  end_s: 79.3
+  params:
+    fraction: 1.0
+    side: both
+- target: lidar
+  kind: dropout
+  start_s: 49.3
+  end_s: 79.3
+  params:
+    fraction: 1.0
+variant:
+  outage_s: 30.0
+  mag_baro_lost: false
+scene: open_field

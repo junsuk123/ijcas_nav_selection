@@ -1,0 +1,241 @@
+/home/j/.local/lib/python3.10/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version '2.8.4' or newer of 'numexpr' (version '2.8.1' currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/home/j/.local/lib/python3.10/site-packages/pandas/core/arrays/masked.py:61: UserWarning: Pandas requires version '1.3.6' or newer of 'bottleneck' (version '1.3.2' currently installed).
+  from pandas.core import (
+2026-11-17 16:16:07 cr init group 0: D=558 d=32 M=1024 nodes=['E_gnss', 'E_vis', 'E_geo', 'E_mot', 'S_gnss', 'S_imu', 'S_cam', 'S_lidar', 'N_gi', 'N_vio', 'N_lio', 'N_ins']
+2026-11-17 16:16:54 select tuned: margin 0.3 dwell 2.0 -> rmse 0.837 switches 1.67
+2026-11-17 16:16:56 cr_plain seed 0: val rmse 0.837 avail 0.986 switches 1.67 hold 0.102 stored 59938 train 0.3 min
+2026-11-17 16:17:04 cr init group 0: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:17:05 cr init group 1: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:17:07 cr init group 2: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:17:09 cr init group 3: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:17:12 {"nav": 0.24906, "ce": 0.13488, "kd": 0.0, "epoch": 0, "train_objective": 0.30965, "sec": 1.6}
+2026-11-17 16:17:14 {"nav": 0.21874, "ce": 0.07261, "kd": 0.0, "epoch": 1, "train_objective": 0.29089, "sec": 1.5}
+2026-11-17 16:17:16 {"nav": 0.20971, "ce": 0.05804, "kd": 0.0, "epoch": 2, "train_objective": 0.26939, "sec": 1.7}
+2026-11-17 16:17:17 {"nav": 0.22664, "ce": 0.04919, "kd": 0.0, "epoch": 3, "train_objective": 0.37992, "sec": 1.9}
+2026-11-17 16:17:20 {"nav": 0.35459, "ce": 0.08623, "kd": 0.0, "epoch": 4, "train_objective": 0.28199, "sec": 2.1}
+2026-11-17 16:17:22 {"nav": 0.27153, "ce": 0.0617, "kd": 0.0, "epoch": 5, "train_objective": 0.26106, "sec": 2.0}
+2026-11-17 16:17:23 {"nav": 0.25471, "ce": 0.0804, "kd": 0.0, "epoch": 6, "train_objective": 0.29788, "sec": 1.7}
+2026-11-17 16:17:25 {"nav": 0.21115, "ce": 0.05197, "kd": 0.0, "epoch": 7, "train_objective": 0.29411, "sec": 1.6}
+2026-11-17 16:17:27 {"nav": 0.21726, "ce": 0.0638, "kd": 0.0, "epoch": 8, "train_objective": 0.3251, "sec": 1.7}
+2026-11-17 16:17:29 {"nav": 0.23459, "ce": 0.03872, "kd": 0.0, "epoch": 9, "train_objective": 0.34567, "sec": 1.9}
+2026-11-17 16:17:32 {"nav": 0.21916, "ce": 0.07889, "kd": 0.0, "epoch": 10, "train_objective": 0.29058, "sec": 3.2}
+2026-11-17 16:17:34 {"nav": 0.18945, "ce": 0.04492, "kd": 0.0, "epoch": 11, "train_objective": 0.23989, "sec": 1.8}
+2026-11-17 16:17:35 {"nav": 0.17571, "ce": 0.04145, "kd": 0.0, "epoch": 12, "train_objective": 0.35069, "sec": 1.6}
+2026-11-17 16:17:37 {"nav": 0.28078, "ce": 0.06401, "kd": 0.0, "epoch": 13, "train_objective": 0.3502, "sec": 2.3}
+2026-11-17 16:17:39 {"nav": 0.28266, "ce": 0.06512, "kd": 0.0, "epoch": 14, "train_objective": 0.35267, "sec": 1.9}
+2026-11-17 16:17:42 {"nav": 0.28361, "ce": 0.06672, "kd": 0.0, "epoch": 15, "train_objective": 0.34996, "sec": 2.3}
+2026-11-17 16:17:43 {"nav": 0.23482, "ce": 0.06507, "kd": 0.0, "epoch": 16, "train_objective": 0.34074, "sec": 1.6}
+2026-11-17 16:17:45 {"nav": 0.27879, "ce": 0.06139, "kd": 0.0, "epoch": 17, "train_objective": 0.34016, "sec": 1.5}
+2026-11-17 16:17:47 {"nav": 0.23988, "ce": 0.06178, "kd": 0.0, "epoch": 18, "train_objective": 0.34768, "sec": 2.0}
+2026-11-17 16:17:49 {"nav": 0.21492, "ce": 0.06132, "kd": 0.0, "epoch": 19, "train_objective": 0.24946, "sec": 2.5}
+2026-11-17 16:17:51 {"nav": 0.18388, "ce": 0.06259, "kd": 0.0, "epoch": 20, "train_objective": 0.25199, "sec": 2.0}
+2026-11-17 16:17:53 {"nav": 0.18368, "ce": 0.06193, "kd": 0.0, "epoch": 21, "train_objective": 0.25694, "sec": 1.7}
+2026-11-17 16:17:55 {"nav": 0.19264, "ce": 0.06059, "kd": 0.0, "epoch": 22, "train_objective": 0.3437, "sec": 2.6}
+2026-11-17 16:17:58 {"nav": 0.281, "ce": 0.06469, "kd": 0.0, "epoch": 23, "train_objective": 0.34455, "sec": 2.5}
+2026-11-17 16:18:01 {"nav": 0.28202, "ce": 0.06483, "kd": 0.0, "epoch": 24, "train_objective": 0.34474, "sec": 2.6}
+2026-11-17 16:18:03 {"nav": 0.27906, "ce": 0.06483, "kd": 0.0, "epoch": 25, "train_objective": 0.34388, "sec": 2.1}
+2026-11-17 16:18:05 {"nav": 0.27769, "ce": 0.06415, "kd": 0.0, "epoch": 26, "train_objective": 0.34391, "sec": 2.3}
+2026-11-17 16:18:08 {"nav": 0.27766, "ce": 0.06433, "kd": 0.0, "epoch": 27, "train_objective": 0.34372, "sec": 2.6}
+2026-11-17 16:18:10 {"nav": 0.28183, "ce": 0.06461, "kd": 0.0, "epoch": 28, "train_objective": 0.34365, "sec": 2.4}
+2026-11-17 16:18:12 {"nav": 0.27781, "ce": 0.06435, "kd": 0.0, "epoch": 29, "train_objective": 0.34359, "sec": 2.2}
+2026-11-17 16:18:12 {"kept_epoch": 11, "train_objective": 0.23989}
+2026-11-17 16:18:58 select tuned: margin 0.1 dwell 2.0 -> rmse 0.922 switches 6.90
+2026-11-17 16:19:01 cr_gstar seed 0: val rmse 0.922 avail 0.984 switches 6.90 hold 0.000 stored 74172 train 1.2 min
+/home/j/SynologyDrive/junsuk/학술대회/IJCAS/ijcas_nav_selection/ijcas/rgat/experiment.py:209: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(d / "model.pt", map_location=device)
+2026-11-17 16:19:22 cr init group 0: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:19:24 cr init group 1: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:19:27 cr init group 2: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:19:29 cr init group 3: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:19:33 {"nav": 0.25104, "ce": 0.14656, "kd": 0.11758, "epoch": 0, "train_objective": 0.31911, "sec": 2.4}
+2026-11-17 16:19:35 {"nav": 0.23316, "ce": 0.05887, "kd": 0.04549, "epoch": 1, "train_objective": 0.31807, "sec": 2.2}
+2026-11-17 16:19:37 {"nav": 0.2198, "ce": 0.05952, "kd": 0.04853, "epoch": 2, "train_objective": 0.3061, "sec": 2.3}
+2026-11-17 16:19:40 {"nav": 0.21652, "ce": 0.06094, "kd": 0.0504, "epoch": 3, "train_objective": 0.31113, "sec": 2.4}
+2026-11-17 16:19:42 {"nav": 0.20948, "ce": 0.06301, "kd": 0.05418, "epoch": 4, "train_objective": 0.29728, "sec": 2.0}
+2026-11-17 16:19:44 {"nav": 0.20407, "ce": 0.05698, "kd": 0.04679, "epoch": 5, "train_objective": 0.26659, "sec": 2.4}
+2026-11-17 16:19:46 {"nav": 0.19928, "ce": 0.04261, "kd": 0.03619, "epoch": 6, "train_objective": 0.26774, "sec": 2.3}
+2026-11-17 16:19:49 {"nav": 0.19734, "ce": 0.05038, "kd": 0.04184, "epoch": 7, "train_objective": 0.28197, "sec": 2.2}
+2026-11-17 16:19:51 {"nav": 0.19261, "ce": 0.04457, "kd": 0.03821, "epoch": 8, "train_objective": 0.25185, "sec": 2.1}
+2026-11-17 16:19:53 {"nav": 0.18821, "ce": 0.04157, "kd": 0.03626, "epoch": 9, "train_objective": 0.24655, "sec": 2.4}
+2026-11-17 16:19:55 {"nav": 0.18726, "ce": 0.03716, "kd": 0.03495, "epoch": 10, "train_objective": 0.24316, "sec": 2.1}
+2026-11-17 16:19:57 {"nav": 0.18703, "ce": 0.03435, "kd": 0.03325, "epoch": 11, "train_objective": 0.23526, "sec": 2.1}
+2026-11-17 16:19:59 {"nav": 0.1916, "ce": 0.03057, "kd": 0.03023, "epoch": 12, "train_objective": 0.22667, "sec": 2.2}
+2026-11-17 16:20:02 {"nav": 0.18658, "ce": 0.02422, "kd": 0.0244, "epoch": 13, "train_objective": 0.23246, "sec": 2.4}
+2026-11-17 16:20:04 {"nav": 0.18671, "ce": 0.02757, "kd": 0.02781, "epoch": 14, "train_objective": 0.2459, "sec": 2.4}
+2026-11-17 16:20:07 {"nav": 0.18569, "ce": 0.02711, "kd": 0.02627, "epoch": 15, "train_objective": 0.22596, "sec": 2.6}
+2026-11-17 16:20:09 {"nav": 0.18441, "ce": 0.02547, "kd": 0.02549, "epoch": 16, "train_objective": 0.22742, "sec": 2.4}
+2026-11-17 16:20:12 {"nav": 0.18496, "ce": 0.02693, "kd": 0.02731, "epoch": 17, "train_objective": 0.22547, "sec": 2.4}
+2026-11-17 16:20:14 {"nav": 0.1846, "ce": 0.02449, "kd": 0.02545, "epoch": 18, "train_objective": 0.22448, "sec": 2.5}
+2026-11-17 16:20:17 {"nav": 0.18371, "ce": 0.02434, "kd": 0.02628, "epoch": 19, "train_objective": 0.22966, "sec": 2.6}
+2026-11-17 16:20:19 {"nav": 0.18428, "ce": 0.02476, "kd": 0.02724, "epoch": 20, "train_objective": 0.227, "sec": 2.6}
+2026-11-17 16:20:22 {"nav": 0.18467, "ce": 0.02627, "kd": 0.02921, "epoch": 21, "train_objective": 0.2265, "sec": 2.4}
+2026-11-17 16:20:24 {"nav": 0.18565, "ce": 0.02568, "kd": 0.02856, "epoch": 22, "train_objective": 0.22649, "sec": 2.5}
+2026-11-17 16:20:27 {"nav": 0.18628, "ce": 0.02616, "kd": 0.02864, "epoch": 23, "train_objective": 0.22625, "sec": 2.5}
+2026-11-17 16:20:29 {"nav": 0.18591, "ce": 0.02579, "kd": 0.028, "epoch": 24, "train_objective": 0.22745, "sec": 2.4}
+2026-11-17 16:20:32 {"nav": 0.1872, "ce": 0.02615, "kd": 0.02849, "epoch": 25, "train_objective": 0.22677, "sec": 2.5}
+2026-11-17 16:20:34 {"nav": 0.18596, "ce": 0.02564, "kd": 0.0281, "epoch": 26, "train_objective": 0.22535, "sec": 2.6}
+2026-11-17 16:20:37 {"nav": 0.18596, "ce": 0.02512, "kd": 0.02776, "epoch": 27, "train_objective": 0.22521, "sec": 2.5}
+2026-11-17 16:20:39 {"nav": 0.18606, "ce": 0.02491, "kd": 0.02758, "epoch": 28, "train_objective": 0.22519, "sec": 2.5}
+2026-11-17 16:20:42 {"nav": 0.18614, "ce": 0.02485, "kd": 0.0276, "epoch": 29, "train_objective": 0.22515, "sec": 2.5}
+2026-11-17 16:20:42 {"kept_epoch": 18, "train_objective": 0.22448}
+2026-11-17 16:21:24 select tuned: margin 0.1 dwell 2.0 -> rmse 0.904 switches 6.70
+2026-11-17 16:21:27 cr_gstar_kd seed 0: val rmse 0.904 avail 0.985 switches 6.70 hold 0.000 stored 74172 train 1.6 min
+2026-11-17 16:21:54 cr init group 0: D=558 d=32 M=1024 nodes=['E_gnss', 'E_vis', 'E_geo', 'E_mot', 'S_gnss', 'S_imu', 'S_cam', 'S_lidar', 'N_gi', 'N_vio', 'N_lio', 'N_ins']
+2026-11-17 16:22:40 select tuned: margin 0.1 dwell 2.0 -> rmse 0.912 switches 2.97
+2026-11-17 16:22:43 cr_plain seed 1: val rmse 0.912 avail 0.982 switches 2.97 hold 0.110 stored 59938 train 0.4 min
+2026-11-17 16:22:55 cr init group 0: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:22:57 cr init group 1: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:23:00 cr init group 2: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:23:03 cr init group 3: D=618 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_imu']
+2026-11-17 16:23:06 {"nav": 0.27434, "ce": 0.11796, "kd": 0.0, "epoch": 0, "train_objective": 0.36914, "sec": 2.2}
+2026-11-17 16:23:08 {"nav": 0.2527, "ce": 0.11208, "kd": 0.0, "epoch": 1, "train_objective": 0.3303, "sec": 2.1}
+2026-11-17 16:23:10 {"nav": 0.23778, "ce": 0.0671, "kd": 0.0, "epoch": 2, "train_objective": 0.31886, "sec": 2.2}
+2026-11-17 16:23:12 {"nav": 0.21526, "ce": 0.06421, "kd": 0.0, "epoch": 3, "train_objective": 0.27617, "sec": 1.9}
+2026-11-17 16:23:15 {"nav": 0.20183, "ce": 0.06391, "kd": 0.0, "epoch": 4, "train_objective": 0.27291, "sec": 2.3}
+2026-11-17 16:23:17 {"nav": 0.20331, "ce": 0.06703, "kd": 0.0, "epoch": 5, "train_objective": 0.27589, "sec": 2.1}
+2026-11-17 16:23:19 {"nav": 0.26279, "ce": 0.07917, "kd": 0.0, "epoch": 6, "train_objective": 0.2784, "sec": 2.0}
+2026-11-17 16:23:21 {"nav": 0.20603, "ce": 0.06667, "kd": 0.0, "epoch": 7, "train_objective": 0.25213, "sec": 2.1}
+2026-11-17 16:23:23 {"nav": 0.2166, "ce": 0.05867, "kd": 0.0, "epoch": 8, "train_objective": 0.26162, "sec": 2.3}
+2026-11-17 16:23:25 {"nav": 0.19294, "ce": 0.06176, "kd": 0.0, "epoch": 9, "train_objective": 0.26135, "sec": 2.1}
+2026-11-17 16:23:27 {"nav": 0.21184, "ce": 0.07308, "kd": 0.0, "epoch": 10, "train_objective": 0.32993, "sec": 2.1}
+2026-11-17 16:23:29 {"nav": 0.21743, "ce": 0.06965, "kd": 0.0, "epoch": 11, "train_objective": 0.25298, "sec": 2.1}
+2026-11-17 16:23:31 {"nav": 0.21032, "ce": 0.05177, "kd": 0.0, "epoch": 12, "train_objective": 0.22994, "sec": 2.0}
+2026-11-17 16:23:34 {"nav": 0.17717, "ce": 0.04733, "kd": 0.0, "epoch": 13, "train_objective": 0.29032, "sec": 2.1}
+2026-11-17 16:23:36 {"nav": 0.20069, "ce": 0.05202, "kd": 0.0, "epoch": 14, "train_objective": 0.21479, "sec": 2.1}
+2026-11-17 16:23:38 {"nav": 0.16427, "ce": 0.04959, "kd": 0.0, "epoch": 15, "train_objective": 0.26257, "sec": 2.2}
+2026-11-17 16:23:40 {"nav": 0.19401, "ce": 0.06476, "kd": 0.0, "epoch": 16, "train_objective": 0.26183, "sec": 2.2}
+2026-11-17 16:23:42 {"nav": 0.19385, "ce": 0.06713, "kd": 0.0, "epoch": 17, "train_objective": 0.25669, "sec": 2.0}
+2026-11-17 16:23:44 {"nav": 0.19373, "ce": 0.0627, "kd": 0.0, "epoch": 18, "train_objective": 0.25908, "sec": 2.3}
+2026-11-17 16:23:46 {"nav": 0.19223, "ce": 0.06404, "kd": 0.0, "epoch": 19, "train_objective": 0.2552, "sec": 2.0}
+2026-11-17 16:23:49 {"nav": 0.1924, "ce": 0.06308, "kd": 0.0, "epoch": 20, "train_objective": 0.2559, "sec": 2.3}
+2026-11-17 16:23:51 {"nav": 0.19162, "ce": 0.06347, "kd": 0.0, "epoch": 21, "train_objective": 0.25521, "sec": 2.3}
+2026-11-17 16:23:53 {"nav": 0.19148, "ce": 0.06319, "kd": 0.0, "epoch": 22, "train_objective": 0.25434, "sec": 2.0}
+2026-11-17 16:23:55 {"nav": 0.19307, "ce": 0.06308, "kd": 0.0, "epoch": 23, "train_objective": 0.25422, "sec": 2.1}
+2026-11-17 16:23:57 {"nav": 0.19194, "ce": 0.06335, "kd": 0.0, "epoch": 24, "train_objective": 0.25423, "sec": 2.2}
+2026-11-17 16:23:59 {"nav": 0.19092, "ce": 0.06275, "kd": 0.0, "epoch": 25, "train_objective": 0.25416, "sec": 1.9}
+2026-11-17 16:24:02 {"nav": 0.19164, "ce": 0.06361, "kd": 0.0, "epoch": 26, "train_objective": 0.25395, "sec": 2.3}
+2026-11-17 16:24:04 {"nav": 0.19101, "ce": 0.06297, "kd": 0.0, "epoch": 27, "train_objective": 0.25395, "sec": 2.1}
+2026-11-17 16:24:06 {"nav": 0.19071, "ce": 0.0624, "kd": 0.0, "epoch": 28, "train_objective": 0.25396, "sec": 2.1}
+2026-11-17 16:24:08 {"nav": 0.19272, "ce": 0.06342, "kd": 0.0, "epoch": 29, "train_objective": 0.25396, "sec": 2.1}
+2026-11-17 16:24:08 {"kept_epoch": 14, "train_objective": 0.21479}
+2026-11-17 16:24:48 select tuned: margin 0.1 dwell 2.0 -> rmse 0.828 switches 8.03
+2026-11-17 16:24:50 cr_gstar seed 1: val rmse 0.828 avail 0.986 switches 8.03 hold 0.001 stored 71364 train 1.3 min
+/home/j/SynologyDrive/junsuk/학술대회/IJCAS/ijcas_nav_selection/ijcas/rgat/experiment.py:209: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(d / "model.pt", map_location=device)
+2026-11-17 16:25:09 cr init group 0: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:25:12 cr init group 1: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:25:14 cr init group 2: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:25:17 cr init group 3: D=618 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_imu']
+2026-11-17 16:25:20 {"nav": 0.26926, "ce": 0.12253, "kd": 0.09283, "epoch": 0, "train_objective": 0.42074, "sec": 2.2}
+2026-11-17 16:25:22 {"nav": 0.24161, "ce": 0.09108, "kd": 0.06644, "epoch": 1, "train_objective": 0.31834, "sec": 2.1}
+2026-11-17 16:25:24 {"nav": 0.2144, "ce": 0.07331, "kd": 0.05332, "epoch": 2, "train_objective": 0.29993, "sec": 2.1}
+2026-11-17 16:25:26 {"nav": 0.2053, "ce": 0.06804, "kd": 0.04864, "epoch": 3, "train_objective": 0.30833, "sec": 2.1}
+2026-11-17 16:25:28 {"nav": 0.19846, "ce": 0.07743, "kd": 0.05753, "epoch": 4, "train_objective": 0.31397, "sec": 2.1}
+2026-11-17 16:25:30 {"nav": 0.19924, "ce": 0.08527, "kd": 0.06721, "epoch": 5, "train_objective": 0.31752, "sec": 2.0}
+2026-11-17 16:25:32 {"nav": 0.19225, "ce": 0.08395, "kd": 0.06663, "epoch": 6, "train_objective": 0.30707, "sec": 2.1}
+2026-11-17 16:25:34 {"nav": 0.19659, "ce": 0.07657, "kd": 0.05911, "epoch": 7, "train_objective": 0.4424, "sec": 2.0}
+2026-11-17 16:25:36 {"nav": 0.28445, "ce": 0.10628, "kd": 0.09543, "epoch": 8, "train_objective": 0.5108, "sec": 2.1}
+2026-11-17 16:25:39 {"nav": 0.29745, "ce": 0.06557, "kd": 0.05408, "epoch": 9, "train_objective": 0.46651, "sec": 2.3}
+2026-11-17 16:25:41 {"nav": 0.26547, "ce": 0.11053, "kd": 0.0992, "epoch": 10, "train_objective": 0.38244, "sec": 2.2}
+2026-11-17 16:25:43 {"nav": 0.18258, "ce": 0.07341, "kd": 0.0616, "epoch": 11, "train_objective": 0.32422, "sec": 2.0}
+2026-11-17 16:25:45 {"nav": 0.22531, "ce": 0.05325, "kd": 0.04212, "epoch": 12, "train_objective": 0.32388, "sec": 2.0}
+2026-11-17 16:25:47 {"nav": 0.19821, "ce": 0.05547, "kd": 0.04508, "epoch": 13, "train_objective": 0.42365, "sec": 2.3}
+2026-11-17 16:25:49 {"nav": 0.2859, "ce": 0.09341, "kd": 0.08439, "epoch": 14, "train_objective": 0.4272, "sec": 2.1}
+2026-11-17 16:25:51 {"nav": 0.28576, "ce": 0.09668, "kd": 0.08831, "epoch": 15, "train_objective": 0.42671, "sec": 2.1}
+2026-11-17 16:25:53 {"nav": 0.28378, "ce": 0.09631, "kd": 0.08843, "epoch": 16, "train_objective": 0.42149, "sec": 2.1}
+2026-11-17 16:25:55 {"nav": 0.28592, "ce": 0.09357, "kd": 0.0852, "epoch": 17, "train_objective": 0.42034, "sec": 2.1}
+2026-11-17 16:25:58 {"nav": 0.28407, "ce": 0.09327, "kd": 0.08579, "epoch": 18, "train_objective": 0.42409, "sec": 2.1}
+2026-11-17 16:26:00 {"nav": 0.29016, "ce": 0.09708, "kd": 0.0901, "epoch": 19, "train_objective": 0.42242, "sec": 2.3}
+2026-11-17 16:26:02 {"nav": 0.28209, "ce": 0.09378, "kd": 0.0873, "epoch": 20, "train_objective": 0.42222, "sec": 2.2}
+2026-11-17 16:26:04 {"nav": 0.28295, "ce": 0.0943, "kd": 0.08785, "epoch": 21, "train_objective": 0.42395, "sec": 2.1}
+2026-11-17 16:26:07 {"nav": 0.28197, "ce": 0.09542, "kd": 0.08919, "epoch": 22, "train_objective": 0.42058, "sec": 2.5}
+2026-11-17 16:26:09 {"nav": 0.28201, "ce": 0.09276, "kd": 0.08676, "epoch": 23, "train_objective": 0.41964, "sec": 2.5}
+2026-11-17 16:26:12 {"nav": 0.28401, "ce": 0.09298, "kd": 0.08707, "epoch": 24, "train_objective": 0.4164, "sec": 2.6}
+2026-11-17 16:26:14 {"nav": 0.28262, "ce": 0.0914, "kd": 0.08454, "epoch": 25, "train_objective": 0.41562, "sec": 2.6}
+2026-11-17 16:26:17 {"nav": 0.28205, "ce": 0.0905, "kd": 0.08394, "epoch": 26, "train_objective": 0.41423, "sec": 2.6}
+2026-11-17 16:26:19 {"nav": 0.28225, "ce": 0.09043, "kd": 0.08365, "epoch": 27, "train_objective": 0.41483, "sec": 2.2}
+2026-11-17 16:26:22 {"nav": 0.28146, "ce": 0.08949, "kd": 0.08291, "epoch": 28, "train_objective": 0.41464, "sec": 2.8}
+2026-11-17 16:26:24 {"nav": 0.28278, "ce": 0.09035, "kd": 0.08362, "epoch": 29, "train_objective": 0.41461, "sec": 2.5}
+2026-11-17 16:26:24 {"kept_epoch": 2, "train_objective": 0.29993}
+2026-11-17 16:27:09 select tuned: margin 0.1 dwell 2.0 -> rmse 0.821 switches 5.00
+2026-11-17 16:27:11 cr_gstar_kd seed 1: val rmse 0.821 avail 0.986 switches 5.00 hold 0.001 stored 71364 train 1.5 min
+2026-11-17 16:27:38 cr init group 0: D=558 d=32 M=1024 nodes=['E_gnss', 'E_vis', 'E_geo', 'E_mot', 'S_gnss', 'S_imu', 'S_cam', 'S_lidar', 'N_gi', 'N_vio', 'N_lio', 'N_ins']
+2026-11-17 16:28:24 select tuned: margin 0.1 dwell 2.0 -> rmse 0.830 switches 2.77
+2026-11-17 16:28:26 cr_plain seed 2: val rmse 0.830 avail 0.986 switches 2.77 hold 0.107 stored 59938 train 0.4 min
+2026-11-17 16:28:37 cr init group 0: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:28:39 cr init group 1: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:28:41 cr init group 2: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:28:44 cr init group 3: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:28:47 {"nav": 0.26712, "ce": 0.09304, "kd": 0.0, "epoch": 0, "train_objective": 0.27504, "sec": 2.0}
+2026-11-17 16:28:49 {"nav": 0.23706, "ce": 0.07648, "kd": 0.0, "epoch": 1, "train_objective": 0.36597, "sec": 2.2}
+2026-11-17 16:28:51 {"nav": 0.24557, "ce": 0.09415, "kd": 0.0, "epoch": 2, "train_objective": 0.35684, "sec": 2.2}
+2026-11-17 16:28:53 {"nav": 0.25701, "ce": 0.058, "kd": 0.0, "epoch": 3, "train_objective": 0.29774, "sec": 2.0}
+2026-11-17 16:28:55 {"nav": 0.25608, "ce": 0.07861, "kd": 0.0, "epoch": 4, "train_objective": 0.27569, "sec": 2.1}
+2026-11-17 16:28:57 {"nav": 0.23569, "ce": 0.08227, "kd": 0.0, "epoch": 5, "train_objective": 0.33558, "sec": 2.1}
+2026-11-17 16:29:00 {"nav": 0.25496, "ce": 0.0757, "kd": 0.0, "epoch": 6, "train_objective": 0.3257, "sec": 2.1}
+2026-11-17 16:29:02 {"nav": 0.19641, "ce": 0.07058, "kd": 0.0, "epoch": 7, "train_objective": 0.26443, "sec": 2.1}
+2026-11-17 16:29:04 {"nav": 0.19113, "ce": 0.07096, "kd": 0.0, "epoch": 8, "train_objective": 0.28082, "sec": 2.1}
+2026-11-17 16:29:06 {"nav": 0.19414, "ce": 0.08472, "kd": 0.0, "epoch": 9, "train_objective": 0.27983, "sec": 2.1}
+2026-11-17 16:29:08 {"nav": 0.21662, "ce": 0.07202, "kd": 0.0, "epoch": 10, "train_objective": 0.32047, "sec": 2.1}
+2026-11-17 16:29:10 {"nav": 0.187, "ce": 0.07503, "kd": 0.0, "epoch": 11, "train_objective": 0.25344, "sec": 2.3}
+2026-11-17 16:29:13 {"nav": 0.19414, "ce": 0.06745, "kd": 0.0, "epoch": 12, "train_objective": 0.29832, "sec": 2.4}
+2026-11-17 16:29:15 {"nav": 0.18438, "ce": 0.05388, "kd": 0.0, "epoch": 13, "train_objective": 0.23255, "sec": 2.4}
+2026-11-17 16:29:17 {"nav": 0.18272, "ce": 0.0455, "kd": 0.0, "epoch": 14, "train_objective": 0.21203, "sec": 2.4}
+2026-11-17 16:29:20 {"nav": 0.1626, "ce": 0.04676, "kd": 0.0, "epoch": 15, "train_objective": 0.20495, "sec": 2.5}
+2026-11-17 16:29:22 {"nav": 0.15997, "ce": 0.04383, "kd": 0.0, "epoch": 16, "train_objective": 0.22904, "sec": 2.5}
+2026-11-17 16:29:25 {"nav": 0.16583, "ce": 0.04299, "kd": 0.0, "epoch": 17, "train_objective": 0.21326, "sec": 2.5}
+2026-11-17 16:29:27 {"nav": 0.15955, "ce": 0.04973, "kd": 0.0, "epoch": 18, "train_objective": 0.20472, "sec": 2.4}
+2026-11-17 16:29:30 {"nav": 0.15764, "ce": 0.0478, "kd": 0.0, "epoch": 19, "train_objective": 0.20515, "sec": 2.5}
+2026-11-17 16:29:32 {"nav": 0.15896, "ce": 0.04766, "kd": 0.0, "epoch": 20, "train_objective": 0.20485, "sec": 2.4}
+2026-11-17 16:29:35 {"nav": 0.1575, "ce": 0.04375, "kd": 0.0, "epoch": 21, "train_objective": 0.2026, "sec": 2.5}
+2026-11-17 16:29:37 {"nav": 0.15676, "ce": 0.04202, "kd": 0.0, "epoch": 22, "train_objective": 0.20408, "sec": 2.6}
+2026-11-17 16:29:40 {"nav": 0.15712, "ce": 0.04391, "kd": 0.0, "epoch": 23, "train_objective": 0.2014, "sec": 2.3}
+2026-11-17 16:29:42 {"nav": 0.15631, "ce": 0.04395, "kd": 0.0, "epoch": 24, "train_objective": 0.20085, "sec": 2.3}
+2026-11-17 16:29:45 {"nav": 0.15606, "ce": 0.04131, "kd": 0.0, "epoch": 25, "train_objective": 0.20162, "sec": 2.5}
+2026-11-17 16:29:47 {"nav": 0.15591, "ce": 0.04574, "kd": 0.0, "epoch": 26, "train_objective": 0.20165, "sec": 2.4}
+2026-11-17 16:29:50 {"nav": 0.1559, "ce": 0.04576, "kd": 0.0, "epoch": 27, "train_objective": 0.20129, "sec": 2.7}
+2026-11-17 16:29:52 {"nav": 0.15584, "ce": 0.04576, "kd": 0.0, "epoch": 28, "train_objective": 0.20114, "sec": 2.4}
+2026-11-17 16:29:54 {"nav": 0.15571, "ce": 0.04538, "kd": 0.0, "epoch": 29, "train_objective": 0.20114, "sec": 2.1}
+2026-11-17 16:29:54 {"kept_epoch": 24, "train_objective": 0.20085}
+2026-11-17 16:30:38 select tuned: margin 0.1 dwell 1.0 -> rmse 0.827 switches 8.73
+2026-11-17 16:30:41 cr_gstar seed 2: val rmse 0.827 avail 0.986 switches 8.73 hold 0.000 stored 74172 train 1.4 min
+/home/j/SynologyDrive/junsuk/학술대회/IJCAS/ijcas_nav_selection/ijcas/rgat/experiment.py:209: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(d / "model.pt", map_location=device)
+2026-11-17 16:31:01 cr init group 0: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:31:03 cr init group 1: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:31:05 cr init group 2: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:31:08 cr init group 3: D=774 d=16 M=256 nodes=['E_geo', 'E_gnss', 'E_mot', 'E_vis', 'N_gi', 'N_ins', 'N_lio', 'N_vio', 'S_cam', 'S_gnss', 'S_imu', 'S_lidar']
+2026-11-17 16:31:11 {"nav": 0.25036, "ce": 0.12263, "kd": 0.114, "epoch": 0, "train_objective": 0.38014, "sec": 2.0}
+2026-11-17 16:31:13 {"nav": 0.22908, "ce": 0.09245, "kd": 0.08351, "epoch": 1, "train_objective": 0.33684, "sec": 2.1}
+2026-11-17 16:31:15 {"nav": 0.20486, "ce": 0.05884, "kd": 0.05227, "epoch": 2, "train_objective": 0.30172, "sec": 2.2}
+2026-11-17 16:31:17 {"nav": 0.20476, "ce": 0.05714, "kd": 0.05264, "epoch": 3, "train_objective": 0.28445, "sec": 2.1}
+2026-11-17 16:31:19 {"nav": 0.20592, "ce": 0.05354, "kd": 0.05102, "epoch": 4, "train_objective": 0.40531, "sec": 2.1}
+2026-11-17 16:31:22 {"nav": 0.25606, "ce": 0.0813, "kd": 0.07968, "epoch": 5, "train_objective": 0.33499, "sec": 2.1}
+2026-11-17 16:31:24 {"nav": 0.20691, "ce": 0.05827, "kd": 0.05762, "epoch": 6, "train_objective": 0.3028, "sec": 2.1}
+2026-11-17 16:31:26 {"nav": 0.20084, "ce": 0.07765, "kd": 0.08352, "epoch": 7, "train_objective": 0.31005, "sec": 1.9}
+2026-11-17 16:31:27 {"nav": 0.2047, "ce": 0.04339, "kd": 0.04469, "epoch": 8, "train_objective": 0.25868, "sec": 1.6}
+2026-11-17 16:31:29 {"nav": 0.19726, "ce": 0.03859, "kd": 0.04005, "epoch": 9, "train_objective": 0.26173, "sec": 1.7}
+2026-11-17 16:31:31 {"nav": 0.19843, "ce": 0.04167, "kd": 0.04385, "epoch": 10, "train_objective": 0.2591, "sec": 1.7}
+2026-11-17 16:31:32 {"nav": 0.19603, "ce": 0.03957, "kd": 0.04278, "epoch": 11, "train_objective": 0.25985, "sec": 1.6}
+2026-11-17 16:31:34 {"nav": 0.19376, "ce": 0.03943, "kd": 0.04306, "epoch": 12, "train_objective": 0.25964, "sec": 1.7}
+2026-11-17 16:31:36 {"nav": 0.1935, "ce": 0.03959, "kd": 0.04394, "epoch": 13, "train_objective": 0.25309, "sec": 1.8}
+2026-11-17 16:31:37 {"nav": 0.19249, "ce": 0.03757, "kd": 0.0423, "epoch": 14, "train_objective": 0.2522, "sec": 1.7}
+2026-11-17 16:31:39 {"nav": 0.19194, "ce": 0.0371, "kd": 0.04264, "epoch": 15, "train_objective": 0.25309, "sec": 1.8}
+2026-11-17 16:31:41 {"nav": 0.19351, "ce": 0.03765, "kd": 0.04299, "epoch": 16, "train_objective": 0.2521, "sec": 1.9}
+2026-11-17 16:31:43 {"nav": 0.19197, "ce": 0.03729, "kd": 0.04296, "epoch": 17, "train_objective": 0.25023, "sec": 2.1}
+2026-11-17 16:31:45 {"nav": 0.19231, "ce": 0.03617, "kd": 0.04269, "epoch": 18, "train_objective": 0.24985, "sec": 1.6}
+2026-11-17 16:31:46 {"nav": 0.19371, "ce": 0.03708, "kd": 0.04363, "epoch": 19, "train_objective": 0.24917, "sec": 1.7}
+2026-11-17 16:31:49 {"nav": 0.1911, "ce": 0.03587, "kd": 0.04262, "epoch": 20, "train_objective": 0.24905, "sec": 2.1}
+2026-11-17 16:31:51 {"nav": 0.19053, "ce": 0.03557, "kd": 0.04218, "epoch": 21, "train_objective": 0.24856, "sec": 2.4}
+2026-11-17 16:31:53 {"nav": 0.19039, "ce": 0.03553, "kd": 0.04262, "epoch": 22, "train_objective": 0.24861, "sec": 1.8}
+2026-11-17 16:31:55 {"nav": 0.19008, "ce": 0.03556, "kd": 0.04296, "epoch": 23, "train_objective": 0.24848, "sec": 1.8}
+2026-11-17 16:31:57 {"nav": 0.1898, "ce": 0.03554, "kd": 0.04299, "epoch": 24, "train_objective": 0.25133, "sec": 1.9}
+2026-11-17 16:31:58 {"nav": 0.19219, "ce": 0.03739, "kd": 0.04573, "epoch": 25, "train_objective": 0.24864, "sec": 1.6}
+2026-11-17 16:32:00 {"nav": 0.18991, "ce": 0.03564, "kd": 0.04344, "epoch": 26, "train_objective": 0.24791, "sec": 2.1}
+2026-11-17 16:32:02 {"nav": 0.18978, "ce": 0.03567, "kd": 0.04319, "epoch": 27, "train_objective": 0.24776, "sec": 2.0}
+2026-11-17 16:32:05 {"nav": 0.18976, "ce": 0.03558, "kd": 0.04311, "epoch": 28, "train_objective": 0.24771, "sec": 2.6}
+2026-11-17 16:32:07 {"nav": 0.19011, "ce": 0.03638, "kd": 0.04386, "epoch": 29, "train_objective": 0.24774, "sec": 2.3}
+2026-11-17 16:32:07 {"kept_epoch": 28, "train_objective": 0.24771}
+2026-11-17 16:32:54 select tuned: margin 0.3 dwell 2.0 -> rmse 0.839 switches 2.50
+2026-11-17 16:32:57 cr_gstar_kd seed 2: val rmse 0.839 avail 0.986 switches 2.50 hold 0.000 stored 74172 train 1.4 min

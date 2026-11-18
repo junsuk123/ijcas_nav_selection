@@ -1,0 +1,22 @@
+id: S02
+seed: 126
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: gnss
+  kind: position_bias
+  start_s: 52.7
+  end_s: 112.7
+  params:
+    vector_m:
+    - -1.775
+    - 2.418
+    - 0.0
+    ramp_s: 5.0
+variant:
+  bias_m: 3.0
+  velocity_valid: true
+scene: warehouse

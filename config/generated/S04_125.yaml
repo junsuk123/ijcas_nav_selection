@@ -1,0 +1,18 @@
+id: S04
+seed: 125
+duration_s: 180.0
+hover_s: 8.0
+ramp_s: 4.0
+normal_s: 20.0
+gnss_rate_hz: 5.0
+faults:
+- target: lidar
+  kind: range_limit
+  start_s: 68.3
+  end_s: 108.3
+  params:
+    max_m: 5.0
+variant:
+  lidar: corridor_geometry
+  level: 5.0
+scene: corridor
