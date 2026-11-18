@@ -1,0 +1,415 @@
+{
+ "nodes": [
+  "E_gnss",
+  "E_vis",
+  "E_geo",
+  "E_mot",
+  "S_gnss",
+  "S_imu",
+  "S_cam",
+  "S_lidar",
+  "N_gi",
+  "N_vio",
+  "N_lio",
+  "F_nav"
+ ],
+ "kinds": [
+  "env",
+  "env",
+  "env",
+  "env",
+  "sensor",
+  "sensor",
+  "sensor",
+  "sensor",
+  "nav",
+  "nav",
+  "nav",
+  "fusion"
+ ],
+ "edges": [
+  {
+   "src": "E_gnss",
+   "dst": "S_gnss",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_gnss",
+   "dst": "S_imu",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_gnss",
+   "dst": "S_cam",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_gnss",
+   "dst": "S_lidar",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_gnss",
+   "dst": "N_gi",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_gnss",
+   "dst": "N_vio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_gnss",
+   "dst": "N_lio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_vis",
+   "dst": "S_gnss",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_vis",
+   "dst": "S_imu",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_vis",
+   "dst": "S_cam",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_vis",
+   "dst": "S_lidar",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_vis",
+   "dst": "N_gi",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_vis",
+   "dst": "N_vio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_vis",
+   "dst": "N_lio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_geo",
+   "dst": "S_gnss",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_geo",
+   "dst": "S_imu",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_geo",
+   "dst": "S_cam",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_geo",
+   "dst": "S_lidar",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_geo",
+   "dst": "N_gi",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_geo",
+   "dst": "N_vio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_geo",
+   "dst": "N_lio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_mot",
+   "dst": "S_gnss",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_mot",
+   "dst": "S_imu",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_mot",
+   "dst": "S_cam",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_mot",
+   "dst": "S_lidar",
+   "rel": "env>sensor",
+   "protected": false
+  },
+  {
+   "src": "E_mot",
+   "dst": "N_gi",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_mot",
+   "dst": "N_vio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "E_mot",
+   "dst": "N_lio",
+   "rel": "env>nav",
+   "protected": false
+  },
+  {
+   "src": "S_gnss",
+   "dst": "N_gi",
+   "rel": "sensor>nav:def",
+   "protected": true
+  },
+  {
+   "src": "S_gnss",
+   "dst": "N_vio",
+   "rel": "sensor>nav:aux",
+   "protected": false
+  },
+  {
+   "src": "S_gnss",
+   "dst": "N_lio",
+   "rel": "sensor>nav:aux",
+   "protected": false
+  },
+  {
+   "src": "S_imu",
+   "dst": "N_gi",
+   "rel": "sensor>nav:def",
+   "protected": true
+  },
+  {
+   "src": "S_imu",
+   "dst": "N_vio",
+   "rel": "sensor>nav:def",
+   "protected": true
+  },
+  {
+   "src": "S_imu",
+   "dst": "N_lio",
+   "rel": "sensor>nav:def",
+   "protected": true
+  },
+  {
+   "src": "S_cam",
+   "dst": "N_gi",
+   "rel": "sensor>nav:aux",
+   "protected": false
+  },
+  {
+   "src": "S_cam",
+   "dst": "N_vio",
+   "rel": "sensor>nav:def",
+   "protected": true
+  },
+  {
+   "src": "S_cam",
+   "dst": "N_lio",
+   "rel": "sensor>nav:aux",
+   "protected": false
+  },
+  {
+   "src": "S_lidar",
+   "dst": "N_gi",
+   "rel": "sensor>nav:aux",
+   "protected": false
+  },
+  {
+   "src": "S_lidar",
+   "dst": "N_vio",
+   "rel": "sensor>nav:aux",
+   "protected": false
+  },
+  {
+   "src": "S_lidar",
+   "dst": "N_lio",
+   "rel": "sensor>nav:def",
+   "protected": true
+  },
+  {
+   "src": "N_gi",
+   "dst": "N_vio",
+   "rel": "nav>nav",
+   "protected": false
+  },
+  {
+   "src": "N_gi",
+   "dst": "N_lio",
+   "rel": "nav>nav",
+   "protected": false
+  },
+  {
+   "src": "N_vio",
+   "dst": "N_gi",
+   "rel": "nav>nav",
+   "protected": false
+  },
+  {
+   "src": "N_vio",
+   "dst": "N_lio",
+   "rel": "nav>nav",
+   "protected": false
+  },
+  {
+   "src": "N_lio",
+   "dst": "N_gi",
+   "rel": "nav>nav",
+   "protected": false
+  },
+  {
+   "src": "N_lio",
+   "dst": "N_vio",
+   "rel": "nav>nav",
+   "protected": false
+  },
+  {
+   "src": "N_gi",
+   "dst": "F_nav",
+   "rel": "nav>fusion",
+   "protected": true
+  },
+  {
+   "src": "N_vio",
+   "dst": "F_nav",
+   "rel": "nav>fusion",
+   "protected": true
+  },
+  {
+   "src": "N_lio",
+   "dst": "F_nav",
+   "rel": "nav>fusion",
+   "protected": true
+  },
+  {
+   "src": "E_gnss",
+   "dst": "E_gnss",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "E_vis",
+   "dst": "E_vis",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "E_geo",
+   "dst": "E_geo",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "E_mot",
+   "dst": "E_mot",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "S_gnss",
+   "dst": "S_gnss",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "S_imu",
+   "dst": "S_imu",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "S_cam",
+   "dst": "S_cam",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "S_lidar",
+   "dst": "S_lidar",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "N_gi",
+   "dst": "N_gi",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "N_vio",
+   "dst": "N_vio",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "N_lio",
+   "dst": "N_lio",
+   "rel": "self",
+   "protected": true
+  },
+  {
+   "src": "F_nav",
+   "dst": "F_nav",
+   "rel": "self",
+   "protected": true
+  }
+ ],
+ "shared_sources": {
+  "gnss_ins|lio": [
+   "Inertial"
+  ],
+  "gnss_ins|vio": [
+   "Inertial"
+  ],
+  "lio|vio": [
+   "Inertial"
+  ]
+ },
+ "required_method": "covariance_intersection",
+ "requires_alignment": {
+  "gnss_ins": false,
+  "vio": true,
+  "lio": true
+ }
+}

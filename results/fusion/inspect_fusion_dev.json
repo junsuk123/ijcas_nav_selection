@@ -1,0 +1,145 @@
+{
+ "set": "fusion_dev",
+ "runs": [
+  {
+   "run": "S00_001",
+   "done": true,
+   "error": null,
+   "sim_s": 180.15499597322196,
+   "px4": {
+    "outputs": 8943,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "openvins": {
+    "outputs": 33569,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "fastlio": {
+    "outputs": 1796,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   }
+  },
+  {
+   "run": "S01_001",
+   "done": true,
+   "error": null,
+   "sim_s": 180.15499597322196,
+   "px4": {
+    "outputs": 8942,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "openvins": {
+    "outputs": 33559,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "fastlio": {
+    "outputs": 1796,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   }
+  },
+  {
+   "run": "S02_001",
+   "done": true,
+   "error": null,
+   "sim_s": 180.15499597322196,
+   "px4": {
+    "outputs": 8917,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "openvins": {
+    "outputs": 33569,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "fastlio": {
+    "outputs": 1796,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   }
+  },
+  {
+   "run": "S03_001",
+   "done": true,
+   "error": null,
+   "sim_s": 180.15499597322196,
+   "px4": {
+    "outputs": 8917,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "openvins": {
+    "outputs": 33899,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 0.9996460072568513
+   },
+   "fastlio": {
+    "outputs": 1796,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   }
+  },
+  {
+   "run": "S04_001",
+   "done": true,
+   "error": null,
+   "sim_s": 180.15499597322196,
+   "px4": {
+    "outputs": 8916,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "openvins": {
+    "outputs": 31869,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   },
+   "fastlio": {
+    "outputs": 1794,
+    "full_covariance": true,
+    "pos_reported": 1.0,
+    "vel_reported": 1.0,
+    "att_reported": 1.0
+   }
+  },
+  {
+   "run": "S05_001",
+   "done": false,
+   "inspect_error": "FileNotFoundError(2, 'No such file or directory')"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "experiment_id": "20261118_174619",
+  "matlab_version": "25.1.0.2973910 (R2025a) Update 1",
+  "matlab_release": "2025a",
+  "matlab_release_ok": true,
+  "toolboxes": {
+    "ros": true,
+    "navigation": true,
+    "sensor_fusion": true
+  },
+  "python": {
+    "ok": true,
+    "detail": "2.5.1+cu121 True"
+  },
+  "isaac_sim": true,
+  "px4": true,
+  "openvins": true,
+  "fastlio": true,
+  "ros2": {
+    "ok": true,
+    "distro": "humble"
+  },
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB",
+  "git_commit": "3b572ec",
+  "git_branch": "fusion",
+  "git_uncommitted_files": 12,
+  "fusion_checkpoints": 2,
+  "set": "fusion_dev",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "variants": [
+    "rgat",
+    "gru"
+  ],
+  "data": "/home/j/ijcas_data",
+  "failed": []
+}

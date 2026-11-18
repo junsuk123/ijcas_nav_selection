@@ -9,9 +9,10 @@ not inherit CI's conservativeness; docs/FUSION_DESIGN_KO.md):
   fusion        information weights w, effective contribution of each solution to the fused position
                 c_k = tr(P_f w_k P_k^-1) / 3 (sums to 1), effective number of contributors 1 / sum c_k^2
 Comparison methods (same states, eligibility and covariances): fixed single solutions, equal-weight
-mean (covariances ignored), equal-weight CI, conventional CI (weights minimising tr(P_f,pos) on the
-simplex, grid), independent-information fusion (sum of P^-1, double counts the shared IMU), and the
-ground-truth single-solution oracle (reference only).
+mean (covariances ignored), equal-weight CI and conventional CI (weights minimising tr(P_f,pos) on the
+simplex, grid) on the reported covariances (choice A), trace-normalised equal-weight CI (the inflation
+reference with u = 0, choice B without learning), independent-information fusion (sum of P^-1, double
+counts the shared IMU), and the ground-truth single-solution oracle (reference only).
 """
 from __future__ import annotations
 
@@ -22,7 +23,7 @@ import numpy as np
 import torch
 from scipy.spatial.transform import Rotation as R
 
-from .ci import fuse
+from .ci import fuse, inflate
 from .dataset import SOLUTIONS
 
 ALARM_M = 2.0
@@ -61,7 +62,7 @@ def weights_for(run: dict, method: str) -> np.ndarray:
         w = np.zeros((T, 3))
         w[:, k] = v[:, k]
         return w
-    if method in ("equal_ci", "equal_mean", "independent"):
+    if method in ("equal_ci", "equal_mean", "independent", "ci_trace_normalized"):
         return v / np.maximum(v.sum(1, keepdims=True), 1)
     if method == "ci_min_trace":
         av = run["avail3"][:, :, 0] & run["valid3"]
@@ -96,9 +97,15 @@ def weights_for(run: dict, method: str) -> np.ndarray:
     raise ValueError(method)
 
 
-def fuse_run(run: dict, w: np.ndarray, method: str = "ci") -> dict:
+def fuse_run(run: dict, w: np.ndarray, method: str = "ci", u: np.ndarray | None = None) -> dict:
+    """method: 'ci' (reported covariances, or inflated by the network output u), 'equal_mean',
+    'independent', 'ci_trace_normalized' (inflation with u = 0)."""
     pos, vel, quat, P, av = run_tensors(run)
     wt = torch.tensor(w, dtype=torch.float64)
+    lg = None
+    if u is not None or method == "ci_trace_normalized":
+        uu = torch.zeros(P.shape[0], 3, 3, dtype=torch.float64) if u is None else torch.tensor(u, dtype=torch.float64)
+        P, lg = inflate(P, av, uu)
     if method == "equal_mean":                                           # covariances ignored
         P = torch.eye(9, dtype=torch.float64).expand_as(P).clone()
         av = av & torch.tensor(run["valid3"])[..., None]
@@ -106,6 +113,7 @@ def fuse_run(run: dict, w: np.ndarray, method: str = "ci") -> dict:
     o = fuse(pos, vel, quat, P, av, wt, independent=(method == "independent"))
     out = {k: o[k].numpy() for k in ("pos", "vel", "quat", "P", "ok")}
     out["w"] = w
+    out["log10_gamma"] = None if lg is None else (lg.numpy() / np.log(10))
     # effective contribution to the fused position: C_k = P_f w_k Lam_k (sum_k C_k = I)
     wp = w[..., 0] if w.ndim == 3 else w                                 # position-block weights
     c = np.zeros_like(wp)
@@ -120,6 +128,8 @@ def fuse_run(run: dict, w: np.ndarray, method: str = "ci") -> dict:
                 c_ok = np.zeros(okp.sum())
                 c_ok[a] = np.trace(Pf[a] @ (wk[:, None, None] * Lk), axis1=1, axis2=2) / 3
                 c[okp, k] = c_ok
+    if method == "equal_mean":                                           # plain average: contribution = weight
+        c = np.where(out["ok"][:, :1], wp, 0.0)
     out["contrib"] = c
     return out
 
@@ -173,6 +183,9 @@ def metrics(run: dict, out: dict) -> dict:
             "contrib_mean": c.mean(0).tolist() if len(c) else None,
             "enc_mean": float(np.mean(1 / np.maximum((c ** 2).sum(1), 1e-12))) if len(c) else None,
             "single_ratio": float(np.mean((c > 0.99).any(1))) if len(c) else None,
+            "log10_gamma_mean": (None if out.get("log10_gamma") is None else
+                                 np.nanmean(np.where(run["valid3"][sel][..., None] & run["avail3"][sel],
+                                                     out["log10_gamma"][sel], np.nan), 0).round(2).tolist()),
             "max_jump_m": float(jumps.max()) if len(jumps) else 0.0}
 
 

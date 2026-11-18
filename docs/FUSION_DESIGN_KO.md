@@ -57,11 +57,13 @@
 | 그래프 명세 일반화(v1 그대로) | `ijcas/rgat/graph.py`, `ijcas/rgat/model.py` | [구현·검증] v1 동결 모델 3개의 출력이 비트 단위로 같음 |
 | 융합 데이터셋(20 Hz, 출력 시각 → 융합 시각 인과 전파, 참값은 평가 배열에만) | `ijcas/fusion/dataset.py`, `tools/fusion_build_dataset.py` | [구현·검증] 스모크 실행 |
 | 융합 가중치 모델(R-GAT, 블록별 변형, GRU 비교군) | `ijcas/fusion/weights.py` | [구현·검증] 기울기가 입력 어댑터·GRU·R-GAT·어텐션·헤드에 도달 |
-| GT 기반 융합 학습 | `ijcas/fusion/train.py` | [구현·미검증] 스모크에서 손실이 줄지 않음(4절) |
+| 학습 팽창 계수 γ ≥ 1 (결정 B) | `ijcas/fusion/ci.py` `inflate`, 헤드 출력 u | [구현·검증] γ ≥ 1, 공분산 형태 보존, LIO가 정보를 독점해도 세 해 모두의 u에 기울기 도달 |
+| GT 기반 융합 학습 | `ijcas/fusion/train.py` | [구현·검증] γ를 넣은 뒤 스모크 구간에서 손실 감소(0.365 → 0.292, 같은 구간으로 학습·평가한 과적합 확인일 뿐) |
 | 평가·비교 방법 | `ijcas/fusion/evaluate.py` | [구현·검증] |
+| 실험 명령행 도구 | `tools/fusion_run.py`(train, eval, export, graph), `tools/fusion_build_dataset.py`, `tools/fusion_inspect.py` | [구현·검증] 3회 데이터로 끝까지 실행 |
+| MATLAB 오케스트레이션·그림 (**R2025a 기준**, 사용자 지시) | `matlab/ijcas_main.m`, `ijcas_config.m`, `ijcas_sys.m`, `ijcas_setup.m`, `ijcas_run_scenario.m`, `ijcas_collect.m`, `ijcas_build_dataset.m`, `ijcas_train.m`, `ijcas_evaluate.m`, `ijcas_plot.m` | [구현·검증] R2025a에서 setup, status, inspect, 그림 1–6 실행 확인. build, train, evaluate 단계는 같은 Python 명령을 부르므로 Python 쪽에서 확인했고, MATLAB에서 끝까지 돌린 것은 아니다. |
 | 프루닝(융합 기준) | — | [미구현] |
 | 온라인 실행기·ROS 2 노드(`/ijcas/fusion/*`) | — | [미구현] |
-| MATLAB 오케스트레이션·그림 | — | [미구현]. R2025b는 설치돼 있지 않다(R2024b, R2025a만 있음). |
 | 새 환경(터널·저조도 등) | — | [미구현] |
 | IMU 포화 배제 정책 | `ijcas/selector/eligibility.py` | 기본값에서 끔(중단 기록 참조) |
 
@@ -112,22 +114,60 @@
 
 | 세트 | 내용 | 상태 |
 |---|---|---|
-| `fusion_dev` | 시드 1–10 × S00–S10(S09 제외) = 100회. 새 기록기(실제 공분산 전체) | 수집 중(2026-11-18 17:17 시작, 약 10시간) |
-| 학습·검증 확장 | 시드 101–130(S09 제외) 300회 재수집 | 축소판 확인 뒤 결정 |
+| `fusion_dev` | 시드 1–10 × S00–S10(S09 제외) = 100회. 새 기록기(실제 공분산 전체) | 수집 중(2026-11-18 17:17 시작, 1회 약 6분) |
+| 학습·검증 확장 | 시드 101–130(S09 제외) 300회 재수집 | 축소판 결과를 본 뒤 결정 |
 | 시험 | 시드 201–230 × 11 = 330회. S09 office 포함(미관측 장면) | 새 기록기로 재수집 필요. 이전 test2의 15회는 공분산 열이 없다. |
 
-- 분할은 실행 단위로 한다. 정규화 통계는 학습 분할에서만 구한다.
-- 검증 분할 후보는 v2에서 정한 층화 시드(6, 9, 111, 112, 115, 125, 128, 130)다. 확장 데이터가 생기면 사전 등록한다.
+**축소판 분할 (사전 등록, 2026-11-18, 결과를 보기 전)**
+- 검증: 시드 1, 3, 6, 8 (40회). 학습: 시드 2, 4, 5, 7, 9, 10 (60회).
+- 규칙: C(10,4) = 210개 조합 전수 탐색에서 (−S10 결함 종류의 최소 개수, 덮지 못한 결함 변형 수, 시드 순서)의 사전식 최선 조합이다.
+- 결과: S10 네 종류(포화 포함)가 모두 검증에 들어가고, 덮지 못한 변형은 S02 두 개뿐이다.
+- 정규화 통계는 학습 분할에서만 구한다. 축소판에는 시험 세트가 없다. 시험 세트로 내는 결론은 시험 데이터를 새로 수집한 뒤에만 낸다.
 
-## 6. 결정이 필요한 것: 공분산의 크기를 무엇이 정하는가
+**학습 설정**
+- 일정: soft 게이트 30 에폭 → straight-through 이진 게이트 10 에폭. 학습률 2e-3, λ_S = 0.1, λ_E = 0 → 0.1.
+- 미니배치: 학습 실행 60회를 한 묶음으로 쓴다(tick당 연산 수가 묶음 크기와 거의 무관).
+- 변형 5개, 각 3시드:
+  - `rgat`: 제안
+  - `gru`: 그래프 없음
+  - `rgat_A`: 보고 공분산 그대로, 가중치만 학습
+  - `rgat_noonto`: 온톨로지 제약 없음
+  - `rgat_block`: 블록별 가중치
+- 비교 방법: 고정 해 3개, 균등 평균, 균등 CI, 표준 CI(최소 trace), trace 정규화 CI(u = 0), 독립 정보합, 단일 해 Oracle.
+- 수집이 끝나면 `results/fusion/after_collect.sh`가 자동으로 실행한다: 데이터셋 → 학습 → 검증 평가 → MATLAB 그림.
+- 파이프라인 시험 산출물(3회로 학습·평가한 것)은 `results/fusion/pipeline_check_20261118/`에 따로 두었고, 결과로 쓰지 않는다.
 
-| 선택지 | 내용 | 장점 | 문제 |
-|---|---|---|---|
-| A. 실제 공분산 그대로(현재) | P_k를 보고값 그대로 쓴다 | 사용자 원칙에 가장 충실 | CI가 LIO 고정이 된다. 학습 효과가 없고, 융합 공분산은 크게 과신한다(NEES 수십만). |
-| B. 학습 팽창 계수 γ_k ≥ 1 (비평 제안) | R-GAT가 해별(또는 블록별) γ_k를 상황마다 출력하고 P̃_k = γ_k P_k로 쓴다. log 공간에서 넓은 범위를 허용한다. | 실제 공분산의 형태(성분 비, 교차항)는 유지하면서, 낙관적인 해를 상황에 따라 억제할 수 있다 | 보고값을 학습으로 바꾸는 셈이다. CI의 일관성을 보장하지 않으므로 NEES로 따로 검증해야 한다. |
-| C. 공분산의 형태만 사용 | P_k를 크기로 정규화하고, 크기는 가중치가 정한다 | 학습이 쉽다 | 융합 공분산의 크기에 물리적 의미가 없어진다 |
+## 6. 결정: 공분산의 크기 — **B 채택 (2026-11-18, 사용자)**
 
-**추천: B를 제안 모델로, A를 기준선으로 함께 평가하는 것이다.**
-- 두 모델 모두 정확도와 일관성을 따로 보고한다.
-- 이 선택은 '학습 분할로 보정한 고정 대체값' 금지와 다르다. γ는 매 시점 모델이 출력하는 값이고, 보고된 공분산 자체는 기록에 그대로 남는다.
-- 다만 사용자 원칙에 저촉되는지는 사용자가 결정한다.
+- **구현:** log γ_k,b = softplus(log γ_norm,k,b + u_k,b), P̃_k,b = γ_k,b P_k,b (b ∈ 위치·속도·자세).
+  - γ_norm,k,b = max_j tr(P_j,b) / tr(P_k,b)는 그 시점에 보고된 값들의 크기를 가장 보수적인 해에 맞추는 기준이다. 보고값만으로 계산하며, 학습 분할에 맞춘 값이 아니다.
+  - u는 R-GAT 헤드의 출력이다. u = 0이 'trace 정규화 CI' 비교군이다.
+- **γ_norm 기준이 필요한 이유:** 보고 공분산에서 바로 시작하면(γ = 1) LIO가 정보를 독점해 u의 기울기가 사라진다. 스모크에서 확인했다.
+- **보장되는 것:** w가 단체(simplex) 위에 있고 γ ≥ 1이므로, 융합 공분산은 보고 공분산으로 한 CI보다 항상 크다(더 보수적).
+- **보장되지 않는 것:** 실제 오차와의 일관성. NEES로 따로 검증한다.
+- **기준선:** A(`rgat_A`, 표준 CI, 균등 CI)를 함께 평가한다.
+
+## 7. 실행 명령
+
+```bash
+# Python
+python3 tools/run_batch.py --set fusion_dev                       # 수집(재개 가능)
+python3 tools/fusion_inspect.py --set fusion_dev                   # 공분산 기록 점검
+python3 tools/fusion_build_dataset.py --set fusion_dev --workers 6
+python3 tools/fusion_run.py train --set fusion_dev --variants rgat,gru --seeds 0,1,2 --batch 60
+python3 tools/fusion_run.py eval  --set fusion_dev --split val
+python3 -m pytest -q tests/                                        # 42건
+```
+
+```matlab
+% MATLAB R2025a (/usr/local/MATLAB/R2025a/bin/matlab), cd matlab
+out = ijcas_main();                                                % setup, status, inspect, plot
+out = ijcas_main(Steps=["build" "train" "evaluate" "plot"], Run="S10_003");
+```
+
+## 8. 남은 일
+
+1. 축소판 결과 확인. 비평의 권장 순서에 따라 '표준 CI가 선택보다 나은 조건이 있는가'를 먼저 본다(비교 방법 표).
+2. 확장 데이터(시드 101–130)와 시험 데이터(201–230)를 새 기록기로 수집하고, 분할을 사전 등록한다.
+3. 융합 기준 프루닝, 온라인 실행기·ROS 2 노드, 지연 측정, 새 환경(터널·저조도 등).
+4. 이전 선택 방식(v1 R-GAT·Ontology-K·H-FSM)을 같은 상태에서 비교하는 경로. 데이터셋에 v1 특징과 규칙 출력은 이미 들어 있다.

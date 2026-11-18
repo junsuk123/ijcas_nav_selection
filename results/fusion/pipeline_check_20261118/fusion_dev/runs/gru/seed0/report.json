@@ -1,0 +1,30 @@
+{
+ "variant": "gru",
+ "seed": 0,
+ "train_s": 130.95619344711304,
+ "train_runs": [
+  "S00_001",
+  "S01_001",
+  "S02_001"
+ ],
+ "history": [
+  {
+   "fusion": 0.50257,
+   "smooth": 0.00059,
+   "edge": 0.0,
+   "epoch": 0,
+   "phase": "P0",
+   "gate_mode": "soft",
+   "sec": 66.5
+  },
+  {
+   "fusion": 0.42051,
+   "smooth": 0.0021,
+   "edge": 0.0,
+   "epoch": 0,
+   "phase": "P1",
+   "gate_mode": "soft",
+   "sec": 64.5
+  }
+ ]
+}

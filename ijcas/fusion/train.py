@@ -1,6 +1,7 @@
 """GT-supervised training of the fusion weights through the differentiable CI.
 
     L_total = L_fusion + lam_S L_weight_smooth + lam_E L_edge
+    (fusion with the learned inflation P~ = gamma P, gamma >= 1: ijcas/fusion/ci.py inflate)
     L_fusion = mean over ticks with a fused output of
                rho(e_p / s_p) + beta_v rho(e_v / s_v) + beta_R rho(e_R / s_R)
     e_p = |p_f - p_GT|, e_v = |v_f - v_GT|, e_R = |Log(R_GT^T R_f)| [deg]; rho = the v1 Huber
@@ -22,9 +23,9 @@ import torch
 
 from ..rgat.learn import COST
 from . import geometry as G
-from .ci import fuse
+from .ci import fuse, inflate
 from .evaluate import run_tensors
-from .weights import FusionNormalizer, masked_weights
+from .weights import FusionNormalizer, masked_weights, split
 
 
 def _rho(x, d=COST["huber"]):
@@ -85,7 +86,6 @@ def fit(model, data: dict, cfg: FitCfg, device="cuda", seed: int = 0, log=print,
     model.to(device).train()
     opt = torch.optim.Adam(model.parameters(), lr=cfg.lr)
     B, T = data["X"].shape[:2]
-    block = getattr(model, "head_mode", "scalar") == "block"
     hist = []
     for ep in range(cfg.epochs):
         t0 = time.time()
@@ -101,9 +101,12 @@ def fit(model, data: dict, cfg: FitCfg, device="cuda", seed: int = 0, log=print,
                 Ls, Ms, ws, ps = [], [], [], []
                 for k in range(g["X"].shape[1]):
                     v = g["valid"][:, k]
-                    lg, st, aux = model.step(g["X"][:, k], st, v[..., None] if block else v, cfg.gate_mode)
-                    w = masked_weights(lg, v).double()
-                    o = fuse(g["pos"][:, k], g["vel"][:, k], g["quat"][:, k], g["P"][:, k], g["avail"][:, k], w)
+                    out, st, aux = model.step(g["X"][:, k], st, v[..., None], cfg.gate_mode)
+                    s_, u = split(out, model.n_w)
+                    w = masked_weights(s_, v).double()
+                    Pt = inflate(g["P"][:, k], g["avail"][:, k], u.double())[0] \
+                        if getattr(model, "inflation", True) else g["P"][:, k]
+                    o = fuse(g["pos"][:, k], g["vel"][:, k], g["quat"][:, k], Pt, g["avail"][:, k], w)
                     L, M = fusion_loss(o, g["gp"][:, k], g["gv"][:, k], g["gR"][:, k])
                     Ls.append(L), Ms.append(M), ws.append(w)
                     if "p_active" in aux:
@@ -139,15 +142,16 @@ def fit(model, data: dict, cfg: FitCfg, device="cuda", seed: int = 0, log=print,
 
 
 @torch.no_grad()
-def infer_weights(model, data: dict, device="cuda") -> np.ndarray:
-    """Operation-mode weights [B,T,3(,3)] (binary gates with hysteresis)."""
+def infer_weights(model, data: dict, device="cuda"):
+    """Operation mode (binary gates with hysteresis) -> (weights [B,T,3(,3)], inflation u [B,T,3,3])."""
     model.to(device).eval()
     B, T = data["X"].shape[:2]
-    block = getattr(model, "head_mode", "scalar") == "block"
     st = model.init_state(B, device)
-    W = []
+    W, U = [], []
     for k in range(T):
         v = data["valid"][:, k].to(device)
-        lg, st, _ = model.step(data["X"][:, k].to(device), st, v[..., None] if block else v, "eval")
-        W.append(masked_weights(lg, v).double().cpu())
-    return torch.stack(W, 1).numpy()
+        out, st, _ = model.step(data["X"][:, k].to(device), st, v[..., None], "eval")
+        s_, u = split(out, model.n_w)
+        W.append(masked_weights(s_, v).double().cpu())
+        U.append(u.double().cpu())
+    return torch.stack(W, 1).numpy(), torch.stack(U, 1).numpy()

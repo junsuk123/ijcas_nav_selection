@@ -155,3 +155,21 @@ def test_attitude_fusion_on_manifold():
                  torch.tensor([[0.5, 0.5]]))
         yaw = Rotation.from_quat(o["quat"][0].numpy()).as_euler("xyz")[2]
         assert abs(np.angle(np.exp(1j * (yaw - base)))) < 1e-9
+
+
+def test_inflation_gamma_ge_1_shape_kept_and_trainable():
+    from ijcas.fusion.ci import inflate
+    rng = np.random.default_rng(7)
+    pos, vel, quat, P = _state(rng, 3)
+    P[0, 2] *= 1e-6                                                       # an over-confident solution
+    avail = torch.ones(1, 3, 3, dtype=torch.bool)
+    u = torch.zeros(1, 3, 3, requires_grad=True)
+    Pt, lg = inflate(P, avail, u)
+    assert (lg >= 0).all()                                                # gamma >= 1
+    for k in range(3):
+        for b in range(3):
+            A, B = P[0, k, 3 * b:3 * b + 3, 3 * b:3 * b + 3], Pt[0, k, 3 * b:3 * b + 3, 3 * b:3 * b + 3]
+            assert torch.allclose(B / B.trace(), A / A.trace(), atol=1e-12)  # shape kept
+    o = fuse(pos, vel, quat, Pt, avail, torch.full((1, 3), 1 / 3))
+    o["pos"].sum().backward()
+    assert (u.grad[0, :, 0].abs() > 1e-6).all()                           # every solution's u matters

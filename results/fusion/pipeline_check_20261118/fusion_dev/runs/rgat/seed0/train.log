@@ -1,0 +1,2 @@
+{"fusion": 0.53155, "smooth": 0.01197, "edge": 0.97351, "epoch": 0, "phase": "P0", "gate_mode": "soft", "sec": 108.0}
+{"fusion": 0.39613, "smooth": 0.00969, "edge": 0.96646, "epoch": 0, "phase": "P1", "gate_mode": "hard_st", "sec": 96.2}

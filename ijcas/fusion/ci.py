@@ -16,8 +16,8 @@ Blocks are fused separately: PX4 reports no cross-block terms and position/attit
 different messages, so cross-block covariances are not used (they are not assumed to be zero inside a
 joint 9x9 inversion either).  Attitude: reference R_ref (largest weight), dtheta_k = Log(R_ref^T R_k),
 each attitude covariance is moved to the reference tangent space with J_r^-1(dtheta_k), and the
-reference is re-linearised ``iters`` times.  Linear solves use Cholesky factors (no explicit inverse of
-the fused information).  Blocks without any reporting solution are returned as NaN (no substitute).
+reference is re-linearised ``iters`` times.  Inverses go through closed-form 3x3 Cholesky factors
+(_chol3); no general matrix inverse is used.  Blocks without any reporting solution are returned as NaN (no substitute).
 """
 from __future__ import annotations
 
@@ -28,26 +28,49 @@ from . import geometry as G
 BLOCKS = ("pos", "vel", "att")
 
 
+def _chol3(A):
+    """Cholesky factor of SPD 3x3 matrices [...,3,3] in closed form (elementwise ops; cheaper than a
+    batched LAPACK/cuSOLVER call for tiny matrices).  Returns the six entries of L."""
+    l11 = A[..., 0, 0].clamp_min(1e-300).sqrt()
+    l21 = A[..., 1, 0] / l11
+    l31 = A[..., 2, 0] / l11
+    l22 = (A[..., 1, 1] - l21 * l21).clamp_min(1e-300).sqrt()
+    l32 = (A[..., 2, 1] - l31 * l21) / l22
+    l33 = (A[..., 2, 2] - l31 * l31 - l32 * l32).clamp_min(1e-300).sqrt()
+    return l11, l21, l31, l22, l32, l33
+
+
+def _chol3_inv(L):
+    """A^-1 = L^-T L^-1 from the closed-form factor."""
+    l11, l21, l31, l22, l32, l33 = L
+    m11, m22, m33 = 1 / l11, 1 / l22, 1 / l33                    # M = L^-1 (lower triangular)
+    m21 = -l21 * m11 * m22
+    m32 = -l32 * m22 * m33
+    m31 = -(l31 * m11 + l32 * m21) * m33
+    z = torch.zeros_like(m11)
+    M = torch.stack([torch.stack([m11, z, z], -1), torch.stack([m21, m22, z], -1),
+                     torch.stack([m31, m32, m33], -1)], -2)
+    return M.transpose(-1, -2) @ M
+
+
 def _block_ci(dx, P, w, part, independent=False):
     """dx [B,K,3], P [B,K,3,3], w [B,K] (sums to 1 over the valid set), part [B,K] bool.
     independent=True: comparison baseline Lambda_f = sum_k P_k^-1 over the participants (no weights,
     treats the solutions as independent).  -> dx_f [B,3], P_f [B,3,3], ok [B]."""
     wb = torch.where(part, w, torch.zeros_like(w))
-    s = wb.sum(-1, keepdim=True)
-    ok = s.squeeze(-1) > 0
+    s = wb.sum(1, keepdim=True)                                            # over the solutions (dim 1)
+    ok = s.squeeze(1) > 0
     wb = part.to(w.dtype) if independent else wb / s.clamp_min(1e-12)
     eye = torch.eye(3, dtype=P.dtype, device=P.device)
     Ps = torch.where(part[..., None, None], P, eye.expand_as(P))          # dummy for absent blocks
-    L = torch.linalg.cholesky(Ps)
-    Lam = torch.cholesky_inverse(L)                                        # P_k^-1 (3x3, well conditioned)
+    Lam = _chol3_inv(_chol3(Ps))                                           # P_k^-1 via Cholesky
     Lf = (wb[..., None, None] * Lam).sum(1)
-    Lf = torch.where(ok[:, None, None], Lf, eye.expand_as(Lf))
+    Lf = torch.where(ok[..., None, None], Lf, eye.expand_as(Lf))
     rhs = (wb[..., None] * (Lam @ dx[..., None]).squeeze(-1)).sum(1)
-    Lc = torch.linalg.cholesky(Lf)
-    dxf = torch.cholesky_solve(rhs[..., None], Lc).squeeze(-1)
-    Pf = torch.cholesky_inverse(Lc)
+    Pf = _chol3_inv(_chol3(Lf))                                            # P_f = Lambda_f^-1 via Cholesky
+    dxf = (Pf @ rhs[..., None]).squeeze(-1)
     nan = torch.full_like(dxf, float("nan"))
-    return torch.where(ok[:, None], dxf, nan), torch.where(ok[:, None, None], Pf, nan[..., None].expand_as(Pf)), ok
+    return torch.where(ok[..., None], dxf, nan), torch.where(ok[..., None, None], Pf, nan[..., None].expand_as(Pf)), ok
 
 
 def fuse(pos, vel, quat, P, avail, w, iters: int = 2, independent: bool = False):
@@ -72,8 +95,10 @@ def fuse(pos, vel, quat, P, avail, w, iters: int = 2, independent: bool = False)
     p_ref = torch.gather(pos, 1, gi.expand(B, 1, 3)).squeeze(1).detach()
     v_ref = torch.gather(vel, 1, gi.expand(B, 1, 3)).squeeze(1).detach()
     out = {}
-    dp, Pp, okp = _block_ci(pos - p_ref[:, None], P[..., 0:3, 0:3], wb(0), avail[..., 0], independent)
-    dv, Pv, okv = _block_ci(vel - v_ref[:, None], P[..., 3:6, 3:6], wb(1), avail[..., 1], independent)
+    dpv, Ppv, okpv = _block_ci(torch.stack([pos - p_ref[:, None], vel - v_ref[:, None]], 2),
+                               torch.stack([P[..., 0:3, 0:3], P[..., 3:6, 3:6]], 2),
+                               torch.stack([wb(0), wb(1)], -1), avail[..., 0:2], independent)
+    dp, dv, Pp, Pv, okp, okv = dpv[:, 0], dpv[:, 1], Ppv[:, 0], Ppv[:, 1], okpv[:, 0], okpv[:, 1]
     out["pos"], out["vel"] = p_ref + dp, v_ref + dv
     R = G.quat_to_rot(quat)                                                      # [B,K,3,3]
     R_ref = torch.gather(R, 1, gi[..., None].expand(B, 1, 3, 3)).squeeze(1).detach()
